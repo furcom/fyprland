@@ -2,20 +2,29 @@
 :-: | :-: | :-:
 ![alt text](https://github.com/furcom/Fyprland/blob/main/preview_1.png?raw=true)  |  ![alt text](https://github.com/furcom/Fyprland/blob/main/preview_2.png?raw=true)  |  ![alt text](https://github.com/furcom/Fyprland/blob/main/preview_3.png?raw=true)
 
-# furcom's Hyprland configuration
+# Fyprland
 This repository features a sleek, minimalistic Hyprland configuration with dynamic color schemes that adapt to your wallpaper. Enjoy a streamlined, personalized and colorful desktop experience with ease!
 
 ## Setup
 
 ### 1. Clone repo
 ```
-git clone https://github.com/furcom/hypr-furcom.git ~/hypr-furcom
+git clone https://github.com/furcom/Fyprland.git ~/Fyprland && ~/Fyprland/install.sh
 ```
 
-### 2. Install
+### 2. Install (Read Infos before installing!)
 ```
-~/hypr-furcom/install.sh
+~/Fyprland/install.sh
 ```
+
+## Infos
+1. Optimized for 1920x1200 screen resolution. Things could look messed up on different screen resolutions.
+2. This script will install packages and copy/overwrite files without asking!  
+   It is recommended to use this script on a fresh Arch install or look into the script and backup the files, which will be overwritten!
+3. Switching Wallpapers: Press SUPER+I keys > Go to **Hyprland** > Go to **Wallpaper** > Choose an image
+    - Images are stored in `~/.config/hypr/images/wallpapers`
+    - Wallpaper changer currently only supports PNG files. Will be fixed soon...
+4. If something does not work: Try to fix it yourself 🫶
   
 ### Credits:
 [archpapers](https://github.com/connorslade/ArchPapers?tab=readme-ov-file)
