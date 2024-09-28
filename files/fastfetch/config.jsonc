@@ -1,0 +1,104 @@
+// ███████╗██╗   ██╗██████╗  ██████╗ ██████╗ ███╗   ███╗
+// ██╔════╝██║   ██║██╔══██╗██╔════╝██╔═══██╗████╗ ████║
+// █████╗  ██║   ██║██████╔╝██║     ██║   ██║██╔████╔██║
+// ██╔══╝  ██║   ██║██╔══██╗██║     ██║   ██║██║╚██╔╝██║
+// ██║     ╚██████╔╝██║  ██║╚██████╗╚██████╔╝██║ ╚═╝ ██║
+// ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "none"
+    },
+    "display": {
+        "separator": "",
+        "color": {
+            "separator": "1" // Bold
+        },
+        "constants": [
+            "───────────────────────────"
+        ],
+        "key": {
+            "type": "both",
+            "paddingLeft": 2
+        }
+    },
+    "modules": [
+	"break",
+        {
+            "key": "User         ",
+            "type": "title",
+            "format": "{user-name-colored} {at-symbol-colored} {host-name-colored}"
+        },
+        {
+            "key": "OS           ",
+            "keyColor": "blue",
+            "type": "os"
+        },
+        {
+            "key": "Kernel       ",
+            "keyColor": "red",
+            "type": "kernel"
+        },
+        {
+            "key": "Shell        ",
+            "keyColor": "white",
+            "type": "shell"
+        },
+        {
+            "key": "Terminal     ",
+            "keyColor": "magenta",
+            "type": "terminal"
+        },
+        {
+            "key": "WM           ",
+            "keyColor": "cyan",
+            "type": "wm"
+        },
+	"break",
+        {
+            "key": "Machine      ",
+            "keyColor": "white",
+            "type": "host"
+        },
+        {
+            "key": "Resolution   ",
+            "keyColor": "yellow",
+            "type": "display",
+            "compactType": "original-with-refresh-rate"
+        },
+        {
+            "key": "Uptime       ",
+            "keyColor": "green",
+            "type": "uptime"
+        },
+	"break",
+        {
+            "key": "CPU          ",
+            "keyColor": "blue",
+            "type": "cpu"
+        },
+        {
+            "key": "GPU          ",
+            "keyColor": "green",
+            "type": "gpu"
+        },
+        {
+            "key": "Memory       ",
+            "keyColor": "magenta",
+            "type": "memory"
+        },
+        {
+            "key": "DE           ",
+            "keyColor": "yellow",
+            "type": "de"
+        },
+	"break",
+        {   "key": "Color        ",
+            "type": "colors",
+            "paddingLeft": "50%",
+            "symbol": "circle",
+            "format": "{$1} {colors} {$1}"
+        }
+    ]
+}

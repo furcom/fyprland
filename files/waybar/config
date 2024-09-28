@@ -1,0 +1,288 @@
+// ██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗ 
+// ██║    ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+// ██║ █╗ ██║███████║ ╚████╔╝ ██████╔╝███████║██████╔╝
+// ██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+// ╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
+//  ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+// config by furcom (https://github.com/furcom)
+
+{
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "margin-left": 16,
+    "margin-right": 16,
+    "margin-top": 16,
+    "margin-bottom": 16,
+    "fixed-center": true,
+    "height": 40,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+        "custom/updates",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature",
+        "custom/spotify",
+	"custom/spotify-button"
+    ],
+
+    "modules-center": [
+        "custom/weather",
+        "clock",
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "tray",
+        "bluetooth",
+        "network",
+        "backlight",
+        "custom/pipewire-input",
+        "wireplumber",
+        "power-profiles-daemon",
+        "battery",
+        "custom/powermenu"
+    ],
+
+    "custom/logo": {
+        "format": "",
+        "tooltip": true,
+        "tooltip-format": " Settings",
+        "on-click": "bash -c '~/.config/hypr/scripts/settings'",
+        "return-type": "exit"
+    },
+
+    "custom/updates": {
+        "tooltip": true,
+        "tooltip-format": "󰚰 Updates",
+        "restart-interval": 3600,
+        "exec": "~/.config/hypr/scripts/updates --check",
+        "on-click": "kitty sh -c '~/.config/hypr/scripts/updates --pacman'",
+        "on-click-right": "kitty sh -c '~/.config/hypr/scripts/updates --aur'"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "active-only": false,
+        "tooltip": false,
+        "hidden": true,
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true,
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "smooth-scrolling-threshold": 1,
+        "persistent-workspaces": { "*": 3 }
+    },
+
+    "hyprland/window": {
+        "format": "󰅙 {}",
+        "tooltip": false,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "🌎 $1",
+            "(.*) sh": "󰅙 kitty",
+            "(.*) - zsh": "󰅙 kitty"
+        },
+        "separate-outputs": true,
+        "icon": false,
+        "icon-size": 22,
+        "on-click-right": "rofi -show window -theme ~/.config/rofi/window.rasi",
+        "on-click": "hyprctl dispatch killactive"
+    },
+
+    "custom/spotify": {
+        "exec": "~/.config/hypr/scripts/spotify --song",
+        "tooltip": true,
+        "tooltip-format": " Spotify",
+        "interval": 1,
+	"max-length": 35,
+        "on-click": "hyprctl dispatch focuswindow class:Spotify"
+    },
+
+    "custom/spotify-button": {
+        "exec": "~/.config/hypr/scripts/spotify --button",
+        "tooltip": true,
+        "tooltip-format": "Play/Pause",
+        "interval": 1,
+        "on-click": "playerctl -p spotify play-pause"
+    },
+	
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar",
+        "return-type": "json"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": " {:%H:%M:%S   %d.%m.%Y}",
+        "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar-weeks-pos": "right",
+        "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
+        "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
+        "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
+        "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "on-click": "kitty sh -c htop"
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": " {percentage}%",
+        "on-click": "kitty sh -c 'free -ght && read'"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input",
+        "format": " {temperatureC}°C",            
+        "format-critical": "  {temperatureC}°C",
+        "critical-threshold": 80,
+        "on-click": "foot btop"
+    },
+
+    "disk": {
+        "interval": 10,
+        "format": " {percentage_used}%",
+        "path": "/",
+        "unit": "GB",
+        "on-click": "kitty sh -c 'df -h && read'"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "hidden": true,
+        "show-passive-items": true,
+        "spacing": 8
+    },
+
+    "bluetooth": {
+        "format-on": "",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": "󰥉 {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "rfkill toggle bluetooth",
+        "on-click-right": "kitty sh -c bluetui"
+    }, 
+
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet":"",
+        "format-disconnected": "",
+        "tooltip-format": "{ipaddr}",
+        "tooltip-format-wifi": "Network: {essid}\nSignal strength: {signalStrength}%)\nIP adress: {ipaddr}",
+        "tooltip-format-ethernet": "  {ifname} - {ipaddr}",
+        "on-click": "rfkill toggle wifi",
+        "on-click-right": "kitty sh -c nmtui"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "tooltip": true,
+        "tooltip-format": "{percent}%",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃛",
+            "󰃞",
+            "󰃞",
+            "󰃟",
+            "󰃝",
+            "󰃠",
+            "󰖨"
+        ],
+        "on-scroll-down": "brightnessctl s 5%+",
+        "on-scroll-up": "brightnessctl s 5%-",
+        "smooth-scrolling-threshold": 1,
+        "on-click": "brightnessctl s 50%"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "Power Profile: {profile} \nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
+    "custom/pipewire-input": {
+            "tooltip": true,
+            "restart-interval": 0,
+            "exec": "~/.config/hypr/scripts/pipewire-input",
+            "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+",
+            "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-",
+            "smooth-scrolling-threshold": 1,
+            "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    },
+
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "max-volume": 100.0,
+        "format-muted": "󰖁 Muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "scroll-step": "1",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
+    },
+
+    "battery": {
+        "interval": 30,
+        "bat": "BAT0",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+            },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+	"format-time": "{H} h {M} min",
+        "format-icons": [
+            "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+
+    "custom/powermenu": {
+        "format": "⏻",
+        "tooltip": true,
+        "tooltip-format": "󰐥 Power menu",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh"
+    },
+
+}

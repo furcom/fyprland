@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# ██████╗  ██████╗ ██╗    ██╗███████╗██████╗
+# ██╔══██╗██╔═══██╗██║    ██║██╔════╝██╔══██╗
+# ██████╔╝██║   ██║██║ █╗ ██║█████╗  ██████╔╝
+# ██╔═══╝ ██║   ██║██║███╗██║██╔══╝  ██╔══██╗
+# ██║     ╚██████╔╝╚███╔███╔╝███████╗██║  ██║
+# ╚═╝      ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
+# ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
+# ████╗ ████║██╔════╝████╗  ██║██║   ██║
+# ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
+# ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
+# ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
+# ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
+# script by furcom (https://github.com/furcom)
+
+source $HOME/.config/hypr/scripts/HYPR_VARS
+
+power_menu() {
+    YES=" Yes"
+    NO=" No"
+    OPTIONS=" Lock\n Logout\n Shutdown\n󰜉 Reboot\n󰤄 Sleep"
+    CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}')
+    case "$CHOICE" in
+        " Lock")
+            hyprlock ;;
+        " Logout")
+            LO_OPTIONS="$YES\n$NO"
+    	    LO_CHOICE=$(echo -e "$LO_OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;}  entry{enabled:false;} textbox-prompt-colon{enabled:false;}')
+    	    case "$LO_CHOICE" in
+                "$YES") hyprctl dispatch exit ;;
+                "$NO") exit ;;
+                *) exit ;;
+            esac ;;
+        " Shutdown")
+            SD_OPTIONS="$YES\n$NO"
+    	    SD_CHOICE=$(echo -e "$SD_OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}')
+    	    case "$SD_CHOICE" in
+                "$YES") systemctl shutdown ;;
+                "$NO") exit ;;
+                *) exit ;;
+            esac ;;
+        "󰜉 Reboot")
+            RB_OPTIONS="$YES\n$NO"
+    	    RB_CHOICE=$(echo -e "$RB_OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}')
+    	    case "$RB_CHOICE" in
+                "$YES") systemctl reboot ;;
+                "$NO") exit ;;
+                *) exit ;;
+            esac ;;
+        "󰤄 Sleep")
+            SL_OPTIONS="$YES\n$NO"
+    	    SL_CHOICE=$(echo -e "$SL_OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}')
+    	    case "$SL_CHOICE" in
+                "$YES") systemctl suspend ;;
+                "$NO") exit ;;
+                *) exit ;;
+            esac ;;
+        *)
+            echo "Invalid choice" ;;
+    esac
+}
+
+power_menu

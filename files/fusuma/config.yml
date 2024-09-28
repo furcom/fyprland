@@ -1,0 +1,56 @@
+# ███████╗██╗   ██╗███████╗██╗   ██╗███╗   ███╗ █████╗ 
+# ██╔════╝██║   ██║██╔════╝██║   ██║████╗ ████║██╔══██╗
+# █████╗  ██║   ██║███████╗██║   ██║██╔████╔██║███████║
+# ██╔══╝  ██║   ██║╚════██║██║   ██║██║╚██╔╝██║██╔══██║
+# ██║     ╚██████╔╝███████║╚██████╔╝██║ ╚═╝ ██║██║  ██║
+# ╚═╝      ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝
+# config by furcom (https://github.com/furcom)
+
+plugin:
+  filters:
+    libinput_device_filter:
+      keep_device_names:
+        - 'Touchpad'
+swipe:
+  3:
+    up:
+      command: 'hyprctl dispatch fullscreen 1'
+      threshold: 0.5
+    down:
+      command: 'hyprctl dispatch fullscreen 1'
+      threshold: 0.5
+  4:
+    up:
+      command: 'hyprctl dispatch fullscreen 0'
+      threshold: 0.5
+    down:
+      command: 'hyprctl dispatch fullscreen 0'
+      threshold: 0.5
+    left:
+      command: 'hyprctl dispatch movetoworkspace -1'
+      threshold: 0.5
+    right:
+      command: 'hyprctl dispatch movetoworkspace +1'
+      threshold: 0.5
+
+pinch:
+  3:
+    in:
+      command: 'hyprctl dispatch fullscreen 1'
+      threshold: 0.1
+    out:
+      command: 'hyprctl dispatch fullscreen 1'
+      threshold: 0.1
+  4:
+    in:
+      command: 'hyprctl dispatch fullscreen 0'
+      threshold: 0.1
+    out:
+      command: 'hyprctl dispatch fullscreen 0'
+      threshold: 0.1
+
+hold:
+  3:
+    command: 'rofi -show drun -theme-str "prompt { enabled: false; }"'
+  4:
+    command: 'rofi -show drun -theme-str "prompt { enabled: false; }"'

@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
+# ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
+# ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
+# ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
+#  ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║
+#   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
+# by furcom (https://github.com/furcom)
+
+###############
+# Directories #
+###############
+
+# General
+CacheDir="$HOME/.cache"
+
+# fusuma
+FusumaDir="$HOME/.config/fusuma"
+FusumaScriptsDir="$FusumaDir/scripts"
+
+# Hypr Ecosystem
+HyprDir="$HOME/.config/hypr"
+HyprScriptsDir="$HyprDir/scripts"
+HyprConfigsDir="$HyprDir/configs"
+
+HyprWallpapers="$HyprDir/images/wallpapers"
+HyprpaperCacheDir="$HOME/.cache/hyprpaper"
+
+# kitty
+KittyDir="$HOME/.config/kitty"
+KittyConfigsDir="$KittyDir/configs"
+
+# rofi
+RofiDir="$HOME/.config/rofi"
+RofiScriptsDir="$RofiDir/scripts"
+
+# waybar
+WaybarDir="$HOME/.config/waybar"
+WaybarScriptsDir="$WaybarDir/scripts"
+
+# pywal
+WalCacheDir="$HOME/.cache/wal"
+
+# mako
+MakoDir="$HOME/.config/mako"
+
+############
+# PROGRAMS #
+############
+
+EDITOR="vim"
+TERMINAL="kitty"
+AUR_HELPER="yay"
+WG_CONFIG="/etc/wireguard/wg0.conf"
+
+##########
+# COLORS #
+##########
+
+NC='\033[0m'
+RED='\e[31m'
+GREEN='\e[32m'
+BLUE='\e[34m'
+CYAN='\e[36m'
+MAGENTA='\e[35m'
+YELOW='\e[33m'
