@@ -17,7 +17,7 @@ source $HOME/.config/hypr/scripts/HYPR_VARS
 MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
 main_menu() {
-    OPTIONS="  Hyprland\n󱂩  Waybar\n󰄛  Kitty\n󰮫  Rofi\n󰵷  Fusuma\n󱘖  Connections\n  Packages\n󰗼  Exit"
+    OPTIONS=" Hyprland\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma\n󱘖 Connections\n Packages\n󰗼 Exit"
     CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     # Wenn Escape gedrückt wurde oder keine Wahl getroffen wurde, schließen
@@ -27,30 +27,23 @@ main_menu() {
 
     if [ -z "$CHOICE" ]; then
         main_menu
-    elif [ "$CHOICE" == "󰗼  Exit" ]; then
+    elif [ "$CHOICE" == "󰗼 Exit" ]; then
         exit
     else
         case "$CHOICE" in
-            #---------- HYPR ----------
-            "  Hyprland")
+            " Hyprland")
                 hyprland_menu ;;
-            # ---------- Waybar ----------
-            "󱂩  Waybar")
+            "󱂩 Waybar")
                 waybar_menu ;;
-            # ---------- Kitty ----------
-            "󰄛  Kitty")
+            "󰄛 Kitty")
                 kitty_menu ;;
-            # ---------- Rofi ----------
-            "󰮫  Rofi")
+            "󰮫 Rofi")
                 rofi_menu ;;
-            # ---------- Fusuma ----------
-            "󰵷  Fusuma")
+            "󰵷 Fusuma")
                 fusuma_menu ;;
-            # ---------- Connections ---------
-            "󱘖  Connections")
+            "󱘖 Connections")
                 connections_menu ;;
-            # ---------- Updates ---------
-            "  Packages")
+            " Packages")
                 packages_menu ;;
             *)
                 echo "Invalid choice" ;;
@@ -59,174 +52,174 @@ main_menu() {
 }
 
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰸉  Wallpaper\n  General\n  Cursor\n  Bindings\n  Layouts\n  Misc\n  Rules\n  Style\n  Input\n  Plugins\n󰌍  Back"
+    HYPRLAND_OPTIONS="󰸉 Wallpaper\n General\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins\n󰌍 Back"
     HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
         main_menu
-    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$HYPRLAND_SUBCHOICE" in
-            "  General")
+            " General")
                 $TERMINAL sh -c "$EDITOR $HyprDir/hyprland.conf" ;;
-            "󰸉  Wallpaper")
+            "󰸉 Wallpaper")
                 wallpaper_menu ;;
-            "  Cursor")
+            " Cursor")
                 $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
-            "  Bindings")
+            " Bindings")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
-            "  Layouts")
+            " Layouts")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
-            "  Misc")
+            " Misc")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/misc.conf" ;;
-            "  Rules")
+            " Rules")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/rules.conf" ;;
-            "  Style")
+            " Style")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/style.conf" ;;
-            "  Input")
+            " Input")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/input.conf" ;;
-            "  Plugins")
+            " Plugins")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/plugins.conf" ;;
         esac
     fi
 }
 
 waybar_menu() {
-    WAYBAR_OPTIONS="  Config\n  Style\n󰑓  Restart\n󰌍  Back"
+    WAYBAR_OPTIONS=" Config\n Style\n󰑓 Restart\n󰌍 Back"
     WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
         main_menu
-    elif [ "$WAYBAR_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$WAYBAR_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$WAYBAR_SUBCHOICE" in
-            "  Config")
+            " Config")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/config" ;;
-            "  Style")
+            " Style")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
-            "󰑓  Restart")
+            "󰑓 Restart")
                 systemctl --user restart waybar.service ;;
         esac
     fi
 }
 
 kitty_menu() {
-    KITTY_OPTIONS="  Config\n󰑓  Reload Config\n  Style\n  Keymaps\n󰌍  Back"
+    KITTY_OPTIONS=" Config\n Style\n Keymaps\n󰑓 Reload Config\n󰌍 Back"
     KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$KITTY_SUBCHOICE" ]; then
         main_menu
-    elif [ "$KITTY_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$KITTY_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$KITTY_SUBCHOICE" in
-            "  Config")
+            " Config")
                 $TERMINAL sh -c "$EDITOR $KittyDir/kitty.conf" ;;
-            "󰑓  Reload Config")
+            "󰑓 Reload Config")
                 kill -SIGUSR1 $(pidof kitty) ;;
-            "  Style")
-                $TERMINAL sh -c "$EDITOR $KittyConfigsDir/style.conf" ;;
-            "  Keymaps")
-                $TERMINAL sh -c "$EDITOR $KittyConfigsDir/keymaps.conf" ;;
+            " Style")
+                $TERMINAL sh -c "$EDITOR $KittyDir/style.conf" ;;
+            " Keymaps")
+                $TERMINAL sh -c "$EDITOR $KittyDir/keymaps.conf" ;;
         esac
     fi
 }
 
 rofi_menu() {
-    ROFI_OPTIONS="  Config\n  Style\n󰌍  Back"
+    ROFI_OPTIONS=" Config\n Alt. Config\n󰌍 Back"
     ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$ROFI_SUBCHOICE" ]; then
         main_menu
-    elif [ "$ROFI_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$ROFI_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$ROFI_SUBCHOICE" in
-            "  Config")
+            " Config")
                 $TERMINAL sh -c "$EDITOR $RofiDir/config.rasi" ;;
-            "  Style")
-                $TERMINAL sh -c "$EDITOR $RofiDir/theme.rasi" ;;
+            " Alt. Config")
+                $TERMINAL sh -c "$EDITOR $RofiDir/config_alt.rasi" ;;
         esac
     fi
 }
 
 fusuma_menu() {
-    FUSUMA_OPTIONS="  Config\n󰑓  Restart\n󰌍  Back"
+    FUSUMA_OPTIONS=" Config\n󰑓 Restart\n󰌍 Back"
     FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
         main_menu
-    elif [ "$FUSUMA_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$FUSUMA_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$FUSUMA_SUBCHOICE" in
-            "  Config")
+            " Config")
                 $TERMINAL sh -c "$EDITOR $FusumaDir/config.yml" ;;
-            "󰑓  Restart")
+            "󰑓 Restart")
                 pkill fusuma && fusuma -d ;;
         esac
     fi
 }
 
 connections_menu() {
-    CONNECTIONS_OPTIONS="  Bluetooth\n󰖩  Network\n󰖂  Wireguard\n󰌍  Back"
+    CONNECTIONS_OPTIONS=" Bluetooth\n󰖩 Network\n󰖂 Wireguard\n󰌍 Back"
     CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$CONNECTIONS_SUBCHOICE" ]; then
         main_menu
-    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$CONNECTIONS_SUBCHOICE" in
-            "  Bluetooth")
+            " Bluetooth")
                 $TERMINAL sh -c "bluetui" ;;
-            "󰖩  Network")
+            "󰖩 Network")
                 $TERMINAL sh -c "nmtui" ;;
-            "󰖂  Wireguard")
+            "󰖂 Wireguard")
                 wireguard_menu ;;
         esac
     fi
 }
 
 wireguard_menu() {
-    WIREGUARD_OPTIONS="󰌘  Connect\n󰌙  Disconnect\n󰑓  Reconnect\n  Config\n󰌍  Back"
+    WIREGUARD_OPTIONS="󰌘 Connect\n󰌙 Disconnect\n󰑓 Reconnect\n Config\n󰌍 Back"
     WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
         main_menu
-    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$WIREGUARD_SUBCHOICE" in
-            "󰌘  Connect")
+            "󰌘 Connect")
                 $TERMINAL sh -c "echo -e '\n${GREEN}󰌘  Connect Wireguard\n${NC}' && sudo wg-quick up wg0 && systemctl enable wg-quick@wg0" ;;
-            "󰌙  Disconnect")
+            "󰌙 Disconnect")
                 $TERMINAL sh -c "echo -e '\n${RED}󰌙 Disconnect Wireguard\n${NC}' && sudo wg-quick down wg0 && systemctl disable wg-quick@wg0" ;;
-            "󰑓  Reconnect")
+            "󰑓 Reconnect")
                 $TERMINAL sh -c "echo -e '\n${YELLOW}󰑓 Reconnect Wireguard\n${NC}' && sudo wg-quick down wg0 && wg-quick up wg0 && systemctl enable wg-quick@wg0" ;;
-            "  Config")
+            " Config")
                 $TERMINAL sh -c "echo -e '\n${CYAN} Edit Wireguard Config\n${NC}' && sudo $EDITOR $WG_CONFIG" ;;
         esac
     fi
 }
 
 packages_menu() {
-    PACKAGES_OPTIONS="󰮯  Arch Package Updates\n  AUR Package Updates\n󰃢  Clean Pacman\n󰌍  Back"
+    PACKAGES_OPTIONS="󰮯 Arch Package Updates\n AUR Package Updates\n󰃢 Clean Pacman\n󰌍 Back"
     PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
         main_menu
-    elif [ "$PACKAGES_SUBCHOICE" == "󰌍  Back" ]; then
+    elif [ "$PACKAGES_SUBCHOICE" == "󰌍 Back" ]; then
         main_menu
     else
         case "$PACKAGES_SUBCHOICE" in
-            "󰮯  Arch Package Updates")
+            "󰮯 Arch Package Updates")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --pacman" ;;
-            "  AUR Package Updates")
+            " AUR Package Updates")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --aur" ;;
-            "󰃢  Clean Pacman")
+            "󰃢 Clean Pacman")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --clean" ;;
         esac
     fi
@@ -242,7 +235,7 @@ wallpaper_menu() {
         let i++
     done
 
-    WALLPAPER_OPTIONS+="󰌍  Back"
+    WALLPAPER_OPTIONS+="󰌍 Back"
     WALLPAPER_SUBCHOICE=$(echo -e "$WALLPAPER_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WALLPAPER_SUBCHOICE" ]; then
@@ -267,7 +260,7 @@ wallpaper_menu() {
         else
             echo -e "\n${RED}Wallpaper not found.${NC}\n"
         fi
-    elif [[ $WALLPAPER_SUBCHOICE == "󰌍  Back" ]]; then
+    elif [[ $WALLPAPER_SUBCHOICE == "󰌍 Back" ]]; then
         main_menu
     fi
 }

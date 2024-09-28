@@ -126,6 +126,7 @@ alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias githome='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/HomeLab.git main'
 alias gitarch='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/arch-furcom.git main'
 alias githypr='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/hypr-furcom.git main'
+alias gitfypr='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/Fyprland.git main'
 
 # Reboot
 alias reboot='echo -n "Reboot? [N/y] "; read response; [[ $response == y || Y ]]; systemctl reboot || echo "Canceled."'
