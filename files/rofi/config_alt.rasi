@@ -12,7 +12,7 @@ configuration {
     /*--- General setting ---*/
     modi: "";
     case-sensitive: false;
-    cycle: true;
+    cycle: false;
     filter: "";
     scroll-method: 0;
     normalize-match: true;
@@ -307,8 +307,8 @@ case-indicator {
 listview {
     enabled: true;
     columns: 1;
-    lines: 10;
-    cycle: true;
+    lines: 16;
+    cycle: false;
     dynamic: true;
     scrollbar: true;
     layout: horizontal;
