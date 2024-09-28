@@ -28,7 +28,7 @@ git clone https://github.com/furcom/Fyprland.git ~/Fyprland && ~/Fyprland/instal
     - Templates are stored in `~/.config/wallust/templates`
     - You need to look into the config file too for templates `~/.config/wallust/wallust.toml`
 5. Installed packages:
-    - If you don't want to install a specific package (e.g. `fusuma`) go to the bottom inside of the `install.sh` file where it says "MAIN SCRIPT" and comment the package by adding a hash symbol at the start of the line (e.g. `#install_fusuma`)
+    - If you don't want to install a specific package (e.g. `fusuma`) go to the bottom inside of the `install.sh` file where it says `MAIN SCRIPT` and comment the package by adding a hash symbol at the start of the line (e.g. `#install_fusuma`)
     - [bluez](https://github.com/bluez) (Bluetooth)
     - [fastfetch](https://github.com/fastfetch-cli/fastfetch) (Display's system informations in terminal)
     - [fusuma](https://github.com/iberianpig/fusuma) (Laptop touchpadgestures)
