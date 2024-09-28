@@ -1,17 +1,54 @@
 #!/bin/bash
-# ███████╗██╗   ██╗██████╗  ██████╗ ██████╗ ███╗   ███╗
-# ██╔════╝██║   ██║██╔══██╗██╔════╝██╔═══██╗████╗ ████║
-# █████╗  ██║   ██║██████╔╝██║     ██║   ██║██╔████╔██║
-# ██╔══╝  ██║   ██║██╔══██╗██║     ██║   ██║██║╚██╔╝██║
-# ██║     ╚██████╔╝██║  ██║╚██████╗╚██████╔╝██║ ╚═╝ ██║
-# ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝
+# ███████╗██╗   ██╗██████╗ ██████╗ ██╗      █████╗ ███╗   ██╗██████╗ 
+# ██╔════╝╚██╗ ██╔╝██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔══██╗
+# █████╗   ╚████╔╝ ██████╔╝██████╔╝██║     ███████║██╔██╗ ██║██║  ██║
+# ██╔══╝    ╚██╔╝  ██╔═══╝ ██╔══██╗██║     ██╔══██║██║╚██╗██║██║  ██║
+# ██║        ██║   ██║     ██║  ██║███████╗██║  ██║██║ ╚████║██████╔╝
+# ╚═╝        ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
+# script by furcom (https://github.com/furcom)
 
 source ./files/hypr/scripts/HYPR_VARS
-CFGDIR="$HOME/.config"
 
-#######
-# YAY #
-#######
+#################
+## MAIN SCRIPT ##
+#################
+
+# Needed packages
+install_yay
+install_fonts
+install_kitty
+install_hyprland
+install_hyprpaper
+install_hyprcursor
+install_hyprlock
+install_wallust
+
+# Recommended packages
+install_hypridle
+install_mako
+install_audio
+install_wl-clip-persist
+install_waybar
+install_rofi
+
+# Optional packages
+install_hyprbars
+install_hyprpicker
+install_rofimoji
+install_fusuma
+install_bluetooth
+install_fastfetch
+install_sddm
+install_zsh
+
+echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
+read -p "Press ENTER key to continue or CTRL+C to cancel installation..."
+
+###################################
+## Functions for the main script ##
+###################################
+
+##### YAY #####
 
 check_yay_health() {
     if ! yay -V &> /dev/null; then
@@ -32,9 +69,7 @@ install_yay() {
     fi
 }
 
-##################
-# Hypr Ecosystem #
-##################
+##### Hypr Ecosystem #####
 
 install_hyprland() {
     sudo pacman -S --needed --noconfirm hyprland
@@ -75,19 +110,7 @@ install_hypridle() {
     sudo pacman -S --needed --noconfirm hypridle
 }
 
-install_hypr() {
-    install_hyprland
-    install_hyprpaper
-    install_hyprlock
-    install_hyprcursor
-    install_hyprbars
-    install_hyprpicker
-    install_hypridle
-}
-
-###########
-# wallust #
-###########
+##### wallust #####
 
 install_wallust() {
     yay -S --needed --noconfirm wallust
@@ -95,9 +118,7 @@ install_wallust() {
     wallust run $HyprpaperCache/wallpaper.png
 }
 
-##########
-# waybar #
-##########
+##### waybar #####
 
 install_waybar() {
     sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji
@@ -108,9 +129,7 @@ install_waybar() {
     sudo systemctl --user enable waybar.service
 }
 
-########
-# rofi #
-########
+##### rofi & rofimoji #####
 
 install_rofimoji() {
     sudo pacman -S --needed --noconfirm rofimoji
@@ -120,12 +139,9 @@ install_rofimoji() {
 install_rofi() {
     sudo pacman -S --needed --noconfirm rofi-wayland
     cp -rf ./files/rofi/ "$CFGDIR"
-    install_rofimoji
 }
 
-##########
-# fusuma #
-##########
+##### fusuma #####
 
 add_user_to_group_if_needed() {
     if ! groups "$USER" | grep &>/dev/null '\binput\b'; then
@@ -140,18 +156,14 @@ install_fusuma() {
     add_user_to_group_if_needed
 }
 
-#########
-# kitty #
-#########
+##### kitty #####
 
 install_kitty() {
     sudo pacman -S --needed --noconfirm kitty
     cp -rf ./files/kitty/ "$CFGDIR"
 }
 
-########
-# sddm #
-########
+##### sddm #####
 
 install_sddm() {
     sudo pacman -S --needed --noconfirm sddm
@@ -162,9 +174,7 @@ install_sddm() {
     sudo gpasswd -a "$USER" nopasswdlogin
 }
 
-#######
-# zsh #
-#######
+##### zsh #####
 
 install_omp() {
     cp -rf ./files/oh-my-posh/ "$CFGDIR"
@@ -178,43 +188,33 @@ install_zsh() {
     install_omp
 }
 
-########################
-# notification daemons #
-########################
+##### mako #####
 
-install_notification() {
+install_mako() {
     sudo pacman -S --needed --noconfirm mako
     cp -rf ./files/mako/ "$CFGDIR"
 }
 
-#############
-# fastfetch #
-#############
+##### fastfetch #####
 
 install_fastfetch() {
     sudo pacman -S --needed --noconfirm fastfetch
     cp -rf ./files/fastfetch/ "$CFGDIR"
 }
 
-###############
-# WirePlumber #
-###############
+##### WirePlumber #####
 
 install_audio() {
     sudo pacman -S --needed --noconfirm pipewire wireplumber
 }
 
-########################
-# Persistent clipboard #
-########################
+##### Persistent clipboard #####
 
-install_wl_clip_persist() {
+install_wl-clip-persist() {
     sudo pacman -S --needed --noconfirm wl-clip-persist
 }
 
-#############
-# bluetooth #
-#############
+##### bluetooth #####
 
 install_bluetooth() {
     sudo pacman -S --needed --noconfirm bluez bluez-utils
@@ -223,35 +223,7 @@ install_bluetooth() {
     systemctl start bluetooth.service
 }
 
-#########
-# Fonts #
-#########
+##### Fonts #####
 install_fonts() {
     sudo pacman -S --needed --noconfirm extra/ttf-0xproto-nerd
 }
-
-#####################
-#####################
-###               ###
-###  MAIN SCRIPT  ###
-###               ###
-#####################
-#####################
-
-install_yay
-install_hypr
-install_kitty
-install_zsh
-install_fastfetch
-install_notification
-install_sddm
-install_fusuma
-install_audio
-install_wl_clip_persist
-install_waybar
-install_rofi
-install_fonts
-install_wallust
-install_bluetooth
-echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
-read -n1 -p "Press any key to continue or CTRL+C to cancel installation..."

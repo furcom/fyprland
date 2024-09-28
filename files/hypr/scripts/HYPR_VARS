@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
 # ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
 # ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
@@ -8,11 +7,21 @@
 #   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
 # by furcom (https://github.com/furcom)
 
+############
+# PROGRAMS #
+############
+
+EDITOR="vim"
+TERMINAL="kitty"
+uUR_HELPER="yay"
+WG_CONFIG="/etc/wireguard/wg0.conf"
+
 ###############
 # Directories #
 ###############
 
 # General
+CFGDIR="$HOME/.config"
 CacheDir="$HOME/.cache"
 
 # fusuma
@@ -44,15 +53,6 @@ WalCacheDir="$HOME/.cache/wal"
 
 # mako
 MakoDir="$HOME/.config/mako"
-
-############
-# PROGRAMS #
-############
-
-EDITOR="vim"
-TERMINAL="kitty"
-uUR_HELPER="yay"
-WG_CONFIG="/etc/wireguard/wg0.conf"
 
 ##########
 # COLORS #
