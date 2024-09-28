@@ -216,7 +216,7 @@ install_wl_clip_persist() {
 # bluetooth #
 #############
 
-fix_bluetooth() {
+install_bluetooth() {
     sudo pacman -S --needed --noconfirm bluez bluez-utils
     yay -S --needed --noconfirm bluetui
     systemctl enable bluetooth.service
@@ -238,8 +238,6 @@ install_fonts() {
 #####################
 #####################
 
-echo -e "\n${RED}!!!! SYSTEM WILL REBOOT AFTER INSTALLATION !!!!${NC}\n"
-read -n1 -p "Press any key to continue or CTRL+C to cancel installation..."
 install_yay
 install_hypr
 install_kitty
@@ -254,6 +252,6 @@ install_waybar
 install_rofi
 install_fonts
 install_wallust
-fix_bluetooth
-
-systemctl reboot
+install_bluetooth
+echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
+read -n1 -p "Press any key to continue or CTRL+C to cancel installation..."
