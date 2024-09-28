@@ -141,9 +141,9 @@ install_sddm() {
     sudo gpasswd -a "$USER" nopasswdlogin
 }
 
-##### zsh #####
+##### zsh  & oh-my-posh #####
 
-install_omp() {
+install_oh-my-posh() {
     cp -rf ./files/oh-my-posh/ "$CFGDIR"
 }
 
@@ -152,7 +152,6 @@ install_zsh() {
     cp -f ./files/.zshrc "$HOME"
     sudo chsh -s /bin/zsh $USER
     sudo chsh -s /bin/zsh root
-    install_omp
 }
 
 ##### mako #####
@@ -228,6 +227,7 @@ install_bluetooth
 install_fastfetch
 install_sddm
 install_zsh
+install_oh-my-posh
 
 echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
 read -p "Press ENTER key to continue or CTRL+C to cancel installation..."
