@@ -24,8 +24,8 @@ HyprDir="$HOME/.config/hypr"
 HyprScriptsDir="$HyprDir/scripts"
 HyprConfigsDir="$HyprDir/configs"
 
-HyprWallpapers="$HyprDir/images/wallpapers"
-HyprpaperCacheDir="$HOME/.cache/hyprpaper"
+HyprImagesDir="$HyprDir/images/"
+HyprWallpapersDir="$HyprImagesDir/wallpapers"
 
 # kitty
 KittyDir="$HOME/.config/kitty"
@@ -51,7 +51,7 @@ MakoDir="$HOME/.config/mako"
 
 EDITOR="vim"
 TERMINAL="kitty"
-AUR_HELPER="yay"
+uUR_HELPER="yay"
 WG_CONFIG="/etc/wireguard/wg0.conf"
 
 ##########

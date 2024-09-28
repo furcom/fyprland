@@ -52,7 +52,7 @@
         "format": "",
         "tooltip": true,
         "tooltip-format": " Settings",
-        "on-click": "bash -c '~/.config/hypr/scripts/settings'",
+        "on-click": "~/.config/hypr/scripts/settings",
         "return-type": "exit"
     },
 
@@ -188,8 +188,8 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "rfkill toggle bluetooth",
-        "on-click-right": "kitty sh -c bluetui"
+        "on-click-right": "rfkill toggle bluetooth",
+        "on-click": "kitty sh -c bluetui"
     }, 
 
     "network": {
@@ -199,8 +199,8 @@
         "tooltip-format": "{ipaddr}",
         "tooltip-format-wifi": "Network: {essid}\nSignal strength: {signalStrength}%)\nIP adress: {ipaddr}",
         "tooltip-format-ethernet": "  {ifname} - {ipaddr}",
-        "on-click": "rfkill toggle wifi",
-        "on-click-right": "kitty sh -c nmtui"
+        "on-click-right": "rfkill toggle wifi",
+        "on-click": "kitty sh -c nmtui"
     },
 
     "backlight": {
@@ -220,7 +220,8 @@
         "on-scroll-down": "brightnessctl s 5%+",
         "on-scroll-up": "brightnessctl s 5%-",
         "smooth-scrolling-threshold": 1,
-        "on-click": "brightnessctl s 50%"
+        "on-click": "brightnessctl s 100%",
+        "on-click-right": "brightnessctl s 50%"
     },
 
     "power-profiles-daemon": {
@@ -282,7 +283,7 @@
         "format": "⏻",
         "tooltip": true,
         "tooltip-format": "󰐥 Power menu",
-        "on-click": "~/.config/hypr/scripts/powermenu.sh"
+        "on-click": "~/.config/hypr/scripts/powermenu"
     },
 
 }

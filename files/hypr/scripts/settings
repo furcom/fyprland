@@ -18,7 +18,7 @@ MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
 main_menu() {
     OPTIONS="  Hyprland\n󱂩  Waybar\n󰄛  Kitty\n󰮫  Rofi\n󰵷  Fusuma\n󱘖  Connections\n  Packages\n󰗼  Exit"
-    CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;}')
+    CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     # Wenn Escape gedrückt wurde oder keine Wahl getroffen wurde, schließen
     if [ -z "$CHOICE" ]; then
@@ -60,7 +60,7 @@ main_menu() {
 
 hyprland_menu() {
     HYPRLAND_OPTIONS="󰸉  Wallpaper\n  General\n  Cursor\n  Bindings\n  Layouts\n  Misc\n  Rules\n  Style\n  Input\n  Plugins\n󰌍  Back"
-    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
         main_menu
@@ -94,7 +94,7 @@ hyprland_menu() {
 
 waybar_menu() {
     WAYBAR_OPTIONS="  Config\n  Style\n󰑓  Restart\n󰌍  Back"
-    WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
         main_menu
@@ -114,7 +114,7 @@ waybar_menu() {
 
 kitty_menu() {
     KITTY_OPTIONS="  Config\n󰑓  Reload Config\n  Style\n  Keymaps\n󰌍  Back"
-    KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$KITTY_SUBCHOICE" ]; then
         main_menu
@@ -136,7 +136,7 @@ kitty_menu() {
 
 rofi_menu() {
     ROFI_OPTIONS="  Config\n  Style\n󰌍  Back"
-    ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$ROFI_SUBCHOICE" ]; then
         main_menu
@@ -154,7 +154,7 @@ rofi_menu() {
 
 fusuma_menu() {
     FUSUMA_OPTIONS="  Config\n󰑓  Restart\n󰌍  Back"
-    FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
         main_menu
@@ -172,7 +172,7 @@ fusuma_menu() {
 
 connections_menu() {
     CONNECTIONS_OPTIONS="  Bluetooth\n󰖩  Network\n󰖂  Wireguard\n󰌍  Back"
-    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$CONNECTIONS_SUBCHOICE" ]; then
         main_menu
@@ -192,7 +192,7 @@ connections_menu() {
 
 wireguard_menu() {
     WIREGUARD_OPTIONS="󰌘  Connect\n󰌙  Disconnect\n󰑓  Reconnect\n  Config\n󰌍  Back"
-    WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
         main_menu
@@ -214,7 +214,7 @@ wireguard_menu() {
 
 packages_menu() {
     PACKAGES_OPTIONS="󰮯  Arch Package Updates\n  AUR Package Updates\n󰃢  Clean Pacman\n󰌍  Back"
-    PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
         main_menu
@@ -235,7 +235,7 @@ packages_menu() {
 wallpaper_menu() {
     WALLPAPER_OPTIONS=""
     i=1
-    for image in $HyprWallpapers/*.{png,jpg,jpeg,svg,webp}; do
+    for image in $HyprWallpapersDir/*.{png,jpg,jpeg,svg,webp}; do
         [ -e "$image" ] || continue
         FILENAME=$(basename "$image")
         WALLPAPER_OPTIONS+="󰸉  $FILENAME\n"
@@ -243,24 +243,21 @@ wallpaper_menu() {
     done
 
     WALLPAPER_OPTIONS+="󰌍  Back"
-    WALLPAPER_SUBCHOICE=$(echo -e "$WALLPAPER_OPTIONS" | rofi -dmenu -theme-str 'configuration { show-icons: false; }')
+    WALLPAPER_SUBCHOICE=$(echo -e "$WALLPAPER_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WALLPAPER_SUBCHOICE" ]; then
         main_menu
     elif [[ $WALLPAPER_SUBCHOICE == 󰸉* ]]; then
         WP_FILE=$(echo "$WALLPAPER_SUBCHOICE" | sed 's/^󰸉  //')
-        WP_CHOICE="$HyprWallpapers/$WP_FILE"
+        WP_CHOICE="$HyprWallpapersDir/$WP_FILE"
 
         if [ -f "$WP_CHOICE" ]; then
-            cp -rf "$WP_CHOICE" "$HyprpaperCacheDir/wallpaper.png"
+            cp -rf "$WP_CHOICE" "$HyprImagesDir/wallpaper.png"
 	    
             # Wallust
 	    wallust run "$WP_CHOICE"
             
             # Hyprpaper
-            if [ ! -d "$HyprpaperCacheDir" ]; then
-                mkdir -p "$HyprpaperCacheDir"
-            fi
 	    hyprctl hyprpaper unload all
             hyprctl hyprpaper preload "$WP_CHOICE"
             hyprctl hyprpaper wallpaper "$MONITOR, $WP_CHOICE"

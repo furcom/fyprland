@@ -59,8 +59,7 @@ install_hyprlock() {
 install_hyprpaper() {
     sudo pacman -S --needed --noconfirm hyprpaper
     cp -rf ./files/hypr/hyprpaper.conf "$CFGDIR"/hypr/
-    mkdir -p $HyprpaperCacheDir
-    cp -rf $HyprWallpapers/Hyprland.png $HyprpaperCacheDir/wallpaper.png
+    cp -rf $HyprWallpapersDir/Hyprland.png $HyprImagesDir/wallpaper.png
 }
 
 install_hyprpicker() {
