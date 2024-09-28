@@ -9,44 +9,11 @@
 
 source ./files/hypr/scripts/HYPR_VARS
 
-#################
-## MAIN SCRIPT ##
-#################
-
-# Needed packages
-install_yay
-install_fonts
-install_kitty
-install_hyprland
-install_hyprpaper
-install_hyprcursor
-install_hyprlock
-install_wallust
-
-# Recommended packages
-install_hypridle
-install_mako
-install_audio
-install_wl-clip-persist
-install_waybar
-install_rofi
-
-# Optional packages
-install_hyprbars
-install_hyprpicker
-install_rofimoji
-install_fusuma
-install_bluetooth
-install_fastfetch
-install_sddm
-install_zsh
-
-echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
-read -p "Press ENTER key to continue or CTRL+C to cancel installation..."
-
-###################################
-## Functions for the main script ##
-###################################
+########################################
+##                                    ##
+##  The main script is at the bottom! ##
+##                                    ##
+########################################
 
 ##### YAY #####
 
@@ -227,3 +194,40 @@ install_bluetooth() {
 install_fonts() {
     sudo pacman -S --needed --noconfirm extra/ttf-0xproto-nerd
 }
+
+###################
+##               ##
+##  MAIN SCRIPT  ##
+##               ##
+###################
+
+# Needed packages
+install_yay
+install_fonts
+install_kitty
+install_hyprland
+install_hyprpaper
+install_hyprcursor
+install_hyprlock
+install_wallust
+
+# Recommended packages
+install_hypridle
+install_mako
+install_audio
+install_wl-clip-persist
+install_waybar
+install_rofi
+
+# Optional packages
+install_hyprbars
+install_hyprpicker
+install_rofimoji
+install_fusuma
+install_bluetooth
+install_fastfetch
+install_sddm
+install_zsh
+
+echo -e "\n${RED}!!!! IT IS RECOMMENDED TO REBOOT YOUR SYSTEM !!!!${NC}\n"
+read -p "Press ENTER key to continue or CTRL+C to cancel installation..."
