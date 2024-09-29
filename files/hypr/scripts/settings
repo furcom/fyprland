@@ -20,7 +20,6 @@ main_menu() {
     OPTIONS=" Hyprland\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma\n󱘖 Connections\n Packages\n󰗼 Exit"
     CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
-    # Wenn Escape gedrückt wurde oder keine Wahl getroffen wurde, schließen
     if [ -z "$CHOICE" ]; then
         exit 0
     fi
@@ -52,7 +51,7 @@ main_menu() {
 }
 
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰸉 Wallpaper\n General\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins\n󰌍 Back"
+    HYPRLAND_OPTIONS="󰸉 Wallpaper\n General\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins\n󰌍 Back"
     HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
@@ -65,6 +64,8 @@ hyprland_menu() {
                 $TERMINAL sh -c "$EDITOR $HyprDir/hyprland.conf" ;;
             "󰸉 Wallpaper")
                 wallpaper_menu ;;
+            " Window Bar")
+                window_bar_menu ;;
             " Cursor")
                 $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
             " Bindings")
@@ -101,6 +102,24 @@ waybar_menu() {
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
             "󰑓 Restart")
                 pkill waybar && waybar & ;;
+        esac
+    fi
+}
+
+window_bar_menu() {
+    WINBAR_OPTIONS="󰐥 Enable\n󰤂 Disable\n󰌍 Back"
+    WINBAR_SUBCHOICE=$(echo -e "$WINBAR_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
+
+    if [ -z "$WINBAR_SUBCHOICE" ]; then
+        main_menu
+    elif [ "$WINBAR_SUBCHOICE" == "󰌍 Back" ]; then
+        main_menu
+    else
+        case "$WINBAR_SUBCHOICE" in
+            "󰐥 Enable")
+                hyprpm enable hyprbars ;;
+            "󰤂 Disable")
+                hyprpm disable hyprbars ;;
         esac
     fi
 }
