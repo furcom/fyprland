@@ -71,7 +71,16 @@ hyprland_menu() {
             " Bindings")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             " Layouts")
-                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
+		    LAYOUTS_OPTIONS=" Enable master layout\n Enable dwindle layout\n Config"
+		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
+		    case "$LAYOUTS_SUBCHOICE" in
+	                " Enable master layout")
+			    $HyprScriptsDir/layouts --master ;;
+	                " Enable dwindle layout")
+			    $HyprScriptsDir/layouts --dwindle ;;
+			" Config")
+                            $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
+		    esac ;;
             " Misc")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/misc.conf" ;;
             " Rules")
