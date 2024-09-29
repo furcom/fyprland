@@ -65,6 +65,7 @@ clean_pkg_cache() {
             echo "Skipping cleaning of pkg cache."
             ;;
         * )
+            clear
             echo "Invalid input. Please enter 'y' or 'n'."
             clean_pkg_cache
             ;;
@@ -87,6 +88,7 @@ remove_unused_packages() {
             echo "Skipping removal of unused packages."
             ;;
         * )
+            clear
             echo "Invalid input. Please enter 'y' or 'n'."
             remove_unused_packages
             ;;
@@ -104,6 +106,7 @@ hypr_plugin_updates() {
             echo "Skipping updating Hyprland plugins."
             ;;
         * )
+            clear
             echo "Invalid input. Please enter 'y' or 'n'."
             hypr_plugin_updates
             ;;
@@ -121,7 +124,8 @@ pacman_updates() {
             echo "Skipping updating Arch packages."
             ;;
         * )
-            echo "Invalid input. Please enter 'y' or 'n'."
+            clear
+	    echo "Invalid input. Please enter 'y' or 'n'."
             pacman_updates
             ;;
     esac
@@ -138,6 +142,7 @@ aur_updates() {
             echo "Skipping updating AUR packages."
             ;;
         * )
+	    clear
             echo "Invalid input. Please enter 'y' or 'n'."
             aur_updates
             ;;
