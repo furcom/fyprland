@@ -1,0 +1,26 @@
+#!/bin/bash
+# ██╗    ██╗██╗██████╗ ███████╗ ██████╗ ██╗   ██╗ █████╗ ██████╗ ██████╗
+# ██║    ██║██║██╔══██╗██╔════╝██╔════╝ ██║   ██║██╔══██╗██╔══██╗██╔══██╗
+# ██║ █╗ ██║██║██████╔╝█████╗  ██║  ███╗██║   ██║███████║██████╔╝██║  ██║
+# ██║███╗██║██║██╔══██╗██╔══╝  ██║   ██║██║   ██║██╔══██║██╔══██╗██║  ██║
+# ╚███╔███╔╝██║██║  ██║███████╗╚██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝
+#  ╚══╝╚══╝ ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝
+# script by furcom (https://github.com/furcom)
+
+source $HOME/.config/hypr/scripts/HYPR_VARS
+
+case "$1" in
+    --connect)
+        $TERMINAL sh -c "echo -e '\n${GREEN}󰌘  Connect Wireguard\n${NC}'; sudo wg-quick up wg0" ;;
+    --disconnect)
+        $TERMINAL sh -c "echo -e '\n${RED}󰌙 Disconnect Wireguard\n${NC}'; sudo wg-quick down wg0" ;;
+    --reconnect)
+        $TERMINAL sh -c "echo -e '\n${YELLOW}󰑓 Reconnect Wireguard\n${NC}'; sudo wg-quick down wg0; wg-quick up wg0; systemctl enable wg-quick@wg0" ;;
+    --enable)
+        $TERMINAL sh -c "echo -e '\n${GREED} Enable Wireguard\n${NC}'; sudo systemctl enable wg-quick@wg0" ;;
+    --disable)
+        $TERMINAL sh -c "echo -e '\n${RED}󰤂 Disable Wireguard\n${NC}'; sudo systemctl disable wg-quick@wg0" ;;
+    --config)
+        $TERMINAL sh -c "echo -e '\n${CYAN} Edit Wireguard Config\n${NC}'; sudo $EDITOR $WG_CONFIG" ;;
+    *) exit 1 ;;
+esac

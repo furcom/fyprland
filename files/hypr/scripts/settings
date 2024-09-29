@@ -184,7 +184,7 @@ connections_menu() {
 }
 
 wireguard_menu() {
-    WIREGUARD_OPTIONS="󰌘 Connect\n󰌙 Disconnect\n󰑓 Reconnect\n Config\n󰌍 Back"
+    WIREGUARD_OPTIONS="󰌘 Connect\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config\n󰌍 Back"
     WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
@@ -194,13 +194,17 @@ wireguard_menu() {
     else
         case "$WIREGUARD_SUBCHOICE" in
             "󰌘 Connect")
-                $TERMINAL sh -c "echo -e '\n${GREEN}󰌘  Connect Wireguard\n${NC}' && sudo wg-quick up wg0 && systemctl enable wg-quick@wg0" ;;
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --connect" ;;
             "󰌙 Disconnect")
-                $TERMINAL sh -c "echo -e '\n${RED}󰌙 Disconnect Wireguard\n${NC}' && sudo wg-quick down wg0 && systemctl disable wg-quick@wg0" ;;
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --disconnect" ;;
             "󰑓 Reconnect")
-                $TERMINAL sh -c "echo -e '\n${YELLOW}󰑓 Reconnect Wireguard\n${NC}' && sudo wg-quick down wg0 && wg-quick up wg0 && systemctl enable wg-quick@wg0" ;;
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --reconnect" ;;
+            "󰐥 Enable")
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --enable" ;;
+            "󰤂 Disable")
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --disable" ;;
             " Config")
-                $TERMINAL sh -c "echo -e '\n${CYAN} Edit Wireguard Config\n${NC}' && sudo $EDITOR $WG_CONFIG" ;;
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --config" ;;
         esac
     fi
 }
