@@ -100,7 +100,7 @@ waybar_menu() {
             " Style")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
             "󰑓 Restart")
-                systemctl --user restart waybar.service ;;
+                pkill waybar && waybar & ;;
         esac
     fi
 }

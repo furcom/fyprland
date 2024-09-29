@@ -91,9 +91,6 @@ install_waybar() {
     sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji
     yay -S --needed --noconfirm wttrbar
     cp -rf ./files/waybar/ "$CFGDIR"
-    sudo cp -rf ./files/services/waybar.service /etc/systemd/user/waybar.service
-    sudo systemctl --user daemon-reload
-    sudo systemctl --user enable waybar.service
 }
 
 ##### rofi & rofimoji #####
