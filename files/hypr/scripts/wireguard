@@ -11,7 +11,7 @@ source $HOME/.config/hypr/scripts/HYPR_VARS
 
 case "$1" in
     --status)
-        $TERMINAL sh -c "echo -e '\n${CYAN}󱘖 Wireguard Status\n${NC}'; sudo wg show wg0" ;;
+        $TERMINAL sh -c "echo -e '\n${CYAN}󱘖 Wireguard Status\n${NC}'; sudo wg show wg0; echo ''; read -n1 -p 'Press an key to continue...'" ;;
     --connect)
         $TERMINAL sh -c "echo -e '\n${GREEN}󰌘  Connect Wireguard\n${NC}'; sudo wg-quick up wg0" ;;
     --disconnect)
