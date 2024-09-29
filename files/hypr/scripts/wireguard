@@ -10,12 +10,14 @@
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
 case "$1" in
+    --status)
+        $TERMINAL sh -c "echo -e '\n${CYAN}󱘖 Wireguard Status\n${NC}'; sudo wg show wg0" ;;
     --connect)
         $TERMINAL sh -c "echo -e '\n${GREEN}󰌘  Connect Wireguard\n${NC}'; sudo wg-quick up wg0" ;;
     --disconnect)
         $TERMINAL sh -c "echo -e '\n${RED}󰌙 Disconnect Wireguard\n${NC}'; sudo wg-quick down wg0" ;;
     --reconnect)
-        $TERMINAL sh -c "echo -e '\n${YELLOW}󰑓 Reconnect Wireguard\n${NC}'; sudo wg-quick down wg0; wg-quick up wg0; systemctl enable wg-quick@wg0" ;;
+        $TERMINAL sh -c "echo -e '\n${YELLOW}󰑓 Reconnect Wireguard\n${NC}'; sudo wg-quick down wg0; wg-quick up wg0" ;;
     --enable)
         $TERMINAL sh -c "echo -e '\n${GREED} Enable Wireguard\n${NC}'; sudo systemctl enable wg-quick@wg0" ;;
     --disable)

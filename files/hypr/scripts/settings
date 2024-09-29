@@ -184,7 +184,7 @@ connections_menu() {
 }
 
 wireguard_menu() {
-    WIREGUARD_OPTIONS="󰌘 Connect\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config\n󰌍 Back"
+    WIREGUARD_OPTIONS="󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config\n󰌍 Back"
     WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
@@ -195,6 +195,8 @@ wireguard_menu() {
         case "$WIREGUARD_SUBCHOICE" in
             "󰌘 Connect")
                 $TERMINAL sh -c "$HyprScriptsDir/wireguard --connect" ;;
+            "󱘖 Status")
+                $TERMINAL sh -c "$HyprScriptsDir/wireguard --status" ;;
             "󰌙 Disconnect")
                 $TERMINAL sh -c "$HyprScriptsDir/wireguard --disconnect" ;;
             "󰑓 Reconnect")
