@@ -110,6 +110,40 @@ hypr_plugin_updates() {
     esac
 }
 
+pacman_updates() {
+    echo -e "\nWould you like to update your Arch packages?"
+    read -p "Enter your choice? [y/n]: " answer
+    case $answer in
+        [Yy] )
+            sudo pacman -Syu
+            ;;
+        [Nn] )
+            echo "Skipping updating Arch packages."
+            ;;
+        * )
+            echo "Invalid input. Please enter 'y' or 'n'."
+            pacman_updates
+            ;;
+    esac
+}
+
+aur_updates() {
+    echo -e "\nWould you like to update your AUR packages?"
+    read -p "Enter your choice? [y/n]: " answer
+    case $answer in
+        [Yy] )
+            $AUR_HELPER -Syu
+            ;;
+        [Nn] )
+            echo "Skipping updating AUR packages."
+            ;;
+        * )
+            echo "Invalid input. Please enter 'y' or 'n'."
+            aur_updates
+            ;;
+    esac
+}
+
 # Process script arguments
 case "$1" in
     --check)
@@ -120,16 +154,14 @@ case "$1" in
 	remove_unused_packages
         ;;
     --aur)
-	echo -e "\n${CYAN}AUR Package Updates${NC}\n"
-        yay -Syu
+        aur_updates
 	pkill waybar && waybar &
         ;;
     --hypr)
         hypr_plugin_updates
         ;;
     --pacman)
-	echo -e "\n${CYAN}Arch Package Updates${NC}\n"
-        sudo pacman -Syu
+        pacman_updates
 	pkill waybar && waybar &
         ;;
     *)

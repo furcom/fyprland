@@ -13,7 +13,7 @@
 
 EDITOR="vim"
 TERMINAL="kitty"
-uUR_HELPER="yay"
+AUR_HELPER="yay"
 WG_CONFIG="/etc/wireguard/wg0.conf"
 
 ###############
