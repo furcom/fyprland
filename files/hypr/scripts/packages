@@ -93,6 +93,23 @@ remove_unused_packages() {
     esac
 }
 
+hypr_plugin_updates() {
+    echo -e "\nWould you like to update the Hyprland plugins?"
+    read -p "Enter your choice? [y/n]: " answer
+    case $answer in
+        [Yy] )
+            hyprpm update
+            ;;
+        [Nn] )
+            echo "Skipping updating Hyprland plugins."
+            ;;
+        * )
+            echo "Invalid input. Please enter 'y' or 'n'."
+            hypr_plugin_updates
+            ;;
+    esac
+}
+
 # Process script arguments
 case "$1" in
     --check)
@@ -105,12 +122,15 @@ case "$1" in
     --aur)
 	echo -e "\n${CYAN}AUR Package Updates${NC}\n"
         yay -Syu
-	systemctl --user restart waybar.service
+	pkill waybar && waybar &
+        ;;
+    --hypr)
+        hypr_plugin_updates
         ;;
     --pacman)
 	echo -e "\n${CYAN}Arch Package Updates${NC}\n"
         sudo pacman -Syu
-	systemctl --user restart waybar.service
+	pkill waybar && waybar &
         ;;
     *)
         echo "Usage: $0 {--check|--aur|--pacman}"

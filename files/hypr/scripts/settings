@@ -231,7 +231,7 @@ wireguard_menu() {
 }
 
 packages_menu() {
-    PACKAGES_OPTIONS="󰮯 Arch Package Updates\n AUR Package Updates\n󰃢 Clean Pacman\n󰌍 Back"
+    PACKAGES_OPTIONS="󰮯 Arch Package Updates\n AUR Package Updates\n Hyprland Plugin Updates\n󰃢 Clean Pacman\n󰌍 Back"
     PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | rofi -dmenu -theme $RofiDir/config_alt.rasi)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
@@ -244,6 +244,8 @@ packages_menu() {
                 $TERMINAL sh -c "$HyprScriptsDir/packages --pacman" ;;
             " AUR Package Updates")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --aur" ;;
+            " Hyprland Plugin Updates")
+                $TERMINAL sh -c "$HyprScriptsDir/packages --hypr" ;;
             "󰃢 Clean Pacman")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --clean" ;;
         esac
