@@ -48,6 +48,10 @@ hyprland.template = "hyprland"
 hyprland.target = '~/.config/hypr/configs/colors.conf'
 hyprland.new_engine = true
 
+hyprlock.template = "hyprlock"
+hyprlock.target = '~/.config/hypr/hyprlock.conf'
+hyprlock.new_engine = true
+
 mako.template = "mako"
 mako.target = '~/.config/mako/config'
 mako.new_engine = true

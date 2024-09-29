@@ -23,7 +23,7 @@ background {
         blur_passes = 2 # 0 disables blurring
         blur_size = 8
         brightness = 0.85
-        color = rgb(23,23,23)
+        color = rgb({{background|rgb}})
         contrast = 1
         monitor =
         noise = 0
@@ -34,7 +34,7 @@ background {
 
 image {
         border_size = 6
-        border_color = rgb(188,235,251)
+        border_color = rgb({{foreground|rgb}})
         halign = center
         monitor =
         path = ~/.config/hypr/images/user.png
@@ -53,7 +53,7 @@ image {
 
 # Username
         label {
-        color = rgb(188,235,251)
+        color = rgb({{foreground|rgb}})
         font_size = 50
         font_family = 0xProto Nerd Font
         halign = center
@@ -67,7 +67,7 @@ image {
 
 # Date
         label {
-        color = rgb(188,235,251)
+        color = rgb({{foreground|rgb}})
         font_size = 30
         font_family = 0xProto Nerd Font
         halign = center
@@ -81,7 +81,7 @@ image {
 
 # Time
         label {
-        color = rgb(188,235,251)
+        color = rgb({{foreground|rgb}})
         font_size = 75
         font_family = 0xProto Nerd Font
         halign = center
@@ -103,22 +103,22 @@ input-field {
         dots_rounding = -1
         fade_on_empty = true
         fade_timeout = 1000
-        fail_color = rgb(51,47,128)
+        fail_color = rgb({{color2|rgb}})
         fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
         fail_timeout = 500
         fail_transition = 300
-        font_color = rgb(188,235,251)
+        font_color = rgb({{foreground|rgb}})
         halign = center
         hide_input = false
-        inner_color = rgb(23,23,23)
+        inner_color = rgb({{background|rgb}})
         invert_numlock = false
         monitor =
         numlock_color = -1
         placeholder_text = <b>Password</b>
-        placeholder_color = rgb(188,235,251)
+        placeholder_color = rgb({{foreground|rgb}})
         position = 0, -400
         outline_thickness = 2
-        outer_color = rgb(62,62,62)
+        outer_color = rgb({{color0|rgb}})
         rounding = -1
         size = 256, 48
         shadow_passes = 2
