@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# Variablen
+INTERFACE="wlan0"  # Passe dies an deine WLAN-Schnittstelle an
+STATUS=$(nmcli radio wifi)  # Überprüft, ob WLAN aktiviert oder deaktiviert ist
+CONNECTED=$(nmcli -t -f DEVICE,STATE dev status | grep "$INTERFACE" | awk '{print $2}')  # Überprüft Verbindungsstatus (connected, disconnected)
+
+# WLAN-Menü Funktion
+wlan_menu() {
+    while true; do
+        OPTIONS=""
+
+        if [ "$STATUS" = "enabled" ]; then
+            OPTIONS="󰖪 Disable\n󱚽 Connect\n󱛇 Scan\n󱚾 Edit"
+        else
+            OPTIONS=" Enable"
+        fi
+
+        OPTIONS="$OPTIONS\n Exit"  # Exit am Ende hinzufügen
+
+        CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Main Menu")
+
+        if [ $? -ne 0 ]; then
+            echo "Exiting menu"  # Für Debugging
+            break
+        fi
+
+        case "$CHOICE" in
+            " Enable")
+                nmcli radio wifi on
+                break ;;  # Menü schließen, nachdem WLAN aktiviert wurde
+            "󰖪 Disable")
+                nmcli radio wifi off
+                break ;;  # Menü schließen, nachdem WLAN deaktiviert wurde
+            "󱛇 Scan")
+                scan_for_networks ;;
+            "󱚽 Connect")
+                connect_to_network ;;
+            "󱚾 Edit")
+                edit_saved_networks ;;
+            " Exit")
+                break ;;  # Hauptmenü beenden
+            *)
+                echo "Invalid choice" ;;
+        esac
+    done
+}
+
+# Funktion zum Verbinden mit einem gespeicherten Netzwerk
+connect_to_network() {
+    while true; do
+        SAVED_NETWORKS=$(nmcli connection show | grep -i wifi | awk '{print $1}')  # Gespeicherte Netzwerke abfragen
+        if [ -z "$SAVED_NETWORKS" ]; then
+            echo "No saved networks found" | rofi -dmenu
+            return
+        fi
+
+        NETWORK=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Select a saved network:")
+        
+        if [ $? -ne 0 ]; then
+            echo "Returning to main menu..."  # Für Debugging
+            break  # Breche die Schleife ab und gehe zurück zum Hauptmenü
+        fi
+
+        if [ "$NETWORK" = "󰌍 Back" ]; then
+            break  # Zurück ins Hauptmenü
+        fi
+
+        if [ -n "$NETWORK" ]; then
+            nmcli connection up "$NETWORK"  # Verbindung zum ausgewählten Netzwerk herstellen
+        fi
+    done
+}
+
+# Funktion zum Bearbeiten gespeicherter Netzwerke
+edit_saved_networks() {
+    while true; do
+        SAVED_NETWORKS=$(nmcli connection show | grep -i wifi | awk '{print $1}')  # Gespeicherte Netzwerke abfragen
+        if [ -z "$SAVED_NETWORKS" ]; then
+            echo "No saved networks to delete" | rofi -dmenu
+            return
+        fi
+
+        SAVED=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Select a network to edit:")
+        
+        if [ $? -ne 0 ]; then
+            echo "Returning to main menu..."  # Für Debugging
+            break  # Breche die Schleife ab und gehe zurück zum Hauptmenü
+        fi
+
+        if [ "$SAVED" = "󰌍 Back" ]; then
+            break  # Zurück ins Hauptmenü
+        fi
+
+        if [ -n "$SAVED" ]; then
+            # Untermenü für die Optionen
+            OPTIONS="Delete\nCancel"
+            ACTION=$(echo -e "$OPTIONS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Actions for $SAVED:")
+            
+            if [ "$ACTION" = "Delete" ]; then
+                CONFIRM=$(echo -e "yes\nno" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Are you sure you want to delete $SAVED?")
+                if [ "$CONFIRM" = "yes" ]; then
+                    nmcli connection delete "$SAVED"  # Gespeichertes Netzwerk löschen
+                    echo "$SAVED deleted successfully" | rofi -dmenu
+                else
+                    echo "Deletion canceled" | rofi -dmenu
+                fi
+            fi
+        fi
+    done
+}
+
+# Funktion zum Scannen von Netzwerken und Anzeigen der SSIDs
+scan_for_networks() {
+    while true; do
+        OPTIONS="󰌍 Back"  # Back Option hinzufügen
+        nmcli -f SSID device wifi rescan  # Netzwerk-Scan aktualisieren
+        NETWORKS=$(nmcli -f SSID device wifi list | tail -n +2 | awk '{$1=$1};1')  # Liste der verfügbaren Netzwerke abrufen und Header ignorieren, Leerzeichen entfernen
+        if [ -z "$NETWORKS" ]; then
+            echo "No networks found" | rofi -dmenu
+            return
+        fi
+
+        SSID=$(echo -e "$OPTIONS\n$NETWORKS" | rofi -dmenu -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Select a network to connect:")
+        
+        if [ $? -ne 0 ]; then
+            echo "Returning to main menu..."  # Für Debugging
+            break  # Breche die Schleife ab und gehe zurück zum Hauptmenü
+        fi
+
+        if [ "$SSID" = "󰌍 Back" ]; then
+            break  # Zurück ins Hauptmenü
+        fi
+
+        if [ -n "$SSID" ]; then
+            # Überprüfen, ob das Netzwerk bereits existiert
+            if nmcli -f NAME connection show | grep -q "^$SSID$"; then
+                nmcli device wifi connect "$SSID"  # Verbindung zum ausgewählten Netzwerk herstellen
+            else
+                # Passwortabfrage im neuen Kitty Terminal
+                kitty sh -c "echo 'Please enter the password of $SSID:'; read -s PASSWORD; nmcli device wifi connect '$SSID' '$PASSWORD'"
+            fi
+        fi
+    done
+}
+
+wlan_menu
+

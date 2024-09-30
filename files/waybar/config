@@ -200,7 +200,7 @@
         "tooltip-format-wifi": "Network: {essid}\nSignal strength: {signalStrength}%)\nIP adress: {ipaddr}",
         "tooltip-format-ethernet": "  {ifname} - {ipaddr}",
         "on-click-right": "rfkill toggle wifi",
-        "on-click": "kitty sh -c nmtui"
+        "on-click": "~/.config/hypr/scripts/wifi"
     },
 
     "backlight": {
