@@ -112,7 +112,6 @@
         "tooltip": true,
         "tooltip-format": " Spotify",
         "interval": 2,
-	"max-length": 35,
         "on-click": "hyprctl dispatch focuswindow class:Spotify"
     },
 
