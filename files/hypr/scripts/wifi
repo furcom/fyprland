@@ -13,7 +13,7 @@ wlan_menu() {
         OPTIONS=""
 
         if [ "$STATUS" = "enabled" ]; then
-            OPTIONS="󰖪 Disable\n󱚽 Connect\n󱛇 Scan\n󱚾 Edit"
+            OPTIONS="󰖪 Disable\n󰄴 Connect\n󰍉 Scan\n Edit"
         else
             OPTIONS=" Enable"
         fi
@@ -34,11 +34,11 @@ wlan_menu() {
             "󰖪 Disable")
                 nmcli radio wifi off
                 break ;;  # Menü schließen, nachdem WLAN deaktiviert wurde
-            "󱛇 Scan")
+            "󰍉 Scan")
                 scan_for_networks ;;
-            "󱚽 Connect")
+            "󰄴 Connect")
                 connect_to_network ;;
-            "󱚾 Edit")
+            " Edit")
                 edit_saved_networks ;;
             " Exit")
                 break ;;  # Hauptmenü beenden
