@@ -4,7 +4,7 @@
 # | _|| |_| |   / (_| (_) | |\/| | #
 # |_|  \___/|_|_\\___\___/|_|  |_| #
 #                                  #
-#    .zshrc Version 2024-09-07     #
+#    .zshrc Version 2024-10-01     #
 #                                  #
 ####################################
 
@@ -93,8 +93,8 @@ setopt hist_ignore_all_dups
 ## 6. ALIASES ##
 ################
 # Programs
-#alias neofetch="fastfetch"
-#alias vim="nvim"
+alias neofetch="fastfetch"
+alias vim="nvim"
 
 # Navigation
 alias ls="ls --color"
@@ -102,16 +102,10 @@ alias d="ls -hals --group-directories-first"
 alias \#="cd .. ; d"
 alias c="clear"
 alias q="exit"
-#alias f="bash -c "compgen -c" | fzf | xargs man"
 
 # Configs
 alias zz="vim $HOME/.zshrc"
 alias bb="vim $HOME/.bashrc"
-alias kk="vim $HOME/.config/kitty/kitty.conf"
-alias hh="vim $HOME/.config/hypr/hyprland.conf"
-
-# Proxmox
-alias pm="$HOME/powermode.sh"
 
 # SSH
 alias keys="cd $HOME/.ssh"
@@ -120,18 +114,15 @@ alias addkey="eval `ssh-agent` ; ssh-add $HOME/.ssh/id_ed25519"
 
 # Update
 alias update="sudo pacman -Syu ; yay -Syu"
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # Git
 alias githome='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/HomeLab.git main'
 alias gitarch='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/arch-furcom.git main'
-alias githypr='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/hypr-furcom.git main'
-alias gitfypr='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/Fyprland.git main'
+alias gitfypr='git add . ; git commit -m "Updates" ; git push https://furcom:$(sudo cat $HOME/.git_pat)@github.com/furcom/fyprland.git main'
 
 # Reboot
-alias reboot='echo -n "Reboot? [N/y] "; read response; [[ $response == y || Y ]]; systemctl reboot || echo "Canceled."'
-alias rebooty="systemctl reboot"
-alias poweroff='echo -n "Poweroff? [N/y] "; read response; [[ $response == y || Y ]]; systemctl poweroff || echo "Canceled."'
+alias reboot="systemctl reboot"
+alias poweroff="systemctl poweroff"
 
 ##################
 ## 7. AUTOSTART ##

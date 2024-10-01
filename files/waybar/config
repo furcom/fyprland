@@ -201,8 +201,8 @@
         "tooltip-format": "{ipaddr}",
         "tooltip-format-wifi": "Network: {essid}\nSignal strength: {signalStrength}%)\nIP adress: {ipaddr}",
         "tooltip-format-ethernet": "  {ifname} - {ipaddr}",
-        "on-click": "rfkill toggle wifi",
-        "on-click-right": "~/.config/hypr/scripts/wifi",
+        "on-click": "~/.config/hypr/scripts/wifi",
+        "on-click-right": "nmcli radio wifi off",
 	"max-length": 50
     },
 
