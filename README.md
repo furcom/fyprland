@@ -1,6 +1,3 @@
-Here’s the complete `README.md` in pure RAW format:
-
-```
 **Preview 1** | **Preview 2** | **Preview 3**
 :-: | :-: | :-:
 ![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)  |  ![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)
@@ -65,6 +62,3 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [zsh](https://github.com/zsh-users/zsh) (zShell)
     - [archpapers](https://github.com/connorslade/ArchPapers?tab=readme-ov-file) (Not a package, but these wallpapers were used, and I want to give credit)
 7. If something doesn't work: Try to fix it yourself 🫶
-```
-
-You can now directly copy and paste this into your `README.md`.
