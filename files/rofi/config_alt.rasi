@@ -87,7 +87,7 @@ configuration {
 
     /*--- Misc setting ---*/
     terminal: "rofi-sensible-terminal";
-    font: "Mono 12";
+    font: "0xProto Nerd Font 12";
     sort: false;
     threads: 0;
     click-to-exit: true;
@@ -191,6 +191,8 @@ configuration {
 //// Global Properties ////
 * {
     font: "0xProto Mono Nerd Font 16";
+    anchor: center;
+    fullscreen: false;
 }
 
 //// Main Window ////
