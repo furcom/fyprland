@@ -111,7 +111,7 @@
         "exec": "~/.config/hypr/scripts/spotify --song",
         "tooltip": true,
         "tooltip-format": " Spotify",
-        "interval": 1,
+        "interval": 2,
 	"max-length": 35,
         "on-click": "hyprctl dispatch focuswindow class:Spotify"
     },
@@ -120,7 +120,7 @@
         "exec": "~/.config/hypr/scripts/spotify --button",
         "tooltip": true,
         "tooltip-format": "Play/Pause",
-        "interval": 1,
+        "interval": 2,
         "on-click": "playerctl -p spotify play-pause"
     },
 	
