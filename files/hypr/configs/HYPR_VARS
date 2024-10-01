@@ -43,7 +43,6 @@ KittyConfigsDir="$KittyDir/configs"
 # rofi
 RofiDir="$HOME/.config/rofi"
 RofiScriptsDir="$RofiDir/scripts"
-RofiMenu="rofi -dmenu"
 RofiMenuAlt="rofi -dmenu -theme-str configuration{show-icons:false;} -theme-str entry{enabled:false;} -theme-str textbox-prompt-colon{enabled:false;}"
 
 # waybar

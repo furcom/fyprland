@@ -1,0 +1,23 @@
+#!/bin/bash
+# ██╗      █████╗ ██╗   ██╗ ██████╗ ██╗   ██╗████████╗███████╗
+# ██║     ██╔══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝██╔════╝
+# ██║     ███████║ ╚████╔╝ ██║   ██║██║   ██║   ██║   ███████╗
+# ██║     ██╔══██║  ╚██╔╝  ██║   ██║██║   ██║   ██║   ╚════██║
+# ███████╗██║  ██║   ██║   ╚██████╔╝╚██████╔╝   ██║   ███████║
+# ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝
+# script by furcom (https://github.com/furcom)
+
+source $HOME/.config/hypr/scripts/HYPR_VARS
+
+config_file="$HyprConfigsDir/style.conf"
+
+if [[ -f "$config_file" ]]; then
+    case "$1" in
+        --master)
+            sed -i '/^[[:space:]]*layout =/c\    layout = master' "$config_file"
+            ;;
+        --dwindle)
+            sed -i '/^[[:space:]]*layout =/c\    layout = dwindle' "$config_file"
+            ;;
+    esac
+fi
