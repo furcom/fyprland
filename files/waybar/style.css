@@ -74,7 +74,7 @@ tooltip {
 #custom-updates {
     background-color: #007700;
     color: @foreground;
-    margin: 0 0 0 4px;
+    margin: 0 4px 0 4px;
     padding: 0 12px;
 }
 

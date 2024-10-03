@@ -21,7 +21,6 @@
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
-        "custom/updates",
         "cpu",
         "memory",
         "disk",
@@ -31,6 +30,7 @@
     ],
 
     "modules-center": [
+        "custom/updates",
         "custom/weather",
         "clock",
         "hyprland/window"
@@ -60,9 +60,9 @@
         "tooltip": true,
         "tooltip-format": "󰚰 Updates",
         "restart-interval": 3600,
-        "exec": "~/.config/hypr/scripts/updates --check",
-        "on-click": "kitty sh -c '~/.config/hypr/scripts/updates --pacman'",
-        "on-click-right": "kitty sh -c '~/.config/hypr/scripts/updates --aur'"
+        "exec": "~/.config/hypr/scripts/packages --check",
+        "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman'",
+        "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur'"
     },
 
     "hyprland/workspaces": {
@@ -111,7 +111,7 @@
         "exec": "~/.config/hypr/scripts/spotify --song",
         "tooltip": true,
         "tooltip-format": " Spotify",
-        "interval": 2,
+        "interval": 1,
         "on-click": "hyprctl dispatch focuswindow class:Spotify"
     },
 
@@ -119,7 +119,7 @@
         "exec": "~/.config/hypr/scripts/spotify --button",
         "tooltip": true,
         "tooltip-format": "Play/Pause",
-        "interval": 2,
+        "interval": 1,
         "on-click": "playerctl -p spotify play-pause"
     },
 	
@@ -260,7 +260,7 @@
     },
 
     "battery": {
-        "interval": 30,
+        "interval": 3,
         "bat": "BAT0",
         "states": {
             "good": 95,

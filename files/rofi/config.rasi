@@ -12,7 +12,7 @@ configuration {
     /*--- General setting ---*/
     modi: "";
     case-sensitive: false;
-    cycle: false;
+    cycle: true;
     filter: "";
     scroll-method: 0;
     normalize-match: true;
@@ -308,7 +308,7 @@ listview {
     enabled: true;
     columns: 1;
     lines: 16;
-    cycle: false;
+    cycle: true;
     dynamic: true;
     scrollbar: true;
     layout: horizontal;

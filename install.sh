@@ -173,8 +173,8 @@ install_audio() {
 
 ##### Persistent clipboard #####
 
-install_wl-clip-persist() {
-    sudo pacman -S --needed --noconfirm wl-clip-persist
+install_cliphist() {
+    sudo pacman -S --needed --noconfirm cliphist xdg-utils
 }
 
 ##### bluetooth #####
@@ -211,7 +211,7 @@ install_wallust
 install_hypridle
 install_mako
 install_audio
-install_wl-clip-persist
+install_cliphist
 install_waybar
 install_rofi
 

@@ -17,8 +17,8 @@ source $HOME/.config/hypr/scripts/HYPR_VARS
 MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
 main_menu() {
-    OPTIONS=" Hyprland\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma\n󱘖 Connections\n Packages\n󰗼 Exit"
-    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt)
+    OPTIONS=" Hyprland\n󱘖 Connections\n Packages\n Extras\n"
+    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowMain)
 
     if [ -z "$CHOICE" ]; then
         exit 0
@@ -26,22 +26,16 @@ main_menu() {
 
     if [ -z "$CHOICE" ]; then
         main_menu
-    elif [ "$CHOICE" == "󰗼 Exit" ]; then
+    elif [ "$CHOICE" == "" ]; then
         exit
     else
         case "$CHOICE" in
             " Hyprland")
                 hyprland_menu ;;
-            "󱂩 Waybar")
-                waybar_menu ;;
-            "󰄛 Kitty")
-                kitty_menu ;;
-            "󰮫 Rofi")
-                rofi_menu ;;
-            "󰵷 Fusuma")
-                fusuma_menu ;;
             "󱘖 Connections")
                 connections_menu ;;
+            " Extras")
+                extras_menu ;;
             " Packages")
                 packages_menu ;;
             *)
@@ -50,13 +44,39 @@ main_menu() {
     fi
 }
 
+extras_menu() {
+    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma"
+    EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowExtras)
+
+    if [ -z "$EXTRAS_SUBCHOICE" ]; then
+        SelectedRowMain="3"
+        main_menu
+    elif [ "$EXTRAS_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowMain="3"
+        main_menu
+    else
+        case "$EXTRAS_SUBCHOICE" in
+            "󱂩 Waybar")
+                waybar_menu ;;
+            "󰄛 Kitty")
+                kitty_menu ;;
+            "󰮫 Rofi")
+                rofi_menu ;;
+            "󰵷 Fusuma")
+                fusuma_menu ;;
+        esac
+    fi
+}
+
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰸉 Wallpaper\n General\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins\n󰌍 Back"
-    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuAlt)
+    HYPRLAND_OPTIONS="󰌍\n󰸉 Wallpaper\n General\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins"
+    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowHypr)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍 Back" ]; then
+        SelectedRowMain="0"
+	main_menu
+    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowMain="0"
         main_menu
     else
         case "$HYPRLAND_SUBCHOICE" in
@@ -71,9 +91,12 @@ hyprland_menu() {
             " Bindings")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             " Layouts")
-		    LAYOUTS_OPTIONS=" Enable master layout\n Enable dwindle layout\n Config"
+		    LAYOUTS_OPTIONS="󰌍\n Enable master layout\n Enable dwindle layout\n Config"
 		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | $RofiMenuAlt)
 		    case "$LAYOUTS_SUBCHOICE" in
+			"󰌍")
+                            SelectedRowHypr="6"
+			    hyprland_menu ;;
 	                " Enable master layout")
 			    $HyprScriptsDir/layouts --master ;;
 	                " Enable dwindle layout")
@@ -96,13 +119,15 @@ hyprland_menu() {
 }
 
 waybar_menu() {
-    WAYBAR_OPTIONS=" Config\n Style\n󰑓 Restart\n󰌍 Back"
+    WAYBAR_OPTIONS="󰌍\n Config\n Style\n󰑓 Restart"
     WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$WAYBAR_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowExtras="1"
+        extras_menu
+    elif [ "$WAYBAR_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowExtras="1"
+        extras_menu
     else
         case "$WAYBAR_SUBCHOICE" in
             " Config")
@@ -116,13 +141,15 @@ waybar_menu() {
 }
 
 window_bar_menu() {
-    WINBAR_OPTIONS="󰐥 Enable\n󰤂 Disable\n󰌍 Back"
+    WINBAR_OPTIONS="󰌍\n󰐥 Enable\n󰤂 Disable"
     WINBAR_SUBCHOICE=$(echo -e "$WINBAR_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$WINBAR_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$WINBAR_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowHypr="3"
+        hyprland_menu
+    elif [ "$WINBAR_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowHypr="3"
+        hyprland_menu
     else
         case "$WINBAR_SUBCHOICE" in
             "󰐥 Enable")
@@ -134,13 +161,15 @@ window_bar_menu() {
 }
 
 kitty_menu() {
-    KITTY_OPTIONS=" Config\n Style\n Keymaps\n󰑓 Reload Config\n󰌍 Back"
+    KITTY_OPTIONS="󰌍\n Config\n Style\n Keymaps\n󰑓 Reload Config"
     KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$KITTY_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$KITTY_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowExtras="2"
+        extras_menu
+    elif [ "$KITTY_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowExtras="2"
+        extras_menu
     else
         case "$KITTY_SUBCHOICE" in
             " Config")
@@ -156,13 +185,15 @@ kitty_menu() {
 }
 
 rofi_menu() {
-    ROFI_OPTIONS=" Config\n Alt. Config\n󰌍 Back"
+    ROFI_OPTIONS="󰌍\n Config\n Alt. Config"
     ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$ROFI_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$ROFI_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowExtras="3"
+        extras_menu
+    elif [ "$ROFI_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowExtras="3"
+        extras_menu
     else
         case "$ROFI_SUBCHOICE" in
             " Config")
@@ -174,13 +205,15 @@ rofi_menu() {
 }
 
 fusuma_menu() {
-    FUSUMA_OPTIONS=" Config\n󰑓 Restart\n󰌍 Back"
+    FUSUMA_OPTIONS="󰌍\n Config\n󰑓 Restart"
     FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$FUSUMA_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowExtras="4"
+        extras_menu
+    elif [ "$FUSUMA_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowExtras="4"
+        extras_menu
     else
         case "$FUSUMA_SUBCHOICE" in
             " Config")
@@ -192,18 +225,20 @@ fusuma_menu() {
 }
 
 connections_menu() {
-    CONNECTIONS_OPTIONS=" Bluetooth\n󰖩 Network\n󰖂 Wireguard\n󰌍 Back"
-    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | $RofiMenuAlt)
+    CONNECTIONS_OPTIONS="󰌍\n Bluetooth\n󰖩 WiFi\n󰖂 Wireguard"
+    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowConnection)
 
     if [ -z "$CONNECTIONS_SUBCHOICE" ]; then
+        SelectedRowMain="1"
         main_menu
-    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍 Back" ]; then
+    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowMain="1"
         main_menu
     else
         case "$CONNECTIONS_SUBCHOICE" in
             " Bluetooth")
                 $TERMINAL sh -c "bluetui" ;;
-            "󰖩 Network")
+            "󰖩 WiFi")
                 $HyprScriptsDir/wifi ;;
             "󰖂 Wireguard")
                 wireguard_menu ;;
@@ -212,13 +247,15 @@ connections_menu() {
 }
 
 wireguard_menu() {
-    WIREGUARD_OPTIONS="󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config\n󰌍 Back"
+    WIREGUARD_OPTIONS="󰌍\n󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config"
     WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
-        main_menu
-    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍 Back" ]; then
-        main_menu
+        SelectedRowConnection="3"
+        connections_menu
+    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowConnection="3"
+        connections_menu
     else
         case "$WIREGUARD_SUBCHOICE" in
             "󰌘 Connect")
@@ -240,12 +277,14 @@ wireguard_menu() {
 }
 
 packages_menu() {
-    PACKAGES_OPTIONS="󰮯 Arch Package Updates\n AUR Package Updates\n Hyprland Plugin Updates\n󰃢 Clean Pacman\n󰌍 Back"
+    PACKAGES_OPTIONS="󰌍\n󰮯 Arch Package Updates\n AUR Package Updates\n Hyprland Plugin Updates\n󰃢 Clean Pacman"
     PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
+        SelectedRowMain="2"
         main_menu
-    elif [ "$PACKAGES_SUBCHOICE" == "󰌍 Back" ]; then
+    elif [ "$PACKAGES_SUBCHOICE" == "󰌍" ]; then
+        SelectedRowMain="2"
         main_menu
     else
         case "$PACKAGES_SUBCHOICE" in
@@ -271,11 +310,12 @@ wallpaper_menu() {
         let i++
     done
 
-    WALLPAPER_OPTIONS+="󰌍 Back"
-    WALLPAPER_SUBCHOICE=$(echo -e "$WALLPAPER_OPTIONS" | $RofiMenuAlt)
+    #WALLPAPER_OPTIONS+="󰌍"
+    WALLPAPER_SUBCHOICE=$(echo -e "󰌍\n$WALLPAPER_OPTIONS" | $RofiMenuAlt)
 
     if [ -z "$WALLPAPER_SUBCHOICE" ]; then
-        main_menu
+        SelectedRowHypr="1"
+        hyprland_menu
     elif [[ $WALLPAPER_SUBCHOICE == 󰸉* ]]; then
         WP_FILE=$(echo "$WALLPAPER_SUBCHOICE" | sed 's/^󰸉  //')
         WP_CHOICE="$HyprWallpapersDir/$WP_FILE"
@@ -296,8 +336,9 @@ wallpaper_menu() {
         else
             echo -e "\n${RED}Wallpaper not found.${NC}\n"
         fi
-    elif [[ $WALLPAPER_SUBCHOICE == "󰌍 Back" ]]; then
-        main_menu
+    elif [[ $WALLPAPER_SUBCHOICE == "󰌍" ]]; then
+        SelectedRowHypr="1"
+        hyprland_menu
     fi
 }
 
