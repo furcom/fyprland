@@ -50,8 +50,9 @@ RofiMenuAlt="rofi -dmenu -theme-str configuration{show-icons:false;} -theme-str 
 WaybarDir="$HOME/.config/waybar"
 WaybarScriptsDir="$WaybarDir/scripts"
 
-# pywal
-WalCacheDir="$HOME/.cache/wal"
+# wallust
+WallustDir="$HOME/.config/wallust"
+WallustTemplatesDir="$WallustDir/templates"
 
 # mako
 MakoDir="$HOME/.config/mako"

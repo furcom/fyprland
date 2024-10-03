@@ -133,7 +133,7 @@ waybar_menu() {
             " Config")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/config" ;;
             " Style")
-                $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
+                $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/waybar" ;;
             "󰑓 Restart")
                 pkill waybar && waybar & ;;
         esac
