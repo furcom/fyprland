@@ -2,26 +2,25 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
-# WLAN-Menü Funktion
 wlan_menu() {
     while true; do
-        INTERFACE="wlan0"  # Passe dies an deine WLAN-Schnittstelle an
+        INTERFACE="wlan0"  # Change this to your WiFi adapter
         STATUS=$(nmcli radio wifi)
         CONNECTED=$(nmcli -t -f DEVICE,STATE dev status | grep "$INTERFACE" | awk '{print $2}')
         OPTIONS=""
 
         if [ "$STATUS" = "enabled" ]; then
-            OPTIONS="󰖪 Disable"  # Ändert "Enable" zu "Disable", wenn WLAN eingeschaltet ist
+            OPTIONS="󰖪 Disable"  # Change "Enable" to "Disable", if WiFi is enabled
             if [ "$CONNECTED" = "connected" ]; then
                 OPTIONS="$OPTIONS\n󱘖 Connect\n Disconnect"
             fi
             OPTIONS="$OPTIONS\n󰍉 Scan\n Saved"
         else
-            OPTIONS=" Enable"  # Wenn WLAN deaktiviert ist
+            OPTIONS=" Enable"  # Only show wenn WiFi is disabled
         fi
         OPTIONS="󰌍 Back\n$OPTIONS"
 
-        CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "WLAN Menu")
+        CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt -p "WLAN Menu" -selected-row $SelectedRowWifi)
 
         if [ $? -ne 0 ]; then
             break
@@ -41,42 +40,44 @@ wlan_menu() {
             " Saved")
                 manage_saved_networks ;;
             "󰌍 Back")
-		$HyprScriptsDir/settings ;;
+		$HyprScriptsDir/settings --wifi
+		break ;;
             *)
                 echo "Invalid choice" ;;
         esac
     done
 }
 
-# Funktion zum Scannen nach Netzwerken
 scan_for_networks() {
     while true; do
-        nmcli -f SSID device wifi rescan  # Netzwerke scannen
-        AVAILABLE_NETWORKS=$(nmcli -f SSID device wifi | tail -n +2 | sed 's/^\s*//;s/\s*$//' | sort -u | sed 's/^--$/<unknown>/')  # "--" in <unknown> umbenennen und doppelte SSIDs entfernen
+        nmcli -f SSID device wifi rescan  # Scan for networks
+        AVAILABLE_NETWORKS=$(nmcli -f SSID device wifi | tail -n +2 | sed 's/^\s*//;s/\s*$//' | sort -u | sed 's/^--$/<unknown>/')  # Rename "--" to <unknown> and remove duplicate SSIDs
 
         if [ -z "$AVAILABLE_NETWORKS" ]; then
+            SelectedRowWifi="2"
             echo "No networks found" | $RofiMenuAlt
             return
         fi
 
-        SSID=$(echo -e "󰌍 Back\n$AVAILABLE_NETWORKS" | $RofiMenuAlt -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Select a network:")
+        SSID=$(echo -e "󰌍 Back\n$AVAILABLE_NETWORKS" | $RofiMenuAlt -p "Select a network:")
 
         if [ $? -ne 0 ] || [ "$SSID" = "󰌍 Back" ]; then
-            break
+            SelectedRowWifi="2"
+	    break
         fi
 
         if [ -n "$SSID" ]; then
+            SelectedRowWifi="2"
             connect_to_selected_network "$SSID"
-            break  # Menü nach der Verbindung schließen
+            break  # Close menu after connecting
         fi
     done
 }
 
-# Funktion zum Verbinden mit einem Netzwerk
 connect_to_selected_network() {
     local SSID=$1
 
-    # Prüfen, ob das Netzwerk bereits gespeichert ist
+    # Check if network is already saved
     if nmcli -f NAME connection show | grep -q "$SSID"; then
         nmcli device wifi connect "$SSID"
     else
@@ -84,36 +85,36 @@ connect_to_selected_network() {
     fi
 }
 
-# Funktion zum Bearbeiten gespeicherter Netzwerke
 manage_saved_networks() {
     while true; do
         SAVED_NETWORKS=$(nmcli connection show | grep -i wifi | awk '{print $1}')
 
         if [ -z "$SAVED_NETWORKS" ]; then
+            SelectedRowWifi="3"
             echo "No saved networks found" | $RofiMenuAlt
             return
         fi
 
-        NETWORK=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | $RofiMenuAlt -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Select a network to edit:")
+        NETWORK=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | $RofiMenuAlt -p "Select a network to edit:")
 
         if [ $? -ne 0 ] || [ "$NETWORK" = "󰌍 Back" ]; then
+            SelectedRowWifi="3"
             break
         fi
 
-        ACTION=$(echo -e "󰌍 Back\n󱘖 Connect\n󰆴 Delete" | $RofiMenuAlt -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Actions for $NETWORK:")
+        ACTION=$(echo -e "󰌍 Back\n󱘖 Connect\n󰆴 Delete" | $RofiMenuAlt -p "Actions for $NETWORK:")
 
         if [ "$ACTION" = "󰆴 Delete" ]; then
-            CONFIRM=$(echo -e "󰄴 Yes\n No" | $RofiMenuAlt -theme-str 'configuration{show-icons:false;} entry{enabled:false;} textbox-prompt-colon{enabled:false;}' -p "Are you sure you want to delete $NETWORK?")
+            CONFIRM=$(echo -e "󰄴 Yes\n No" | $RofiMenuAlt -p "Are you sure you want to delete $NETWORK?")
             if [ "$CONFIRM" = "󰄴 Yes" ]; then
                 nmcli connection delete "$NETWORK"
                 echo "$NETWORK deleted successfully" | $RofiMenuAlt
             fi
         elif [ "$ACTION" = "󱘖 Connect" ]; then
-            nmcli device wifi connect "$NETWORK"  # Verbinden mit dem ausgewählten Netzwerk
-            break  # Menü nach der Verbindung schließen
+            nmcli device wifi connect "$NETWORK"  # Connect with selected network
+            break  # Close menu after connecting
         fi
     done
 }
 
 wlan_menu
-

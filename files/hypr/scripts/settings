@@ -27,7 +27,7 @@ main_menu() {
     if [ -z "$CHOICE" ]; then
         main_menu
     elif [ "$CHOICE" == "" ]; then
-        exit
+        exit 0
     else
         case "$CHOICE" in
             " Hyprland")
@@ -237,7 +237,7 @@ connections_menu() {
     else
         case "$CONNECTIONS_SUBCHOICE" in
             " Bluetooth")
-                $TERMINAL sh -c "bluetui" ;;
+                $TERMINAL sh -c "bluetui;" ;;
             "󰖩 WiFi")
                 $HyprScriptsDir/wifi ;;
             "󰖂 Wireguard")
@@ -341,5 +341,12 @@ wallpaper_menu() {
         hyprland_menu
     fi
 }
+
+case "$1" in
+    --wifi)
+	SelectedRowConnection="2"
+        connections_menu
+        ;;
+esac
 
 main_menu
