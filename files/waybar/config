@@ -10,16 +10,15 @@
     "layer": "top",
     "position": "top",
     "mode": "dock",
-    "margin-left": 16,
-    "margin-right": 16,
-    "margin-top": 16,
-    "margin-bottom": 16,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "margin-bottom": 8,
     "fixed-center": true,
-    "height": 40,
     "reload_style_on_change": true,
 
     "modules-left": [
-        "custom/logo",
+        "custom/settings",
         "hyprland/workspaces",
         "cpu",
         "memory",
@@ -43,13 +42,12 @@
         "backlight",
         "custom/pipewire-input",
         "wireplumber",
-        "power-profiles-daemon",
         "battery",
         "custom/powermenu"
     ],
 
-    "custom/logo": {
-        "format": "",
+    "custom/settings": {
+        "format": "󰍜",
         "tooltip": true,
         "tooltip-format": " Settings",
         "on-click": "~/.config/hypr/scripts/settings",
@@ -67,9 +65,10 @@
 
     "hyprland/workspaces": {
         "format": "{icon}",
+	"tooltip-format": "Workpace",
         "on-click": "activate",
         "active-only": false,
-        "tooltip": false,
+        "tooltip": true,
         "hidden": true,
         "format-icons": {
             "1": "",
@@ -224,18 +223,6 @@
         "smooth-scrolling-threshold": 1,
         "on-click": "brightnessctl s 100%",
         "on-click-right": "brightnessctl s 50%"
-    },
-
-    "power-profiles-daemon": {
-        "format": "{icon} ",
-        "tooltip-format": "Power Profile: {profile} \nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
     },
 
     "custom/pipewire-input": {

@@ -57,7 +57,7 @@ mako.target = '~/.config/mako/config'
 mako.new_engine = true
 
 waybar.template = "waybar"
-waybar.target = '~/.config/waybar/style.css'
+waybar.target = '~/.config/waybar/colors.css'
 waybar.new_engine = true
 
 rofi.template = "rofi"

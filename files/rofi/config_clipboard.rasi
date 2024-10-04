@@ -202,8 +202,8 @@ window {
     location:  north;
     anchor: center;
     fullscreen: false;
-    width: 1888px;
-    height: 432px;
+    width: 1920px;
+    height: 248px;
     x-offset: 0;
     y-offset: -60px;
 
@@ -212,7 +212,7 @@ window {
     margin: 0;
     padding: 0;
     border: 0;
-    border-radius: 24px;
+    border-radius: 0;
     border-color: @border-colour;
     cursor: "default";
     // Backgroud Colors

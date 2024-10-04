@@ -190,7 +190,7 @@ configuration {
 
 //// Global Properties ////
 * {
-    font: "0xProto Mono Nerd Font 16";
+    font: "0xProto Mono Nerd Font 14";
     anchor: center;
     fullscreen: false;
 }
@@ -199,20 +199,21 @@ configuration {
 window {
     // properties for window widget
     transparency: "real";
-    location:  north;
-    anchor: center;
+    location: north east;
+    anchor: north east;
     fullscreen: false;
-    width: 1888px;
-    height: 48px;
+    min-width: 32px;
+    width: 1920px;
+    height: 44px;
     x-offset: 0;
-    y-offset: -60px;
+    y-offset: -58px;
 
     // properties for all widgets
     enabled: true;
     margin: 0;
     padding: 0;
     border: 0;
-    border-radius: 32px;
+    border-radius: 0;
     border-color: @border-colour;
     cursor: "default";
     // Backgroud Colors
@@ -342,7 +343,7 @@ element {
     enabled: true;
     spacing: 8px;
     margin: 0;
-    padding: 0 8px;
+    padding: 0 4px;
     border: 0;
     border-radius: 24px;
     border-color: @border-colour;
@@ -406,7 +407,7 @@ mode-switcher{
     enabled: true;
     spacing: 0;
     margin: 0;
-    padding: 10;
+    padding: 0;
     border: 0;
     border-radius: 0;
     border-color: @border-colour;
@@ -414,7 +415,7 @@ mode-switcher{
     text-color: @foreground-colour;
 }
 button {
-    padding: 0 8px;
+    padding: 0 4px;
     width: 140px;
     margin: 0;
     border: 0;
@@ -427,7 +428,7 @@ button {
 button selected {
     background-color: var(selected-normal-background);
     text-color: var(selected-normal-foreground);
-    padding: 0 8px;
+    padding: 0 4px;
 }
 
 //// Message ////
@@ -442,7 +443,7 @@ message {
     text-color: @foreground-colour;
 }
 textbox {
-    padding: 8px 10;
+    padding: 8px 10px;
     border: 0;
     border-radius: 10;
     border-color: @border-colour;
@@ -456,7 +457,7 @@ textbox {
     markup: true;
 }
 error-message {
-    padding: 10;
+    padding: 0;
     border: 2px solid;
     border-radius: 10;
     border-color: @border-colour;
