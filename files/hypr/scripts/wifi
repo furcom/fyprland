@@ -16,11 +16,11 @@ wlan_menu() {
             fi
             OPTIONS="$OPTIONS\n󰍉 Scan\n Saved"
         else
-            OPTIONS=" Enable"  # Only show wenn WiFi is disabled
+            OPTIONS=" Enable"  # Only show when WiFi is disabled
         fi
         OPTIONS="󰌍 Back\n$OPTIONS"
 
-        CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt -p "WLAN Menu" -selected-row $SelectedRowWifi)
+        CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -p "WLAN Menu" -selected-row $SelectedRowWifi)
 
         if [ $? -ne 0 ]; then
             break
@@ -34,14 +34,17 @@ wlan_menu() {
                 nmcli radio wifi off
                 break ;;
             "󱘖 Connect")
-                connect_to_network ;;
+                scan_for_networks  # Use the scan menu for selecting a network to connect to
+                break ;;
             "󰍉 Scan")
-                scan_for_networks ;;
+                scan_for_networks
+                break ;;
             " Saved")
-                manage_saved_networks ;;
+                manage_saved_networks  # Manage saved networks
+                break ;;
             "󰌍 Back")
-		$HyprScriptsDir/settings --wifi
-		break ;;
+                $HyprScriptsDir/settings --wifi
+                break ;;
             *)
                 echo "Invalid choice" ;;
         esac
@@ -50,71 +53,81 @@ wlan_menu() {
 
 scan_for_networks() {
     while true; do
-        nmcli -f SSID device wifi rescan  # Scan for networks
-        AVAILABLE_NETWORKS=$(nmcli -f SSID device wifi | tail -n +2 | sed 's/^\s*//;s/\s*$//' | sort -u | sed 's/^--$/<unknown>/')  # Rename "--" to <unknown> and remove duplicate SSIDs
+        nmcli -f SSID,BSSID device wifi rescan  # Rescan for networks
+        AVAILABLE_NETWORKS=$(nmcli -f SSID,BSSID,SECURITY,SIGNAL device wifi | awk 'NR>1 {print $1 " (" $2 ")"}' | sed 's/^\s*//;s/\s*$//' | sort -u)
 
         if [ -z "$AVAILABLE_NETWORKS" ]; then
-            SelectedRowWifi="2"
-            echo "No networks found" | $RofiMenuAlt
+            echo "No networks found" | $RofiMenuSettings
             return
         fi
 
-        SSID=$(echo -e "󰌍 Back\n$AVAILABLE_NETWORKS" | $RofiMenuAlt -p "Select a network:")
+        # Display SSIDs, but include BSSIDs in parentheses
+        SSID_SELECTION=$(echo -e "󰌍 Back\n$AVAILABLE_NETWORKS" | $RofiMenuSettings -p "Select a network:")
 
-        if [ $? -ne 0 ] || [ "$SSID" = "󰌍 Back" ]; then
-            SelectedRowWifi="2"
-	    break
+        if [ $? -ne 0 ] || [ "$SSID_SELECTION" = "󰌍 Back" ]; then
+            break
         fi
 
-        if [ -n "$SSID" ]; then
-            SelectedRowWifi="2"
-            connect_to_selected_network "$SSID"
+        # Extract the BSSID from the selection (text between parentheses)
+        SELECTED_BSSID=$(echo "$SSID_SELECTION" | grep -oP '\(\K[^)]+' )
+
+        if [ -n "$SELECTED_BSSID" ]; then
+            connect_to_selected_bssid "$SELECTED_BSSID"
             break  # Close menu after connecting
         fi
     done
 }
 
-connect_to_selected_network() {
-    local SSID=$1
+connect_to_selected_bssid() {
+    local BSSID=$1
 
-    # Check if network is already saved
-    if nmcli -f NAME connection show | grep -q "$SSID"; then
-        nmcli device wifi connect "$SSID"
+    # Check if the network is already saved by its BSSID
+    if nmcli -f NAME connection show | grep -q "$BSSID"; then
+        nmcli device wifi connect bssid "$BSSID"
     else
-        kitty sh -c "echo 'Please enter the password for $SSID:' && read -s PASSWORD && nmcli device wifi connect '$SSID' password '$PASSWORD'"
+        # Ask for password and use BSSID to connect
+        $TERMINAL sh -c "bash -c 'echo Please enter the password for BSSID \"$BSSID\":; read -s PASSWORD; nmcli device wifi connect bssid \"$BSSID\" password \"$PASSWORD\"; if [ $? -eq 0 ]; then echo Connected to \"$BSSID\"; else echo Failed to connect to \"$BSSID\"; fi; echo Press any key to close this window; read -n 1'"
     fi
 }
 
 manage_saved_networks() {
     while true; do
+        # List saved connections by SSID, then fetch the BSSID to connect or delete
         SAVED_NETWORKS=$(nmcli connection show | grep -i wifi | awk '{print $1}')
 
         if [ -z "$SAVED_NETWORKS" ]; then
             SelectedRowWifi="3"
-            echo "No saved networks found" | $RofiMenuAlt
+            echo "No saved networks found" | $RofiMenuSettings
             return
         fi
 
-        NETWORK=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | $RofiMenuAlt -p "Select a network to edit:")
+        NETWORK=$(echo -e "󰌍 Back\n$SAVED_NETWORKS" | $RofiMenuSettings -p "Select a network to edit:")
 
         if [ $? -ne 0 ] || [ "$NETWORK" = "󰌍 Back" ]; then
             SelectedRowWifi="3"
             break
         fi
 
-        ACTION=$(echo -e "󰌍 Back\n󱘖 Connect\n󰆴 Delete" | $RofiMenuAlt -p "Actions for $NETWORK:")
+        ACTION=$(echo -e "󰌍 Back\n󱘖 Connect\n󰆴 Delete" | $RofiMenuSettings -p "Actions for $NETWORK:")
 
         if [ "$ACTION" = "󰆴 Delete" ]; then
-            CONFIRM=$(echo -e "󰄴 Yes\n No" | $RofiMenuAlt -p "Are you sure you want to delete $NETWORK?")
+            CONFIRM=$(echo -e "󰄴 Yes\n No" | $RofiMenuSettings -p "Are you sure you want to delete $NETWORK?")
             if [ "$CONFIRM" = "󰄴 Yes" ]; then
                 nmcli connection delete "$NETWORK"
-                echo "$NETWORK deleted successfully" | $RofiMenuAlt
+                echo "$NETWORK deleted successfully" | $RofiMenuSettings
             fi
         elif [ "$ACTION" = "󱘖 Connect" ]; then
-            nmcli device wifi connect "$NETWORK"  # Connect with selected network
-            break  # Close menu after connecting
+            # Connect using the BSSID associated with the saved SSID
+            SAVED_BSSID=$(nmcli -f BSSID connection show "$NETWORK" | grep -m 1 BSSID | awk '{print $2}')
+            if [ -n "$SAVED_BSSID" ]; then
+                connect_to_selected_bssid "$SAVED_BSSID"
+                break  # Close menu after connecting
+            else
+                echo "No BSSID found for $NETWORK" | $RofiMenuSettings
+            fi
         fi
     done
 }
 
 wlan_menu
+

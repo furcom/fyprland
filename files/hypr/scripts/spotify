@@ -9,40 +9,11 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
-song_cover() {
-    album_art=$(playerctl -p spotify metadata mpris:artUrl)
-    if [[ -z $album_art ]] 
-        then
-        # spotify is dead, we should die too.
-        exit
-    fi
-    curl -s  "${album_art}" --output "/tmp/cover.jpeg"
-    echo "/tmp/cover.jpeg"
-}
-
-artist_title() {
     status=$(playerctl -p spotify status)
     artist=$(playerctl -p spotify metadata xesam:artist)
     title=$(playerctl -p spotify metadata xesam:title)
     case $status in
-        "Playing" ) echo "  $artist - $title" ;;
-        "Paused" ) echo "  $artist - $title" ;;
+        "Playing" ) echo "  $artist - $title" ;;
+        "Paused" ) echo "  $artist - $title" ;;
         * ) echo "" ;;
     esac
-}
-
-spotify_button() {
-    status2=$(playerctl -p spotify status)
-    case $status2 in
-        "Playing" ) echo "" ;;
-        "Paused" ) echo "" ;;
-        * ) echo "" ;;
-    esac
-}
-
-case "$1" in
-    --cover) song_cover ;;
-    --song) artist_title ;;
-    --button) spotify_button ;;
-    *) exit 1 ;;
-esac

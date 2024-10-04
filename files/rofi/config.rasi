@@ -9,7 +9,8 @@
 @import "./colors.rasi"
 
 configuration {
-    /*--- General setting ---*/
+
+    // General setting
     modi: "";
     case-sensitive: false;
     cycle: true;
@@ -18,21 +19,21 @@ configuration {
     normalize-match: true;
     show-icons: true;
     icon-theme: "Papirus";
-    /* cache-dir:; */
     steal-focus: false;
-    /* dpi: -1; */
+    // dpi: -1;
+    // cache-dir:;
 
-    /*--- Matching setting ---*/
+    // Matching setting
     matching: "normal";
     tokenize: true;
 
-    /*--- SSH settings ---*/
+    // SSH settings
     ssh-client: "ssh";
     ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
     parse-hosts: true;
     parse-known-hosts: true;
 
-    /*--- Drun settings ---*/
+    // Drun settings
     drun-categories: "";
     drun-match-fields: "name,generic,exec,categories,keywords";
     drun-display-format: "{icon} {name}";
@@ -41,41 +42,39 @@ configuration {
     drun-use-desktop-cache: false;
     drun-reload-desktop-cache: false;
     drun {
-        /** Parse user desktop files. */
+        // Parse user desktop files.
         parse-user:   true;
-        /** Parse system desktop files. */
+        // Parse system desktop files.
         parse-system: true;
     }
 
-    /*--- Run settings ---*/
+    // Run settings
     run-command: "{cmd}";
     run-list-command: "";
     run-shell-command: "{terminal} -e {cmd}";
 
-    /*--- Fallback Icon ---*/
+    // Fallback Icon
     run,drun {
         fallback-icon: "x";
     }
 
-    /*--- Window switcher settings ---*/
+    // Window switcher settings
     window-match-fields: "title,class,role,name,desktop";
     window-command: "wmctrl -i -R {window}";
     window-format: "{w} - {c} - {t:0}";
     window-thumbnail: false;
 
-    /*--- Combi settings ---*/
-    /*
+    // Combi settings
     combi-modi: "window,run";
     combi-hide-mode-prefix: false;
     combi-display-format: "{mode} {text}";
-    */
 
-    /*--- History and Sorting ---*/
+    // History and Sorting
     disable-history: false;
     sorting-method: "normal";
     max-history-size: 25;
 
-    /*--- Display setting ---*/
+    // Display setting
     display-window: " Windows";
     display-windowcd: " Windows CD";
     display-run: " Run";
@@ -85,30 +84,29 @@ configuration {
     display-keys: " Keys";
     display-filebrowser: " Files";
 
-    /*--- Misc setting ---*/
+    // Misc setting
     terminal: "rofi-sensible-terminal";
     font: "Mono 12";
     sort: false;
     threads: 0;
     click-to-exit: true;
-    /* ignored-prefixes: ""; */
-    /* pid: "/run/user/1000/rofi.pid"; */
+    // ignored-prefixes: "";
+    // pid: "/run/user/1000/rofi.pid";
 
-    /*--- File browser settings ---*/
+    // File browser settings
     filebrowser {
-        /* directory: "/home"; */
+        // directory: "/home";
         directories-first: true;
         sorting-method:    "name";
     }
 
-    /*--- Other settings ---*/
+    //Other settings
     timeout {
         action: "kb-cancel";
         delay:  0;
     }
 
-    /*--- Keybindings ---*/
-    /*
+    // Keybindings
     kb-primary-paste: "Control+V,Shift+Insert";
     kb-secondary-paste: "Control+v,Insert";
     kb-clear-line: "Control+w";
@@ -181,7 +179,6 @@ configuration {
     me-select-entry: "MousePrimary";
     me-accept-entry: "MouseDPrimary";
     me-accept-custom: "Control+MouseDPrimary";
-    */
 }
 
 /////////////////
@@ -195,201 +192,130 @@ configuration {
 
 //// Main Window ////
 window {
-    // properties for window widget
-    transparency: "real";
-    location:  north;
-    anchor: center;
-    fullscreen: false;
-    width: 1920px;
-    height: 44px;
-    x-offset: 0;
-    y-offset: -58px;
-
-    // properties for all widgets
-    enabled: true;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  enabled: true;
+    anchor: north;
+    border: none;
+    border-color: @background;
     border-radius: 0;
-    border-color: @border-colour;
     cursor: "default";
-    // Backgroud Colors
-    background-color: @background-colour;
-    // Backgroud Image
-    //background-image: url("/path/to/image.png", none);
-    // Simple Linear Gradient
-    //background-image: linear-gradient(red, orange, pink, purple);
-    // Directional Linear Gradient
-    //background-image: linear-gradient(to bottom, pink, yellow, magenta);
-    // Angle Linear Gradient
-    //background-image: linear-gradient(45, cyan, purple, indigo);
+    fullscreen: false;
+    height: 51px;
+    location:  north;
+    padding: 5px;
+    x-offset: 0;
+    y-offset: -66px;
+    transparency: "real";
+    width: 100%;
 }
 
 //// Main Box ////
 mainbox {
-    enabled: true;
-    spacing: 0;
-    margin: 0;
-    padding: 0;
+  enabled: true;
+    background-color: @background;
     border: 0;
+    border-color: @background;
     border-radius: 0;
-    border-color: @border-colour;
-    background-color: transparent;
     children: ["inputbar"];
+    margin: 0 0 0 16px;
 }
 
 //// Inputbar ////
 inputbar {
-    enabled:true;
-    spacing: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    border-color: @border-colour;
-    background-color: transparent;
-    text-color: @foreground-colour;
+  enabled:true;
     children: ["textbox-prompt-colon","entry","listview","mode-switcher"];
+    background-color: @background;
+    border-color: @background;
+    text-color: @foreground;
 }
 
 prompt {
-    enabled: true;
+  enabled: true;
     background-color: inherit;
     text-color: inherit;
 }
 textbox-prompt-colon {
-    enabled: true;
-    padding: 8;
-    margin : 0 0 0 8px;
-    expand: false;
-    str: "";
+  enabled: true;
     background-color: inherit;
+    expand: false;
+    margin: 6px 0 0 0;
+    str: "";
     text-color: inherit;
 }
 entry {
-    enabled: true;
-    expand: false;
-    padding: 8;
-    margin : 0 0 0 8px;
-    border-radius: 0;
+  enabled: true;
     background-color: inherit;
-    text-color: inherit;
+    border-radius: 0;
     cursor: text;
-    placeholder: "Search";
+    expand: false;
+    margin: 6px 0 0 16px;
+    placeholder: " Search";
     placeholder-color: inherit;
+    text-color: inherit;
 }
 num-filtered-rows {
-    enabled: true;
-    expand: false;
+  enabled: true;
     background-color: inherit;
+    expand: false;
     text-color: inherit;
 }
 textbox-num-sep {
-    enabled: true;
+  enabled: true;
+    background-color: inherit;
     expand: false;
     str: "/";
-    background-color: inherit;
     text-color: inherit;
 }
 num-rows {
-    enabled: true;
-    expand: false;
+  enabled: true;
     background-color: inherit;
+    expand: false;
     text-color: inherit;
 }
 case-indicator {
-    enabled: true;
+  enabled: true;
     background-color: inherit;
     text-color: inherit;
 }
 
 //// Listview ////
 listview {
-    enabled: true;
+  enabled: true;
+    background-color: transparent;
+    border: none;
     columns: 1;
-    lines: 16;
+    cursor: "default";
     cycle: true;
     dynamic: true;
-    scrollbar: true;
-    layout: horizontal;
-    reverse: false;
-    fixed-height: true;
     fixed-columns: true;
-
+    fixed-height: true;
+    layout: horizontal;
+    lines: 16;
+    margin: 0 0 0 16px;
+    reverse: false;
+    scrollbar: true;
     spacing: 8px;
-    margin: 0;
-    padding: 8;
-    border: 0;
-    border-radius: 0;
-    border-color: @border-colour;
-    background-color: transparent;
     text-color: @foreground-colour;
-    cursor: "default";
 }
 
 scrollbar {
+  enabled: true;
+    background-color:  @alternate-background;
+    border-radius: 4px;
+    handle-color: @handle-colour;
     handle-width: 8px;
     padding: 4px;
-    handle-color: @handle-colour;
-    border-radius: 4px;
-    background-color:  @alternate-background;
 }
 
 //// Element ////
 element {
-    enabled: true;
-    spacing: 8px;
-    margin: 0;
-    padding: 0 4px;
-    border: 0;
+  enabled: true;
+    background-color: none;
     border-radius: 24px;
-    border-color: @border-colour;
-    background-color: transparent;
-    text-color: @foreground-colour;
     cursor: pointer;
+    padding: 4px 8px;
+    text-color: @foreground-colour;
 }
-element normal.normal {
-    background-color: var(normal-background);
-    text-color: var(normal-foreground);
-}
-element normal.urgent {
-    background-color: var(urgent-background);
-    text-color: var(urgent-foreground);
-}
-element normal.active {
-    background-color: var(active-background);
-    text-color: var(active-foreground);
-}
-element selected.normal {
-    background-color: var(selected-normal-background);
-    text-color: var(selected-normal-foreground);
-}
-element selected.urgent {
-    background-color: var(selected-urgent-background);
-    text-color: var(selected-urgent-foreground);
-}
-element selected.active {
-    background-color: var(selected-active-background);
-    text-color: var(selected-active-foreground);
-}
-element alternate.normal {
-    background-color: var(alternate-normal-background);
-    text-color: var(alternate-normal-foreground);
-}
-element alternate.urgent {
-    background-color: var(alternate-urgent-background);
-    text-color: var(alternate-urgent-foreground);
-}
-element alternate.active {
-    background-color: var(alternate-active-background);
-    text-color: var(alternate-active-foreground);
-}
-element-icon {
-    background-color: transparent;
-    text-color: inherit;
-    size: 20;
-    cursor: inherit;
-}
+
 element-text {
     background-color: transparent;
     text-color: inherit;
@@ -399,32 +325,79 @@ element-text {
     horizontal-align: 0;
 }
 
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element normal.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element normal.active {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.active {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element alternate.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element alternate.active {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element-icon {
+  enabled: true;
+    background-color: transparent;
+    cursor: inherit;
+    size: 16;
+    text-color: inherit;
+}
+
 //// Mode Switcher ////
 mode-switcher{
-    enabled: true;
-    spacing: 0;
-    margin: 0;
-    padding: 8;
-    border: 0;
-    border-radius: 0;
-    border-color: @border-colour;
-    background-color: transparent;
-    text-color: @foreground-colour;
+  enabled: true;
 }
+
 button {
-    padding: 0 4px;
-    width: 128px;
-    margin: 0;
+    background-color: @background;
     border: 0;
     border-radius: 24px;
-    border-color: @border-colour;
-    background-color: @alternate-background;
-    text-color: inherit;
+    border-color: transparent;
     cursor: pointer;
+    margin: 0;
+    padding: 0 4px;
+    text-color: @foreground;
+    width: 128px;
 }
+
 button selected {
-    background-color: var(selected-normal-background);
-    text-color: var(selected-normal-foreground);
+    background-color: @primary;
+    text-color: @foreground;
     padding: 0 4px;
 }
 
@@ -439,6 +412,7 @@ message {
     background-color: transparent;
     text-color: @foreground-colour;
 }
+
 textbox {
     padding: 8px 10px;
     border: 0;
@@ -453,6 +427,7 @@ textbox {
     blink: true;
     markup: true;
 }
+
 error-message {
     padding: 8;
     border: 2px solid;

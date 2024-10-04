@@ -24,8 +24,7 @@
         "memory",
         "disk",
         "temperature",
-        "custom/spotify",
-	"custom/spotify-button"
+        "custom/spotify"
     ],
 
     "modules-center": [
@@ -107,21 +106,14 @@
     },
 
     "custom/spotify": {
-        "exec": "~/.config/hypr/scripts/spotify --song",
+        "exec": "~/.config/hypr/scripts/spotify",
         "tooltip": true,
         "tooltip-format": " Spotify",
         "interval": 1,
-        "on-click": "hyprctl dispatch focuswindow class:Spotify"
+	"on-click": "playerctl -p spotify play-pause",
+        "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
     },
 
-    "custom/spotify-button": {
-        "exec": "~/.config/hypr/scripts/spotify --button",
-        "tooltip": true,
-        "tooltip-format": "Play/Pause",
-        "interval": 1,
-        "on-click": "playerctl -p spotify play-pause"
-    },
-	
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,

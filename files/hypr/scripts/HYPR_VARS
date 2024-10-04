@@ -43,8 +43,8 @@ KittyConfigsDir="$KittyDir/configs"
 # rofi
 RofiDir="$HOME/.config/rofi"
 RofiScriptsDir="$RofiDir/scripts"
-RofiMenu="rofi -dmenu"
-RofiMenuAlt="rofi -dmenu -config $RofiDir/config_alt.rasi"
+RofiMenu="rofi -dmenu -config $RofiDir/config.rasi"
+RofiMenuSettings="rofi -dmenu -config $RofiDir/settings.rasi"
 
 # waybar
 WaybarDir="$HOME/.config/waybar"

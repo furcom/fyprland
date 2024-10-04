@@ -30,12 +30,12 @@ tooltip {
 #custom-updates {
     background-color: #007700;
     color: @foreground;
-    margin: 0 0 0 4px;
+    margin: 0 4px 0 0;
     padding: 0 12px;
 }
 
 #workspaces {
-    margin: 0 0 0 4px;
+    margin: 0;
     padding: 0 8px;
 }
 #workspaces button.persistent {
@@ -69,16 +69,8 @@ tooltip {
 #custom-spotify {
     background-color: rgba(255,255,255,0.15);
     color: @foreground;
-    border-radius: 24px 0 0 24px;
     margin: 0 0 0 4px;
-    padding: 0 8px;
-}
-#custom-spotify-button {
-    background-color: rgba(255,255,255,0.15);
-    border-radius: 0 24px 24px 0;
-    color: @foreground;
-    margin: 0 4px 0 0;
-    padding: 0 8px;
+    padding: 0 12px;
 }
 
 .modules-center {
@@ -94,7 +86,7 @@ tooltip {
     background: rgba(255,255,255,0.15);
     color: @foreground;
     min-width: 16px;
-    padding: 0 8px;
+    padding: 0 12px;
 }
 window#waybar.empty #window {
     background: none;
@@ -109,7 +101,7 @@ window#waybar.empty #window {
     color: @foreground;
     margin: 0 4px 0 0;
     min-width: 16px;
-    padding: 0 8px;
+    padding: 0 10px;
 }
 
 #tray menu {
@@ -176,7 +168,6 @@ window#waybar.empty #window {
 #battery.plugged:hover,
 #battery.warning:not(.charging):hover,
 #custom-powermenu:hover,
-#custom-spotify-button:hover,
 #custom-spotify:hover {
     background-color: @color2;
     color: @foreground;
@@ -203,5 +194,5 @@ window#waybar > box {
     margin: 0 0 8px 0; 
     background-color: @background_bar;
     box-shadow: 0px 4px 3px 1px rgba(0,0,0,0.5);
-    padding: 4px;
+    padding: 8px;
 }

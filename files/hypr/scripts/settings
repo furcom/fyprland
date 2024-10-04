@@ -18,7 +18,7 @@ MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
 main_menu() {
     OPTIONS=" Hyprland\n󱘖 Connections\n Packages\n Extras\n"
-    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowMain)
+    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowMain)
 
     if [ -z "$CHOICE" ]; then
         exit 0
@@ -46,7 +46,7 @@ main_menu() {
 
 extras_menu() {
     EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma"
-    EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowExtras)
+    EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowExtras)
 
     if [ -z "$EXTRAS_SUBCHOICE" ]; then
         SelectedRowMain="3"
@@ -70,7 +70,7 @@ extras_menu() {
 
 hyprland_menu() {
     HYPRLAND_OPTIONS="󰌍\n󰸉 Wallpaper\n General\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins"
-    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowHypr)
+    HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowHypr)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
         SelectedRowMain="0"
@@ -92,7 +92,7 @@ hyprland_menu() {
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             " Layouts")
 		    LAYOUTS_OPTIONS="󰌍\n Enable master layout\n Enable dwindle layout\n Config"
-		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | $RofiMenuAlt)
+		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | $RofiMenuSettings)
 		    case "$LAYOUTS_SUBCHOICE" in
 			"󰌍")
                             SelectedRowHypr="6"
@@ -120,7 +120,7 @@ hyprland_menu() {
 
 waybar_menu() {
     WAYBAR_OPTIONS="󰌍\n Config\n Style\n󰑓 Restart"
-    WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuAlt)
+    WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
         SelectedRowExtras="1"
@@ -143,7 +143,7 @@ waybar_menu() {
 
 window_bar_menu() {
     WINBAR_OPTIONS="󰌍\n󰐥 Enable\n󰤂 Disable"
-    WINBAR_SUBCHOICE=$(echo -e "$WINBAR_OPTIONS" | $RofiMenuAlt)
+    WINBAR_SUBCHOICE=$(echo -e "$WINBAR_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WINBAR_SUBCHOICE" ]; then
         SelectedRowHypr="3"
@@ -163,7 +163,7 @@ window_bar_menu() {
 
 kitty_menu() {
     KITTY_OPTIONS="󰌍\n Config\n Style\n Keymaps\n󰑓 Reload Config"
-    KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | $RofiMenuAlt)
+    KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$KITTY_SUBCHOICE" ]; then
         SelectedRowExtras="2"
@@ -187,7 +187,7 @@ kitty_menu() {
 
 rofi_menu() {
     ROFI_OPTIONS="󰌍\n Config\n Alt. Config"
-    ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | $RofiMenuAlt)
+    ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$ROFI_SUBCHOICE" ]; then
         SelectedRowExtras="3"
@@ -207,7 +207,7 @@ rofi_menu() {
 
 fusuma_menu() {
     FUSUMA_OPTIONS="󰌍\n Config\n󰑓 Restart"
-    FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuAlt)
+    FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
         SelectedRowExtras="4"
@@ -227,7 +227,7 @@ fusuma_menu() {
 
 connections_menu() {
     CONNECTIONS_OPTIONS="󰌍\n Bluetooth\n󰖩 WiFi\n󰖂 Wireguard"
-    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | $RofiMenuAlt -selected-row $SelectedRowConnection)
+    CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowConnection)
 
     if [ -z "$CONNECTIONS_SUBCHOICE" ]; then
         SelectedRowMain="1"
@@ -249,7 +249,7 @@ connections_menu() {
 
 wireguard_menu() {
     WIREGUARD_OPTIONS="󰌍\n󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config"
-    WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | $RofiMenuAlt)
+    WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
         SelectedRowConnection="3"
@@ -279,7 +279,7 @@ wireguard_menu() {
 
 packages_menu() {
     PACKAGES_OPTIONS="󰌍\n󰮯 Arch Package Updates\n AUR Package Updates\n Hyprland Plugin Updates\n󰃢 Clean Pacman"
-    PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | $RofiMenuAlt)
+    PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
         SelectedRowMain="2"
@@ -312,7 +312,7 @@ wallpaper_menu() {
     done
 
     #WALLPAPER_OPTIONS+="󰌍"
-    WALLPAPER_SUBCHOICE=$(echo -e "󰌍\n$WALLPAPER_OPTIONS" | $RofiMenuAlt)
+    WALLPAPER_SUBCHOICE=$(echo -e "󰌍\n$WALLPAPER_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WALLPAPER_SUBCHOICE" ]; then
         SelectedRowHypr="1"

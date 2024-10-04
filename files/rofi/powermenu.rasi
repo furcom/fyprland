@@ -1,0 +1,110 @@
+@import "./colors.rasi"
+
+* {
+    font:            "0xProto Nerd Font 14";
+}
+
+window {
+    anchor:     north;
+    border:     none;
+    location:   north;
+    width:      100%;
+    padding:    8px;
+    children:   [ mainbox ];
+
+    transparency: "real";
+    fullscreen: false;
+    width: 1920px;
+    height: 51px;
+    x-offset: 0;
+    y-offset: -66px;
+}
+
+mainbox {
+    orientation: horizontal;
+    children:   [ dummy,listview ];
+    background-color: @background;
+    margin: 0 -504px 0 0;
+}
+
+dummy {
+    expand: true;
+}
+
+listview {
+    background-color: @background;
+    border: 0;
+    border-radius: 0;
+    columns: 1;
+    cursor: "default";
+    cycle: true;
+    dynamic: true;
+    enabled: true;
+    fixed-columns: false;
+    fixed-height: true;
+    layout:     horizontal;
+    lines:      10;
+    reverse: false;
+    scrollbar: false;
+    spacing:    16px;
+    text-color: @foreground-colour;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    highlight: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0;
+}
+
+element {
+    padding: 4px 16px;
+    border-radius: 24px;
+}
+
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element normal.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element normal.active {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element selected.active {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element alternate.urgent {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element alternate.active {
+    background-color: @primary;
+    text-color: @foreground;
+}

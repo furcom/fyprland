@@ -73,6 +73,10 @@ install_hyprbars() {
     hyprpm enable hyprbars
 }
 
+install_hyprshot() {
+    yay -S --needed --noconfirm hyprshot
+}
+
 install_hypridle() {
     sudo pacman -S --needed --noconfirm hypridle
 }
