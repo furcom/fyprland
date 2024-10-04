@@ -45,6 +45,7 @@ RofiDir="$HOME/.config/rofi"
 RofiScriptsDir="$RofiDir/scripts"
 RofiMenu="rofi -dmenu -config $RofiDir/config.rasi"
 RofiMenuSettings="rofi -dmenu -config $RofiDir/settings.rasi"
+RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi"
 
 # waybar
 WaybarDir="$HOME/.config/waybar"
