@@ -12,5 +12,5 @@
     background: {{background}};
     foreground: {{foreground}};
     primary: {{color2}};
-    secondary: {{color4}};
+    secondary: {{color6}};
 }

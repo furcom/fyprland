@@ -1,111 +1,185 @@
+@import "./config.rasi"
 @import "./colors.rasi"
 
-* {
-    font:            "0xProto Nerd Font 14";
-}
-
-window {
-    anchor:     north;
-    border:     0 4px 4px 4px;
-    border-radius: 0 0 24px 24px;
-    border-color: @primary;
-    location:   north;
-    width:      100%;
-    padding:    8px 8px 8px 32px;
-    children:   [ mainbox ];
-
-    transparency: "real";
-    fullscreen: false;
-    width: 1920px;
-    height: 150px;
-    x-offset: 0;
-    y-offset: -66px;
-}
-
-mainbox {
-    orientation: horizontal;
-    children:   [ listview ];
-    background-color: @background;
-}
-
-dummy {
-    expand: true;
-}
-
-listview {
-    background-color: @background;
-    border: 0;
-    border-radius: 0;
-    columns: 3;
-    cursor: "default";
-    cycle: true;
-    dynamic: true;
-    enabled: true;
-    fixed-columns: false;
-    fixed-height: true;
-    layout:     vertical;
-    lines:      16;
-    reverse: false;
-    scrollbar: true;
-    spacing:    16px;
-    text-color: @foreground-colour;
-}
-
-element-text {
-    background-color: transparent;
-    text-color: inherit;
-    highlight: inherit;
-    cursor: inherit;
-    vertical-align: 0.5;
-    horizontal-align: 0;
+configuration {
+    show-icons: false;
 }
 
 element {
-    padding: 4px 16px;
+    padding: 2px 16px;
     border-radius: 24px;
+    cursor:  pointer;
+    spacing: 5px ;
+    border:  0;
 }
-
 element normal.normal {
     background-color: @background;
-    text-color: @foreground;
+    text-color:       @foreground;
 }
-
 element normal.urgent {
-    background-color: @primary;
-    text-color: @foreground;
+    background-color: #ff0000;
+    text-color:       @foreground;
 }
-
 element normal.active {
     background-color: @primary;
-    text-color: @foreground;
+    text-color:       @foreground;
 }
-
 element selected.normal {
     background-color: @primary;
-    text-color: @foreground;
+    text-color:       @foreground;
 }
-
 element selected.urgent {
-    background-color: @primary;
-    text-color: @foreground;
+    background-color: #770000;
+    text-color:       @foreground;
 }
-
 element selected.active {
     background-color: @primary;
-    text-color: @foreground;
+    text-color:       @foreground;
 }
-
 element alternate.normal {
     background-color: @background;
-    text-color: @foreground;
+    text-color:       @foreground;
 }
-
 element alternate.urgent {
+    background-color: #ff0000;
+    text-color:       @foreground;
+}
+element alternate.active {
     background-color: @primary;
-    text-color: @foreground;
+    text-color:       @foreground;
+}
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+element-icon {
+    background-color: transparent;
+    size:             1.0000em ;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+window {
+    padding:          16px;
+    background-color: var(background);
+    border:           0 4px 4px 4px;
+    border-color:     @primary;
+    border-radius:    0 0 24px 24px;
+    anchor:	      northeast;
+    location:	      northeast;
+    y-offset:	      -66px;
+    width: 100%;
+}
+mainbox {
+    padding: 9px;
+    border:  0;
+    children: ["inputbar","listview"];
 }
 
-element alternate.active {
+message {
+    padding:      1px ;
+    border-color: @primary;
+    border:       2px dash 0px 0px ;
+}
+textbox {
+    text-color: @foreground;
+}
+listview {
+    padding:      0 ;
+    scrollbar:    true;
+    border-color: @primary;
+    layout:       vertical;
+    spacing:      8px ;
+    fixed-height: 0;
+    margin: 8px 0 0 0;
+    border:       2px dash 0px 0px ;
+    expand: 	  false;
+    lines: 5;
+    columns: 2;
+    border:	  none;
+    expand: true;
+    cursor: "default";
+    cycle: true;
+    dynamic: true;
+    reverse: false;
+}
+scrollbar {
+    padding:      0;
+    handle-width: 8px ;
+    border:       4;
+    border-radius: 24px;
+    background-color: @background;
+    border-color: @primary;
+    handle-color: @foreground;
+}
+sidebar {
+    border-color: @primary;
+    border:       2px dash 0px 0px ;
+}
+num-filtered-rows {
+    expand:     false;
+    text-color: @foreground;
+}
+num-rows {
+    expand:     false;
+    text-color: @foreground;
+}
+textbox-num-sep {
+    expand:     false;
+    str:        "/";
+    text-color: @foreground;
+}
+inputbar {
+    padding:    1px ;
+    spacing:    16px ;
+    margin: 0 0 0 12px;
+    text-color: @foreground;
+    children: ["textbox-prompt-colon","entry","mode-switcher"];
+}
+case-indicator {
+    spacing:    0;
+    text-color: @foreground;
+}
+entry {
+    text-color:        @foreground;
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: @foreground;
+    placeholder:       " Search";
+    expand: false;
+    width: 128px;
+}
+prompt {
+    spacing:    0;
+    text-color: @foreground;
+}
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        "";
+    text-color: inherit;
+}
+
+mode-switcher{
+  enabled: true;
+}
+
+button {
+    background-color: @background;
+    border: 0;
+    border-radius: 24px;
+    border-color: transparent;
+    cursor: pointer;
+    margin: 0;
+    padding: 0px;
+    text-color: @foreground;
+    spacing:    0;
+    text-color: @foreground;
+    width: 152px;
+}
+
+button selected {
     background-color: @primary;
     text-color: @foreground;
 }
