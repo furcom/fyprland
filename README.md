@@ -1,6 +1,8 @@
-**Preview 1** | **Preview 2** | **Preview 3**
+**Desktop (empty)** | **Desktop**
 :-: | :-: | :-:
-![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)  |  ![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)
+![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)
+:-: | :-: | :-:
+![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)  |  ![Preview 4](https://github.com/furcom/fyprland/blob/main/preview_4.png?raw=true)
 
 # fyprland
 This repository features a sleek, minimalistic Hyprland configuration with dynamic color schemes that adapt to your wallpaper. Enjoy a streamlined, personalized, and colorful desktop experience with ease!
