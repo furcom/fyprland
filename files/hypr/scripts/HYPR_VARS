@@ -56,6 +56,9 @@ WallustTemplatesDir="$WallustDir/templates"
 # mako
 MakoDir="$HOME/.config/mako"
 
+# oh-my-posh
+OmpDir="$HOME/.config/oh-my-posh"
+
 ##########
 # COLORS #
 ##########

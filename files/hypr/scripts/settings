@@ -46,7 +46,7 @@ main_menu() {
 }
 
 extras_menu() {
-    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma"
+    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma\n Oh My Posh"
     EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowExtras)
 
     if [ -z "$EXTRAS_SUBCHOICE" ]; then
@@ -65,6 +65,8 @@ extras_menu() {
                 rofi_menu ;;
             "󰵷 Fusuma")
                 fusuma_menu ;;
+            " Oh My Posh")
+                $TERMINAL sh -c "$EDITOR $OmpDir/config.yaml" ;;
         esac
     fi
 }
@@ -120,7 +122,7 @@ hyprland_menu() {
 }
 
 waybar_menu() {
-    WAYBAR_OPTIONS="󰌍\n Config\n Style\n󰑓 Restart"
+    WAYBAR_OPTIONS="󰌍\n Config\n Style\n Colors\n󰑓 Restart"
     WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
@@ -135,6 +137,8 @@ waybar_menu() {
                 $TERMINAL sh -c "$EDITOR $WaybarDir/config" ;;
             " Style")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
+            " Colors")
+                $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/waybar" ;;
             "󰑓 Restart")
                 pkill waybar
 		waybar ;;

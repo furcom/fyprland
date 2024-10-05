@@ -69,7 +69,7 @@ tooltip {
 #custom-spotify {
     background-color: rgba(255,255,255,0.15);
     color: @foreground;
-    margin: 0 0 0 4px;
+    margin: 0 4px 0 4px;
     padding: 0 12px;
 }
 
@@ -87,6 +87,7 @@ tooltip {
     color: @foreground;
     min-width: 16px;
     padding: 0 12px;
+    margin: 0 4px 0 0;
 }
 window#waybar.empty #window {
     background: none;
