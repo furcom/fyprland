@@ -63,13 +63,13 @@ element-icon {
 window {
     padding:          16px;
     background-color: var(background);
-    border:           0 4px 4px 4px;
+    border:           4px;
+    border-radius:    24px;
     border-color:     @primary;
-    border-radius:    0 0 24px 24px;
-    anchor:	      northeast;
-    location:	      northeast;
+    anchor:	      center;
+    location:	      center;
     y-offset:	      -66px;
-    width: 100%;
+    width: 98%;
 }
 mainbox {
     padding: 9px;
@@ -95,8 +95,8 @@ listview {
     margin: 8px 0 0 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;
-    lines: 5;
-    columns: 2;
+    lines: 26;
+    columns: 4;
     border:	  none;
     expand: true;
     cursor: "default";
