@@ -62,14 +62,13 @@ element-icon {
 }
 window {
     padding:          16px;
-    background-color: var(background);
-    border:           4px;
-    border-radius:    24px;
+    background-color: @background;
+    border:           0 0 4px 0;
     border-color:     @primary;
-    anchor:	      center;
-    location:	      center;
+    anchor:	      north;
+    location:	      north;
     y-offset:	      -66px;
-    width: 98%;
+    width:	      100%;
 }
 mainbox {
     padding: 9px;
@@ -95,8 +94,8 @@ listview {
     margin: 8px 0 0 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;
-    lines: 26;
-    columns: 4;
+    lines:	  3;
+    columns: 	  2;
     border:	  none;
     expand: true;
     cursor: "default";
@@ -105,13 +104,14 @@ listview {
     reverse: false;
 }
 scrollbar {
-    padding:      0;
+    padding:      4px;
     handle-width: 8px ;
-    border:       4;
+    border:       4px;
     border-radius: 24px;
     background-color: @background;
     border-color: @primary;
-    handle-color: @foreground;
+    handle-color: @primary;
+    margin: 0 0 0 16px;
 }
 sidebar {
     border-color: @primary;
@@ -147,7 +147,7 @@ entry {
     spacing:           0;
     placeholder-color: @foreground;
     placeholder:       " Search";
-    expand: false;
+    expand: true;
     width: 128px;
 }
 prompt {

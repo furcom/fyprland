@@ -70,6 +70,7 @@ window {
 mainbox {
     padding: 0;
     border:  0;
+    margin: 0 0 0 1694px;
     children:   ["listview"];
 }
 
@@ -90,7 +91,8 @@ listview {
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
-    spacing: 1702px;
+    //spacing:    1702px;
+    spacing:      8px;
     fixed-height: 0;
     border:       2px dash 0px 0px ;
     expand: 	  true;

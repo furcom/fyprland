@@ -65,17 +65,18 @@ element-icon {
 }
 window {
     padding:          10;
-    background-color: var(background);
+    background-color: @background;
     border:           0;
-    anchor:	      northeast;
-    location:	      northeast;
+    anchor:	      north;
+    location:	      north;
     y-offset:	      -66px;
-    width: 100%;
+    width: 	      100%;
 }
 mainbox {
     padding: 0;
     border:  0;
-    children: ["listview"];
+    margin: 0 0 0 1195px;
+    children: [listview];
 }
 
 message {
@@ -91,7 +92,7 @@ listview {
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
-    spacing:      306px ;
+    spacing:      8px ;
     fixed-height: 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;

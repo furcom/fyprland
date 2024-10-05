@@ -15,13 +15,13 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
-RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi -selected-row 2"
+RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi -selected-row 4"
 RofiMenuConfirm="rofi -dmenu -config $RofiDir/confirm.rasi -selected-row 1"
 
 power_menu() {
     YES=" Yes"
     NO=" No"
-    OPTIONS="󰤄 Sleep\n Logout\n Lock\n Shutdown\n󰜉 Reboot"
+    OPTIONS=" Shutdown\n󰜉 Reboot\n󰤄 Sleep\n Logout\n Lock"
     CHOICE=$(echo -e "$OPTIONS" | $RofiMenuPower)
     case "$CHOICE" in
         " Lock")
