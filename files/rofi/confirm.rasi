@@ -1,8 +1,3 @@
-/**
- * rofi -dump-theme output.
- * Rofi version: 1.7.5+wayland3
- **/
-
 @import "./colors.rasi"
 
 * {
@@ -67,15 +62,19 @@ window {
     padding:          10;
     background-color: var(background);
     border:           0;
-    anchor:	      northeast;
-    location:	      northeast;
+    anchor:	      north;
+    location:	      north;
     y-offset:	      -66px;
     width: 100%;
+    children:   [ "dummy","listview","dummy" ];
 }
 mainbox {
     padding: 0;
     border:  0;
-    children: ["listview"];
+}
+
+dummy {
+    expand: true;
 }
 
 message {
@@ -91,10 +90,10 @@ listview {
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
-    spacing:      306px ;
+    spacing:      10px ;
     fixed-height: 0;
     border:       2px dash 0px 0px ;
-    expand: 	  false;
+    expand: 	  true;
     border:	  none;
 }
 scrollbar {

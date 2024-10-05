@@ -1,13 +1,6 @@
-/**
- * rofi -dump-theme output.
- * Rofi version: 1.7.5+wayland3
- **/
-
+@import "./config.rasi"
 @import "./colors.rasi"
 
-* {
-    font: "0xProto Nerd Font 16";
-}
 element {
     padding: 2px 16px;
     border-radius: 24px;
@@ -64,7 +57,7 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          10;
+    padding:          0;
     background-color: var(background);
     border:           0;
     anchor:	      northeast;
@@ -73,9 +66,9 @@ window {
     width: 100%;
 }
 mainbox {
-    padding: 0;
+    padding: 9px;
     border:  0;
-    children: ["listview"];
+    children: ["inputbar"];
 }
 
 message {
@@ -91,11 +84,17 @@ listview {
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
-    spacing:      306px ;
+    spacing:      8px ;
     fixed-height: 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;
     border:	  none;
+    expand: true;
+    cursor: "default";
+    cycle: true;
+    dynamic: true;
+    lines: 8;
+    reverse: false;
 }
 scrollbar {
     width:        4px ;
@@ -107,15 +106,6 @@ scrollbar {
 sidebar {
     border-color: @primary;
     border:       2px dash 0px 0px ;
-}
-button {
-    cursor:     pointer;
-    spacing:    0;
-    text-color: @foreground;
-}
-button selected {
-    background-color: @primary;
-    text-color:       @foreground;
 }
 num-filtered-rows {
     expand:     false;
@@ -132,9 +122,10 @@ textbox-num-sep {
 }
 inputbar {
     padding:    1px ;
-    spacing:    0px ;
+    spacing:    16px ;
+    margin: 0 0 0 12px;
     text-color: @foreground;
-    //children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+    children: ["textbox-prompt-colon","entry","listview","mode-switcher"];
 }
 case-indicator {
     spacing:    0;
@@ -145,7 +136,9 @@ entry {
     cursor:            text;
     spacing:           0;
     placeholder-color: @foreground;
-    placeholder:       "Type to filter";
+    placeholder:       " Search";
+    expand: false;
+    width: 128px;
 }
 prompt {
     spacing:    0;
@@ -154,6 +147,29 @@ prompt {
 textbox-prompt-colon {
     margin:     0px 0.3000em 0.0000em 0.0000em ;
     expand:     false;
-    str:        ":";
+    str:        "";
     text-color: inherit;
+}
+
+mode-switcher{
+  enabled: true;
+}
+
+button {
+    background-color: @background;
+    border: 0;
+    border-radius: 24px;
+    border-color: transparent;
+    cursor: pointer;
+    margin: 0;
+    padding: 0px;
+    text-color: @foreground;
+    spacing:    0;
+    text-color: @foreground;
+    width: 152px;
+}
+
+button selected {
+    background-color: @primary;
+    text-color: @foreground;
 }

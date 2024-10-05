@@ -1,0 +1,6 @@
+@import "./config"
+@import "./drun.rasi"
+configuration{show-icons:false;}
+textbox-prompt-colon{enabled:false;}
+entry{enabled:false;}
+mode-switcher{enabled:false;}

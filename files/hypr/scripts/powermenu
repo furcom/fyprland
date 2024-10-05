@@ -15,17 +15,20 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
+RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi -selected-row 2"
+RofiMenuConfirm="rofi -dmenu -config $RofiDir/confirm.rasi -selected-row 0"
+
 power_menu() {
     YES=" Yes"
     NO=" No"
-    OPTIONS=" Logout\n󰤄 Sleep\n󰜉 Reboot\n Shutdown\n Lock"
-    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuPower -selected-row 5)
+    OPTIONS="󰤄 Sleep\n Logout\n Lock\n Shutdown\n󰜉 Reboot"
+    CHOICE=$(echo -e "$OPTIONS" | $RofiMenuPower)
     case "$CHOICE" in
         " Lock")
             hyprlock ;;
         " Logout")
             LO_OPTIONS="$YES\n$NO"
-    	    LO_CHOICE=$(echo -e "$LO_OPTIONS" | $RofiMenuPower)
+    	    LO_CHOICE=$(echo -e "$LO_OPTIONS" | $RofiMenuConfirm)
     	    case "$LO_CHOICE" in
                 "$YES") hyprctl dispatch exit ;;
                 "$NO") exit ;;
@@ -33,7 +36,7 @@ power_menu() {
             esac ;;
         " Shutdown")
             SD_OPTIONS="$YES\n$NO"
-    	    SD_CHOICE=$(echo -e "$SD_OPTIONS" | $RofiMenuPower)
+    	    SD_CHOICE=$(echo -e "$SD_OPTIONS" | $RofiMenuConfirm)
     	    case "$SD_CHOICE" in
                 "$YES") systemctl poweroff ;;
                 "$NO") exit ;;
@@ -41,7 +44,7 @@ power_menu() {
             esac ;;
         "󰜉 Reboot")
             RB_OPTIONS="$YES\n$NO"
-    	    RB_CHOICE=$(echo -e "$RB_OPTIONS" | $RofiMenuPower)
+    	    RB_CHOICE=$(echo -e "$RB_OPTIONS" | $RofiMenuConfirm)
     	    case "$RB_CHOICE" in
                 "$YES") systemctl reboot ;;
                 "$NO") exit ;;
@@ -49,7 +52,7 @@ power_menu() {
             esac ;;
         "󰤄 Sleep")
             SL_OPTIONS="$YES\n$NO"
-    	    SL_CHOICE=$(echo -e "$SL_OPTIONS" | $RofiMenuPower)
+    	    SL_CHOICE=$(echo -e "$SL_OPTIONS" | $RofiMenuConfirm)
     	    case "$SL_CHOICE" in
                 "$YES") systemctl suspend ;;
                 "$NO") exit ;;
