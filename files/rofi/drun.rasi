@@ -93,7 +93,6 @@ listview {
     cursor: "default";
     cycle: true;
     dynamic: true;
-    lines: 8;
     reverse: false;
 }
 scrollbar {

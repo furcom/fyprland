@@ -66,11 +66,11 @@ window {
     location:	      north;
     y-offset:	      -66px;
     width: 100%;
-    children:   [ "dummy","listview","dummy" ];
 }
 mainbox {
     padding: 0;
     border:  0;
+    children:   ["listview"];
 }
 
 dummy {
@@ -90,7 +90,7 @@ listview {
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
-    spacing:      10px ;
+    spacing: 1702px;
     fixed-height: 0;
     border:       2px dash 0px 0px ;
     expand: 	  true;

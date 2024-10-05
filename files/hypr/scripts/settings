@@ -239,9 +239,9 @@ connections_menu() {
     else
         case "$CONNECTIONS_SUBCHOICE" in
             " Bluetooth")
-                $TERMINAL sh -c "bluetui;" ;;
+                $TERMINAL sh -c "rfkill unblock bluetooth && bluetui;" ;;
             "󰖩 WiFi")
-                $HyprScriptsDir/wifi ;;
+                $TERMINAL sh -c "nmtui;" ;;
             "󰖂 Wireguard")
                 wireguard_menu ;;
         esac
