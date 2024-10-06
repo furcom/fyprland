@@ -31,16 +31,17 @@ tooltip {
     color: @background;
 }
 
+#custom-settings {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
 #custom-updates {
     background-color: #007700;
     color: @foreground;
     margin: 0 8px 0 4px;
     padding: 0 16px;
-}
-
-workspaces#waybar.empty #workspaces {
-    background: none;
-    color: rgba(0,0,0,0);
 }
 
 #workspaces {
@@ -68,12 +69,6 @@ workspaces#waybar.empty #workspaces {
     padding: 0 4px;
 }
 
-#custom-settings {
-    color: @foreground;
-    background-color: transparent;
-    padding: 0 8px;
-}
-
 #cpu {
     color: @foreground;
     background-color: transparent;
@@ -98,27 +93,10 @@ workspaces#waybar.empty #workspaces {
     background-color: transparent;
     padding: 0 8px;
 }
+
 #temperature.critical {
     color: @foreground;
     background-color: #FF0000;
-    padding: 0 8px;
-}
-
-#custom-spotify {
-    background-color: rgba(255,255,255,0.15);
-    color: @foreground;
-    padding: 0 8px;
-    min-width: 32px;
-    margin: 0 4px 0 0;
-}
-
-.modules-center {
-}
-
-#custom-weather,
-#clock {
-    color: @foreground;
-    margin: 0 4px;
     padding: 0 8px;
 }
 
@@ -134,7 +112,25 @@ window#waybar.empty #window {
     color: rgba(0,0,0,0);
 }
 
+.modules-center {
+}
+
+#custom-weather,
+#clock {
+    color: @foreground;
+    margin: 0 4px;
+    padding: 0 8px;
+}
+
 .modules-right {
+}
+
+#custom-spotify {
+    background-color: rgba(255,255,255,0.15);
+    color: @foreground;
+    padding: 0 8px;
+    min-width: 32px;
+    margin: 0 4px 0 0;
 }
 
 #tray {
@@ -147,12 +143,6 @@ window#waybar.empty #window {
 #tray menu {
     background-color: @color2;
     color: @foreground;
-    padding: 0 8px;
-}
-
-#custom-powermenu {
-    color: @foreground;
-    background-color: transparent;
     padding: 0 8px;
 }
 
@@ -217,6 +207,12 @@ window#waybar.empty #window {
     animation-timing-function: linear;
     background-color: #f53c3c;
     color: @foreground;
+}
+
+#custom-powermenu {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
 }
 
 #custom-settings:hover,

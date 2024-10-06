@@ -98,6 +98,15 @@
     "return-type": "exit"
 },
 
+"custom/updates": {
+    "tooltip": true,
+    "tooltip-format": "󰚰 Updates",
+    "restart-interval": 3600,
+    "exec": "~/.config/hypr/scripts/packages --check",
+    "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman && pkill waybar && waybar'",
+    "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur && pkill waybar && waybar'"
+},
+
 "hyprland/workspaces": {
     "tooltip": false,
     "format": "{icon}",
@@ -221,23 +230,6 @@
     "modules": ["clock","clock#2","custom/weather"],
 },
 
-"custom/updates": {
-    "tooltip": true,
-    "tooltip-format": "󰚰 Updates",
-    "restart-interval": 3600,
-    "exec": "~/.config/hypr/scripts/packages --check",
-    "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman && pkill waybar && waybar'",
-    "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur && pkill waybar && waybar'"
-},
-
-"custom/weather": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar",
-    "return-type": "json"
-},
-
 "clock": {
     "tooltip": true,
     "interval": 1,
@@ -261,6 +253,15 @@
     "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
     "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
 },
+
+"custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar",
+    "return-type": "json"
+},
+
 
 /*--- RIGHT -----------------------------------------------------*/
 
@@ -360,8 +361,7 @@
     "tooltip": false,
     "exec": "~/.config/hypr/scripts/spotify --song",
     "interval": 1,
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
+    "on-click": "hyprctl dispatch focuswindow class:Spotify"
 },
 
 "custom/spotify#play": {
@@ -369,7 +369,6 @@
     "exec": "~/.config/hypr/scripts/spotify --button",
     "interval": 1,
     "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
 },
 
 "custom/spotify#prev": {
