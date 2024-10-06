@@ -2,7 +2,7 @@
 @import "./colors.rasi"
 
 element {
-    padding: 4px 9px;
+    padding: 4px 8px;
     border-radius: 24px;
     cursor:  pointer;
     spacing: 5px ;
@@ -62,11 +62,11 @@ window {
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -66px;
+    y-offset:	      -60px;
     width: 100%;
 }
 mainbox {
-    padding: 9px;
+    padding: 8px;
     border:  0;
     children: ["inputbar"];
 }
