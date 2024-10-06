@@ -20,6 +20,10 @@
     font-family: "0xProto Nerd Font";
     font-size: 14px;
     transition-duration: 125ms;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 10px;
 }
 
 tooltip {
@@ -30,13 +34,19 @@ tooltip {
 #custom-updates {
     background-color: #007700;
     color: @foreground;
-    margin: 0 4px 0 0;
-    padding: 0 12px;
+    margin: 0 8px 0 4px;
+    padding: 0 16px;
+}
+
+workspaces#waybar.empty #workspaces {
+    background: none;
+    color: rgba(0,0,0,0);
 }
 
 #workspaces {
-    margin: 0;
-    padding: 0 4px;
+    background: rgba(255,255,255,0.15);
+    margin: 0 0 0 4px;
+    padding: 0 8px;
 }
 
 #workspaces button.persistent {
@@ -54,27 +64,52 @@ tooltip {
 #workspaces button {
     color: @foreground;
     border-color: rgba(0,0,0,0);
+    min-width: 20px;
+    padding: 0 4px;
 }
 
-#custom-settings,
-#cpu,
-#memory,
-#disk,
-#temperature {
+#custom-settings {
     color: @foreground;
-    margin: 0 0 0 4px;
+    background-color: transparent;
     padding: 0 8px;
 }
 
+#cpu {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+    margin: 0 0 0 4px;
+}
+
+#memory {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#disk {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#temperature {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
 #temperature.critical {
-    color: #FF0000;
+    color: @foreground;
+    background-color: #FF0000;
+    padding: 0 8px;
 }
 
 #custom-spotify {
     background-color: rgba(255,255,255,0.15);
     color: @foreground;
-    margin: 0 4px 0 4px;
-    padding: 0 12px;
+    padding: 0 8px;
+    min-width: 32px;
+    margin: 0 4px 0 0;
 }
 
 .modules-center {
@@ -83,15 +118,15 @@ tooltip {
 #custom-weather,
 #clock {
     color: @foreground;
-    margin: 0 4px 0 0;
+    margin: 0 4px;
     padding: 0 8px;
 }
 
 #window {
     background: rgba(255,255,255,0.15);
     color: @foreground;
-    padding: 0 12px;
-    margin: 0 4px 0 4px;
+    padding: 0 8px;
+    margin: 0 0 0 4px;
 }
 
 window#waybar.empty #window {
@@ -106,41 +141,67 @@ window#waybar.empty #window {
     background-color: rgba(255,255,255,0.15);
     color: @foreground;
     margin: 0 4px 0 0;
-    min-width: 16px;
-    padding: 0 10px;
+    padding: 0 8px;
 }
 
 #tray menu {
-    background-color: @color1;
-    color: @background;
-    padding: 16px;
+    background-color: @color2;
+    color: @foreground;
+    padding: 0 8px;
 }
 
-#bluetooth,
-#custom-powermenu,
-#network,
-#backlight,
-#custom-pipewire-input,
+#custom-powermenu {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#bluetooth {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#network {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#backlight {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#custom-pipewire-input {
+    color: @foreground;
+    background-color: transparent;
+    padding: 0 8px;
+}
+
 #wireplumber {
     color: @foreground;
-    margin: 0 4px 0 0;
+    background-color: transparent;
     padding: 0 8px;
-    min-width: 20px;
 }
 
 #wireplumber.muted {
     background-color: rgba(255,255,255,0.15);
+    color: @foreground;
 }
 
 #battery {
     color: @foreground;
-    margin: 0 4px 0 0;
-    padding: 0 12px;
+    background-color: transparent;
+    padding: 0 8px;
 }
 
 #battery.charging,
 #battery.plugged {
-    background-color: #007700;
+    background-color: @color2;
+    color: @foreground;
+    padding: 0 16px;
 }
 
 #battery.warning:not(.charging) {
@@ -173,7 +234,7 @@ window#waybar.empty #window {
 #backlight:hover,
 #custom-pipewire-input:hover,
 #wireplumber:hover,
-#battery.plugged:hover,
+#battery:hover,
 #battery.warning:not(.charging):hover,
 #custom-powermenu:hover,
 #custom-spotify:hover {
@@ -203,8 +264,4 @@ window#waybar > box {
     background-color: @background_bar;
     box-shadow: 0px 4px 3px 1px rgba(0,0,0,0.5);
     padding: 8px;
-}
-
-.group-volume {
-    background-color: red;
 }

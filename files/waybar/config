@@ -24,7 +24,8 @@
 /*--- LEFT ------------------------------------------------------*/
 
 "modules-left": [
-    "group/settings",
+    "group/custom-settings",
+    "custom/updates",
     "hyprland/workspaces",
     "group/cpu",
     "group/memory",
@@ -33,7 +34,7 @@
     "hyprland/window"
 ],
 
-"group/settings": {
+"group/custom-settings": {
     "orientation": "inherit",
     "drawer": {
         "transition-duration": 300,
@@ -102,8 +103,8 @@
     "format": "{icon}",
     "on-click": "activate",
     "active-only": false,
-    "tooltip": true,
-    "hidden": true,
+    "tooltip": false,
+    "hidden": false,
     "format-icons": {
         "1": "",
         "2": "",
@@ -122,7 +123,7 @@
     "on-scroll-down": "hyprctl dispatch workspace +1",
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "smooth-scrolling-threshold": 1,
-    "persistent-workspaces": { "*": 1 }
+    "persistent-workspaces": { "*": 3 }
 },
 
 "cpu": {
@@ -190,15 +191,15 @@
 },
 
 "hyprland/window": {
-    "format": "󰅙 {}",
+    "format": "{} 󰅙 ",
     "tooltip": false,
     "rewrite": {
         "(.*) - Mozilla Firefox": "🌎 $1",
-        "(.*) sh": "󰅙 kitty",
-        "(.*) - zsh": "󰅙 kitty"
+        "(.*) sh": "kitty 󰅙 ",
+        "(.*) - zsh": "kitty 󰅙 "
     },
     "separate-outputs": true,
-    "icon": false,
+    "icon": true,
     "icon-size": 22,
     "on-click-right": "rofi -show window -theme ~/.config/rofi/window.rasi",
     "on-click": "hyprctl dispatch killactive"
@@ -207,10 +208,7 @@
 /*--- CENTER ----------------------------------------------------*/
 
 "modules-center": [
-    "custom/updates",
-    "custom/weather",
-    "group/clock",
-    "group/spotify"
+    "group/clock"
 ],
 
 "group/clock": {
@@ -220,17 +218,7 @@
         "children-class": "not-memory",
         "transition-left-to-right": true
     },
-    "modules": ["clock","clock#2"],
-},
-
-"group/spotify": {
-    "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 300,
-        "children-class": "not-memory",
-        "transition-left-to-right": true
-    },
-    "modules": ["custom/spotify","custom/spotify#2"],
+    "modules": ["clock","clock#2","custom/weather"],
 },
 
 "custom/updates": {
@@ -253,7 +241,7 @@
 "clock": {
     "tooltip": true,
     "interval": 1,
-    "format": " {:%H:%M:%S}",
+    "format": "{:%H:%M:%S}",
     "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar-weeks-pos": "right",
     "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
@@ -265,7 +253,7 @@
 "clock#2": {
     "tooltip": true,
     "interval": 1,
-    "format": " {:%d.%m.%Y}",
+    "format": " {:%d.%m.%Y}",
     "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar-weeks-pos": "right",
     "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
@@ -274,34 +262,29 @@
     "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
 },
 
-"custom/spotify": {
-    "tooltip": false,
-    "exec": "~/.config/hypr/scripts/spotify --button",
-    "interval": 1,
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
-},
-
-"custom/spotify#2": {
-    "tooltip": false,
-    "exec": "~/.config/hypr/scripts/spotify --song",
-    "interval": 1,
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
-},
-
 /*--- RIGHT -----------------------------------------------------*/
 
 "modules-right": [
+    "group/spotify",
     "tray",
     "group/bluetooth",
     "group/network",
     "group/backlight",
-    "group/microphone",
-    "group/volume",
+    "group/custom-pipewire-input",
+    "group/wireplumber",
     "group/battery",
-    "group/powermenu"
+    "group/custom-powermenu"
 ],
+
+"group/spotify": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 300,
+        "children-class": "not-memory",
+        "transition-left-to-right": false
+    },
+    "modules": ["custom/spotify","custom/spotify#prev","custom/spotify#play","custom/spotify#next"],
+},
 
 "group/bluetooth": {
     "orientation": "inherit",
@@ -333,7 +316,7 @@
     "modules": ["backlight","backlight#2"],
 },
 
-"group/microphone": {
+"group/custom-pipewire-input": {
     "orientation": "inherit",
     "drawer": {
         "transition-duration": 300,
@@ -343,7 +326,7 @@
     "modules": ["custom/pipewire-input","custom/pipewire-input#2"],
 },
 
-"group/volume": {
+"group/wireplumber": {
     "orientation": "inherit",
     "drawer": {
         "transition-duration": 300,
@@ -363,7 +346,7 @@
     "modules": ["battery","battery#2"],
 },
 
-"group/powermenu": {
+"group/custom-powermenu": {
     "orientation": "inherit",
     "drawer": {
         "transition-duration": 300,
@@ -371,6 +354,33 @@
         "transition-left-to-right": false
     },
     "modules": ["custom/powermenu","custom/powermenu#2"],
+},
+
+"custom/spotify": {
+    "tooltip": false,
+    "exec": "~/.config/hypr/scripts/spotify --song",
+    "interval": 1,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
+},
+
+"custom/spotify#play": {
+    "tooltip": false,
+    "exec": "~/.config/hypr/scripts/spotify --button",
+    "interval": 1,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
+},
+
+"custom/spotify#prev": {
+    "format": "󰒮",
+    "tooltip": false,
+    "on-click": "playerctl -p spotify previous",
+},
+"custom/spotify#next": {
+    "format": "󰒭",
+    "tooltip": false,
+    "on-click": "playerctl -p spotify next",
 },
 
 "tray": {
@@ -390,7 +400,7 @@
     "on-click": "kitty sh -c 'rfkill unblock bluetooth && bluetui;'"
 }, 
 
-"bluetooth#": {
+"bluetooth#2": {
     "tooltip": false,
     "format-on": "On",
     "format-off": "Off",
@@ -489,11 +499,11 @@
     "format": "{icon}",
     "max-volume": 100.0,
     "format-muted": "󰖁",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "format-icons": ["󰕿", "󰖀", "󰕾"],
-    "scroll-step": "1",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
-    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}"
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
+    "scroll-step": "1"
 },
 
 "wireplumber#2": {
@@ -503,10 +513,9 @@
     "format-muted": "Muted",
     "format-icons": ["󰕿", "󰖀", "󰕾"],
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
-    "scroll-step": "1",
     "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
-    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}"
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
+    "scroll-step": "1"
 },
 
 "battery": {

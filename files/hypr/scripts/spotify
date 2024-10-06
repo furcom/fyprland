@@ -15,25 +15,21 @@ title=$(playerctl -p spotify metadata xesam:title)
 
 button() {
     case $status in
-        "Playing" ) echo " " ;;
-        "Paused" ) echo " " ;;
+        "Playing" ) echo "" ;;
+        "Paused" ) echo "" ;;
         * ) echo "" ;;
     esac
 }
 
 song() {
     case $status in
-        "Playing" ) echo "$artist - $title" ;;
-        "Paused" ) echo "$artist - $title" ;;
+        "Playing" ) echo " $artist - $title" ;;
+        "Paused" ) echo " $artist - $title" ;;
         * ) echo "" ;;
     esac
 }
 
 case "$1" in
-    --button)
-        button
-        ;;
-    --song)
-        song
-        ;;
+    --button) button ;;
+    --song) song ;;
 esac
