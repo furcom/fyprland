@@ -519,17 +519,15 @@
 
 "battery": {
     "tooltip": false,
-    "interval": 3,
-    "bat": "BAT0",
     "states": {
         "good": 95,
         "warning": 30,
         "critical": 15
         },
     "format": "{icon}",
+    "format-alt": "{icon} {time}",
     "format-charging": "󰂄",
-    "format-plugged": "󰂄",
-    "format-time": "{H} h {M} min",
+    "format-plugged": "󰂄 ",
     "format-icons": [
         "󰁻",
         "󰁼",
@@ -542,8 +540,6 @@
 
 "battery#2": {
     "tooltip": false,
-    "interval": 3,
-    "bat": "BAT0",
     "states": {
         "good": 95,
         "warning": 30,
@@ -552,7 +548,6 @@
     "format": "{capacity}%",
     "format-charging": "{capacity}%",
     "format-plugged": "{capacity}%",
-    "format-time": "{H} h {M} min",
     "format-icons": [
         "󰁻",
         "󰁼",
