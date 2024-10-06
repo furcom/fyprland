@@ -35,8 +35,8 @@ background {
 }
 
 image {
-        border_size = 3
-        border_color = rgb({{foreground|rgb}})
+        border_size = 6
+        border_color = rgb({{color2|rgb}})
         halign = center
         monitor =
         path = ~/.config/hypr/images/user.png
@@ -45,7 +45,7 @@ image {
         reload_time = -1
         rounding = -1
         rotate = 0
-        size = 256
+        size = 420
         shadow_passes = 2
         shadow_size = 8
         shadow_color = rgba({{background|rgb}},0.5)
@@ -56,11 +56,11 @@ image {
 # Username
         label {
         color = rgb({{foreground|rgb}})
-        font_size = 50
-        font_family = 0xProto Nerd Font
-        halign = center
+        font_size = 64
+        font_family = 0xProto Nerd Font Mono
+        halign = right
         monitor =
-        position = 0, -256
+        position = -224, 0
         rotate = 0
         text = cmd[update:1000] echo "$USER"
         text_align = center
@@ -70,11 +70,11 @@ image {
 # Date
         label {
         color = rgb({{foreground|rgb}})
-        font_size = 30
-        font_family = 0xProto Nerd Font
-        halign = center
+        font_size = 28
+        font_family = 0xProto Nerd Font Mono
+        halign = left
         monitor =
-        position = 0, 448
+        position = 188, 64
         rotate = 0
         text = cmd[update:1000] echo "$(date +"%A,%n%d. %B %Y")"
         text_align = center
@@ -84,11 +84,11 @@ image {
 # Time
         label {
         color = rgb({{foreground|rgb}})
-        font_size = 75
-        font_family = 0xProto Nerd Font
-        halign = center
-        monitor =
-        position = 0, 288
+        font_size = 100
+        font_family = 0xProto Nerd Font Mono
+        halign = left
+        monitor=
+        position = 164, -64
         rotate = 0
         text = cmd[update:1000] echo "$(date +"%H:%M")"
         text_align = center
@@ -97,36 +97,36 @@ image {
 
 input-field {
         bothlock_color = 1
-        capslock_color = rgb(125,0,0)
-        check_color = rgb({{color2|rgb}})
+        capslock_color = rgb(200,0,0)
+        check_color = rgb({{foreground|rgb}})
         dots_size = 0.33
-        dots_spacing = 0.15
+        dots_spacing = 0.5
         dots_center = true
         dots_rounding = -1
         fade_on_empty = true
-        fade_timeout = 1000
-        fail_color = rgb(125,0,0)
+        fade_timeout = 500
+        fail_color = rgb(200,0,0)
         fail_text = <b>$FAIL <b>($ATTEMPTS)</b></b>
-        fail_timeout = 1000
-        fail_transition = 1000
+        fail_timeout = 500
+        fail_transition = 500
         font_color = rgb({{foreground|rgb}})
-        halign = center
+        halign = right
         hide_input = false
         inner_color = rgb({{background|rgb}})
         invert_numlock = false
         monitor =
         numlock_color = -1
-        placeholder_text = <b>Password</b>
+        placeholder_text = Password
         placeholder_color = rgb({{foreground|rgb}})
-        position = 0, -400
-        outline_thickness = 2
-        outer_color = rgb({{foreground|rgb}})
+        position = -168, -128
+        outline_thickness = 4
+        outer_color = rgb({{color2|rgb}})
         rounding = -1
-        size = 272, 56
+        size = 420, 64
         shadow_passes = 2
         shadow_size = 8
         shadow_color = rgba({{background|rgb}},0.5)
         shadow_boost = 1.2
-        swap_font_color = false
+        swap_font_color = true
         valign = center
 }

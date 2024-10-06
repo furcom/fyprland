@@ -46,7 +46,7 @@ main_menu() {
 }
 
 extras_menu() {
-    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰮫 Rofi\n󰵷 Fusuma\n Oh My Posh"
+    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh"
     EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowExtras)
 
     if [ -z "$EXTRAS_SUBCHOICE" ]; then
@@ -61,8 +61,6 @@ extras_menu() {
                 waybar_menu ;;
             "󰄛 Kitty")
                 kitty_menu ;;
-            "󰮫 Rofi")
-                rofi_menu ;;
             "󰵷 Fusuma")
                 fusuma_menu ;;
             " Oh My Posh")
@@ -190,35 +188,15 @@ kitty_menu() {
     fi
 }
 
-rofi_menu() {
-    ROFI_OPTIONS="󰌍\n Config\n Alt. Config"
-    ROFI_SUBCHOICE=$(echo -e "$ROFI_OPTIONS" | $RofiMenuSettings)
-
-    if [ -z "$ROFI_SUBCHOICE" ]; then
-        SelectedRowExtras="3"
-        extras_menu
-    elif [ "$ROFI_SUBCHOICE" == "󰌍" ]; then
-        SelectedRowExtras="3"
-        extras_menu
-    else
-        case "$ROFI_SUBCHOICE" in
-            " Config")
-                $TERMINAL sh -c "$EDITOR $RofiDir/config.rasi" ;;
-            " Alt. Config")
-                $TERMINAL sh -c "$EDITOR $RofiDir/config_alt.rasi" ;;
-        esac
-    fi
-}
-
 fusuma_menu() {
     FUSUMA_OPTIONS="󰌍\n Config\n󰑓 Restart"
     FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
-        SelectedRowExtras="4"
+        SelectedRowExtras="3"
         extras_menu
     elif [ "$FUSUMA_SUBCHOICE" == "󰌍" ]; then
-        SelectedRowExtras="4"
+        SelectedRowExtras="3"
         extras_menu
     else
         case "$FUSUMA_SUBCHOICE" in
