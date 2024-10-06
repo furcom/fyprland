@@ -17,7 +17,6 @@ button() {
     case $status in
         "Playing" ) echo "" ;;
         "Paused" ) echo "" ;;
-        * ) echo "" ;;
     esac
 }
 
@@ -25,7 +24,6 @@ song() {
     case $status in
         "Playing" ) echo " $artist - $title" ;;
         "Paused" ) echo " $artist - $title" ;;
-        * ) echo "" ;;
     esac
 }
 
