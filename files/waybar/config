@@ -26,11 +26,11 @@
 "modules-left": [
     "group/custom-settings",
     "custom/updates",
-    "hyprland/workspaces",
     "group/cpu",
     "group/memory",
     "group/disk",
     "group/temperature",
+    "hyprland/workspaces",
     "hyprland/window"
 ],
 
@@ -107,34 +107,6 @@
     "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur && pkill waybar && waybar'"
 },
 
-"hyprland/workspaces": {
-    "tooltip": false,
-    "format": "{icon}",
-    "on-click": "activate",
-    "active-only": false,
-    "tooltip": false,
-    "hidden": false,
-    "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "6": "",
-        "7": "",
-        "8": "",
-        "9": "",
-        "urgent": "",
-        "active": "",
-        "default": ""
-    },
-    "sort-by-number": true,
-    "on-scroll-down": "hyprctl dispatch workspace +1",
-    "on-scroll-up": "hyprctl dispatch workspace -1",
-    "smooth-scrolling-threshold": 1,
-    "persistent-workspaces": { "*": 3 }
-},
-
 "cpu": {
     "tooltip": false,
     "interval": 10,
@@ -197,6 +169,34 @@
     "format-critical": "{temperatureC}°C",
     "critical-threshold": 80,
     "on-click": "kitty sh -c htop"
+},
+
+"hyprland/workspaces": {
+    "tooltip": false,
+    "format": "{icon}",
+    "on-click": "activate",
+    "active-only": false,
+    "tooltip": false,
+    "hidden": false,
+    "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "urgent": "",
+        "active": "",
+        "default": ""
+    },
+    "sort-by-number": true,
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "smooth-scrolling-threshold": 1,
+    "persistent-workspaces": { "*": 3 }
 },
 
 "hyprland/window": {
