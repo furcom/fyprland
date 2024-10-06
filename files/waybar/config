@@ -70,8 +70,8 @@
     "tooltip-format": "󰚰 Updates",
     "restart-interval": 3600,
     "exec": "~/.config/hypr/scripts/packages --check",
-    "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman && pkill waybar && waybar'",
-    "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur && pkill waybar && waybar'"
+    "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman'",
+    "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur'"
 },
 
 "cpu": {
