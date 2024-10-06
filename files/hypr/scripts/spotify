@@ -9,11 +9,31 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
-    status=$(playerctl -p spotify status)
-    artist=$(playerctl -p spotify metadata xesam:artist)
-    title=$(playerctl -p spotify metadata xesam:title)
+status=$(playerctl -p spotify status)
+artist=$(playerctl -p spotify metadata xesam:artist)
+title=$(playerctl -p spotify metadata xesam:title)
+
+button() {
     case $status in
-        "Playing" ) echo " $artist - $title" ;;
-        "Paused" ) echo " $artist - $title" ;;
+        "Playing" ) echo " " ;;
+        "Paused" ) echo " " ;;
         * ) echo "" ;;
     esac
+}
+
+song() {
+    case $status in
+        "Playing" ) echo "$artist - $title" ;;
+        "Paused" ) echo "$artist - $title" ;;
+        * ) echo "" ;;
+    esac
+}
+
+case "$1" in
+    --button)
+        button
+        ;;
+    --song)
+        song
+        ;;
+esac

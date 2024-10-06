@@ -36,17 +36,21 @@ tooltip {
 
 #workspaces {
     margin: 0;
-    padding: 0 8px;
+    padding: 0 4px;
 }
+
 #workspaces button.persistent {
     color: @foreground;
-} 
+}
+
 #workspaces button.urgent {
     color: #770000;
 }
+
 #workspaces button.active {
     color: @foreground;
 }
+
 #workspaces button {
     color: @foreground;
     border-color: rgba(0,0,0,0);
@@ -59,9 +63,9 @@ tooltip {
 #temperature {
     color: @foreground;
     margin: 0 0 0 4px;
-    min-width: 32px;
     padding: 0 8px;
 }
+
 #temperature.critical {
     color: #FF0000;
 }
@@ -82,13 +86,14 @@ tooltip {
     margin: 0 4px 0 0;
     padding: 0 8px;
 }
+
 #window {
     background: rgba(255,255,255,0.15);
     color: @foreground;
-    min-width: 16px;
     padding: 0 12px;
-    margin: 0 4px 0 0;
+    margin: 0 4px 0 4px;
 }
+
 window#waybar.empty #window {
     background: none;
     color: rgba(0,0,0,0);
@@ -119,11 +124,12 @@ window#waybar.empty #window {
 #wireplumber {
     color: @foreground;
     margin: 0 4px 0 0;
-    min-width: 34px;
     padding: 0 8px;
+    min-width: 20px;
 }
+
 #wireplumber.muted {
-    background-color: #990000;
+    background-color: rgba(255,255,255,0.15);
 }
 
 #battery {
@@ -131,14 +137,17 @@ window#waybar.empty #window {
     margin: 0 4px 0 0;
     padding: 0 12px;
 }
+
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
 }
+
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
 }
+
 #battery.critical:not(.charging) {
     animation-direction: alternate;
     animation-duration: 0.5s;
@@ -164,8 +173,6 @@ window#waybar.empty #window {
 #backlight:hover,
 #custom-pipewire-input:hover,
 #wireplumber:hover,
-#battery:hover,
-#battery.charging:hover,
 #battery.plugged:hover,
 #battery.warning:not(.charging):hover,
 #custom-powermenu:hover,
@@ -196,4 +203,8 @@ window#waybar > box {
     background-color: @background_bar;
     box-shadow: 0px 4px 3px 1px rgba(0,0,0,0.5);
     padding: 8px;
+}
+
+.group-volume {
+    background-color: red;
 }

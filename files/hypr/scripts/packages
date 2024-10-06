@@ -160,14 +160,12 @@ case "$1" in
         ;;
     --aur)
         aur_updates
-	pkill waybar && waybar &
         ;;
     --hypr)
         hypr_plugin_updates
         ;;
     --pacman)
         pacman_updates
-	pkill waybar && waybar &
         ;;
     *)
         echo "Usage: $0 {--check|--aur|--pacman}"
