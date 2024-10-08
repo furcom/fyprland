@@ -34,71 +34,49 @@ background {
         vibrancy_darkness = 0
 }
 
-image {
-        border_size = 6
-        border_color = rgb({{color2|rgb}})
+label {
+        color = rgb({{foreground|rgb}})
+        font_size = 32
+        font_family = 0xProto Nerd Font Mono
         halign = center
         monitor =
-        path = ~/.config/hypr/images/user.png
-        position = 0, 0
-        reload_cmd =  #
-        reload_time = -1
-        rounding = -1
+        position = 0, -16
         rotate = 0
-        size = 420
-        shadow_passes = 2
-        shadow_size = 8
-        shadow_color = rgba({{background|rgb}},0.5)
-        shadow_boost = 1.2
-        valign = center
+        text = cmd[update:1000] echo " $USER"
+        text_align = left
+        valign = top
 }
 
-# Username
-        label {
+label {
         color = rgb({{foreground|rgb}})
-        font_size = 64
+        font_size = 32
+        font_family = 0xProto Nerd Font Mono
+        halign = left
+        monitor =
+        position = 32, -16
+        rotate = 0
+        text = cmd[update:1000] echo "$(date +"%d.%m.%Y")"
+        text_align = left
+        valign = top
+}
+
+label {
+        color = rgb({{foreground|rgb}})
+        font_size = 32
         font_family = 0xProto Nerd Font Mono
         halign = right
         monitor =
-        position = -224, 0
-        rotate = 0
-        text = cmd[update:1000] echo "$USER"
-        text_align = center
-        valign = center
-}
-
-# Date
-        label {
-        color = rgb({{foreground|rgb}})
-        font_size = 28
-        font_family = 0xProto Nerd Font Mono
-        halign = left
-        monitor =
-        position = 188, 64
-        rotate = 0
-        text = cmd[update:1000] echo "$(date +"%A,%n%d. %B %Y")"
-        text_align = center
-        valign = center
-}
-
-# Time
-        label {
-        color = rgb({{foreground|rgb}})
-        font_size = 100
-        font_family = 0xProto Nerd Font Mono
-        halign = left
-        monitor=
-        position = 164, -64
+        position = -32, -16
         rotate = 0
         text = cmd[update:1000] echo "$(date +"%H:%M")"
-        text_align = center
-        valign = center
+        text_align = right
+        valign = top
 }
 
 input-field {
-        bothlock_color = 1
-        capslock_color = rgb(200,0,0)
-        check_color = rgb({{foreground|rgb}})
+        bothlock_color = -1
+        capslock_color = rgb(ff0000)
+        check_color = rgb({{color2|rgb}})
         dots_size = 0.33
         dots_spacing = 0.5
         dots_center = true
@@ -106,11 +84,12 @@ input-field {
         fade_on_empty = true
         fade_timeout = 500
         fail_color = rgb(200,0,0)
-        fail_text = <b>$FAIL <b>($ATTEMPTS)</b></b>
+        fail_text = $FAIL ($ATTEMPTS)
         fail_timeout = 500
         fail_transition = 500
         font_color = rgb({{foreground|rgb}})
-        halign = right
+        font_size = 64
+        halign = center
         hide_input = false
         inner_color = rgb({{background|rgb}})
         invert_numlock = false
@@ -118,15 +97,16 @@ input-field {
         numlock_color = -1
         placeholder_text = Password
         placeholder_color = rgb({{foreground|rgb}})
-        position = -168, -128
-        outline_thickness = 4
+        position = 0, 0
+        outline_thickness = 0
         outer_color = rgb({{color2|rgb}})
         rounding = -1
-        size = 420, 64
         shadow_passes = 2
         shadow_size = 8
         shadow_color = rgba({{background|rgb}},0.5)
         shadow_boost = 1.2
+	size = 766, 96
         swap_font_color = true
         valign = center
 }
+

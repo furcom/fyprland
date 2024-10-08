@@ -5,11 +5,11 @@ element {
     padding: 4px 8px;
     border-radius: 24px;
     cursor:  pointer;
-    spacing: 5px ;
+    spacing: 4px ;
     border:  0;
 }
 element normal.normal {
-    background-color: @background;
+    background-color: @primary;
     text-color:       @foreground;
 }
 element normal.urgent {
@@ -17,11 +17,11 @@ element normal.urgent {
     text-color:       @foreground;
 }
 element normal.active {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element selected.normal {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element selected.urgent {
@@ -33,7 +33,7 @@ element selected.active {
     text-color:       @foreground;
 }
 element alternate.normal {
-    background-color: @background;
+    background-color: @primary;
     text-color:       @foreground;
 }
 element alternate.urgent {
@@ -41,7 +41,7 @@ element alternate.urgent {
     text-color:       @foreground;
 }
 element alternate.active {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element-text {
@@ -57,12 +57,12 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          0;
-    background-color: var(background);
+    padding:          4px;
+    background-color: @primary;
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -60px;
+    y-offset:	      -75px;
     width: 100%;
 }
 mainbox {
@@ -72,7 +72,7 @@ mainbox {
 }
 
 message {
-    padding:      1px ;
+    padding:      2px ;
     border-color: @primary;
     border:       2px dash 0px 0px ;
 }
@@ -80,12 +80,11 @@ textbox {
     text-color: @foreground;
 }
 listview {
-    padding:      0px 0px 0px ;
+    padding:      0;
     scrollbar:    false;
     border-color: @primary;
     layout:       horizontal;
     spacing:      8px ;
-    fixed-height: 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;
     border:	  none;
@@ -155,7 +154,7 @@ mode-switcher{
 }
 
 button {
-    background-color: @background;
+    background-color: @primary;
     border: 0;
     border-radius: 24px;
     border-color: transparent;
@@ -165,10 +164,10 @@ button {
     text-color: @foreground;
     spacing:    0;
     text-color: @foreground;
-    width: 152px;
+    width: 112px;
 }
 
 button selected {
-    background-color: @primary;
+    background-color: @hover;
     text-color: @foreground;
 }

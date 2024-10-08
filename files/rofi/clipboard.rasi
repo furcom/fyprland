@@ -67,11 +67,11 @@ window {
     border-color:     @primary;
     anchor:	      north;
     location:	      north;
-    y-offset:	      -66px;
+    y-offset:	      -75px;
     width:	      100%;
 }
 mainbox {
-    padding: 9px;
+    padding: 8px;
     border:  0;
     children: ["inputbar","listview"];
 }

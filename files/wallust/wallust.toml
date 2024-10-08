@@ -67,7 +67,3 @@ rofi.new_engine = true
 kitty.template = "kitty"
 kitty.target = '~/.config/kitty/style.conf'
 kitty.new_engine = true
-
-tofi.template = "tofi"
-tofi.target = '~/.config/tofi/colors'
-tofi.new_engine = true

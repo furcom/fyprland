@@ -10,7 +10,9 @@
 
 * {
     background: {{background}};
+    background-alt: rgba({{color2|rgb}},0.5);
     foreground: {{foreground}};
     primary: {{color2}};
     secondary: {{color6}};
+    hover: rgba(255,255,255,0.33);
 }

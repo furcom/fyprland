@@ -494,6 +494,7 @@
 },
 
 "battery": {
+    "interval": 3,
     "tooltip": false,
     "states": {
         "good": 95,
@@ -502,8 +503,8 @@
         },
     "format": "{icon}",
     "format-alt": "{icon} {time}",
-    "format-charging": "󰂄",
-    "format-plugged": "󰂄 ",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
     "format-icons": [
         "󰁻",
         "󰁼",

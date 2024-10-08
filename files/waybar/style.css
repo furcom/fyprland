@@ -21,7 +21,7 @@
 
 tooltip {
     background-color: @color2;
-    border-radius: 12px;
+    border-radius: 24px;
     color: @background;
 }
 
@@ -37,14 +37,14 @@ window#waybar > box {
 }
 
 * {
+    background-color: transparent;
+    color: @foreground;
     font-family: "0xProto Nerd Font";
     font-size: 20px;
-    border: 0;
-    border-radius: 24px;
+    border-radius: 28px;
+    transition-duration: 333ms;
     margin: 0;
-    min-width: 0px;
     padding: 0;
-    transition-duration: 125ms;
 }
 
 /*----------------*/
@@ -56,38 +56,36 @@ window#waybar > box {
 }
 
 #custom-settings {
-    background-color: transparent;
-    color: @foreground;
-    padding: 0 12px 0 4px;
+    margin: 0 0 0 4px;
+    padding: 4px 8px 4px 4px;
 }
 
 #workspaces {
-    background-color: transparent;
-    color: @foreground;
+    margin: 0 0 0 8px;
+    padding: 4px;
 }
 #workspaces button.urgent {
+    border-color: rgba(0,0,0,0);
     color: #770000;
+    padding: 4px;
 }
 #workspaces button.persistent,
 #workspaces button.active,
 #workspaces button {
     border-color: rgba(0,0,0,0);
-    color: @foreground;
     padding: 0 12px 0 4px;
 }
 
 #custom-updates {
-    background-color: #008800;
-    color: @foreground;
-    margin: 0 0 0 12px;
-    padding: 0 12px;
+    background-color: #007700;
+    margin: 0 0 0 8px;
+    padding: 4px 16px;
 }
 
 #window {
-    background-color: @color3;
-    color: @foreground;
+    background-color: rgba(255,255,255,0.25);
     margin: 0 0 0 8px;
-    padding: 0 8px;
+    padding: 4px 16px;
 }
 window#waybar.empty #window {
     background: none;
@@ -97,24 +95,20 @@ window#waybar.empty #window {
 
 /* Submenu Left */
 #cpu {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 0 0 24px;
+    margin: 0 0 0 8px;
+    padding: 4px 8px;
 }
 #memory {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 0 0 24px;
+    margin: 0 0 0 8px;
+    padding: 4px 8px;
 }
 #disk {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 0 0 24px;
+    margin: 0 0 0 8px;
+    padding: 4px 8px;
 }
 #temperature {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 0 0 24px;
+    margin: 0 0 0 8px;
+    padding: 4px 8px;
 }
 #temperature.critical {
     background-color: #FF0000;
@@ -127,12 +121,12 @@ window#waybar.empty #window {
     padding: 8px;
 }
 
-#clock,
+#clock {
+    padding: 4px 8px;
+}
+
 #custom-weather {
-    background-color: @color3;
-    color: @foreground;
     margin: 0 0 0 8px;
-    padding: 0 8px;
 }
 
 /*-----------------*/
@@ -143,86 +137,61 @@ window#waybar.empty #window {
 }
 
 #custom-spotify {
-    background-color: @color3;
-    color: @foreground;
+    background-color: rgba(255,255,255,0.25);
     margin: 0 8px 0 0;
-    min-width: 20px;
-    padding: 0 4px 0 4px;
+    padding: 4px 16px;
 }
 
 #tray {
-    background-color: @color3;
-    color: @foreground;
-    margin: 0 8px 0 0;
-    min-width: 28px;
+    background-color: rgba(255,255,255,0.25);
+    margin: 0 4px 0 0;
+    padding: 4px 14px;
 }
 
 #tray menu {
     background-color: @color2;
     border-radius: 12px;
-    color: @foreground;
-    margin: 0 8px 0 0;
 }
 
 #bluetooth {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 0;
-    padding: 0 2px 0 4px;
+    margin: 0 4px 0 0;
+    padding: 4px 8px;
 }
 
 #network {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 0;
-    padding: 0 2px 0 3px;
+    margin: 0 4px 0 0;
+    padding: 4px 8px;
 }
 
 #backlight {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 2px 0 0;
-    padding: 0 5px 0 3px;
+    margin: 0 4px 0 0;
+    padding: 4px 8px;
 }
 
 #custom-pipewire {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 0;
+    margin: 0 4px 0 0;
+    padding: 4px 8px;
 }
 
 #wireplumber,
 #wireplumber.muted {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 ;
+    margin: 0 4px 0 0 ;
+    padding: 4px 8px;
 }
 
 #battery {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 0;
-    padding: 0 0px 0 4px;
+    padding: 4px 8px;
 }
 
-#custom-pipewire {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 8px 0 0;
-}
-
-#wireplumber,
-#wireplumber.muted {
-}
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
-    color: @foreground;
+    padding: 4px 16px;
 }
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
-    padding: 0 8px 0 8px;
+    padding: 4px 16px;
 }
 #battery.critical:not(.charging) {
     animation-direction: alternate;
@@ -231,15 +200,12 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
-    color: @foreground;
-    padding: 0 0px 0 4px;
+    padding: 4px 16px;
 }
 
 #custom-powermenu {
-    background-color: transparent;
-    color: @foreground;
-    margin: 0 2px 0 0;
-    padding: 0 5px 0 3px;
+    margin: 0 8px 0 4px;
+    padding: 4px;
 }
 
 /*-----------------*/
@@ -263,19 +229,22 @@ window#waybar.empty #window {
 #wireplumber:hover,
 #battery:hover,
 #battery.warning:not(.charging):hover,
+#battery.charging:hover,
+#battery.plugged:hover,
 #custom-powermenu:hover,
 #custom-spotify:hover {
     background-color: @color2;
-    color: @foreground;
+    transition-duration: 333ms;
 }
 #workspaces button:hover {
     background: none;
     box-shadow: none;
     text-shadow: none;
-    transition: none;
+    transition-duration: 333ms;
 }
 #workspaces button.persistent:hover {
     background-color: @color2;
+    transition-duration: 333ms;
 }
 
 /*----------------*/
