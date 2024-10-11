@@ -1,8 +1,13 @@
 @import "./config.rasi"
 @import "./colors.rasi"
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 element {
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-radius: 24px;
     cursor:  pointer;
     spacing: 4px ;
@@ -57,12 +62,12 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          4px;
+    padding:          0px;
     background-color: @primary;
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -75px;
+    y-offset:	      -67px;
     width: 100%;
 }
 mainbox {

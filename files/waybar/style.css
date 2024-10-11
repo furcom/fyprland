@@ -58,14 +58,15 @@ window#waybar > box {
 
 #custom-logo {
     background: transparent;
-    margin: 0 6px 0 4px;
+    margin: 0;
     padding: 0 8px;
 }
 
 #custom-settings {
     background-color: @hover;
-    margin: 0 0 0 8px;
-    padding: 4px 16px;
+    border-radius: 0 24px 24px 0;
+    margin: 0 0 0 2px;
+    padding: 4px 12px;
 }
 
 #workspaces {
@@ -138,7 +139,7 @@ window#waybar.empty #window {
     background-color: @hover;
     border-radius: 24px 0 0 24px;
     margin: 0 0 0 8px;
-    padding: 4px 16px;
+    padding: 4px 16px 4px 20px;
 }
 
 #custom-win-expand {
@@ -152,7 +153,7 @@ window#waybar.empty #window {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 4px 16px 4px 16px;
 }
 
 #custom-win-next-workspace {
@@ -166,7 +167,7 @@ window#waybar.empty #window {
     background-color: @hover;
     border-radius: 0 24px 24px 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 4px 22px 4px 14px;
 }
 
 
@@ -175,25 +176,25 @@ window#waybar.empty #window {
     background-color: @hover;
     border-radius: 24px 0 0 24px;
     margin: 0;
-    padding: 0 16px;
+    padding: 0 12px;
 }
 #memory {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 0 16px;
+    padding: 0 12px;
 }
 #disk {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 0 16px;
+    padding: 0 12px;
 }
 #temperature {
     background-color: @hover;
     border-radius: 0 24px 24px 0;
     margin: 0 16px 0 2px;
-    padding: 0 16px;
+    padding: 0 12px;
 }
 #temperature.critical {
     background-color: #FF0000;
@@ -210,41 +211,41 @@ window#waybar.empty #window {
 #clock {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 4px 8px;
+    padding: 0 8px;
 }
 
 #custom-weather {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 4px 8px;
+    padding: 0 8px;
 }
 
 #bluetooth {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 0 12px;
 }
 
 #network {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 0 12px;
 }
 
 #backlight {
     background-color: @hover;
-    border-radius: 0 24px 24px 0;
+    border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 0 12px;
 }
 
 #custom-pipewire {
     background-color: @hover;
     border-radius: 0;
     margin: 0 0 0 2px;
-    padding: 4px 16px;
+    padding: 0 12px;
 }
 
 #wireplumber,
@@ -252,7 +253,7 @@ window#waybar.empty #window {
     background-color: @hover;
     border-radius: 24px 0 0 24px;
     margin: 0 0 0 16px;
-    padding: 4px 16px;
+    padding: 0 12px;
 }
 
 /*-----------------*/
@@ -332,7 +333,7 @@ window#waybar.empty #window {
 
 #custom-powermenu {
     background: transparent;
-    margin: 0 12px 0 8px;
+    margin: 0 8px 0 4px;
     padding: 0px;
 }
 

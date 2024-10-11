@@ -22,7 +22,7 @@
 "modules-left": [
     "group/custom-logo",
     "custom/updates",
-    "group/hyprland-workspaces",
+    "group/clock",
     "group/hyprland-window"
 ],
 
@@ -34,6 +34,17 @@
         "transition-left-to-right": true
     },
     "modules": ["custom/logo","wireplumber","custom/pipewire","network","bluetooth","backlight","custom/settings"],
+},
+
+"group/hyprland-workspaces": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 300,
+        "children-class": "not-memory",
+        "transition-left-to-right": true
+    },
+    "modules": ["hyprland/workspaces","custom/prev-workspace","custom/overview-workspaces","custom/next-workspace"],
+    "tooltip": true
 },
 
 "group/hyprland-window": {
@@ -139,6 +150,34 @@
     "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur'"
 },
 
+"hyprland/workspaces": {
+    "tooltip": false,
+    "format": "{icon}",
+    "on-click": "activate",
+    "active-only": false,
+    "tooltip": false,
+    "hidden": false,
+    "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "urgent": "",
+        "active": "",
+        "default": ""
+    },
+    "sort-by-number": true,
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "smooth-scrolling-threshold": 1,
+    "persistent-workspaces": { "*": 3 }
+},
+
 "hyprland/window": {
     "format": "{}",
     "tooltip": true,
@@ -199,47 +238,8 @@
 /*--- CENTER ----------------------------------------------------*/
 
 "modules-center": [
-    "group/clock"
+    "group/hyprland-workspaces"
 ],
-
-"group/hyprland-workspaces": {
-    "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 300,
-        "children-class": "not-memory",
-        "transition-left-to-right": true
-    },
-    "modules": ["hyprland/workspaces","custom/prev-workspace","custom/overview-workspaces","custom/next-workspace"],
-    "tooltip": true
-},
-
-"hyprland/workspaces": {
-    "tooltip": false,
-    "format": "{icon}",
-    "on-click": "activate",
-    "active-only": false,
-    "tooltip": false,
-    "hidden": false,
-    "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "6": "",
-        "7": "",
-        "8": "",
-        "9": "",
-        "urgent": "",
-        "active": "",
-        "default": ""
-    },
-    "sort-by-number": true,
-    "on-scroll-down": "hyprctl dispatch workspace +1",
-    "on-scroll-up": "hyprctl dispatch workspace -1",
-    "smooth-scrolling-threshold": 1,
-    "persistent-workspaces": { "*": 3 }
-},
 
 "custom/prev-workspace": {
     "tooltip": true,
@@ -271,7 +271,7 @@
 "clock#2": {
     "tooltip": true,
     "interval": 1,
-    "format": " {:%A, %d.%B %Y}",
+    "format": "-  {:%A, %d.%B %Y}",
     "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar-weeks-pos": "right",
     "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",

@@ -1,24 +1,23 @@
 @import "./colors.rasi"
 
 * {
-    font: "0xProto Nerd Font 14";
+    font: "0xProto Nerd Font 16";
 }
 
 window {
     anchor: north;
     background-color: @primary;
     border: 0;
-    height: 56px;
     location: north;
     padding: 8px;
     width: 100%;
-    y-offset: -72px;
+    y-offset: -67px;
 }
 
 mainbox {
     children: [listview];
     border: 0;
-    margin: 0 0 0 1235px;
+    margin: 0 0 0 1279px;
     padding: 0;
 }
 
@@ -37,7 +36,7 @@ element {
     border: 0;
     border-radius: 24px;
     cursor: pointer;
-    padding: 8px 16px;
+    padding: 4px 8px;
     spacing: 0;
 }
 
