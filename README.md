@@ -1,4 +1,3 @@
-:-: | :-: | :-:
 ![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)  |  ![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)
 :-: | :-: | :-:
 ![Preview 4](https://github.com/furcom/fyprland/blob/main/preview_4.png?raw=true)  |  ![Preview 5](https://github.com/furcom/fyprland/blob/main/preview_5.png?raw=true)  |  ![Preview 6](https://github.com/furcom/fyprland/blob/main/preview_6.png?raw=true)
