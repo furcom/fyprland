@@ -41,7 +41,7 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [hyprcursor](https://github.com/hyprwm/hyprcursor) (Hyprland cursor)
     - [hypridle](https://github.com/hyprwm/hypridle) (Hyprland's idle daemon)
     - [hyprland](https://github.com/hyprwm/Hyprland) (Dynamic tiling Wayland compositor)
-    - [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins) (Hyprland plugin: Hyprbar)
+    - [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins) (Hyprland plugins: Hyprbar & Hyprexpo)
     - [hyprlock](https://github.com/hyprwm/hyprlock) (Hyprland screen locking utility)
     - [hyprpaper](https://github.com/hyprwm/hyprpaper) (Hyprland wallpaper utility)
     - [hyprpicker](https://github.com/hyprwm/hyprpicker) (Wayland color picker)
