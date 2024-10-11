@@ -1,4 +1,3 @@
-**Desktop (empty)** | **Desktop**
 :-: | :-: | :-:
 ![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)  |  ![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)
 :-: | :-: | :-:
