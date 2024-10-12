@@ -33,7 +33,8 @@ window#waybar > box {
     background-color: @background_bar;
     border: none;
     border-radius: 0;
-    box-shadow: 0px 4px 3px 1px rgba(0,0,0,0.5);
+    margin: 0 0 8px 0;
+    box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.33);
 }
 
 * {
@@ -63,7 +64,7 @@ window#waybar > box {
 }
 
 #custom-settings {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0 24px 24px 0;
     margin: 0 0 0 2px;
     padding: 4px 12px;
@@ -86,21 +87,21 @@ window#waybar > box {
 }
 
 #custom-overview-workspaces {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 4px 14px;
 }
 
 #custom-prev-workspace {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px 0 0 24px;
     margin: 0 0 0 2px;
     padding: 4px 16px;
 }
 
 #custom-next-workspace {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0 24px 24px 0;
     margin: 0 0 0 2px;
     padding: 4px 16px;
@@ -113,7 +114,7 @@ window#waybar > box {
 }
 
 #window {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px;
     margin: 0 0 0 4px;
     padding: 4px 16px;
@@ -129,42 +130,42 @@ window#waybar.empty #window {
 }
 
 #custom-win-fullscreen {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 4px 16px;
 }
 
 #custom-win-close {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px 0 0 24px;
     margin: 0 0 0 8px;
     padding: 4px 16px 4px 20px;
 }
 
 #custom-win-expand {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 4px 16px;
 }
 
 #custom-win-prev-workspace {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 4px 16px 4px 16px;
 }
 
 #custom-win-next-workspace {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 4px 16px;
 }
 
 #custom-win-float {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0 24px 24px 0;
     margin: 0 0 0 2px;
     padding: 4px 22px 4px 14px;
@@ -173,25 +174,25 @@ window#waybar.empty #window {
 
 /* Submenu Left */
 #cpu {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px 0 0 24px;
     margin: 0;
     padding: 0 12px;
 }
 #memory {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
 }
 #disk {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
 }
 #temperature {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0 24px 24px 0;
     margin: 0 16px 0 2px;
     padding: 0 12px;
@@ -208,6 +209,7 @@ window#waybar.empty #window {
     transition-duration: 333ms;
 }
 
+#clock#2,
 #clock {
     background-color: transparent;
     margin: 0 0 0 4px;
@@ -221,28 +223,28 @@ window#waybar.empty #window {
 }
 
 #bluetooth {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
 }
 
 #network {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
 }
 
 #backlight {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
 }
 
 #custom-pipewire {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 0 0 2px;
     padding: 0 12px;
@@ -250,7 +252,7 @@ window#waybar.empty #window {
 
 #wireplumber,
 #wireplumber.muted {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px 0 0 24px;
     margin: 0 0 0 16px;
     padding: 0 12px;
@@ -265,34 +267,34 @@ window#waybar.empty #window {
 }
 
 #custom-spotify {
-    background-color: @hover;
+    background-color: @alpha30;
     margin: 0 8px 0 0;
     padding: 4px 16px;
 }
 
 #custom-prev-song {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 24px 0 0 24px;
     margin: 0 2px 0 0;
     padding: 4px 16px;
 }
 
 #custom-toggle-song {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0;
     margin: 0 2px 0 0;
     padding: 4px 16px;
 }
 
 #custom-next-song {
-    background-color: @hover;
+    background-color: @alpha30;
     border-radius: 0 24px 24px 0;
     margin: 0 8px 0 0;
     padding: 4px 16px;
 }
 
 #tray {
-    background-color: @hover;
+    background-color: @alpha30;
     margin: 0 4px 0 0;
     padding: 4px 14px;
 }
@@ -357,7 +359,6 @@ window#waybar.empty #window {
 #custom-win-next-workspace:hover,
 #custom-win-float:hover,
 #tray:hover,
-#clock:hover,
 #bluetooth:hover,
 #network:hover,
 #custom-prev-workspace:hover,
@@ -374,7 +375,7 @@ window#waybar.empty #window {
 #custom-toggle-song:hover,
 #custom-next-song:hover,
 #custom-spotify:hover {
-    background-color: @color2;
+    background-color: @color4;
     transition-duration: 333ms;
 }
 #workspaces button:hover {
@@ -384,35 +385,6 @@ window#waybar.empty #window {
     transition-duration: 333ms;
 }
 #workspaces button.persistent:hover {
-    background-color: @color2;
+    background-color: @color4;
     transition-duration: 333ms;
-}
-
-/*----------------*/
-/*----- ETC ------*/
-/*----------------*/
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-tooltip {
-    background-color: @color2;
-    border-radius: 12px;
-    color: @background;
-}
-
-window#waybar {
-    background: none;
-}
-
-window#waybar > box {
-    background-color: @background_bar;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0px 4px 3px 1px rgba(0,0,0,0.5);
-    margin: 0 0 8px 0;
 }

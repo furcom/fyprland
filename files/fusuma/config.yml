@@ -19,19 +19,19 @@ swipe:
     #down:
       #command: 'hyprctl dispatch fullscreen 1'
       #threshold: 0.5
-  #4:
+  4:
     #up:
       #command: 'hyprctl dispatch fullscreen 0'
       #threshold: 0.5
     #down:
       #command: 'hyprctl dispatch fullscreen 0'
       #threshold: 0.5
-    #left:
-      #command: 'hyprctl dispatch movetoworkspace -1'
-      #threshold: 0.5
-    #right:
-      #command: 'hyprctl dispatch movetoworkspace +1'
-      #threshold: 0.5
+    left:
+      command: 'hyprctl dispatch movetoworkspace -1'
+      threshold: 0.5
+    right:
+      command: 'hyprctl dispatch movetoworkspace +1'
+      threshold: 0.5
 
 hold:
   3:

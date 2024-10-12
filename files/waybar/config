@@ -262,22 +262,37 @@
     "on-click": "hyprctl dispatch hyprexpo:expo on"
 },
 
+
 "clock": {
-    "tooltip": false,
-    "interval": 1,
     "format": "{:%H:%M}",
+    "format-alt": "{:%I:%M %p}",
+    "tooltip": false,
 },
 
 "clock#2": {
-    "tooltip": true,
-    "interval": 1,
-    "format": "-  {:%A, %d.%B %Y}",
-    "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "calendar-weeks-pos": "right",
-    "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
-    "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
-    "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
-    "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
+    "format": "- {:%d.%m.%Y}",
+    "format-alt": "- {:%A, %d. %B %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+       "mode"          : "year",
+       "mode-mon-col"  : 3,
+       "weeks-pos"     : "right",
+       "on-scroll"     : 1,
+       "format": {
+          "months":     "<span color='#ffead3'><b>{}</b></span>",
+          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+          }
+       },
+    "actions":  {
+       "on-click-right": "mode",
+       "on-scroll-up": "tz_up",
+       "on-scroll-down": "tz_down",
+       "on-scroll-up": "shift_up",
+       "on-scroll-down": "shift_down"
+       }
 },
 
 "custom/weather": {

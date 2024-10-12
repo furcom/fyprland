@@ -10,8 +10,14 @@
 
 @define-color foreground #FEF0F9;
 @define-color background #131122;
-@define-color background_bar rgba(86,149,192,0.5);
-@define-color hover rgba(254,240,249,0.15);
+@define-color background_alpha50 rgba(19,17,34,0.50);
+@define-color background_bar rgba(86,149,192,0.7);
+@define-color alpha15 rgba(254,240,249,0.15);
+@define-color alpha30 rgba(254,240,249,0.30);
+@define-color alpha50 rgba(254,240,249,0.50);
+@define-color alpha60 rgba(254,240,249,0.60);
+@define-color alpha75 rgba(254,240,249,0.75);
+@define-color alpha90 rgba(254,240,249,0.90);
 @define-color cursor #FEF0F9;
 @define-color color0 #272638;
 @define-color color1 #AE64C5;
