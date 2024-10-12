@@ -249,6 +249,7 @@ window#waybar.empty #window {
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
+    padding: 0 16px;
 }
 #battery.critical:not(.charging) {
     animation-direction: alternate;
@@ -257,6 +258,7 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
+    padding: 0 16px;
 }
 
 #custom-powermenu {
