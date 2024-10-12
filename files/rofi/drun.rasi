@@ -1,3 +1,11 @@
+// ██████╗  ██████╗ ███████╗██╗
+// ██╔══██╗██╔═══██╗██╔════╝██║
+// ██████╔╝██║   ██║█████╗  ██║
+// ██╔══██╗██║   ██║██╔══╝  ██║
+// ██║  ██║╚██████╔╝██║     ██║
+// ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+// config by furcom (https://github.com/furcom)
+
 @import "./config.rasi"
 @import "./colors.rasi"
 
@@ -7,7 +15,7 @@
 }
 
 element {
-    padding: 3px 8px;
+    padding: 4px 16px;
     border-radius: 24px;
     cursor:  pointer;
     spacing: 4px ;
@@ -67,17 +75,19 @@ window {
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -67px;
+    y-offset:	      -64px;
     width: 100%;
+    padding: 10px 0;
 }
 mainbox {
-    padding: 8px;
+    padding: 0;
     border:  0;
+    margin: 0 0 0 8px;
     children: ["inputbar"];
 }
 
 message {
-    padding:      2px ;
+    padding:      8px ;
     border-color: @primary;
     border:       2px dash 0px 0px ;
 }
@@ -141,21 +151,25 @@ entry {
     placeholder-color: @foreground;
     placeholder:       " Search";
     expand: false;
+    padding: 4px 0;
     width: 128px;
 }
 prompt {
     spacing:    0;
     text-color: @foreground;
+    padding: 4px 0;
 }
 textbox-prompt-colon {
     margin:     0;
     expand:     false;
     str:        " ";
     text-color: inherit;
+    padding: 4px 0;
 }
 
 mode-switcher{
   enabled: true;
+    padding: 2px 0;
 }
 
 button {
@@ -164,7 +178,7 @@ button {
     border-radius: 24px;
     border-color: transparent;
     cursor: pointer;
-    margin: 0;
+    margin: 0 8px 0 0;
     padding: 0px;
     text-color: @foreground;
     spacing:    0;

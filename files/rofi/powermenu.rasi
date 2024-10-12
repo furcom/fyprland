@@ -1,3 +1,11 @@
+// ██████╗  ██████╗ ███████╗██╗
+// ██╔══██╗██╔═══██╗██╔════╝██║
+// ██████╔╝██║   ██║█████╗  ██║
+// ██╔══██╗██║   ██║██╔══╝  ██║
+// ██║  ██║╚██████╔╝██║     ██║
+// ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+// config by furcom (https://github.com/furcom)
+
 @import "./colors.rasi"
 
 * {
@@ -9,16 +17,15 @@ window {
     background-color: @primary;
     border: 0;
     location: north;
-    padding: 8px;
+    padding: 10px 0;
     width: 100%;
-    y-offset: -67px;
+    y-offset: -64px;
 }
 
 mainbox {
     children: [listview];
     border: 0;
-    margin: 0 0 0 1279px;
-    padding: 0;
+    margin: 0 0 0 1207px;
 }
 
 listview {
@@ -36,8 +43,8 @@ element {
     border: 0;
     border-radius: 24px;
     cursor: pointer;
-    padding: 4px 8px;
-    spacing: 0;
+    padding: 4px 16px;
+    spacing: 4;
 }
 
 element normal.normal {

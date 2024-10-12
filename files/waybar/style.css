@@ -8,15 +8,19 @@
 
 @import url("./colors.css");
 
-/*----------------*/
-/*----- ETC ------*/
-/*----------------*/
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+/* General */
+* {
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    border-radius: 24px;
+    color: @foreground;
+    font-family: "0xProto Nerd Font Mono";
+    font-size: 20px;
+    margin: 0;
+    min-width: 0px;
+    padding: 0;
+    transition-duration: 125ms;
 }
 
 tooltip {
@@ -25,27 +29,24 @@ tooltip {
     color: @background;
 }
 
+/* Bar */
 window#waybar {
     background: none;
 }
-
 window#waybar > box {
     background-color: @background_bar;
-    border: none;
     border-radius: 0;
-    margin: 0 0 8px 0;
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.33);
+    margin: 0 0 8px 0;
+    min-height: 40px;
+    padding: 8px 0;
 }
 
-* {
-    background-color: transparent;
-    color: @foreground;
-    font-family: "0xProto Nerd Font";
-    font-size: 20px;
-    border-radius: 28px;
-    transition-duration: 333ms;
-    margin: 0;
-    padding: 0;
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
 /*----------------*/
@@ -53,275 +54,201 @@ window#waybar > box {
 /*----------------*/
 
 .modules-left{
-    padding: 8px;
-    transition-duration: 333ms;
 }
 
 #custom-logo {
-    background: transparent;
-    margin: 0;
-    padding: 0 8px;
+    margin: 0 8px 0 12px;
 }
 
+#custom-weather,
+#clock {
+    padding: 0 4px;
+}
+
+#wireplumber,
+#wireplumber.muted {
+    background-color: @alpha30;
+    border-radius: 24px 6px 6px 24px;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
+}
+#bluetooth,
+#network,
+#backlight,
+#custom-pipewire{
+    background-color: @alpha30;
+    border-radius: 6px;
+    margin: 0 0 0 3px;
+    padding: 0 16px;
+}
 #custom-settings {
     background-color: @alpha30;
-    border-radius: 0 24px 24px 0;
-    margin: 0 0 0 2px;
-    padding: 4px 12px;
+    border-radius: 6px 24px 24px 6px;
+    margin: 0 0 0 3px;
+    padding: 0 16px;
 }
 
-#workspaces {
-    margin: 0 0 0 4px;
-    padding: 4px;
-}
-#workspaces button.urgent {
-    border-color: rgba(0,0,0,0);
-    color: #770000;
-    padding: 4px;
-}
-#workspaces button.persistent,
-#workspaces button.active,
-#workspaces button {
-    border-color: rgba(0,0,0,0);
-    padding: 0 12px 0 4px;
-}
-
-#custom-overview-workspaces {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 4px 14px;
-}
-
-#custom-prev-workspace {
-    background-color: @alpha30;
-    border-radius: 24px 0 0 24px;
-    margin: 0 0 0 2px;
-    padding: 4px 16px;
-}
-
-#custom-next-workspace {
-    background-color: @alpha30;
-    border-radius: 0 24px 24px 0;
-    margin: 0 0 0 2px;
-    padding: 4px 16px;
-}
-
-#custom-updates {
+#custom-pacman {
     background-color: #007700;
-    margin: 0 0 0 8px;
-    padding: 4px 16px;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
 }
 
 #window {
     background-color: @alpha30;
-    border-radius: 24px;
     margin: 0 0 0 4px;
-    padding: 4px 16px;
+    padding: 0 16px;
 }
-
 window#waybar.empty #window {
-    background: transparent;
-    color: transparent;
     background-color: transparent;
+    color: transparent;
     margin: 0;
+    min-width: 0;
     padding: 0;
-    font-size: 1px;
 }
-
-#custom-win-fullscreen {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 4px 16px;
-}
-
 #custom-win-close {
     background-color: @alpha30;
-    border-radius: 24px 0 0 24px;
-    margin: 0 0 0 8px;
-    padding: 4px 16px 4px 20px;
+    border-radius: 24px 6px 6px 24px;
+    margin: 0 0 0 3px;
+    padding: 0 16px;
 }
-
-#custom-win-expand {
+#custom-win-prev-workspace,
+#custom-win-next-workspace,
+#custom-win-expand,
+#custom-win-fullscreen {
     background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 4px 16px;
+    border-radius: 6px;
+    margin: 0 0 0 3px;
+    padding: 0 16px;
 }
-
-#custom-win-prev-workspace {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 4px 16px 4px 16px;
-}
-
-#custom-win-next-workspace {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 4px 16px;
-}
-
 #custom-win-float {
     background-color: @alpha30;
-    border-radius: 0 24px 24px 0;
-    margin: 0 0 0 2px;
-    padding: 4px 22px 4px 14px;
-}
-
-
-/* Submenu Left */
-#cpu {
-    background-color: @alpha30;
-    border-radius: 24px 0 0 24px;
-    margin: 0;
-    padding: 0 12px;
-}
-#memory {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
-}
-#disk {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
-}
-#temperature {
-    background-color: @alpha30;
-    border-radius: 0 24px 24px 0;
-    margin: 0 16px 0 2px;
-    padding: 0 12px;
-}
-#temperature.critical {
-    background-color: #FF0000;
+    border-radius: 6px 24px 24px 6px;
+    margin: 0 0 0 3px;
+    padding: 0 16px;
 }
 
 /*------------------*/
 /*----- CENTER -----*/
 /*------------------*/
 .modules-center {
-    padding: 8px;
-    transition-duration: 333ms;
 }
 
-#clock#2,
-#clock {
-    background-color: transparent;
-    margin: 0 0 0 4px;
+#workspaces {
+}
+#workspaces button.urgent {
+    color: #770000;
+    margin: 0 4px 0 0;
+}
+#workspaces button.persistent,
+#workspaces button.active,
+#workspaces button {
+    margin: 0 0px 0 0;
     padding: 0 8px;
 }
 
-#custom-weather {
-    background-color: transparent;
-    margin: 0 0 0 4px;
-    padding: 0 8px;
-}
-
-#bluetooth {
+#custom-prev-workspace {
     background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
+    border-radius: 24px 6px 6px 24px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
 }
-
-#network {
+#custom-overview-workspaces {
     background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
+    border-radius: 6px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
 }
-
-#backlight {
+#custom-next-workspace {
     background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
-}
-
-#custom-pipewire {
-    background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 0 0 2px;
-    padding: 0 12px;
-}
-
-#wireplumber,
-#wireplumber.muted {
-    background-color: @alpha30;
-    border-radius: 24px 0 0 24px;
-    margin: 0 0 0 16px;
-    padding: 0 12px;
+    border-radius: 6px 24px 24px 6px;
+    margin: 0 4px 0 0;
+    padding: 0 16px;
 }
 
 /*-----------------*/
 /*----- RIGHT -----*/
 /*-----------------*/
 .modules-right {
-    padding: 8px;
-    transition-duration: 333ms;
 }
 
-#custom-spotify {
+#cpu {
     background-color: @alpha30;
-    margin: 0 8px 0 0;
-    padding: 4px 16px;
+    border-radius: 24px 6px 6px 24px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
+}
+#memory,
+#disk {
+    background-color: @alpha30;
+    border-radius: 6px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
+}
+#temperature {
+    background-color: @alpha30;
+    border-radius: 6px 24px 24px 6px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
+}
+#temperature.critical {
+    background-color: #FF0000;
+    padding: 0 16px;
 }
 
+#custom-media {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+    padding: 0 8px;
+}
 #custom-prev-song {
     background-color: @alpha30;
-    border-radius: 24px 0 0 24px;
-    margin: 0 2px 0 0;
-    padding: 4px 16px;
+    border-radius: 24px 6px 6px 24px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
 }
-
 #custom-toggle-song {
     background-color: @alpha30;
-    border-radius: 0;
-    margin: 0 2px 0 0;
-    padding: 4px 16px;
+    border-radius: 6px;
+    margin: 0 3px 0 0;
+    padding: 0 16px;
 }
-
 #custom-next-song {
     background-color: @alpha30;
-    border-radius: 0 24px 24px 0;
+    border-radius: 6px 24px 24px 6px;
     margin: 0 8px 0 0;
-    padding: 4px 16px;
+    padding: 0 16px;
 }
 
 #tray {
     background-color: @alpha30;
     margin: 0 4px 0 0;
-    padding: 4px 14px;
+    padding: 0 16px;
 }
 
 #tray menu {
-    background-color: @color2;
-    border-radius: 12px;
+    background-color: @color3;
+    padding: 8px;
 }
 
 #power-profiles-daemon {
-    margin: 0 0 0 4px;
-    padding: 4px 16px;
+    background-color: @alpha30;
+    margin: 0 4px 0 0;
+    padding: 0 16px;
 }
 
 #battery {
-    padding: 0 8px;
+    margin: 0 0 0 4px;
+    padding: 0 4px;
 }
-
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
-    padding: 4px 16px;
+    padding: 0 16px;
 }
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
-    padding: 4px 16px;
 }
 #battery.critical:not(.charging) {
     animation-direction: alternate;
@@ -330,51 +257,48 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
-    padding: 4px 16px;
 }
 
 #custom-powermenu {
-    background: transparent;
-    margin: 0 8px 0 4px;
-    padding: 0px;
+    background-color: transparent;
+    margin: 0 12px 0 8px;
 }
 
 /*-----------------*/
 /*----- HOVER -----*/
 /*-----------------*/
 
-#custom-settings:hover,
-#custom-updates:hover,
-#cpu:hover,
-#memory:hover,
-#disk:hover,
-#temperature:hover,
-#custom-weather:hover,
-#window:hover,
-#custom-win-fullscreen:hover,
-#custom-win-next-workspace:hover,
-#custom-win-close:hover,
-#custom-win-expand:hover,
-#custom-win-prev-workspace:hover,
-#custom-win-next-workspace:hover,
-#custom-win-float:hover,
-#tray:hover,
-#bluetooth:hover,
-#network:hover,
-#custom-prev-workspace:hover,
-#custom-next-workspace:hover,
-#custom-overview-workspaces:hover,
 #backlight:hover,
-#power-profiles-daemon:hover,
-#custom-pipewire:hover,
-#wireplumber:hover,
 #battery.warning:not(.charging):hover,
 #battery.charging:hover,
 #battery.plugged:hover,
-#custom-prev-song:hover,
-#custom-toggle-song:hover,
+#bluetooth:hover,
+#clock:hover,
+#cpu:hover,
+#custom-next-workspace:hover,
 #custom-next-song:hover,
-#custom-spotify:hover {
+#custom-overview-workspaces:hover,
+#custom-pacman:hover,
+#custom-pipewire:hover,
+#custom-prev-song:hover,
+#custom-prev-workspace:hover,
+#custom-settings:hover,
+#custom-toggle-song:hover,
+#custom-weather:hover,
+#custom-win-close:hover,
+#custom-win-expand:hover,
+#custom-win-float:hover,
+#custom-win-fullscreen:hover,
+#custom-win-next-workspace:hover,
+#custom-win-prev-workspace:hover,
+#disk:hover,
+#memory:hover,
+#network:hover,
+#power-profiles-daemon:hover,
+#temperature:hover,
+#tray:hover,
+#wireplumber:hover,
+#window:hover {
     background-color: @color4;
     transition-duration: 333ms;
 }

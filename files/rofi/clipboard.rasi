@@ -1,3 +1,11 @@
+// ██████╗  ██████╗ ███████╗██╗
+// ██╔══██╗██╔═══██╗██╔════╝██║
+// ██████╔╝██║   ██║█████╗  ██║
+// ██╔══██╗██║   ██║██╔══╝  ██║
+// ██║  ██║╚██████╔╝██║     ██║
+// ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+// config by furcom (https://github.com/furcom)
+
 @import "./config.rasi"
 @import "./colors.rasi"
 
@@ -6,14 +14,14 @@ configuration {
 }
 
 element {
-    padding: 2px 16px;
+    padding: 4px 16px;
     border-radius: 24px;
     cursor:  pointer;
-    spacing: 5px ;
+    spacing: 4px ;
     border:  0;
 }
 element normal.normal {
-    background-color: @background;
+    background-color: @primary;
     text-color:       @foreground;
 }
 element normal.urgent {
@@ -21,11 +29,11 @@ element normal.urgent {
     text-color:       @foreground;
 }
 element normal.active {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element selected.normal {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element selected.urgent {
@@ -37,7 +45,7 @@ element selected.active {
     text-color:       @foreground;
 }
 element alternate.normal {
-    background-color: @background;
+    background-color: @primary;
     text-color:       @foreground;
 }
 element alternate.urgent {
@@ -45,7 +53,7 @@ element alternate.urgent {
     text-color:       @foreground;
 }
 element alternate.active {
-    background-color: @primary;
+    background-color: @hover;
     text-color:       @foreground;
 }
 element-text {
@@ -60,14 +68,15 @@ element-icon {
     cursor:           inherit;
     text-color:       inherit;
 }
+
 window {
     padding:          16px;
-    background-color: @background;
+    background-color: @primary;
     border:           0 0 4px 0;
-    border-color:     @primary;
+    border-color:     @background;
     anchor:	      north;
     location:	      north;
-    y-offset:	      -75px;
+    y-offset:	      -72px;
     width:	      100%;
 }
 mainbox {
@@ -94,8 +103,8 @@ listview {
     margin: 8px 0 0 0;
     border:       2px dash 0px 0px ;
     expand: 	  false;
-    lines:	  3;
-    columns: 	  2;
+    lines:	  6;
+    columns: 	  1;
     border:	  none;
     expand: true;
     cursor: "default";
@@ -132,7 +141,7 @@ textbox-num-sep {
 }
 inputbar {
     padding:    1px ;
-    spacing:    16px ;
+    spacing:    8px ;
     margin: 0 0 0 12px;
     text-color: @foreground;
     children: ["textbox-prompt-colon","entry","mode-switcher"];
@@ -146,7 +155,7 @@ entry {
     cursor:            text;
     spacing:           0;
     placeholder-color: @foreground;
-    placeholder:       " Search";
+    placeholder:       " Clipboard";
     expand: true;
     width: 128px;
 }
@@ -157,8 +166,9 @@ prompt {
 textbox-prompt-colon {
     margin:     0px 0.3000em 0.0000em 0.0000em ;
     expand:     false;
-    str:        "";
+    str:        "";
     text-color: inherit;
+    width: 32px;
 }
 
 mode-switcher{
