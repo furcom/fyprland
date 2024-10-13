@@ -16,7 +16,7 @@
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
 RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi -selected-row 4"
-RofiMenuConfirm="rofi -dmenu -config $RofiDir/confirm.rasi -selected-row 1"
+RofiMenuConfirm="rofi -dmenu -config $RofiDir/confirm.rasi -selected-row 0"
 
 power_menu() {
     YES=" Yes"

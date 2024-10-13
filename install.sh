@@ -76,6 +76,7 @@ HYPRPLUGINS() {
 
 install_hyprshot() {
     yay -S --needed --noconfirm hyprshot
+    mkdir -p $HOME/Pictures/Screenshots
 }
 
 HYPRIDLE() {
