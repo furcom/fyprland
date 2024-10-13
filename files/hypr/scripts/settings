@@ -336,6 +336,7 @@ wallpaper_menu() {
 
         if [ -f "$WP_CHOICE" ]; then
             cp -rf "$WP_CHOICE" "$HyprImagesDir/wallpaper.png"
+            cp -rf "$WP_CHOICE" "$SddmThemesDir/fyprland/images/background.png"
 	    
             # Wallust
 	    wallust run "$WP_CHOICE"
