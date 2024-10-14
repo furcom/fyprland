@@ -145,7 +145,7 @@ waybar_menu() {
 }
 
 wallust_menu() {
-    WALLUST_OPTIONS="󰌍\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n Config"
+    WALLUST_OPTIONS="󰌍\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n SDDM\n Config"
     WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WALLUST_SUBCHOICE" ]; then
@@ -168,6 +168,8 @@ wallust_menu() {
                 $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/rofi" ;;
             "󱥁 Mako")
                 $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/mako" ;;
+            " SDDM")
+                $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/sddm" ;;
             " Config")
                 $TERMINAL sh -c "$EDITOR $WallustDir/wallust.toml" ;;
         esac

@@ -76,6 +76,10 @@ kitty.template = "kitty"
 kitty.target = '~/.config/kitty/style.conf'
 kitty.new_engine = true
 
-sddm.template = "sddm-fyprland-theme"
+sddm.template = "sddm"
 sddm.target = '/usr/share/sddm/themes/fyprland/Main.qml'
 sddm.new_engine = true
+
+sddm-2.template = "sddm-2"
+sddm-2.target = '/usr/share/sddm/themes/fyprland/SimpleControls/SimpleComboBox.qml'
+sddm-2.new_engine = true

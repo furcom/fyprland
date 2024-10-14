@@ -124,7 +124,7 @@ input-field {
         shadow_passes = 0 #0=disable
         shadow_size = 0
         shadow_boost = 0
-	size = 384, 64
+	size = 1920, 64
         swap_font_color = false
         valign = bottom
 }
