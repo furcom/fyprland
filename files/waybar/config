@@ -278,10 +278,11 @@
             "6": "",
             "7": "",
             "8": "",
-            "9": "",
+            "9": "",
+            "0": "",
             "urgent": "",
-            "active": "",
-            "default": ""
+            "active": "",
+            "default": ""
         },
         "sort-by-number": true,
         "on-scroll-down": "hyprctl dispatch workspace +1",

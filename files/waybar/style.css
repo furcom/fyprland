@@ -16,7 +16,7 @@
     border-radius: 24px;
     color: @foreground;
     font-family: "0xProto Nerd Font Mono";
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     min-width: 0px;
     padding: 0;
@@ -58,17 +58,18 @@ window#waybar > box {
 
 #custom-logo {
     margin: 0 8px 0 12px;
+    font-size: 32px;
 }
 
 #custom-weather,
 #clock {
-    padding: 0 4px;
+    padding: 0 8px;
 }
 
 #wireplumber,
 #wireplumber.muted {
     background-color: @alpha30;
-    border-radius: 24px 6px 6px 24px;
+    border-radius: 24px 4px 4px 24px;
     margin: 0 0 0 4px;
     padding: 0 16px;
 }
@@ -77,13 +78,13 @@ window#waybar > box {
 #backlight,
 #custom-pipewire{
     background-color: @alpha30;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 0 0 0 3px;
     padding: 0 16px;
 }
 #custom-settings {
     background-color: @alpha30;
-    border-radius: 6px 24px 24px 6px;
+    border-radius: 4px 24px 24px 4px;
     margin: 0 0 0 3px;
     padding: 0 16px;
 }
@@ -108,8 +109,8 @@ window#waybar.empty #window {
 }
 #custom-win-close {
     background-color: @alpha30;
-    border-radius: 24px 6px 6px 24px;
-    margin: 0 0 0 3px;
+    border-radius: 24px 4px 4px 24px;
+    margin: 0 0 0 8px;
     padding: 0 16px;
 }
 #custom-win-prev-workspace,
@@ -117,13 +118,13 @@ window#waybar.empty #window {
 #custom-win-expand,
 #custom-win-fullscreen {
     background-color: @alpha30;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 0 0 0 3px;
     padding: 0 16px;
 }
 #custom-win-float {
     background-color: @alpha30;
-    border-radius: 6px 24px 24px 6px;
+    border-radius: 4px 24px 24px 4px;
     margin: 0 0 0 3px;
     padding: 0 16px;
 }
@@ -139,29 +140,30 @@ window#waybar.empty #window {
 #workspaces button.urgent {
     color: #770000;
     margin: 0 4px 0 0;
+    padding: 0 14px;
 }
 #workspaces button.persistent,
 #workspaces button.active,
 #workspaces button {
     margin: 0 0px 0 0;
-    padding: 0 8px;
+    padding: 0 14px;
 }
 
 #custom-prev-workspace {
     background-color: @alpha30;
-    border-radius: 24px 6px 6px 24px;
-    margin: 0 3px 0 0;
+    border-radius: 24px 4px 4px 24px;
+    margin: 0 3px 0 8px;
     padding: 0 16px;
 }
 #custom-overview-workspaces {
     background-color: @alpha30;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 0 3px 0 0;
     padding: 0 16px;
 }
 #custom-next-workspace {
     background-color: @alpha30;
-    border-radius: 6px 24px 24px 6px;
+    border-radius: 4px 24px 24px 4px;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
@@ -174,21 +176,21 @@ window#waybar.empty #window {
 
 #cpu {
     background-color: @alpha30;
-    border-radius: 24px 6px 6px 24px;
+    border-radius: 24px 4px 4px 24px;
     margin: 0 3px 0 0;
     padding: 0 16px;
 }
 #memory,
 #disk {
     background-color: @alpha30;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 0 3px 0 0;
     padding: 0 16px;
 }
 #temperature {
     background-color: @alpha30;
-    border-radius: 6px 24px 24px 6px;
-    margin: 0 3px 0 0;
+    border-radius: 4px 24px 24px 4px;
+    margin: 0 16px 0 0;
     padding: 0 16px;
 }
 #temperature.critical {
@@ -203,26 +205,26 @@ window#waybar.empty #window {
 }
 #custom-prev-song {
     background-color: @alpha30;
-    border-radius: 24px 6px 6px 24px;
+    border-radius: 24px 4px 4px 24px;
     margin: 0 3px 0 0;
     padding: 0 16px;
 }
 #custom-toggle-song {
     background-color: @alpha30;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 0 3px 0 0;
     padding: 0 16px;
 }
 #custom-next-song {
     background-color: @alpha30;
-    border-radius: 6px 24px 24px 6px;
+    border-radius: 4px 24px 24px 4px;
     margin: 0 8px 0 0;
     padding: 0 16px;
 }
 
 #tray {
     background-color: @alpha30;
-    margin: 0 4px 0 0;
+    margin: 0 8px 0 0;
     padding: 0 16px;
 }
 
@@ -233,12 +235,11 @@ window#waybar.empty #window {
 
 #power-profiles-daemon {
     background-color: @alpha30;
-    margin: 0 4px 0 0;
+    margin: 0 8px 0 0;
     padding: 0 16px;
 }
 
 #battery {
-    margin: 0 0 0 4px;
     padding: 0 4px;
 }
 #battery.charging,
@@ -263,7 +264,9 @@ window#waybar.empty #window {
 
 #custom-powermenu {
     background-color: transparent;
-    margin: 0 12px 0 8px;
+    font-size: 32px;
+    margin: 0 14px 0 4px;
+    padding: 0 0 0 6px;
 }
 
 /*-----------------*/

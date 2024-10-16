@@ -9,7 +9,7 @@
 
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
-config_file="$HyprConfigsDir/style.conf"
+config_file="$HyprConfigsDir/general.conf"
 
 if [[ -f "$config_file" ]]; then
     case "$1" in

@@ -72,7 +72,7 @@ extras_menu() {
 }
 
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰌍\n󰸉 Wallpaper\n General\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Style\n Input\n Plugins"
+    HYPRLAND_OPTIONS="󰌍\n Config\n General\n Decorations\n Animations\nInput\n󰸉 Wallpaper\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Plugins"
     HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowHypr)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
@@ -83,8 +83,14 @@ hyprland_menu() {
         main_menu
     else
         case "$HYPRLAND_SUBCHOICE" in
-            " General")
+            " Config")
                 $TERMINAL sh -c "$EDITOR $HyprDir/hyprland.conf" ;;
+            " General")
+                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/general.conf" ;;
+            " Decorations")
+                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/decorations.conf" ;;
+            " Animations")
+                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/animations.conf" ;;
             "󰸉 Wallpaper")
                 wallpaper_menu ;;
             " Window Bar")
@@ -94,15 +100,15 @@ hyprland_menu() {
             " Bindings")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             " Layouts")
-		    LAYOUTS_OPTIONS="󰌍\n Master\n Dwindle\n Config"
+		    LAYOUTS_OPTIONS="󰌍\n󰯌 Master\n󰕴 Dwindle\n Config"
 		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | $RofiMenuSettings)
 		    case "$LAYOUTS_SUBCHOICE" in
 			"󰌍")
                             SelectedRowHypr="6"
 			    hyprland_menu ;;
-	                " Master")
+	                "󰯌 Master")
 			    $HyprScriptsDir/layouts --master ;;
-	                " Dwindle")
+	                "󰕴 Dwindle")
 			    $HyprScriptsDir/layouts --dwindle ;;
 			" Config")
                             $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
@@ -111,8 +117,6 @@ hyprland_menu() {
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/misc.conf" ;;
             " Rules")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/rules.conf" ;;
-            " Style")
-                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/style.conf" ;;
             " Input")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/input.conf" ;;
             " Plugins")
