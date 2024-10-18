@@ -19,7 +19,7 @@ window {
     location: north;
     padding: 10px 0;
     width: 100%;
-    y-offset: -64px;
+    y-offset: -88px;
 }
 
 mainbox {

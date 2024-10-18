@@ -16,16 +16,17 @@ window {
     anchor: north;
     background-color: @primary;
     border: 0;
+    border-radius: 16px;
     location: north;
     padding: 10px 0;
     width: 100%;
-    y-offset: -64px;
+    y-offset: -88px;
 }
 
 mainbox {
     children: [listview];
     border: 0;
-    margin: 0 0 0 1207px;
+    margin: 0 0 0 1206px;
 }
 
 listview {

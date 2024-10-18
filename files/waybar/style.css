@@ -13,10 +13,10 @@
     background: transparent;
     background-color: transparent;
     border: none;
-    border-radius: 24px;
+    border-radius: 16px;
     color: @foreground;
     font-family: "0xProto Nerd Font Mono";
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
     min-width: 0px;
     padding: 0;
@@ -25,7 +25,7 @@
 
 tooltip {
     background-color: @color2;
-    border-radius: 24px;
+    border-radius: 8px;
     color: @background;
 }
 
@@ -37,7 +37,7 @@ window#waybar > box {
     background-color: @background_bar;
     border-radius: 0;
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.33);
-    margin: 0 0 8px 0;
+    margin: 0 0 32px 0;
     min-height: 40px;
     padding: 8px 0;
 }
@@ -67,25 +67,15 @@ window#waybar > box {
 }
 
 #wireplumber,
-#wireplumber.muted {
-    background-color: @alpha30;
-    border-radius: 24px 4px 4px 24px;
-    margin: 0 0 0 4px;
-    padding: 0 16px;
-}
+#wireplumber.muted,
 #bluetooth,
 #network,
 #backlight,
-#custom-pipewire{
-    background-color: @alpha30;
-    border-radius: 4px;
-    margin: 0 0 0 3px;
-    padding: 0 16px;
-}
+#custom-pipewire,
 #custom-settings {
     background-color: @alpha30;
-    border-radius: 4px 24px 24px 4px;
-    margin: 0 0 0 3px;
+    border-radius: 16px;
+    margin: 0 0 0 4px;
     padding: 0 16px;
 }
 
@@ -107,25 +97,15 @@ window#waybar.empty #window {
     min-width: 0;
     padding: 0;
 }
-#custom-win-close {
-    background-color: @alpha30;
-    border-radius: 24px 4px 4px 24px;
-    margin: 0 0 0 8px;
-    padding: 0 16px;
-}
+#custom-win-close,
 #custom-win-prev-workspace,
 #custom-win-next-workspace,
 #custom-win-expand,
-#custom-win-fullscreen {
-    background-color: @alpha30;
-    border-radius: 4px;
-    margin: 0 0 0 3px;
-    padding: 0 16px;
-}
+#custom-win-fullscreen,
 #custom-win-float {
     background-color: @alpha30;
-    border-radius: 4px 24px 24px 4px;
-    margin: 0 0 0 3px;
+    border-radius: 16px;
+    margin: 0 0 0 4px;
     padding: 0 16px;
 }
 
@@ -138,32 +118,24 @@ window#waybar.empty #window {
 #workspaces {
 }
 #workspaces button.urgent {
+    border-radius: 16px;
     color: #770000;
     margin: 0 4px 0 0;
-    padding: 0 14px;
+    padding: 0 16px;
 }
 #workspaces button.persistent,
 #workspaces button.active,
 #workspaces button {
-    margin: 0 0px 0 0;
-    padding: 0 14px;
+    border-radius: 16px;
+    margin: 0 4px 0 0;
+    padding: 0 16px;
 }
 
-#custom-prev-workspace {
-    background-color: @alpha30;
-    border-radius: 24px 4px 4px 24px;
-    margin: 0 3px 0 8px;
-    padding: 0 16px;
-}
-#custom-overview-workspaces {
-    background-color: @alpha30;
-    border-radius: 4px;
-    margin: 0 3px 0 0;
-    padding: 0 16px;
-}
+#custom-prev-workspace,
+#custom-overview-workspaces,
 #custom-next-workspace {
     background-color: @alpha30;
-    border-radius: 4px 24px 24px 4px;
+    border-radius: 16px;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
@@ -174,23 +146,13 @@ window#waybar.empty #window {
 .modules-right {
 }
 
-#cpu {
-    background-color: @alpha30;
-    border-radius: 24px 4px 4px 24px;
-    margin: 0 3px 0 0;
-    padding: 0 16px;
-}
+#cpu,
 #memory,
-#disk {
-    background-color: @alpha30;
-    border-radius: 4px;
-    margin: 0 3px 0 0;
-    padding: 0 16px;
-}
+#disk,
 #temperature {
     background-color: @alpha30;
-    border-radius: 4px 24px 24px 4px;
-    margin: 0 16px 0 0;
+    border-radius: 16px;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 #temperature.critical {
@@ -200,31 +162,22 @@ window#waybar.empty #window {
 
 #custom-media {
     background-color: transparent;
-    margin: 0 4px 0 0;
+    border-radius: 16px;
+    margin: 0 0px 0 0;
     padding: 0 8px;
 }
-#custom-prev-song {
-    background-color: @alpha30;
-    border-radius: 24px 4px 4px 24px;
-    margin: 0 3px 0 0;
-    padding: 0 16px;
-}
-#custom-toggle-song {
-    background-color: @alpha30;
-    border-radius: 4px;
-    margin: 0 3px 0 0;
-    padding: 0 16px;
-}
+#custom-prev-song,
+#custom-toggle-song,
 #custom-next-song {
     background-color: @alpha30;
-    border-radius: 4px 24px 24px 4px;
-    margin: 0 8px 0 0;
+    border-radius: 16px;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
 #tray {
-    background-color: @alpha30;
-    margin: 0 8px 0 0;
+    background-color: transparent;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 

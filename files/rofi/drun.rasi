@@ -16,10 +16,10 @@
 
 element {
     padding: 4px 16px;
-    border-radius: 24px;
     cursor:  pointer;
     spacing: 4px ;
     border:  0;
+    border-radius: 16px;
 }
 element normal.normal {
     background-color: @primary;
@@ -75,10 +75,11 @@ window {
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -64px;
+    y-offset:	      -88px;
     width: 100%;
     padding: 10px 0;
 }
+
 mainbox {
     padding: 0;
     border:  0;
@@ -175,7 +176,7 @@ mode-switcher{
 button {
     background-color: @primary;
     border: 0;
-    border-radius: 24px;
+    border-radius: 16px;
     border-color: transparent;
     cursor: pointer;
     margin: 0 8px 0 0;
