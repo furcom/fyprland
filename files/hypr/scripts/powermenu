@@ -19,14 +19,14 @@ RofiMenuPower="rofi -dmenu -config $RofiDir/powermenu.rasi -selected-row 4"
 RofiMenuConfirm="rofi -dmenu -config $RofiDir/confirm.rasi -selected-row 0"
 
 power_menu() {
-    YES=" Yes"
-    NO=" No"
-    OPTIONS=" Shutdown\n󰜉 Reboot\n󰤄 Sleep\n Logout\n Lock"
+    YES="󰗡 Yes"
+    NO="󰅚 No"
+    OPTIONS=" Shutdown\n󰜉 Reboot\n󰤄 Sleep\n󰍃 Logout\n Lock"
     CHOICE=$(echo -e "$OPTIONS" | $RofiMenuPower)
     case "$CHOICE" in
         " Lock")
             hyprlock ;;
-        " Logout")
+        "󰍃 Logout")
             LO_OPTIONS="$YES\n$NO"
     	    LO_CHOICE=$(echo -e "$LO_OPTIONS" | $RofiMenuConfirm)
     	    case "$LO_CHOICE" in

@@ -163,7 +163,7 @@ prompt {
 textbox-prompt-colon {
     margin:     0;
     expand:     false;
-    str:        " ";
+    str:        " 󰍉";
     text-color: inherit;
     padding: 4px 0;
 }

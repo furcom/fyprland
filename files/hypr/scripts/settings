@@ -18,7 +18,7 @@ MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 RofiMenuSettings="rofi -dmenu -config $RofiDir/drun_noicon_nosearch.rasi"
 
 main_menu() {
-    OPTIONS=" Hyprland\n󱘖 Connections\n Packages\n Extras\n"
+    OPTIONS=" Hyprland\n󱘖 Connections\n󰏖 Packages\n Extras\n󰗼 Exit"
     CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowMain)
 
     if [ -z "$CHOICE" ]; then
@@ -27,7 +27,7 @@ main_menu() {
 
     if [ -z "$CHOICE" ]; then
         main_menu
-    elif [ "$CHOICE" == "" ]; then
+    elif [ "$CHOICE" == "󰗼 Exit" ]; then
         exit 0
     else
         case "$CHOICE" in
@@ -37,7 +37,7 @@ main_menu() {
                 connections_menu ;;
             " Extras")
                 extras_menu ;;
-            " Packages")
+            "󰏖 Packages")
                 packages_menu ;;
             *)
                 echo "Invalid choice" ;;
@@ -72,7 +72,7 @@ extras_menu() {
 }
 
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰌍\n Config\n General\n Decorations\n Animations\nInput\n󰸉 Wallpaper\n Window Bar\n Cursor\n Bindings\n Layouts\n Misc\n Rules\n Plugins"
+    HYPRLAND_OPTIONS="󰌍\n Config\n General\n Decorations\n Animations\n󰍽 Input\n󰸉 Wallpaper\n Window Bar\n󰇀 Cursor\n Bindings\n Layouts\n Misc\n Rules\n Plugins"
     HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowHypr)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
@@ -95,7 +95,7 @@ hyprland_menu() {
                 wallpaper_menu ;;
             " Window Bar")
                 window_bar_menu ;;
-            " Cursor")
+            "󰇀 Cursor")
                 $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
             " Bindings")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
@@ -117,7 +117,7 @@ hyprland_menu() {
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/misc.conf" ;;
             " Rules")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/rules.conf" ;;
-            " Input")
+            "󰍽 Input")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/input.conf" ;;
             " Plugins")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/plugins.conf" ;;

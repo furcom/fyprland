@@ -78,12 +78,12 @@ configuration {
     // Display setting
     display-window: " Windows";
     display-windowcd: " Windows CD";
-    display-run: " Run";
-    display-ssh: " SSH";
-    display-drun: " Apps";
-    display-combi: "󰕘 Combi";
-    display-keys: " Keys";
-    display-filebrowser: " Files";
+    display-run: "  Run";
+    display-ssh: "  SSH";
+    display-drun: "  Apps";
+    display-combi: "󰕘  Combi";
+    display-keys: "  Keys";
+    display-filebrowser: "  Files";
 
     // Misc setting
     terminal: "rofi-sensible-terminal";
