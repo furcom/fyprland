@@ -142,8 +142,8 @@ waybar_menu() {
             " Style")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
             "󰑓 Restart")
-                pkill waybar
-		waybar ;;
+		killall -SIGUSR2 waybar
+		;;
         esac
     fi
 }

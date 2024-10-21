@@ -21,7 +21,7 @@
     
     "modules-left": [
         "group/custom-logo",
-        "custom/pacman",
+        "custom/packages",
         "group/clock",
         "group/hyprland-window"
     ],
@@ -180,12 +180,12 @@
         "return-type": "exit"
     },
     
-    "custom/pacman": {
-        "format": "{} 󰮯",
-        "interval": "once",
-        "exec": "pacman_packages",
-        "on-click": "update-system",
-        "signal": 8
+    "custom/packages": {
+        "format": "",
+        "interval": "3600",
+        "exec": "~/.config/hypr/scripts/packages --check",
+        "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman'",
+        "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur'",
     },
     
     "hyprland/window": {

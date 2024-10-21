@@ -119,6 +119,7 @@ pacman_updates() {
     case $answer in
         [Yy] )
             sudo pacman -Syu
+	    killall -SIGUSR2 waybar
             ;;
         [Nn] )
             echo "Skipping updating Arch packages."
@@ -137,6 +138,7 @@ aur_updates() {
     case $answer in
         [Yy] )
             $AUR_HELPER -Syu
+	    killall -SIGUSR2 waybar
             ;;
         [Nn] )
             echo "Skipping updating AUR packages."

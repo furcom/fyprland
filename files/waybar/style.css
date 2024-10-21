@@ -79,7 +79,7 @@ window#waybar > box {
     padding: 0 16px;
 }
 
-#custom-pacman {
+#custom-packages {
     background-color: #007700;
     margin: 0 0 0 4px;
     padding: 0 16px;
@@ -236,7 +236,7 @@ window#waybar.empty #window {
 #custom-next-workspace:hover,
 #custom-next-song:hover,
 #custom-overview-workspaces:hover,
-#custom-pacman:hover,
+#custom-packages:hover,
 #custom-pipewire:hover,
 #custom-prev-song:hover,
 #custom-prev-workspace:hover,
