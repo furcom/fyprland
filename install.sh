@@ -69,6 +69,7 @@ HYPRPICKER() {
 }
 
 HYPRPLUGINS() {
+    sudo pacman -S --needed --noconfirm cmake meson cpio
     hyprpm add https://github.com/hyprwm/hyprland-plugins
     hyprpm disable hyprbars
     hyprpm enable hyprexpo
