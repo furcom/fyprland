@@ -226,15 +226,15 @@
     
     "custom/win-expand": {
         "tooltip": true,
-        "format": "",
-        "tooltip-format": " Expand window",
+        "format": "󰁌",
+        "tooltip-format": "󰁌 Expand window",
         "on-click": "hyprctl dispatch fullscreen 1"
     },
     
     "custom/win-fullscreen": {
         "tooltip": true,
-        "format": "",
-        "tooltip-format": " Fullscreen",
+        "format": "",
+        "tooltip-format": " Fullscreen",
         "on-click": "hyprctl dispatch fullscreen 0"
     },
     
@@ -301,7 +301,7 @@
     "custom/overview-workspaces": {
         "tooltip": true,
         "tooltip-format": "Workspaces overview (Press and hold)",
-        "format": "",
+        "format": "󱗼",
         "on-click": "hyprctl dispatch hyprexpo:expo on"
     },
     
