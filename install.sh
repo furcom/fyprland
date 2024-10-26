@@ -95,7 +95,7 @@ WALLUST() {
 ##### waybar #####
 
 WAYBAR() {
-    sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji
+    sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji python python-pyquery
     yay -S --needed --noconfirm wttrbar
     cp -rf ./files/waybar/ "$CFGDIR"
 }
