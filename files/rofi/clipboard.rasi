@@ -76,7 +76,7 @@ window {
     border-color:     @background;
     anchor:	      north;
     location:	      north;
-    y-offset:	      -72px;
+    y-offset:	      -88px;
     width:	      100%;
 }
 mainbox {

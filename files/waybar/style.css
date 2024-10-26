@@ -25,7 +25,7 @@
 
 tooltip {
     background-color: @color2;
-    border-radius: 8px;
+    border-radius: 32px;
     color: @background;
 }
 
@@ -39,7 +39,7 @@ window#waybar > box {
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.33);
     margin: 0 0 32px 0;
     min-height: 40px;
-    padding: 8px 0;
+    padding: 4px 0;
 }
 
 @keyframes blink {
@@ -57,38 +57,43 @@ window#waybar > box {
 }
 
 #custom-logo {
-    margin: 0 8px 0 12px;
+    margin: 0 8px 0 10px;
     font-size: 32px;
 }
 
-#custom-weather,
-#clock {
+#custom-settings,
+#cpu,
+#memory,
+#disk,
+#temperature {
+    background-color: @alpha15;
+    border-radius: 16px;
+    margin: 0 0 0 4px;
+    padding: 0 8px;
+}
+#temperature.critical {
+    background-color: #FF0000;
     padding: 0 8px;
 }
 
-#wireplumber,
-#wireplumber.muted,
-#bluetooth,
-#network,
-#backlight,
-#custom-pipewire,
-#custom-settings {
-    background-color: @alpha30;
-    border-radius: 16px;
-    margin: 0 0 0 4px;
-    padding: 0 16px;
+#clock {
+    padding: 0 4px;
+}
+
+#custom-weather {
+    padding: 0 8px;
 }
 
 #custom-packages {
     background-color: #007700;
-    margin: 0 0 0 4px;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
 #window {
-    background-color: @alpha30;
+    background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 0 16px;
+    padding: 0 8px;
 }
 window#waybar.empty #window {
     background-color: transparent;
@@ -103,7 +108,7 @@ window#waybar.empty #window {
 #custom-win-expand,
 #custom-win-fullscreen,
 #custom-win-float {
-    background-color: @alpha30;
+    background-color: @alpha15;
     border-radius: 16px;
     margin: 0 0 0 4px;
     padding: 0 16px;
@@ -134,7 +139,7 @@ window#waybar.empty #window {
 #custom-prev-workspace,
 #custom-overview-workspaces,
 #custom-next-workspace {
-    background-color: @alpha30;
+    background-color: @alpha15;
     border-radius: 16px;
     margin: 0 4px 0 0;
     padding: 0 16px;
@@ -146,24 +151,10 @@ window#waybar.empty #window {
 .modules-right {
 }
 
-#cpu,
-#memory,
-#disk,
-#temperature {
-    background-color: @alpha30;
-    border-radius: 16px;
-    margin: 0 4px 0 0;
-    padding: 0 16px;
-}
-#temperature.critical {
-    background-color: #FF0000;
-    padding: 0 16px;
-}
-
 #custom-media {
     background-color: transparent;
     border-radius: 16px;
-    margin: 0 0px 0 0;
+    margin: 0;
     padding: 0 8px;
 }
 #custom-prev-song,
@@ -186,14 +177,20 @@ window#waybar.empty #window {
     padding: 8px;
 }
 
+#wireplumber,
+#wireplumber.muted,
+#bluetooth,
+#network,
+#backlight,
+#custom-pipewire,
 #power-profiles-daemon {
-    background-color: @alpha30;
-    margin: 0 8px 0 0;
-    padding: 0 16px;
+    background-color: transparent;
+    margin: 0 4px 0 0;
+    padding: 0 8px;
 }
 
 #battery {
-    padding: 0 4px;
+    margin: 0 2px 0 2px;
 }
 #battery.charging,
 #battery.plugged {
@@ -217,9 +214,14 @@ window#waybar.empty #window {
 
 #custom-powermenu {
     background-color: transparent;
-    font-size: 32px;
-    margin: 0 14px 0 4px;
-    padding: 0 0 0 6px;
+    font-size: 28px;
+    margin: 0 8px 0 4px;
+    padding: 0 4px;
+}
+#custom-powermenu2 {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+    padding: 0 8px;
 }
 
 /*-----------------*/
@@ -227,6 +229,7 @@ window#waybar.empty #window {
 /*-----------------*/
 
 #backlight:hover,
+#battery:hover,
 #battery.warning:not(.charging):hover,
 #battery.charging:hover,
 #battery.plugged:hover,
@@ -238,6 +241,8 @@ window#waybar.empty #window {
 #custom-overview-workspaces:hover,
 #custom-packages:hover,
 #custom-pipewire:hover,
+#custom-powermenu:hover,
+#power-profiles-daemon:hover,
 #custom-prev-song:hover,
 #custom-prev-workspace:hover,
 #custom-settings:hover,
@@ -252,12 +257,11 @@ window#waybar.empty #window {
 #disk:hover,
 #memory:hover,
 #network:hover,
-#power-profiles-daemon:hover,
 #temperature:hover,
 #tray:hover,
 #wireplumber:hover,
 #window:hover {
-    background-color: @color4;
+    background-color: @color3;
     transition-duration: 333ms;
 }
 #workspaces button:hover {
@@ -267,6 +271,6 @@ window#waybar.empty #window {
     transition-duration: 333ms;
 }
 #workspaces button.persistent:hover {
-    background-color: @color4;
+    background-color: @color3;
     transition-duration: 333ms;
 }

@@ -17,15 +17,15 @@ window {
     background-color: @primary;
     border: 0;
     location: north;
-    padding: 10px 0;
+    padding: 8px 0;
     width: 100%;
-    y-offset: -88px;
+    y-offset: -80px;
 }
 
 mainbox {
     children: [listview];
     border: 0;
-    margin: 0 0 0 1706px;
+    margin: 0 0 0 1722px;
 }
 
 listview {

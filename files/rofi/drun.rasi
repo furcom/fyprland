@@ -75,9 +75,9 @@ window {
     border:           0;
     anchor:	      northeast;
     location:	      northeast;
-    y-offset:	      -88px;
+    y-offset:	      -80px;
     width: 100%;
-    padding: 10px 0;
+    padding: 8px 0;
 }
 
 mainbox {
