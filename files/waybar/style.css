@@ -13,10 +13,9 @@
     background: transparent;
     background-color: transparent;
     border: none;
-    border-radius: 16px;
     color: @foreground;
     font-family: "0xProto Nerd Font Mono";
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
     min-width: 0px;
     padding: 0;
@@ -25,7 +24,7 @@
 
 tooltip {
     background-color: @color2;
-    border-radius: 32px;
+    border-radius: 24px;
     color: @background;
 }
 
@@ -39,7 +38,7 @@ window#waybar > box {
     box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
     min-height: 40px;
-    padding: 4px 0;
+    padding: 8px 0;
 }
 
 @keyframes blink {
@@ -54,47 +53,47 @@ window#waybar > box {
 /*----------------*/
 
 .modules-left{
+    margin: 0 0 0 8px;
+}
+
+#group-logo {
+    background-color: transparent;
 }
 
 #custom-logo {
-    margin: 0 8px 0 10px;
-    font-size: 32px;
-}
-
-#custom-settings,
-#cpu,
-#memory,
-#disk,
-#temperature {
-    background-color: transparent;
-    border-radius: 16px;
-    margin: 0 0 0 4px;
-    padding: 0 8px;
-}
-#temperature.critical {
-    background-color: #FF0000;
-    padding: 0 8px;
-}
-
-#clock {
-    padding: 0 4px;
-}
-
-#custom-weather {
-    padding: 0 8px;
+    background-color: @alpha15;
+    font-size: 24px;
+    padding: 0 14px;
 }
 
 #custom-packages {
     background-color: #007700;
-    margin: 0 4px 0 0;
+    margin: 0 0 0 8px;
     padding: 0 16px;
+}
+
+#clock,
+#cpu,
+#custom-weather,
+#custom-settings,
+#disk,
+#memory,
+#temperature {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+    padding: 0 12px;
+}
+
+#temperature.critical {
+    background-color: #FF0000;
 }
 
 #window {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 0 8px;
+    padding: 0 12px;
 }
+
 window#waybar.empty #window {
     background-color: transparent;
     color: transparent;
@@ -102,6 +101,7 @@ window#waybar.empty #window {
     min-width: 0;
     padding: 0;
 }
+
 #custom-win-close,
 #custom-win-prev-workspace,
 #custom-win-next-workspace,
@@ -109,7 +109,6 @@ window#waybar.empty #window {
 #custom-win-fullscreen,
 #custom-win-float {
     background-color: @alpha15;
-    border-radius: 16px;
     margin: 0 0 0 4px;
     padding: 0 16px;
 }
@@ -122,17 +121,17 @@ window#waybar.empty #window {
 
 #workspaces {
 }
+
 #workspaces button.urgent {
-    border-radius: 16px;
     color: #770000;
-    margin: 0 4px 0 0;
+    margin: 0 8px 0 0;
     padding: 0 16px;
 }
+
 #workspaces button.persistent,
 #workspaces button.active,
 #workspaces button {
-    border-radius: 16px;
-    margin: 0 4px 0 0;
+    margin: 0 8px 0 0;
     padding: 0 16px;
 }
 
@@ -140,7 +139,6 @@ window#waybar.empty #window {
 #custom-overview-workspaces,
 #custom-next-workspace {
     background-color: @alpha15;
-    border-radius: 16px;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
@@ -149,19 +147,31 @@ window#waybar.empty #window {
 /*----- RIGHT -----*/
 /*-----------------*/
 .modules-right {
+    margin: 0 8px 0 0;
 }
+
+#group-media,
+#group-network,
+#group-bluetooth,
+#group-input,
+#group-output,
+#group-backlight,
+#group-battery,
+#group-power {
+    background-color: transparent;
+}
+
 
 #custom-media {
     background-color: transparent;
-    border-radius: 16px;
     margin: 0;
-    padding: 0 8px;
+    padding: 0 12px;
 }
+
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
     background-color: @alpha30;
-    border-radius: 16px;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
@@ -174,29 +184,36 @@ window#waybar.empty #window {
 
 #tray menu {
     background-color: @color3;
-    padding: 8px;
+    padding: 16px;
 }
 
+#backlight,
+#battery,
+#bluetooth,
+#custom-pipewire,
+#custom-power2,
+#network,
+#power-profiles-daemon,
 #wireplumber,
 #wireplumber.muted,
-#bluetooth,
-#network,
-#backlight,
-#custom-pipewire,
-#power-profiles-daemon {
+#custom-power {
     background-color: transparent;
-    margin: 0 4px 0 0;
-    padding: 0 8px;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
 }
 
-#battery {
-    margin: 0 4px 0 4px;
+#custom-power {
+    background-color: @alpha15;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
 }
+
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
     padding: 0 16px;
 }
+
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
@@ -212,21 +229,18 @@ window#waybar.empty #window {
     padding: 0 16px;
 }
 
-#custom-powermenu {
-    background-color: transparent;
-    font-size: 28px;
-    margin: 0 8px 0 4px;
-    padding: 0 4px;
-}
-#custom-powermenu2 {
-    background-color: transparent;
-    margin: 0 4px 0 0;
-    padding: 0 8px;
-}
-
 /*-----------------*/
 /*----- HOVER -----*/
 /*-----------------*/
+
+#group-media:hover,
+#group-network:hover,
+#group-bluetooth:hover,
+#group-input:hover,
+#group-output:hover,
+#group-backlight:hover,
+#group-battery:hover,
+#group-power:hover,
 
 #backlight:hover,
 #battery:hover,
@@ -242,7 +256,8 @@ window#waybar.empty #window {
 #custom-overview-workspaces:hover,
 #custom-packages:hover,
 #custom-pipewire:hover,
-#custom-powermenu:hover,
+#custom-power:hover,
+#custom-power2:hover,
 #power-profiles-daemon:hover,
 #custom-prev-song:hover,
 #custom-prev-workspace:hover,
@@ -263,15 +278,12 @@ window#waybar.empty #window {
 #wireplumber:hover,
 #window:hover {
     background-color: @color3;
-    transition-duration: 333ms;
 }
 #workspaces button:hover {
     background: none;
     box-shadow: none;
     text-shadow: none;
-    transition-duration: 333ms;
 }
 #workspaces button.persistent:hover {
     background-color: @color3;
-    transition-duration: 333ms;
 }

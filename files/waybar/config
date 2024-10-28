@@ -21,15 +21,15 @@
     /*--- LEFT ------------------------------------------------------*/
     
     "modules-left": [
-        "group/custom-logo",
+        "group/group-logo",
         "custom/packages",
+        "custom/weather",
         "clock",
         "clock#2",
-        "custom/weather",
         "group/hyprland-window"
     ],
     
-    "group/custom-logo": {
+    "group/group-logo": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -94,11 +94,11 @@
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%I:%M %p}",
-        "tooltip": true,
+        "tooltip": false
     },
     "clock#2": {
-        "format": " {:%d.%m.%Y}",
-        "format-alt": " {:%A, %d. %B %Y}",
+        "format": "{:%d.%m.%Y}",
+        "format-alt": "{:%A, %d. %B %Y}",
         "tooltip-format": "<tt><small>\n{calendar}\n</small></tt>",
         "calendar": {
            "mode"          : "year",
@@ -256,18 +256,18 @@
     /*--- RIGHT -----------------------------------------------------*/
     
     "modules-right": [
-        "group/custom-media",
+        "group/group-media",
         "tray",
-        "group/network",
-        "group/bluetooth",
-        "group/custom-pipewire",
-        "group/wireplumber",
-        "group/backlight",
-        "group/battery",
-        "group/custom-powermenu"
+        "group/group-network",
+        "group/group-bluetooth",
+        "group/group-input",
+        "group/group-output",
+        "group/group-backlight",
+        "group/group-battery",
+        "group/group-power"
     ],
 
-    "group/custom-media": {
+    "group/group-media": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -319,7 +319,7 @@
         "spacing": 8
     },
 
-    "group/network": {
+    "group/group-network": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -351,7 +351,7 @@
         "tooltip-format-ethernet": " {ifname} - {ipaddr}",
     },
 
-    "group/bluetooth": {
+    "group/group-bluetooth": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -387,7 +387,7 @@
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     }, 
 
-    "group/custom-pipewire": {
+    "group/group-input": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -417,7 +417,7 @@
         "smooth-scrolling-threshold": 1
     },
 
-    "group/wireplumber": {
+    "group/group-output": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -449,7 +449,7 @@
         "scroll-step": "1"
     },
     
-    "group/backlight": {
+    "group/group-backlight": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -497,7 +497,7 @@
         "smooth-scrolling-threshold": 1
     },
 
-    "group/battery": {
+    "group/group-battery": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -538,21 +538,21 @@
       "tooltip": false
     },
 
-    "group/custom-powermenu": {
+    "group/group-power": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/powermenu","custom/powermenu2"],
+        "modules": ["custom/power","custom/power2"],
     },
-    "custom/powermenu": {
+    "custom/power": {
         "format": "⏻",
         "on-click": "~/.config/hypr/scripts/powermenu",
         "tooltip": false
     },
-    "custom/powermenu2": {
+    "custom/power2": {
         "format": "Power Menu",
         "on-click": "~/.config/hypr/scripts/powermenu",
         "tooltip": false
