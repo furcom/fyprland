@@ -37,7 +37,7 @@ window#waybar > box {
     box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
     min-height: 40px;
-    padding: 4px;
+    padding: 8px;
 }
 
 @keyframes blink {
@@ -61,8 +61,7 @@ window#waybar > box {
 
 #custom-logo {
     background-color: @alpha15;
-    font-size: 24px;
-    padding: 0 14px;
+    padding: 0 16px;
 }
 
 #group-logo:hover {
