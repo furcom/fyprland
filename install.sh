@@ -60,7 +60,9 @@ HYPRLOCK() {
 
 HYPRPAPER() {
     sudo pacman -S --needed --noconfirm hyprpaper
+    yay -S --needed --noconfirm waypaper
     cp -rf ./files/hypr/hyprpaper.conf "$CFGDIR"/hypr/
+    cp -rf ./files/waypaper/ "$CFGDIR"
     cp -rf $HyprWallpapersDir/Mountain.png $HyprImagesDir/wallpaper.png
 }
 

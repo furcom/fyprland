@@ -24,7 +24,7 @@ general {
 background {
         color = rgba({{background|rgb}},0.85)
         monitor =
-        path = ~/.config/hypr/images/wallpaper.png
+        path = ~/.config/hypr/images/hyprlock_background
 	blur_passes = 2
 	blur_size = 8
 	noise = 0.002

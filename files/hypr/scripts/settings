@@ -92,7 +92,7 @@ hyprland_menu() {
             " Animations")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/animations.conf" ;;
             "󰸉 Wallpaper")
-                wallpaper_menu ;;
+                waypaper ;;
             " Window Bar")
                 window_bar_menu ;;
             "󰇀 Cursor")
@@ -317,49 +317,6 @@ packages_menu() {
             "󰃢 Clean Pacman")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --clean" ;;
         esac
-    fi
-}
-
-wallpaper_menu() {
-    WALLPAPER_OPTIONS=""
-    i=1
-    for image in $HyprWallpapersDir/*.{png,jpg,jpeg,svg,webp}; do
-        [ -e "$image" ] || continue
-        FILENAME=$(basename "$image")
-        WALLPAPER_OPTIONS+="󰸉  $FILENAME\n"
-        let i++
-    done
-
-    #WALLPAPER_OPTIONS+="󰌍"
-    WALLPAPER_SUBCHOICE=$(echo -e "󰌍\n$WALLPAPER_OPTIONS" | $RofiMenuSettings)
-
-    if [ -z "$WALLPAPER_SUBCHOICE" ]; then
-        SelectedRowHypr="1"
-        hyprland_menu
-    elif [[ $WALLPAPER_SUBCHOICE == 󰸉* ]]; then
-        WP_FILE=$(echo "$WALLPAPER_SUBCHOICE" | sed 's/^󰸉  //')
-        WP_CHOICE="$HyprWallpapersDir/$WP_FILE"
-
-        if [ -f "$WP_CHOICE" ]; then
-            cp -rf "$WP_CHOICE" "$HyprImagesDir/wallpaper.png"
-            cp -rf "$WP_CHOICE" "$SddmThemesDir/fyprland/images/background.png"
-	    
-            # Wallust
-	    wallust run "$WP_CHOICE"
-            
-            # Hyprpaper
-	    hyprctl hyprpaper unload all
-            hyprctl hyprpaper preload "$WP_CHOICE"
-            hyprctl hyprpaper wallpaper "$MONITOR, $WP_CHOICE"
-
-            # mako
-            pkill mako && mako & > /dev/null
-        else
-            echo -e "\n${RED}Wallpaper not found.${NC}\n"
-        fi
-    elif [[ $WALLPAPER_SUBCHOICE == "󰌍" ]]; then
-        SelectedRowHypr="1"
-        hyprland_menu
     fi
 }
 

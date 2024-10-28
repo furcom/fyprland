@@ -190,7 +190,7 @@ window#waybar.empty #window {
 }
 
 #battery {
-    margin: 0 2px 0 2px;
+    margin: 0 4px 0 4px;
 }
 #battery.charging,
 #battery.plugged {

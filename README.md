@@ -56,6 +56,7 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [sddm](https://github.com/sddm/sddm) (Display manager; might be replaced in the future)
     - [wallust](https://codeberg.org/explosion-mental/wallust/) (Generates color palettes from images)
     - [waybar](https://github.com/Alexays/Waybar) (Wayland status bar)
+    - [waypaper](https://github.com/anufrievroman/waypaper) (GUI for changing wallpaper on different backends)
     - [wireplumber](https://github.com/PipeWire/wireplumber) (Session/policy manager for PipeWire)
     - [wl-clipboard-persist](https://github.com/Linus789/wl-clip-persist) (Wayland clipboard utility)
     - [wttrbar](https://github.com/bjesus/wttrbar) (Weather module for Waybar)

@@ -21,9 +21,11 @@
     
     "modules-left": [
         "group/custom-logo",
-        "group/clock",
         "custom/packages",
-        "group/hyprland-workspaces"
+        "clock",
+        "clock#2",
+        "custom/weather",
+        "group/hyprland-window"
     ],
     
     "group/custom-logo": {
@@ -37,70 +39,65 @@
     },
     "custom/logo": {
         "format": "",
-        "tooltip": false,
-        "on-click": "kitty",
-        "return-type": "exit"
+        "on-click": "~/.config/hypr/scripts/settings",
+        "return-type": "exit",
+        "tooltip": true,
+        "tooltip-format": " Settings"
     },
     "custom/settings": {
-        "format": " Settings",
-        "tooltip": false,
+        "format": "Settings",
         "on-click": "~/.config/hypr/scripts/settings",
-        "return-type": "exit"
+        "return-type": "exit",
+        "tooltip": true,
+        "tooltip-format": " Settings"
     },
     "cpu": {
-        "tooltip": false,
         "interval": 10,
         "format": " {usage}%",
         "on-click": "kitty sh -c htop",
-    },
-    "memory": {
-        "tooltip": false,
-        "interval": 10,
-        "format": " {percentage}%",
-        "on-click": "kitty sh -c 'free -ght && read'"
-    },
-    "disk": {
-        "tooltip": false,
-        "interval": 10,
-        "format": " {percentage_used}%",
-        "path": "/",
-        "unit": "GB",
-        "on-click": "kitty sh -c 'df -h && read'"
+        "tooltip": true
     },
     "temperature": {
-        "tooltip": false,
-        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input",
+        "critical-threshold": 80,
         "format": " {temperatureC}°C",            
         "format-critical": "",
-        "critical-threshold": 80,
-        "on-click": "kitty sh -c htop"
+        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input",
+        "on-click": "kitty sh -c htop",
+        "tooltip": true
     },
-    
+    "memory": {
+        "interval": 10,
+        "format": " {percentage}%",
+        "on-click": "kitty sh -c 'free -ght && read'",
+        "tooltip": true
+    },
+    "disk": {
+        "format": " {percentage_used}%",
+        "interval": 10,
+        "on-click": "kitty sh -c 'df -h && read'",
+        "path": "/",
+        "tooltip": true,
+        "unit": "GB"
+    },
+
     "custom/packages": {
         "format": "{}",
         "interval": 3600,
         "exec": "~/.config/hypr/scripts/packages --check",
         "on-click": "kitty sh -c '~/.config/hypr/scripts/packages --pacman'",
         "on-click-right": "kitty sh -c '~/.config/hypr/scripts/packages --aur'",
+        "tooltip": true,
+        "tooltip-format": "󰮯  Pacman and 󰏖 AUR packages Updates"
     },
     
-    "group/clock": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": true
-        },
-        "modules": ["clock","clock#2","custom/weather"]
-    },
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%I:%M %p}",
-        "tooltip": false,
+        "tooltip": true,
     },
     "clock#2": {
-        "format": "- {:%d.%m.%Y}",
-        "format-alt": "- {:%A, %d. %B %Y}",
+        "format": " {:%d.%m.%Y}",
+        "format-alt": " {:%A, %d. %B %Y}",
         "tooltip-format": "<tt><small>\n{calendar}\n</small></tt>",
         "calendar": {
            "mode"          : "year",
@@ -131,6 +128,73 @@
         "return-type": "json"
     },
 
+    "group/hyprland-window": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["hyprland/window","custom/win-close","custom/win-prev-workspace","custom/win-next-workspace","custom/win-expand","custom/win-fullscreen","custom/win-float"],
+        "tooltip": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "tooltip": true,
+        "tooltip-format": "{title}",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "🌎 $1",
+            "(.*) sh": "kitty 󰅙 ",
+            "(.*) - zsh": "kitty 󰅙 "
+        },
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 22,
+        "on-click": "hyprctl dispatch hyprexpo:expo on",
+    },
+    "custom/win-close": {
+        "tooltip": true,
+        "format": "󰖭",
+        "tooltip-format": "󰅙 Close window",
+        "on-click": "hyprctl dispatch killactive"
+    },
+    "custom/win-prev-workspace": {
+        "tooltip": true,
+        "format": "󰜱",
+        "tooltip-format": "󰜱 Move window to previous workspace",
+        "on-click": "hyprctl dispatch movetoworkspace -1"
+    },
+    "custom/win-next-workspace": {
+        "tooltip": true,
+        "format": "󰜴",
+        "tooltip-format": "󰜴 Move window to next workspace",
+        "on-click": "hyprctl dispatch movetoworkspace +1"
+    },
+    "custom/win-expand": {
+        "tooltip": true,
+        "format": "󰁌",
+        "tooltip-format": "󰁌 Expand window",
+        "on-click": "hyprctl dispatch fullscreen 1"
+    },
+    "custom/win-fullscreen": {
+        "tooltip": true,
+        "format": "",
+        "tooltip-format": " Fullscreen window",
+        "on-click": "hyprctl dispatch fullscreen 0"
+    },
+    "custom/win-float": {
+        "tooltip": true,
+        "format": "",
+        "tooltip-format": " Float window",
+        "on-click": "hyprctl dispatch togglefloating"
+    },
+
+    /*--- CENTER ----------------------------------------------------*/
+    
+    "modules-center": [
+        "group/hyprland-workspaces"
+    ],
+    
     "group/hyprland-workspaces": {
         "orientation": "inherit",
         "drawer": {
@@ -171,90 +235,23 @@
     },
     "custom/prev-workspace": {
         "tooltip": true,
-        "tooltip-format": "\n  󰜱 Go to previous workspace  \n",
+        "tooltip-format": "󰜱 Go to previous workspace",
         "format": "󰜱",
         "on-click": "hyprctl dispatch workspace -1"
     },
     "custom/overview-workspaces": {
         "tooltip": true,
-        "tooltip-format": "\n  󱗼 Workspaces overview (Press and hold)  \n",
+        "tooltip-format": "󱗼 Workspaces overview (Press and hold)",
         "format": "󱗼",
         "on-click": "hyprctl dispatch hyprexpo:expo on"
     },
     "custom/next-workspace": {
         "tooltip": true,
-        "tooltip-format": "\n  󰜴 Go to next workspace  \n",
+        "tooltip-format": "󰜴 Go to next workspace",
         "format": "󰜴",
         "on-click": "hyprctl dispatch workspace +1"
     },
     
-    /*--- CENTER ----------------------------------------------------*/
-    
-    "modules-center": [
-        "group/hyprland-window"
-    ],
-    
-    "group/hyprland-window": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": true
-        },
-        "modules": ["hyprland/window","custom/win-close","custom/win-prev-workspace","custom/win-next-workspace","custom/win-expand","custom/win-fullscreen","custom/win-float"],
-        "tooltip": true
-    },
-    "hyprland/window": {
-        "format": "{}",
-        "tooltip": true,
-        "tooltip-format": "{title}",
-        "rewrite": {
-            "(.*) - Mozilla Firefox": "🌎 $1",
-            "(.*) sh": "kitty 󰅙 ",
-            "(.*) - zsh": "kitty 󰅙 "
-        },
-        "separate-outputs": true,
-        "icon": true,
-        "icon-size": 22,
-        "on-click": "hyprctl dispatch hyprexpo:expo on",
-    },
-    "custom/win-close": {
-        "tooltip": true,
-        "format": "󰖭",
-        "tooltip-format": "\n  󰅙 Close window  \n",
-        "on-click": "hyprctl dispatch killactive"
-    },
-    "custom/win-prev-workspace": {
-        "tooltip": true,
-        "format": "󰜱",
-        "tooltip-format": "\n  󰜱 Move window to previous workspace  \n",
-        "on-click": "hyprctl dispatch movetoworkspace -1"
-    },
-    "custom/win-next-workspace": {
-        "tooltip": true,
-        "format": "󰜴",
-        "tooltip-format": "\n  󰜴 Move window to next workspace  \n",
-        "on-click": "hyprctl dispatch movetoworkspace +1"
-    },
-    "custom/win-expand": {
-        "tooltip": true,
-        "format": "󰁌",
-        "tooltip-format": "\n  󰁌 Expand window  \n",
-        "on-click": "hyprctl dispatch fullscreen 1"
-    },
-    "custom/win-fullscreen": {
-        "tooltip": true,
-        "format": "",
-        "tooltip-format": "\n   Fullscreen window  \n",
-        "on-click": "hyprctl dispatch fullscreen 0"
-    },
-    "custom/win-float": {
-        "tooltip": true,
-        "format": "",
-        "tooltip-format": "\n   Float window  \n",
-        "on-click": "hyprctl dispatch togglefloating"
-    },
-
     /*--- RIGHT -----------------------------------------------------*/
     
     "modules-right": [
@@ -506,41 +503,12 @@
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["battery","power-profiles-daemon","battery#2"],
+        "modules": ["battery","power-profiles-daemon"],
     },
     "battery": {
-        "interval": 3,
-        "tooltip": false,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-            },
-        "format": "{icon}",
-        "format-alt": "{icon}",
-        "format-charging": "󰂄",
-        "format-plugged": "󰂄 ",
-        "format-icons": [
-            "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-        ]
-    },
-    "battery#2": {
-        "interval": 3,
-        "tooltip": false,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-            },
-        "format": "{capacity}%",
+        "format": "{icon} {capacity}%",
         "format-alt": "{time}",
-        "format-charging": "{capacity}%",
-        "format-plugged": "{capacity}%",
+        "format-charging": "󰂄 {capacity}%",
         "format-icons": [
             "󰁻",
             "󰁼",
@@ -548,18 +516,25 @@
             "󰂀",
             "󰂂",
             "󰁹"
-        ]
+        ],
+        "format-plugged": "󰂄  {capacity}%",
+        "interval": 3,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": false
     },
     "power-profiles-daemon": {
       "format": "{icon} {profile}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
       "format-icons": {
         "default": "",
         "performance": "",
         "balanced": "",
         "power-saver": ""
-      }
+      },
+      "tooltip": false
     },
 
     "group/custom-powermenu": {
@@ -573,12 +548,12 @@
     },
     "custom/powermenu": {
         "format": "⏻",
-        "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/powermenu"
+        "on-click": "~/.config/hypr/scripts/powermenu",
+        "tooltip": false
     },
     "custom/powermenu2": {
         "format": "Power Menu",
-        "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/powermenu"
+        "on-click": "~/.config/hypr/scripts/powermenu",
+        "tooltip": false
     },
 }
