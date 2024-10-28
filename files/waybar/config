@@ -7,6 +7,7 @@
 // config by furcom (https://github.com/furcom)
 
 {
+   "exclusive": true,
    "layer": "top",
    "position": "top",
    "mode": "dock",

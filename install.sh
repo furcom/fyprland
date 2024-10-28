@@ -24,7 +24,7 @@ check_yay_health() {
     fi
 }
 
-yay() {
+YAY() {
     if ! pacman -Q yay &> /dev/null; then
         sudo pacman -S --needed --noconfirm git base-devel
         git clone https://aur.archlinux.org/yay.git /tmp/yay-install
@@ -36,62 +36,58 @@ yay() {
     fi
 }
 
+##### kitty #####
+
+KITTY() {
+    sudo pacman -S --needed --noconfirm kitty
+    cp -rf ./files/kitty/ "$CFGDIR"
+}
+
 ##### Hypr Ecosystem #####
 
-HYPRLAND() {
+HYPR() {
+    # Hyprland
     sudo pacman -S --needed --noconfirm hyprland
-    cp -rf ./files/hypr/hyprland.conf "$CFGDIR"/hypr/
-    cp -rf ./files/hypr/configs/ "$CFGDIR"/hypr/
-    cp -rf ./files/hypr/images/ "$CFGDIR"/hypr/
-    cp -rf ./files/hypr/scripts/ "$CFGDIR"/hypr/
-    echo -e "\n${GREEN}Hyprland installed.${NC}"
-}
+    cp -rf ./files/hypr/* "$CFGDIR"
+    
+    #Hyprlock
+    sudo pacman -S --needed --noconfirm hyprlock
 
-HYPRCURSOR() {
+    # Fonts
+    sudo pacman -S --needed --noconfirm extra/ttf-0xproto-nerd
+    
+    # Hyprcursor
     sudo pacman -S --needed --noconfirm hyprcursor
+    mkdir -p $HOME/.icons/
     cp -rf ./files/cursors/* "$HOME/.icons/"
     hyprctl setcursor Bibata-Modern-Ice 32
-}
 
-HYPRLOCK() {
-    sudo pacman -S --needed --noconfirm hyprlock
-    cp -rf ./files/hypr/hyprlock.conf "$CFGDIR"/hypr/
-}
-
-HYPRPAPER() {
+    # Hyprpaper + Extras
     sudo pacman -S --needed --noconfirm hyprpaper
     yay -S --needed --noconfirm waypaper
-    cp -rf ./files/hypr/hyprpaper.conf "$CFGDIR"/hypr/
+    yay -S --needed --noconfirm wallust
+    cp -rf ./files/wallust/ "$CFGDIR"
     cp -rf ./files/waypaper/ "$CFGDIR"
-    cp -rf $HyprWallpapersDir/Mountain.png $HyprImagesDir/wallpaper.png
-}
+    waypaper --backend hyprpaper --wallpaper $HyprWallpapersDir/Mountain.png
 
-HYPRPICKER() {
+    # Hyprpicker
     yay -S --needed --noconfirm hyprpicker
-}
 
-HYPRPLUGINS() {
+    # Hypr Plugins
     sudo pacman -S --needed --noconfirm cmake meson cpio
     hyprpm add https://github.com/hyprwm/hyprland-plugins
     hyprpm disable hyprbars
     hyprpm enable hyprexpo
-}
 
-install_hyprshot() {
+    # Hyprshot
     yay -S --needed --noconfirm hyprshot
     mkdir -p $HOME/Pictures/Screenshots
-}
 
-HYPRIDLE() {
+    # Hypridle
     sudo pacman -S --needed --noconfirm hypridle
-}
 
-##### wallust #####
-
-WALLUST() {
-    yay -S --needed --noconfirm wallust
-    cp -rf ./files/wallust/ "$CFGDIR"
-    wallust run $HyprpaperCache/wallpaper.png
+    # END
+    echo -e "\n${GREEN}Hyprland installed.${NC}"
 }
 
 ##### waybar #####
@@ -104,14 +100,14 @@ WAYBAR() {
 
 ##### rofi & rofimoji #####
 
-ROFIMOJI() {
-    sudo pacman -S --needed --noconfirm rofimoji
-    cp -rf ./files/rofimoji.rc "$CFGDIR"
-}
-
 ROFI() {
+    # Rofi
     sudo pacman -S --needed --noconfirm rofi-wayland
     cp -rf ./files/rofi/ "$CFGDIR"
+
+    # Rofimoji
+    sudo pacman -S --needed --noconfirm rofimoji
+    cp -rf ./files/rofimoji.rc "$CFGDIR"
 }
 
 ##### fusuma #####
@@ -129,13 +125,6 @@ FUSUMA() {
     add_user_to_group_if_needed
 }
 
-##### kitty #####
-
-KITTY() {
-    sudo pacman -S --needed --noconfirm kitty
-    cp -rf ./files/kitty/ "$CFGDIR"
-}
-
 ##### sddm #####
 
 SDDM() {
@@ -149,13 +138,10 @@ SDDM() {
 
 ##### zsh  & oh-my-posh #####
 
-OH-MY-POSH() {
-    cp -rf ./files/oh-my-posh/ "$CFGDIR"
-}
-
 ZSH() {
     sudo pacman -S --needed --noconfirm zsh fzf zoxide
     cp -f ./files/.zshrc "$HOME"
+    cp -rf ./files/oh-my-posh/ "$CFGDIR"
     sudo chsh -s /bin/zsh $USER
     sudo chsh -s /bin/zsh root
 }
@@ -195,104 +181,29 @@ BLUETOOTH() {
     systemctl start bluetooth.service
 }
 
-##### Fonts #####
-FONTS() {
-    sudo pacman -S --needed --noconfirm extra/ttf-0xproto-nerd
-}
-
 ###################
 ##               ##
 ##  MAIN SCRIPT  ##
 ##               ##
 ###################
 
-#!/bin/bash
-
-# Function for colored output
-color_output() {
-    local text=$1
-    local color=$2
-    case $color in
-        red) echo -e "\033[31m$text\033[0m" ;;
-        yellow) echo -e "\033[33m$text\033[0m" ;;
-        blue) echo -e "\033[34m$text\033[0m" ;;
-        *) echo "$text" ;;
-    esac
-}
-
-# Function to prompt and execute
-prompt_execute() {
-    local function_name=$1
-    local category=$2
-    local color=$3
-    local category_text=$(color_output "($category)" $color)
-    
-    if [[ "$auto_execute" != "n" && "$auto_execute" != "no" ]]; then
-        echo "Executing $function_name..."
-        $function_name
-    else
-        echo -n "Do you want to install $function_name $category_text? (Y/n): "
-        read -r response
-        response=${response,,} # Convert to lowercase
-        if [[ "$response" != "n" && "$response" != "no" ]]; then
-            echo "Executing $function_name..."
-            $function_name
-        else
-            echo "Skipping $function_name."
-        fi
-    fi
-}
-
-# Main script
-echo -n "Do you want to install everything without confirmation? (Y/n): "
-read -r auto_execute
-auto_execute=${auto_execute,,} # Convert to lowercase
-
 # Needed packages
-needed_packages=(
-    YAY
-    FONTS
-    KITTY
-    HYPRLAND
-    WALLUST
-)
+YAY
+KITTY
+HYPR
+WAYBAR
 
 # Recommended packages
-recommended_packages=(
-    WAYBAR
-    ROFI
-    ZSH
-    OH-MY-POSH
-    CLIPHIST
-    MAKO
-    PIPEWIRE
-    HYPRPAPER
-    HYPRCURSOR
-)
+ROFI
+ZSH
+CLIPHIST
+MAKO
+PIPEWIRE
+SDDM
 
 # Optional packages
-optional_packages=(
-    SDDM
-    HYPRLOCK
-    HYPRIDLE
-    HYPRPICKER
-    ROFIMOJI
-    FASTFETCH
-    BLUETOOTH
-    FUSUMA
-)
+FASTFETCH
+BLUETOOTH
+FUSUMA
 
-# Loop through needed functions
-for func in "${needed_packages[@]}"; do
-    prompt_execute "$func" "needed" "red"
-done
-
-# Loop through recommended functions
-for func in "${recommended_packages[@]}"; do
-    prompt_execute "$func" "recommended" "yellow"
-done
-
-# Loop through optional functions
-for func in "${optional_packages[@]}"; do
-    prompt_execute "$func" "optional" "blue"
-done
+exit
