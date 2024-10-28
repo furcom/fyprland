@@ -15,7 +15,7 @@
 source $HOME/.config/hypr/scripts/HYPR_VARS
 
 MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
-RofiMenuSettings="rofi -dmenu -config $RofiDir/drun_noicon_nosearch.rasi"
+RofiMenuSettings="rofi -dmenu"
 
 main_menu() {
     OPTIONS=" Hyprland\n󱘖 Connections\n󰏖 Packages\n Extras\n󰗼 Exit"

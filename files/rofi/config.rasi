@@ -6,20 +6,24 @@
 // ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
 // config by furcom (https://github.com/furcom)
 
+@import "./colors.rasi"
+
 * {
     font: "0xProto Nerd Font 16";
+    margin: 0;
+    padding: 0;
 }
 
 configuration {
     // General setting
-    modi: "";
     case-sensitive: false;
     cycle: true;
     filter: "";
-    scroll-method: 0;
-    normalize-match: true;
-    show-icons: true;
     icon-theme: "Papirus";
+    modi: "";
+    normalize-match: true;
+    scroll-method: 0;
+    show-icons: true;
     steal-focus: false;
     // dpi: -1;
     // cache-dir:;
@@ -29,25 +33,25 @@ configuration {
     tokenize: true;
 
     // SSH settings
-    ssh-client: "ssh";
-    ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
     parse-hosts: true;
     parse-known-hosts: true;
+    ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+    ssh-client: "ssh";
 
     // Drun settings
-    drun-categories: "";
-    drun-match-fields: "name,generic,exec,categories,keywords";
-    drun-display-format: "{icon} {name}";
-    drun-show-actions: false;
-    drun-url-launcher: "xdg-open";
-    drun-use-desktop-cache: false;
-    drun-reload-desktop-cache: false;
     drun {
         // Parse user desktop files.
         parse-user:   true;
         // Parse system desktop files.
         parse-system: true;
     }
+    drun-categories: "";
+    drun-display-format: "{icon} {name}";
+    drun-match-fields: "name,generic,exec,categories,keywords";
+    drun-reload-desktop-cache: false;
+    drun-show-actions: false;
+    drun-url-launcher: "xdg-open";
+    drun-use-desktop-cache: false;
 
     // Run settings
     run-command: "{cmd}";
@@ -60,50 +64,247 @@ configuration {
     }
 
     // Window switcher settings
-    window-match-fields: "title,class,role,name,desktop";
     window-command: "wmctrl -i -R {window}";
     window-format: "{w} {t}";
+    window-match-fields: "title,class,role,name,desktop";
     window-thumbnail: false;
 
     // Combi settings
-    combi-modi: "window,run";
-    combi-hide-mode-prefix: false;
     combi-display-format: "{mode} {text}";
+    combi-hide-mode-prefix: false;
+    combi-modi: "window,run";
 
     // History and Sorting
     disable-history: false;
-    sorting-method: "normal";
     max-history-size: 25;
+    sorting-method: "normal";
 
     // Display setting
-    display-window: " Windows";
-    display-windowcd: " Windows CD";
+    display-combi: "󰕘  Combi";
+    display-drun: "  Apps";
+    display-filebrowser: "  Files";
+    display-keys: "  Keys";
     display-run: "  Run";
     display-ssh: "  SSH";
-    display-drun: "  Apps";
-    display-combi: "󰕘  Combi";
-    display-keys: "  Keys";
-    display-filebrowser: "  Files";
+    display-window: " Windows";
+    display-windowcd: " Windows CD";
 
     // Misc setting
-    terminal: "rofi-sensible-terminal";
-    font: "0xProto Nerd Font 14";
-    sort: false;
-    threads: 0;
     click-to-exit: true;
+    font: "0xProto Nerd Font 14";
     // ignored-prefixes: "";
     // pid: "/run/user/1000/rofi.pid";
+    sort: false;
+    terminal: "rofi-sensible-terminal";
+    threads: 0;
 
     // File browser settings
     filebrowser {
         // directory: "/home";
         directories-first: true;
-        sorting-method:    "name";
+        sorting-method: "name";
     }
 
     //Other settings
     timeout {
         action: "kb-cancel";
-        delay:  0;
+        delay: 0;
     }
+}
+
+window {
+    anchor: center;
+    background-color: @primary;
+    border: none;
+    border-radius: 32px;
+    height: 50%;
+    location: center;
+    padding: 32px;
+    width: 50%;
+}
+
+mainbox {
+    border:  0;
+    children: ["inputbar","listview"];
+}
+
+message {
+    border: 2px solid 0px 0px ;
+    border-color: @primary;
+    padding: 8px ;
+}
+
+textbox {
+    text-color: @foreground;
+}
+
+listview {
+    border: 0;
+    cursor: "default";
+    cycle: true;
+    dynamic: true;
+    expand: true;
+    layout: vertical;
+    padding: 0;
+    scrollbar: true;
+    spacing: 8px;
+    reverse: false;
+}
+
+scrollbar {
+    border: 0;
+    border-radius: 24px;
+    handle-color: @hover;
+    handle-width: 16px;
+    padding: 0;
+    width: 8px;
+}
+
+sidebar {
+    border: 2px dash 0px 0px ;
+    border-color: @primary;
+}
+
+num-filtered-rows {
+    expand: false;
+    text-color: @foreground;
+}
+
+num-rows {
+    expand: false;
+    text-color: @foreground;
+}
+
+textbox-num-sep {
+    expand: false;
+    str: "/";
+    text-color: @foreground;
+}
+
+inputbar {
+    children: ["textbox-prompt-colon","entry","mode-switcher"];
+    margin: 0 0 8px 0;
+    padding: 1px;
+    spacing: 16px;
+    text-color: @foreground;
+}
+
+case-indicator {
+    spacing: 0;
+    text-color: @foreground;
+}
+
+entry {
+    expand: true;
+    cursor: text;
+    padding: 4px 0;
+    placeholder: " Search";
+    placeholder-color: @foreground;
+    spacing: 0;
+    text-color: @foreground;
+    width: 128px;
+}
+
+prompt {
+    padding: 4px 0;
+    spacing: 0;
+    text-color: @foreground;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    margin: 0;
+    padding: 4px 0;
+    str: "󰍉";
+    text-color: inherit;
+}
+
+mode-switcher{
+    enabled: true;
+    padding: 2px 0;
+}
+
+button {
+    background-color: @primary;
+    border: 0;
+    border-color: transparent;
+    border-radius: 24px;
+    cursor: pointer;
+    margin: 0 8px 0 0;
+    padding: 8px;
+    spacing: 0;
+    text-color: @foreground;
+    width: 128px;
+}
+
+button selected {
+    background-color: @hover;
+    text-color: @foreground;
+}
+
+element {
+    border: 0;
+    border-radius: 24px;
+    cursor: pointer;
+    padding: 8px;
+    spacing: 4px ;
+}
+
+element normal.normal {
+    background-color: @primary;
+    text-color: @foreground;
+}
+
+element normal.urgent {
+    background-color: #ff0000;
+    text-color:       @foreground;
+}
+
+element normal.active {
+    background-color: @hover;
+    text-color:       @foreground;
+}
+
+element selected.normal {
+    background-color: @hover;
+    text-color:       @foreground;
+}
+
+element selected.urgent {
+    background-color: #770000;
+    text-color:       @foreground;
+}
+
+element selected.active {
+    background-color: @primary;
+    text-color:       @foreground;
+}
+
+element alternate.normal {
+    background-color: @primary;
+    text-color:       @foreground;
+}
+
+element alternate.urgent {
+    background-color: #ff0000;
+    text-color:       @foreground;
+}
+
+element alternate.active {
+    background-color: @hover;
+    text-color:       @foreground;
+}
+
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             1.0000em ;
+    cursor:           inherit;
+    text-color:       inherit;
 }
