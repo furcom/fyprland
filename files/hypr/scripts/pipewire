@@ -28,7 +28,7 @@ output_icon() {
 
 output_text() {
     if [[ $mic_volume_info == *"MUTED"* ]]; then
-        echo "  Muted"
+        echo "Muted"
         exit 0
     fi
     
@@ -36,9 +36,9 @@ output_text() {
     mic_volume_percent=$(echo "$mic_volume * 100" | bc -l | awk '{printf "%.0f", $0}')
     
     if [[ $mic_volume_percent -le 100 && $mic_volume_percent -gt 0 ]]; then
-        echo "  $mic_volume_percent%"
+        echo "$mic_volume_percent%"
     else
-        echo "  Muted"
+        echo "Muted"
     fi
 }
 

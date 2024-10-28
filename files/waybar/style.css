@@ -17,7 +17,6 @@
     font-family: "0xProto Nerd Font Mono";
     font-size: 16px;
     margin: 0;
-    min-width: 0px;
     padding: 0;
     transition-duration: 125ms;
 }
@@ -38,7 +37,7 @@ window#waybar > box {
     box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
     min-height: 40px;
-    padding: 8px 0;
+    padding: 4px;
 }
 
 @keyframes blink {
@@ -53,9 +52,9 @@ window#waybar > box {
 /*----------------*/
 
 .modules-left{
-    margin: 0 0 0 8px;
 }
 
+/* Logo */
 #group-logo {
     background-color: transparent;
 }
@@ -66,32 +65,102 @@ window#waybar > box {
     padding: 0 14px;
 }
 
-#custom-packages {
-    background-color: #007700;
-    margin: 0 0 0 8px;
+#group-logo:hover {
+    background-color: @alpha15;
+}
+
+#custom-logo:hover {
+    background-color: @color3;
+}
+
+/* CPU */
+#cpu {
+    background-color: transparent;
+    margin: 0 0 0 4px;
     padding: 0 16px;
 }
 
-#clock,
-#cpu,
-#custom-weather,
-#custom-settings,
-#disk,
-#memory,
+#cpu:hover {
+    background-color: @color3;
+}
+
+/* Temperature */
 #temperature {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 0 12px;
+    padding: 0 16px;
 }
 
 #temperature.critical {
     background-color: #FF0000;
 }
 
-#window {
+#temperature:hover {
+    background-color: @color3;
+}
+
+/* RAM memory */
+#memory {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 0 12px;
+    padding: 0 16px;
+}
+
+#memory:hover {
+    background-color: @color3;
+}
+
+/* Disk */
+#disk {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
+}
+
+#disk:hover {
+    background-color: @color3;
+}
+
+/* Packages */
+#custom-packages {
+    background-color: #007700;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
+}
+
+/* Weather */
+#custom-weather {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
+}
+
+#custom-weather:hover {
+    background-color: @color3;
+}
+
+/* Clock */
+#clock,
+#clock#2 {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+    padding: 0 16px;
+}
+
+#clock:hover,
+#clock#2:hover {
+    background-color: @color3;
+}
+
+/* Window */
+#group-window {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+}
+
+#window {
+    background-color: transparent;
+    padding: 0 16px;
 }
 
 window#waybar.empty #window {
@@ -113,25 +182,40 @@ window#waybar.empty #window {
     padding: 0 16px;
 }
 
+#group-window:hover {
+    background-color: @alpha15;
+}
+
+#custom-win-close:hover,
+#custom-win-prev-workspace:hover,
+#custom-win-next-workspace:hover,
+#custom-win-expand:hover,
+#custom-win-fullscreen:hover,
+#custom-win-float:hover,
+#window:hover {
+    background-color: @color3;
+}
+
 /*------------------*/
 /*----- CENTER -----*/
 /*------------------*/
 .modules-center {
 }
 
+#group-workspaces,
 #workspaces {
+    background-color: transparent;
 }
 
 #workspaces button.urgent {
     color: #770000;
-    margin: 0 8px 0 0;
     padding: 0 16px;
 }
 
 #workspaces button.persistent,
 #workspaces button.active,
 #workspaces button {
-    margin: 0 8px 0 0;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
@@ -139,43 +223,64 @@ window#waybar.empty #window {
 #custom-overview-workspaces,
 #custom-next-workspace {
     background-color: @alpha15;
-    margin: 0 4px 0 0;
+    margin: 0 0 0 4px;
     padding: 0 16px;
+}
+
+#workspaces button:hover {
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#group-workspaces:hover {
+    background-color: @alpha15;
+}
+
+#custom-prev-workspace:hover,
+#custom-overview-workspaces:hover,
+#custom-next-workspace:hover,
+#workspaces button.persistent:hover {
+    background-color: @color3;
 }
 
 /*-----------------*/
 /*----- RIGHT -----*/
 /*-----------------*/
 .modules-right {
-    margin: 0 8px 0 0;
 }
 
-#group-media,
-#group-network,
-#group-bluetooth,
-#group-input,
-#group-output,
-#group-backlight,
-#group-battery,
-#group-power {
+/* Media */
+#group-media {
     background-color: transparent;
+    margin: 0 4px 0 0;
 }
-
 
 #custom-media {
     background-color: transparent;
-    margin: 0;
-    padding: 0 12px;
+    padding: 0 16px;
 }
 
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
-    background-color: @alpha30;
+    background-color: @alpha15;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
+#group-media:hover {
+    background-color: @alpha15;
+}
+
+#custom-prev-song:hover,
+#custom-toggle-song:hover,
+#custom-next-song:hover,
+#custom-media:hover {
+    background-color: @color3;
+}
+
+/* Tray */
 #tray {
     background-color: transparent;
     margin: 0 4px 0 0;
@@ -187,24 +292,125 @@ window#waybar.empty #window {
     padding: 16px;
 }
 
-#backlight,
-#battery,
-#bluetooth,
-#custom-pipewire,
-#custom-power2,
-#network,
-#power-profiles-daemon,
-#wireplumber,
-#wireplumber.muted,
-#custom-power {
+#tray:hover {
+    background-color: @color3;
+}
+
+/* Network */
+#group-network {
     background-color: transparent;
-    margin: 0 0 0 4px;
+    margin: 0 4px 0 0;
+}
+
+#network {
+    background-color: transparent;
     padding: 0 16px;
 }
 
-#custom-power {
+#group-network:hover {
     background-color: @alpha15;
-    margin: 0 0 0 4px;
+}
+
+#network:hover {
+    background-color: @color3;
+}
+
+/* Bluetooth */
+#group-bluetooth {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+}
+
+#bluetooth {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#group-bluetooth:hover {
+    background-color: @alpha15;
+}
+
+#bluetooth:hover {
+    background-color: @color3;
+}
+
+/* Input */
+#group-input {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+}
+
+#custom-pipewire {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#custom-pipewire2 {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#group-input:hover {
+    background-color: @alpha15;
+}
+
+#custom-pipewire:hover,
+#custom-pipewire2:hover {
+    background-color: @color3;
+}
+
+/* Output */
+#group-output {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+}
+
+#wireplumber {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#group-output:hover {
+    background-color: @alpha15;
+}
+
+#wireplumber:hover {
+    background-color: @color3;
+}
+
+/* Backlight */
+#group-backlight {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+}
+
+#backlight {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#group-backlight:hover {
+    background-color: @alpha15;
+}
+
+#backlight:hover {
+    background-color: @color3;
+}
+
+/* Battery */
+#group-battery {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+}
+
+#battery {
+    background-color: transparent;
+    padding: 0 16px;
+}
+
+#power-profiles-daemon {
+    background-color: transparent;
+    margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
@@ -219,6 +425,7 @@ window#waybar.empty #window {
     color: @background;
     padding: 0 16px;
 }
+
 #battery.critical:not(.charging) {
     animation-direction: alternate;
     animation-duration: 0.5s;
@@ -229,61 +436,40 @@ window#waybar.empty #window {
     padding: 0 16px;
 }
 
-/*-----------------*/
-/*----- HOVER -----*/
-/*-----------------*/
+#group-battery:hover {
+    background-color: @alpha15;
+}
 
-#group-media:hover,
-#group-network:hover,
-#group-bluetooth:hover,
-#group-input:hover,
-#group-output:hover,
-#group-backlight:hover,
-#group-battery:hover,
-#group-power:hover,
-
-#backlight:hover,
 #battery:hover,
-#battery.warning:not(.charging):hover,
 #battery.charging:hover,
 #battery.plugged:hover,
-#bluetooth:hover,
-#clock:hover,
-#cpu:hover,
-#custom-logo:hover,
-#custom-next-workspace:hover,
-#custom-next-song:hover,
-#custom-overview-workspaces:hover,
-#custom-packages:hover,
-#custom-pipewire:hover,
-#custom-power:hover,
-#custom-power2:hover,
-#power-profiles-daemon:hover,
-#custom-prev-song:hover,
-#custom-prev-workspace:hover,
-#custom-settings:hover,
-#custom-toggle-song:hover,
-#custom-weather:hover,
-#custom-win-close:hover,
-#custom-win-expand:hover,
-#custom-win-float:hover,
-#custom-win-fullscreen:hover,
-#custom-win-next-workspace:hover,
-#custom-win-prev-workspace:hover,
-#disk:hover,
-#memory:hover,
-#network:hover,
-#temperature:hover,
-#tray:hover,
-#wireplumber:hover,
-#window:hover {
+#battery.warning:not(.charging):hover,
+#battery.critical:not(.charging):hover,
+#power-profiles-daemon:hover {
     background-color: @color3;
 }
-#workspaces button:hover {
-    background: none;
-    box-shadow: none;
-    text-shadow: none;
+
+/* Power */
+#group-power {
+    background-color: transparent;
 }
-#workspaces button.persistent:hover {
+
+#custom-power {
+    background-color: @alpha15;
+    padding: 0 16px;
+}
+
+#custom-power2 {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+    padding: 0 16px;
+}
+
+#group-power:hover {
+    background-color: @alpha15;
+}
+
+#custom-power:hover,
+#custom-power2:hover {
     background-color: @color3;
 }

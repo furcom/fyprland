@@ -26,7 +26,7 @@
         "custom/weather",
         "clock",
         "clock#2",
-        "group/hyprland-window"
+        "group/group-window"
     ],
     
     "group/group-logo": {
@@ -36,17 +36,10 @@
             "children-class": "not-memory",
             "transition-left-to-right": true
         },
-        "modules": ["custom/logo","custom/settings","cpu","memory","disk","temperature"],
+        "modules": ["custom/logo","cpu","memory","disk","temperature"],
     },
     "custom/logo": {
         "format": "",
-        "on-click": "~/.config/hypr/scripts/settings",
-        "return-type": "exit",
-        "tooltip": true,
-        "tooltip-format": " Settings"
-    },
-    "custom/settings": {
-        "format": "Settings",
         "on-click": "~/.config/hypr/scripts/settings",
         "return-type": "exit",
         "tooltip": true,
@@ -129,7 +122,7 @@
         "return-type": "json"
     },
 
-    "group/hyprland-window": {
+    "group/group-window": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -193,10 +186,10 @@
     /*--- CENTER ----------------------------------------------------*/
     
     "modules-center": [
-        "group/hyprland-workspaces"
+        "group/group-workspaces"
     ],
     
-    "group/hyprland-workspaces": {
+    "group/group-workspaces": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
@@ -285,13 +278,14 @@
             "firefox": " ",
              "*": "󰎆 "
         },
-        "min-length": 32,
         "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}\", \"alt\": \"{{playerName}}\", \"class\": \"{{playerName}}\"}' -F",
         "on-click": "playerctl play-pause",
-        "on-click-right": "hyprctl dispatch focuswindow class:Spotify"
+        "on-click-right": "hyprctl dispatch focuswindow class:Spotify",
+        "tooltip": true,
+        "tooltip-format": "Currently playing media"
     },
     "custom/toggle-song": {
-        "tooltip": false,
+        "tooltip": true,
         "format": "{icon}",
         "return-type": "json",
         "format-icons": {
@@ -300,16 +294,19 @@
          },
         "exec": "playerctl -a metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
+        "tooltip-format": "Play/Paus song"
     },
     "custom/prev-song": {
         "format": "󰒮",
-        "tooltip": false,
+        "tooltip": true,
         "on-click": "playerctl previous",
+        "tooltip-format": "Previous song"
     },
     "custom/next-song": {
         "format": "󰒭",
-        "tooltip": false,
+        "tooltip": true,
         "on-click": "playerctl next",
+        "tooltip-format": "Next song"
     },
 
     "tray": {
@@ -330,24 +327,24 @@
     },
     "network": {
         // "interface": "wlan0",
-        "tooltip": false,
+        "tooltip": true,
         "format-wifi": "󰖩",
         "format-ethernet":"󰈀",
         "format-disconnected": "",
         "on-click": "kitty sh -c 'nmtui;'",
         "tooltip-format": "{ipaddr}",
-        "tooltip-format-wifi": "Network: {essid}\n󰢽 {signalStrength}%)\n󰩟 {ipaddr}",
+        "tooltip-format-wifi": "󰛳 {essid}\n󰢽 {signalStrength}%\n󰩟 {ipaddr}",
         "tooltip-format-ethernet": " {ifname} - {ipaddr}",
     },
     "network#2": {
         // "interface": "wlan0",
-        "tooltip": false,
+        "tooltip": true,
         "format-wifi": "{essid}",
         "format-ethernet": "{ipaddr}",
         "format-disconnected": "Disconnected",
         "on-click": "kitty sh -c 'nmtui;'",
         "tooltip-format": "{ipaddr}",
-        "tooltip-format-wifi": "Network: {essid}\n󰢽 {signalStrength}%)\n󰩟 {ipaddr}",
+        "tooltip-format-wifi": "󰛳 {essid}\n󰢽 {signalStrength}%\n󰩟 {ipaddr}",
         "tooltip-format-ethernet": " {ifname} - {ipaddr}",
     },
 
@@ -361,30 +358,30 @@
         "modules": ["bluetooth","bluetooth#2"],
     },
     "bluetooth": {
-        "tooltip": false,
+        "tooltip": true,
         "format-on": "",
         "format-off": "󰂲",
-        "format-disabled": "󰂲",
+        "format-disabled": "󰂭",
         "format-connected": "󰂱",
         "format-connected-battery": "󰂱󰥉",
         "on-click": "kitty sh -c 'rfkill unblock bluetooth && bluetui;'",
-        "tooltip-format": "{controller_alias}, {controller_address}, {num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        "tooltip-format": " {controller_alias} ({controller_address})\n󱘖 {num_connections} devices connected",
+        "tooltip-format-connected": "󰂱 {controller_alias} ({controller_address})\n󱘖 {num_connections} ({device_enumerate})",
+        "tooltip-format-enumerate-connected": "󰂱 {device_alias} ({device_address})",
+        "tooltip-format-enumerate-connected-battery": "󰂱 {device_alias} ({device_address}) (󰥉 {device_battery_percentage}%)"
     }, 
     "bluetooth#2": {
-        "tooltip": false,
+        "tooltip": true,
         "format-on": "On",
         "format-off": "Off",
         "format-disabled": "Disabled",
         "format-connected": "{device_alias}\t{device_address}",
         "format-connected-battery": "{device_battery_percentage}%",
         "on-click": "kitty sh -c 'rfkill unblock bluetooth && bluetui;'",
-        "tooltip-format": "{controller_alias}, {controller_address}, {num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        "tooltip-format": " {controller_alias} ({controller_address})\n󱘖 {num_connections} devices connected",
+        "tooltip-format-connected": "󰂱 {controller_alias} ({controller_address})\n󱘖 {num_connections} ({device_enumerate})",
+        "tooltip-format-enumerate-connected": "󰂱 {device_alias} ({device_address})",
+        "tooltip-format-enumerate-connected-battery": "󰂱 {device_alias} ({device_address}) (󰥉 {device_battery_percentage}%)"
     }, 
 
     "group/group-input": {
