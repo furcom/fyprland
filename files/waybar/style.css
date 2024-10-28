@@ -33,7 +33,7 @@ window#waybar {
     background: none;
 }
 window#waybar > box {
-    background-color: @background_bar;
+    background-color: @color2;
     border-radius: 0;
     box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
@@ -61,12 +61,12 @@ window#waybar > box {
 }
 
 #custom-logo {
-    background-color: @alpha15;
+    background-color: @alpha25;
     padding: 0 16px;
 }
 
 #group-logo:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-logo:hover {
@@ -177,13 +177,13 @@ window#waybar.empty #window {
 #custom-win-expand,
 #custom-win-fullscreen,
 #custom-win-float {
-    background-color: @alpha15;
+    background-color: @alpha25;
     margin: 0 0 0 4px;
     padding: 0 16px;
 }
 
 #group-window:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-win-close:hover,
@@ -223,7 +223,7 @@ window#waybar.empty #window {
 #custom-prev-workspace,
 #custom-overview-workspaces,
 #custom-next-workspace {
-    background-color: @alpha15;
+    background-color: @alpha25;
     margin: 0 0 0 4px;
     padding: 0 16px;
 }
@@ -235,7 +235,7 @@ window#waybar.empty #window {
 }
 
 #group-workspaces:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-prev-workspace:hover,
@@ -265,13 +265,13 @@ window#waybar.empty #window {
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
-    background-color: @alpha15;
+    background-color: @alpha25;
     margin: 0 4px 0 0;
     padding: 0 16px;
 }
 
 #group-media:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-prev-song:hover,
@@ -309,7 +309,7 @@ window#waybar.empty #window {
 }
 
 #group-network:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #network:hover {
@@ -328,7 +328,7 @@ window#waybar.empty #window {
 }
 
 #group-bluetooth:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #bluetooth:hover {
@@ -352,7 +352,7 @@ window#waybar.empty #window {
 }
 
 #group-input:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-pipewire:hover,
@@ -372,7 +372,7 @@ window#waybar.empty #window {
 }
 
 #group-output:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #wireplumber:hover {
@@ -391,7 +391,7 @@ window#waybar.empty #window {
 }
 
 #group-backlight:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #backlight:hover {
@@ -438,7 +438,7 @@ window#waybar.empty #window {
 }
 
 #group-battery:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #battery:hover,
@@ -456,7 +456,7 @@ window#waybar.empty #window {
 }
 
 #custom-power {
-    background-color: @alpha15;
+    background-color: @alpha25;
     padding: 0 16px;
 }
 
@@ -467,7 +467,7 @@ window#waybar.empty #window {
 }
 
 #group-power:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
 }
 
 #custom-power:hover,

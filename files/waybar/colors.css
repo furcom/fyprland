@@ -11,8 +11,8 @@
 @define-color foreground #F2FAE7;
 @define-color background #222527;
 @define-color background_alpha50 rgba(34,37,39,0.50);
-@define-color background_bar rgba(41,144,125,0.7);
 @define-color alpha15 rgba(242,250,231,0.15);
+@define-color alpha25 rgba(242,250,231,0.25);
 @define-color alpha30 rgba(242,250,231,0.30);
 @define-color alpha50 rgba(242,250,231,0.50);
 @define-color alpha60 rgba(242,250,231,0.60);
