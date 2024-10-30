@@ -46,13 +46,13 @@ main_menu() {
 }
 
 extras_menu() {
-    EXTRAS_OPTIONS="󰌍\n󱂩 Waybar\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh\n Wallust"
+    EXTRAS_OPTIONS="󰌍 Back\n󱂩 Waybar\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh\n Wallust"
     EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowExtras)
 
     if [ -z "$EXTRAS_SUBCHOICE" ]; then
         SelectedRowMain="3"
         main_menu
-    elif [ "$EXTRAS_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$EXTRAS_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowMain="3"
         main_menu
     else
@@ -72,45 +72,39 @@ extras_menu() {
 }
 
 hyprland_menu() {
-    HYPRLAND_OPTIONS="󰌍\n Config\n General\n Decorations\n Animations\n󰍽 Input\n󰸉 Wallpaper\n Window Bar\n󰇀 Cursor\n Bindings\n Layouts\n Misc\n Rules\n Plugins"
+    HYPRLAND_OPTIONS="󰌍 Back\n󰸉 Wallpaper\n󰈙 Config\n General\n Decorations\n󰤺 Animations\n Layouts\n Misc\n Rules\n󰍽 Input\n Bindings\n Window Bar\n󰇀 Cursor\n Plugins"
     HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowHypr)
 
     if [ -z "$HYPRLAND_SUBCHOICE" ]; then
         SelectedRowMain="0"
 	main_menu
-    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$HYPRLAND_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowMain="0"
         main_menu
     else
         case "$HYPRLAND_SUBCHOICE" in
-            " Config")
+            "󰸉 Wallpaper")
+                waypaper ;;
+            "󰈙 Config")
                 $TERMINAL sh -c "$EDITOR $HyprDir/hyprland.conf" ;;
-            " General")
+            " General")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/general.conf" ;;
             " Decorations")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/decorations.conf" ;;
-            " Animations")
+            "󰤺 Animations")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/animations.conf" ;;
-            "󰸉 Wallpaper")
-                waypaper ;;
-            " Window Bar")
-                window_bar_menu ;;
-            "󰇀 Cursor")
-                $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
-            " Bindings")
-                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             " Layouts")
-		    LAYOUTS_OPTIONS="󰌍\n󰯌 Master\n󰕴 Dwindle\n Config"
+		    LAYOUTS_OPTIONS="󰌍 Back\n󰯌 Master\n󰕴 Dwindle\n󰈙 Config"
 		    LAYOUTS_SUBCHOICE=$(echo -e "$LAYOUTS_OPTIONS" | $RofiMenuSettings)
 		    case "$LAYOUTS_SUBCHOICE" in
-			"󰌍")
-                            SelectedRowHypr="6"
+			"󰌍 Back")
+                            SelectedRowHypr="10"
 			    hyprland_menu ;;
 	                "󰯌 Master")
 			    $HyprScriptsDir/layouts --master ;;
 	                "󰕴 Dwindle")
 			    $HyprScriptsDir/layouts --dwindle ;;
-			" Config")
+			"󰈙 Config")
                             $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
 		    esac ;;
             " Misc")
@@ -119,25 +113,42 @@ hyprland_menu() {
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/rules.conf" ;;
             "󰍽 Input")
                 $TERMINAL sh -c "$EDITOR $HyprConfigsDir/input.conf" ;;
+
+            " Bindings")
+                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
+            " Window Bar")
+                window_bar_menu ;;
+            "󰇀 Cursor")
+                $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
             " Plugins")
-                $TERMINAL sh -c "$EDITOR $HyprConfigsDir/plugins.conf" ;;
-        esac
+                    PLUGINS_OPTIONS="󰌍 Back\n󰈙 Config\n󰚰 Updates"
+                    PLUGINS_SUBCHOICE=$(echo -e "$PLUGINS_OPTIONS" | $RofiMenuSettings)
+                    case "$PLUGINS_SUBCHOICE" in
+                        "󰌍 Back")
+                            SelectedRowHypr="11"
+                            hyprland_menu ;;
+                        "󰈙 Config")
+                            $TERMINAL sh -c "$EDITOR $HyprConfigsDir/plugins.conf" ;;
+                        "󰚰 Updates")
+                            $TERMINAL sh -c "$HyprScriptsDir/packages --hypr" ;;
+                    esac ;;
+            esac
     fi
 }
 
 waybar_menu() {
-    WAYBAR_OPTIONS="󰌍\n Config\n Style\n󰑓 Restart"
+    WAYBAR_OPTIONS="󰌍 Back\n󰈙 Config\n Style\n󰑓 Restart"
     WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WAYBAR_SUBCHOICE" ]; then
         SelectedRowExtras="1"
         extras_menu
-    elif [ "$WAYBAR_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$WAYBAR_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowExtras="1"
         extras_menu
     else
         case "$WAYBAR_SUBCHOICE" in
-            " Config")
+            "󰈙 Config")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/config" ;;
             " Style")
                 $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
@@ -149,17 +160,19 @@ waybar_menu() {
 }
 
 wallust_menu() {
-    WALLUST_OPTIONS="󰌍\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n SDDM\n Config"
+    WALLUST_OPTIONS="󰌍 Back\n󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n SDDM\n󰩈 Wlogout"
     WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WALLUST_SUBCHOICE" ]; then
         SelectedRowExtras="5"
         extras_menu
-    elif [ "$WALLUST_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$WALLUST_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowExtras="5"
         extras_menu
     else
         case "$WALLUST_SUBCHOICE" in
+            "󰈙 Config")
+                $TERMINAL sh -c "$EDITOR $WallustDir/wallust.toml" ;;
             " Hyprland")
                 $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/hyprland" ;;
             " Hyprlock")
@@ -174,21 +187,21 @@ wallust_menu() {
                 $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/mako" ;;
             " SDDM")
                 $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/sddm" ;;
-            " Config")
-                $TERMINAL sh -c "$EDITOR $WallustDir/wallust.toml" ;;
+            "󰩈 Wlogout")
+                $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/wlogout" ;;
         esac
     fi
 }
 
 window_bar_menu() {
-    WINBAR_OPTIONS="󰌍\n󰐥 Enable\n󰤂 Disable"
+    WINBAR_OPTIONS="󰌍 Back\n󰐥 Enable\n󰤂 Disable"
     WINBAR_SUBCHOICE=$(echo -e "$WINBAR_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WINBAR_SUBCHOICE" ]; then
-        SelectedRowHypr="3"
+        SelectedRowHypr="7"
         hyprland_menu
-    elif [ "$WINBAR_SUBCHOICE" == "󰌍" ]; then
-        SelectedRowHypr="3"
+    elif [ "$WINBAR_SUBCHOICE" == "󰌍 Back" ]; then
+        SelectedRowHypr="7"
         hyprland_menu
     else
         case "$WINBAR_SUBCHOICE" in
@@ -201,18 +214,18 @@ window_bar_menu() {
 }
 
 kitty_menu() {
-    KITTY_OPTIONS="󰌍\n Config\n Style\n Keymaps\n󰑓 Reload Config"
+    KITTY_OPTIONS="󰌍 Back\n󰈙 Config\n Style\n Keymaps\n󰑓 Reload Config"
     KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$KITTY_SUBCHOICE" ]; then
         SelectedRowExtras="2"
         extras_menu
-    elif [ "$KITTY_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$KITTY_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowExtras="2"
         extras_menu
     else
         case "$KITTY_SUBCHOICE" in
-            " Config")
+            "󰈙 Config")
                 $TERMINAL sh -c "$EDITOR $KittyDir/kitty.conf" ;;
             "󰑓 Reload Config")
                 kill -SIGUSR1 $(pidof kitty) ;;
@@ -225,18 +238,18 @@ kitty_menu() {
 }
 
 fusuma_menu() {
-    FUSUMA_OPTIONS="󰌍\n Config\n󰑓 Restart"
+    FUSUMA_OPTIONS="󰌍 Back\n󰈙 Config\n󰑓 Restart"
     FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$FUSUMA_SUBCHOICE" ]; then
         SelectedRowExtras="3"
         extras_menu
-    elif [ "$FUSUMA_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$FUSUMA_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowExtras="3"
         extras_menu
     else
         case "$FUSUMA_SUBCHOICE" in
-            " Config")
+            "󰈙 Config")
                 $TERMINAL sh -c "$EDITOR $FusumaDir/config.yml" ;;
             "󰑓 Restart")
                 pkill fusuma && fusuma -d ;;
@@ -245,13 +258,13 @@ fusuma_menu() {
 }
 
 connections_menu() {
-    CONNECTIONS_OPTIONS="󰌍\n Bluetooth\n󰖩 WiFi\n󰖂 Wireguard"
+    CONNECTIONS_OPTIONS="󰌍 Back\n Bluetooth\n󰖩 WiFi\n󰖂 Wireguard"
     CONNECTIONS_SUBCHOICE=$(echo -e "$CONNECTIONS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowConnection)
 
     if [ -z "$CONNECTIONS_SUBCHOICE" ]; then
         SelectedRowMain="1"
         main_menu
-    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$CONNECTIONS_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowMain="1"
         main_menu
     else
@@ -267,13 +280,13 @@ connections_menu() {
 }
 
 wireguard_menu() {
-    WIREGUARD_OPTIONS="󰌍\n󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n Config"
+    WIREGUARD_OPTIONS="󰌍 Back\n󰌘 Connect\n󱘖 Status\n󰌙 Disconnect\n󰑓 Reconnect\n󰐥 Enable\n󰤂 Disable\n󰈙 Config"
     WIREGUARD_SUBCHOICE=$(echo -e "$WIREGUARD_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$WIREGUARD_SUBCHOICE" ]; then
         SelectedRowConnection="3"
         connections_menu
-    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$WIREGUARD_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowConnection="3"
         connections_menu
     else
@@ -290,20 +303,20 @@ wireguard_menu() {
                 $TERMINAL sh -c "$HyprScriptsDir/wireguard --enable" ;;
             "󰤂 Disable")
                 $TERMINAL sh -c "$HyprScriptsDir/wireguard --disable" ;;
-            " Config")
+            "󰈙 Config")
                 $TERMINAL sh -c "$HyprScriptsDir/wireguard --config" ;;
         esac
     fi
 }
 
 packages_menu() {
-    PACKAGES_OPTIONS="󰌍\n󰮯 Arch Package Updates\n AUR Package Updates\n Hyprland Plugin Updates\n󰃢 Clean Pacman"
+    PACKAGES_OPTIONS="󰌍 Back\n󰮯 Arch Package Updates\n AUR Package Updates\n󰃢 Clean Pacman"
     PACKAGES_SUBCHOICE=$(echo -e "$PACKAGES_OPTIONS" | $RofiMenuSettings)
 
     if [ -z "$PACKAGES_SUBCHOICE" ]; then
         SelectedRowMain="2"
         main_menu
-    elif [ "$PACKAGES_SUBCHOICE" == "󰌍" ]; then
+    elif [ "$PACKAGES_SUBCHOICE" == "󰌍 Back" ]; then
         SelectedRowMain="2"
         main_menu
     else
@@ -312,8 +325,6 @@ packages_menu() {
                 $TERMINAL sh -c "$HyprScriptsDir/packages --pacman" ;;
             " AUR Package Updates")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --aur" ;;
-            " Hyprland Plugin Updates")
-                $TERMINAL sh -c "$HyprScriptsDir/packages --hypr" ;;
             "󰃢 Clean Pacman")
                 $TERMINAL sh -c "$HyprScriptsDir/packages --clean" ;;
         esac

@@ -9,7 +9,7 @@
 @import "./colors.rasi"
 
 * {
-    font: "0xProto Nerd Font 16";
+    font: "0xProto Nerd Font Mono 16";
     margin: 0;
     padding: 0;
 }
@@ -80,12 +80,12 @@ configuration {
     sorting-method: "normal";
 
     // Display setting
-    display-combi: "󰕘  Combi";
-    display-drun: "  Apps";
-    display-filebrowser: "  Files";
-    display-keys: "  Keys";
-    display-run: "  Run";
-    display-ssh: "  SSH";
+    display-combi: "󰕘 Combi";
+    display-drun: " Apps";
+    display-filebrowser: " Files";
+    display-keys: " Keys";
+    display-run: " Run";
+    display-ssh: " SSH";
     display-window: " Windows";
     display-windowcd: " Windows CD";
 
