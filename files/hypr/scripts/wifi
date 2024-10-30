@@ -1,4 +1,12 @@
 #!/bin/bash
+#  ██╗    ██╗██╗███████╗██╗
+#  ██║    ██║██║██╔════╝██║
+#  ██║ █╗ ██║██║█████╗  ██║
+#  ██║███╗██║██║██╔══╝  ██║
+#  ╚███╔███╔╝██║██║     ██║
+#   ╚══╝╚══╝ ╚═╝╚═╝     ╚═╝
+# script by furcom (https://github.com/furcom)
+
 NWSTAT=$(nmcli networking connectivity check)
 if [ "$NWSTAT" == "none" ];
   then

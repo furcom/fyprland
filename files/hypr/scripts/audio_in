@@ -1,0 +1,90 @@
+#!/bin/bash
+#   █████╗ ██╗   ██╗██████╗ ██╗ ██████╗ 
+#  ██╔══██╗██║   ██║██╔══██╗██║██╔═══██╗
+#  ███████║██║   ██║██║  ██║██║██║   ██║
+#  ██╔══██║██║   ██║██║  ██║██║██║   ██║
+#  ██║  ██║╚██████╔╝██████╔╝██║╚██████╔╝
+#  ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ 
+# script by furcom (https://github.com/furcom)
+
+# Get volume and save as decimal
+mic_volume_info=$(wpctl get-volume @DEFAULT_SOURCE@)
+
+# Function to get the microphone icon
+icon() {
+    if [[ $mic_volume_info == *"MUTED"* ]]; then
+        echo ""  # Muted icon
+    else
+        current_volume=$(echo "$mic_volume_info" | awk '{print $2}')
+        volume_percent=$(echo "$current_volume * 100" | bc)
+        if (( $(echo "$volume_percent > 66" | bc -l) )); then
+            echo ""  # High volume icon
+        elif (( $(echo "$volume_percent > 33" | bc -l) )); then
+            echo ""  # Medium volume icon
+        else
+            echo ""  # Low volume icon
+        fi
+    fi
+}
+
+# Function to get the microphone text status
+text() {
+    if [[ $mic_volume_info == *"MUTED"* ]]; then
+        echo "Muted"
+    else
+        current_volume=$(echo "$mic_volume_info" | awk '{print $2}')
+        volume_percent=$(echo "$current_volume * 100" | bc)
+        printf "%.0f%%" "$volume_percent"
+    fi
+}
+
+# Function to notify the current microphone status
+notify() {
+    # Refresh the volume info
+    mic_volume_info=$(wpctl get-volume @DEFAULT_SOURCE@)
+
+    # Extract the volume level and mute status
+    current_volume=$(echo "$mic_volume_info" | awk '{print $2}')
+    is_muted=$(echo "$mic_volume_info" | grep -o "\[MUTED\]")
+
+    # Check if the volume is 0 (fully muted)
+    if [[ "$current_volume" == "0.00" || -n "$is_muted" ]]; then
+        pkill mako
+        notify-send "  Muted"
+        return
+    fi
+
+    # Calculate volume percentage
+    volume_percent=$(echo "$current_volume * 100" | bc)
+    volume_percent=$(printf "%.0f" "$volume_percent")
+
+    # Notify based on volume percentage
+    if (( $(echo "$volume_percent > 66" | bc -l) )); then
+        pkill mako
+        notify-send "  $volume_percent%"
+    elif (( $(echo "$volume_percent > 33" | bc -l) )); then
+        pkill mako
+        notify-send "  $volume_percent%"
+    elif (( $(echo "$volume_percent > 0" | bc -l) )); then
+        pkill mako
+        notify-send "  $volume_percent%"
+    else
+        pkill mako
+        notify-send "  Muted"
+    fi
+}
+
+# Handle command line arguments
+case "$1" in
+    --icon) icon ;;
+    --text) text ;;
+    --toggle) 
+        wpctl set-mute @DEFAULT_SOURCE@ toggle 
+        notify 
+        ;;
+    --inc) wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%+ && notify ;;
+    --dec) wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%- && notify ;;
+    --max) wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 100% && notify ;;
+    --mid) wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 50% && notify ;;
+    --notify) notify ;;
+esac

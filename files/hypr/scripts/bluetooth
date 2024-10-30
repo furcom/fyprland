@@ -1,7 +1,14 @@
 #!/bin/bash
-STATE=`bluetoothctl show | grep Powered | awk '{print $2}'`
-if [[ $STATE == 'yes' ]]; then    
-    bluetoothctl power off    
+#  ██████╗ ██╗     ██╗   ██╗███████╗████████╗ ██████╗  ██████╗ ████████╗██╗  ██╗
+#  ██╔══██╗██║     ██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗╚══██╔══╝██║  ██║
+#  ██████╔╝██║     ██║   ██║█████╗     ██║   ██║   ██║██║   ██║   ██║   ███████║
+#  ██╔══██╗██║     ██║   ██║██╔══╝     ██║   ██║   ██║██║   ██║   ██║   ██╔══██║
+#  ██████╔╝███████╗╚██████╔╝███████╗   ██║   ╚██████╔╝╚██████╔╝   ██║   ██║  ██║
+#  ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+# script by furcom (https://github.com/furcom)
+
+if bluetoothctl show | grep -q "Powered: yes"; then
+    bluetoothctl power off
     pkill mako
     notify-send "󰂲 Bluetooth Off"
 else
