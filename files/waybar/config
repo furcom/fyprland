@@ -25,7 +25,6 @@
         "custom/packages",
         "custom/weather",
         "clock",
-        "clock#2",
         "group/group-window"
     ],
     
@@ -85,16 +84,17 @@
     },
     
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%I:%M %p}",
-        "tooltip": false
-    },
-    "clock#2": {
-        "format": "{:%d.%m.%Y}",
-        "format-alt": "{:%A, %d. %B %Y}",
-        "tooltip-format": "<tt><small>\n{calendar}\n</small></tt>",
+        "format": "{:%H:%M - %d.%m.%Y}",
+        "format-alt": "{:%I:%M %p - %d.%m.%Y}",
+        "actions":  {
+           "on-click-right": "mode",
+           "on-scroll-up": "tz_up",
+           "on-scroll-down": "tz_down",
+           "on-scroll-up": "shift_up",
+           "on-scroll-down": "shift_down"
+        },
         "calendar": {
-           "mode"          : "year",
+           "mode"          : "month",
            "mode-mon-col"  : 3,
            "weeks-pos"     : "right",
            "on-scroll"     : 1,
@@ -106,14 +106,10 @@
               "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
               }
            },
-        "actions":  {
-           "on-click-right": "mode",
-           "on-scroll-up": "tz_up",
-           "on-scroll-down": "tz_down",
-           "on-scroll-up": "shift_up",
-           "on-scroll-down": "shift_down"
-           }
+        "tooltip": true,
+        "tooltip-format": "<tt><small>\n{calendar}\n</small></tt>"
     },
+
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,
@@ -129,7 +125,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": true
         },
-        "modules": ["hyprland/window","custom/win-close","custom/win-prev-workspace","custom/win-next-workspace","custom/win-expand","custom/win-fullscreen","custom/win-float"],
+        "modules": ["hyprland/window","custom/window-close","custom/window-prev-workspace","custom/window-next-workspace","custom/window-expand","custom/window-fullscreen","custom/window-float"],
         "tooltip": true
     },
     "hyprland/window": {
@@ -146,40 +142,40 @@
         "icon-size": 22,
         "on-click": "hyprctl dispatch hyprexpo:expo on",
     },
-    "custom/win-close": {
+    "custom/window-close": {
         "tooltip": true,
         "format": "󰖭",
-        "tooltip-format": "󰅙 Close window",
+        "tooltip-format": "Close window",
         "on-click": "hyprctl dispatch killactive"
     },
-    "custom/win-prev-workspace": {
+    "custom/window-prev-workspace": {
         "tooltip": true,
         "format": "󰜱",
-        "tooltip-format": "󰜱 Move window to previous workspace",
+        "tooltip-format": "Move window to previous workspace",
         "on-click": "hyprctl dispatch movetoworkspace -1"
     },
-    "custom/win-next-workspace": {
+    "custom/window-next-workspace": {
         "tooltip": true,
         "format": "󰜴",
-        "tooltip-format": "󰜴 Move window to next workspace",
+        "tooltip-format": "Move window to next workspace",
         "on-click": "hyprctl dispatch movetoworkspace +1"
     },
-    "custom/win-expand": {
+    "custom/window-expand": {
         "tooltip": true,
         "format": "󰁌",
-        "tooltip-format": "󰁌 Expand window",
+        "tooltip-format": "Expand window",
         "on-click": "hyprctl dispatch fullscreen 1"
     },
-    "custom/win-fullscreen": {
+    "custom/window-fullscreen": {
         "tooltip": true,
         "format": "",
-        "tooltip-format": " Fullscreen window",
+        "tooltip-format": "Fullscreen window",
         "on-click": "hyprctl dispatch fullscreen 0"
     },
-    "custom/win-float": {
+    "custom/window-float": {
         "tooltip": true,
         "format": "",
-        "tooltip-format": " Float window",
+        "tooltip-format": "Float window",
         "on-click": "hyprctl dispatch togglefloating"
     },
 
@@ -229,19 +225,19 @@
     },
     "custom/prev-workspace": {
         "tooltip": true,
-        "tooltip-format": "󰜱 Go to previous workspace",
+        "tooltip-format": "Go to previous workspace",
         "format": "󰜱",
         "on-click": "hyprctl dispatch workspace -1"
     },
     "custom/overview-workspaces": {
         "tooltip": true,
-        "tooltip-format": "󱗼 Workspaces overview (Press and hold)",
+        "tooltip-format": "Workspaces overview (Press and hold)",
         "format": "󱗼",
         "on-click": "hyprctl dispatch hyprexpo:expo on"
     },
     "custom/next-workspace": {
         "tooltip": true,
-        "tooltip-format": "󰜴 Go to next workspace",
+        "tooltip-format": "Go to next workspace",
         "format": "󰜴",
         "on-click": "hyprctl dispatch workspace +1"
     },
@@ -257,7 +253,7 @@
         "group/group-output",
         "group/group-backlight",
         "group/group-battery",
-        "group/group-power"
+        "group/group-powermenu"
     ],
 
     "group/group-media": {
@@ -331,7 +327,7 @@
         "format-wifi": "󰖩",
         "format-ethernet":"󰈀",
         "format-disconnected": "",
-        "on-click": "kitty sh -c 'nmtui;'",
+        "on-click": "~/.config/hypr/scripts/wifi",
         "tooltip-format": "{ipaddr}",
         "tooltip-format-wifi": "󰛳 {essid}\n󰢽 {signalStrength}%\n󰩟 {ipaddr}",
         "tooltip-format-ethernet": " {ifname} - {ipaddr}",
@@ -391,7 +387,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/pipewire","custom/pipewire2"],
+        "modules": ["custom/pipewire","custom/pipewire#2"],
     },
     "custom/pipewire": {
         "format": "{}",
@@ -403,7 +399,7 @@
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-",
         "smooth-scrolling-threshold": 1
     },
-    "custom/pipewire2": {
+    "custom/pipewire#2": {
         "format": "{}",
         "tooltip": false,
         "restart-interval": 0,
@@ -429,9 +425,9 @@
         "max-volume": 100.0,
         "format-muted": "󰖁",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
-        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/volume",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/volume",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/volume",
         "scroll-step": "1"
     },
     "wireplumber#2": {
@@ -440,7 +436,7 @@
         "max-volume": 100.0,
         "format-muted": "Muted",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/volume",
         "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
         "scroll-step": "1"
@@ -458,7 +454,6 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon}",
-        "tooltip": false,
         "format-icons": [
             "󰃛",
             "󰃞",
@@ -468,16 +463,16 @@
             "󰃠",
             "󰖨"
         ],
-        "on-click": "brightnessctl s 100%",
-        "on-click-right": "brightnessctl s 50%",
-        "on-scroll-down": "brightnessctl s 5%+",
-        "on-scroll-up": "brightnessctl s 5%-",
-        "smooth-scrolling-threshold": 1
+        "on-click": "brightnessctl s 100% && ~/.config/hypr/scripts/brightness",
+        "on-click-right": "brightnessctl s 50% && ~/.config/hypr/scripts/brightness",
+        "on-scroll-down": "brightnessctl s 5%+ && ~/.config/hypr/scripts/brightness",
+        "on-scroll-up": "brightnessctl s 5%- && ~/.config/hypr/scripts/brightness",
+        "smooth-scrolling-threshold": 1,
+        "tooltip": false
     },
     "backlight#2": {
         "device": "intel_backlight",
         "format": "{percent}%",
-        "tooltip": false,
         "format-icons": [
             "󰃛",
             "󰃞",
@@ -487,11 +482,12 @@
             "󰃠",
             "󰖨"
         ],
-        "on-click": "brightnessctl s 100%",
-        "on-click-right": "brightnessctl s 50%",
-        "on-scroll-down": "brightnessctl s 5%+",
-        "on-scroll-up": "brightnessctl s 5%-",
-        "smooth-scrolling-threshold": 1
+        "on-click": "brightnessctl s 100% && ~/.config/hypr/scripts/brightness",
+        "on-click-right": "brightnessctl s 50% && ~/.config/hypr/scripts/brightness",
+        "on-scroll-down": "brightnessctl s 5%+ && ~/.config/hypr/scripts/brightness",
+        "on-scroll-up": "brightnessctl s 5%- && ~/.config/hypr/scripts/brightness",
+        "smooth-scrolling-threshold": 1,
+        "tooltip": false
     },
 
     "group/group-battery": {
@@ -535,23 +531,23 @@
       "tooltip": false
     },
 
-    "group/group-power": {
+    "group/group-powermenu": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/power","custom/power2"],
+        "modules": ["custom/powermenu","custom/powermenu#2"],
     },
-    "custom/power": {
+    "custom/powermenu": {
         "format": "⏻",
-        "on-click": "~/.config/hypr/scripts/powermenu",
+        "on-click": "wlogout",
         "tooltip": false
     },
-    "custom/power2": {
+    "custom/powermenu#2": {
         "format": "Power Menu",
-        "on-click": "~/.config/hypr/scripts/powermenu",
+        "on-click": "wlogout",
         "tooltip": false
     },
 }

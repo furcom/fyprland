@@ -83,3 +83,7 @@ sddm.new_engine = true
 sddm-2.template = "sddm-2"
 sddm-2.target = '/usr/share/sddm/themes/fyprland/SimpleControls/SimpleComboBox.qml'
 sddm-2.new_engine = true
+
+wlogout.template = "wlogout"
+wlogout.target = '~/.config/wlogout/style.css'
+wlogout.new_engine = true

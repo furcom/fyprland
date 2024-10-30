@@ -12,67 +12,30 @@
 # ██████╔╝██║  ██║╚██████╗██║  ██╗███████╗██║╚██████╔╝██║  ██║   ██║   
 # ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
                                                                      
-
-iDIR="$HOME/.config/mako/icons"
-
-# Get brightness
-get_backlight() {
-	LIGHT="$(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)"
-	echo "${LIGHT}"
-}
-
-# Get icons
-get_icon() {
-	current="$(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)"
-
-	if [[ ("$current" -ge "0") && ("$current" -le "1") ]]; then
-		icon="$iDIR/brightness-20.png"
-	elif [[ ("$current" -ge "1") && ("$current" -le "2") ]]; then
-		icon="$iDIR/brightness-60.png"
-	elif [[ ("$current" -ge "2") && ("$current" -le "3") ]]; then
-		icon="$iDIR/brightness-100.png"
-	fi
-}
-
-# Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Keyboard Brightness : $(brightnessctl -d 'tpacpi::kbd_backlight' g)"
+    brightness=$(brightnessctl -d 'tpacpi::kbd_backlight' g)
+    if [[ "$brightness" == "0" ]]; then
+        pkill mako
+        notify-send "󰃛  Keyboard Brightness Off"
+    elif [[ "$brightness" == "1" ]]; then
+        pkill mako
+        notify-send "󰃞  Keyboard Brightness 50%"
+    elif [[ "$brightness" == "2" ]]; then
+        pkill mako
+        notify-send "󰃠  Keyboard Brightness 100%"
+    fi
 }
 
-# Increase brightness
-inc_backlight() {
-	#brightnessctl -d tpacpi::kbd_backlight set 50%+ && get_icon && notify_user
-	brightnessctl -d tpacpi::kbd_backlight set 50%+ && notify_user
-}
-
-# Decrease brightness
-dec_backlight() {
-	#brightnessctl -d tpacpi::kbd_backlight set 50%- && get_icon && notify_user
-	brightnessctl -d tpacpi::kbd_backlight set 50%- && notify_user
-}
-
-# Zero brightness
-zero_backlight() {
-	brightnessctl -d tpacpi::kbd_backlight s 0%
-}
-
-# Full brightness
-full_backlight() {
-	brightnessctl -d tpacpi::kbd_backlight s 100%
-}
-
-# Execute accordingly
 if [[ "$1" == "--get" ]]; then
-	brightnessctl -d 'tpacpi::kbd_backlight' g
+    brightnessctl -d 'tpacpi::kbd_backlight' g
 elif [[ "$1" == "--inc" ]]; then
-	inc_backlight
+    brightnessctl -d 'tpacpi::kbd_backlight' set 50%+ && notify_user
 elif [[ "$1" == "--dec" ]]; then
-	dec_backlight
+    brightnessctl -d 'tpacpi::kbd_backlight' set 50%- && notify_user
 elif [[ "$1" == "--zero" ]]; then
-	zero_backlight
+    brightnessctl -d 'tpacpi::kbd_backlight' set 0% && notify_user
 elif [[ "$1" == "--full" ]]; then
-	full_backlight
-
+    brightnessctl -d 'tpacpi::kbd_backlight' set 100% && notify_user
 else
-	get_backlight
+    brightnessctl -d 'tpacpi::kbd_backlight' g
 fi

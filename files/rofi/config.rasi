@@ -91,7 +91,7 @@ configuration {
 
     // Misc setting
     click-to-exit: true;
-    font: "0xProto Nerd Font 14";
+    font: "0xProto Nerd Font 16";
     // ignored-prefixes: "";
     // pid: "/run/user/1000/rofi.pid";
     sort: false;
@@ -130,7 +130,7 @@ mainbox {
 
 message {
     border: 2px solid 0px 0px ;
-    border-color: @primary;
+    border-color: none;
     padding: 8px ;
 }
 
@@ -162,7 +162,7 @@ scrollbar {
 
 sidebar {
     border: 2px dash 0px 0px ;
-    border-color: @primary;
+    border-color: none;
 }
 
 num-filtered-rows {

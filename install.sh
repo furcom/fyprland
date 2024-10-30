@@ -98,6 +98,13 @@ WAYBAR() {
     cp -rf ./files/waybar/ "$CFGDIR"
 }
 
+##### wlogout #####
+
+WLOGOUT() {
+    yay -S --needed --noconfirm wlogout
+    cp -rf ./files/wlogout/ "$CFGDIR"
+}
+
 ##### rofi & rofimoji #####
 
 ROFI() {
@@ -192,6 +199,7 @@ YAY
 KITTY
 HYPR
 WAYBAR
+WLOGOUT
 
 # Recommended packages
 ROFI
