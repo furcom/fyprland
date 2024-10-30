@@ -15,9 +15,7 @@ mic_volume_percent=$(echo "$mic_volume * 100" | bc -l | awk '{printf "%.0f", $0}
 output_icon() {
     if [[ $mic_volume_info == *"MUTED"* ]]; then
         echo ""  # Muted icon
-    fi
-
-    if [[ $mic_volume_percent -le 100 && $mic_volume_percent -gt 0 ]]; then
+    elif [[ $mic_volume_percent -le 100 && $mic_volume_percent -gt 0 ]]; then
         echo ""
     else
         echo ""
@@ -27,9 +25,7 @@ output_icon() {
 output_text() {
     if [[ $mic_volume_info == *"MUTED"* ]]; then
         echo "Muted"
-    fi
-
-    if [[ $mic_volume_percent -le 100 && $mic_volume_percent -gt 0 ]]; then
+    elif [[ $mic_volume_percent -le 100 && $mic_volume_percent -gt 0 ]]; then
         echo "$mic_volume_percent%"
     else
         echo "Muted"
@@ -39,10 +35,10 @@ output_text() {
 notify() {
     if [[ $mic_volume_info == *"MUTED"* ]]; then
 	pkill mako
-        notify-send "  Microphone Muted"
+        notify-send "  Muted"
     else
 	pkill mako
-        notify-send "  Microphone Volume $mic_volume_percent%"
+        notify-send "  $mic_volume_percent%"
     fi
 }
 

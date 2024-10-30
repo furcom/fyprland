@@ -30,13 +30,13 @@ volume_percent=$(printf "%.0f" "$volume_percent")
 # Notify based on volume percentage using bc for comparisons
 if (( $(echo "$volume_percent > 66" | bc -l) )); then
     pkill mako
-    notify-send "󰕾  Volume $volume_percent%"
+    notify-send "󰕾  $volume_percent%"
 elif (( $(echo "$volume_percent > 33" | bc -l) )); then
     pkill mako
-    notify-send "󰖀  Volume $volume_percent%"
+    notify-send "󰖀  $volume_percent%"
 elif (( $(echo "$volume_percent > 0" | bc -l) )); then
     pkill mako
-    notify-send "󰕿  Volume $volume_percent%"
+    notify-send "󰕿  $volume_percent%"
 else
     echo "󰸈  Muted"
 fi

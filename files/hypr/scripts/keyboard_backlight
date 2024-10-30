@@ -16,13 +16,13 @@ notify_user() {
     brightness=$(brightnessctl -d 'tpacpi::kbd_backlight' g)
     if [[ "$brightness" == "0" ]]; then
         pkill mako
-        notify-send "󰃛  Keyboard Brightness Off"
+        notify-send "󰃞 󰌌  Off"
     elif [[ "$brightness" == "1" ]]; then
         pkill mako
-        notify-send "󰃞  Keyboard Brightness 50%"
+        notify-send "󰃟 󰌌  50%"
     elif [[ "$brightness" == "2" ]]; then
         pkill mako
-        notify-send "󰃠  Keyboard Brightness 100%"
+        notify-send "󰃠 󰌌  100%"
     fi
 }
 

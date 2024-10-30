@@ -35,7 +35,6 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - You'll need to review the configuration file for templates at `~/.config/wallust/wallust.toml`.
 6. Installed packages:
     - If you don't want to install a particular package (e.g., `fusuma`), go to the `install.sh` script, find the section labeled `MAIN SCRIPT`, and comment out the package by adding a hash symbol (`#`) at the start of the line (e.g., `#install_fusuma`).
-    - [bluez](https://github.com/bluez) (Bluetooth)
     - [fastfetch](https://github.com/fastfetch-cli/fastfetch) (Displays system information in the terminal)
     - [fusuma](https://github.com/iberianpig/fusuma) (Laptop touchpad gestures)
     - [hyprcursor](https://github.com/hyprwm/hyprcursor) (Hyprland cursor)
@@ -46,21 +45,19 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [hyprpaper](https://github.com/hyprwm/hyprpaper) (Hyprland wallpaper utility)
     - [hyprpicker](https://github.com/hyprwm/hyprpicker) (Wayland color picker)
     - [kitty](https://github.com/kovidgoyal/kitty) (Terminal emulator)
-    - [libinput](https://github.com/pop-os/libinput) (Input library)
     - [mako](https://github.com/emersion/mako) (Notification daemon)
     - [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) (ZSH prompt theme engine)
     - [pipewire](https://github.com/PipeWire/pipewire) (Audio server)
     - [rofi](https://github.com/davatorium/rofi) (App launcher, dmenu replacement. Needed for all the menus)
     - [rofimoji](https://github.com/fdw/rofimoji) (Emoji picker based on rofi)
-    - [ruby](https://github.com/ruby/ruby) (Required to install fusuma)
     - [sddm](https://github.com/sddm/sddm) (Display manager; might be replaced in the future)
     - [wallust](https://codeberg.org/explosion-mental/wallust/) (Generates color palettes from images)
     - [waybar](https://github.com/Alexays/Waybar) (Wayland status bar)
     - [waypaper](https://github.com/anufrievroman/waypaper) (GUI for changing wallpaper on different backends)
     - [wireplumber](https://github.com/PipeWire/wireplumber) (Session/policy manager for PipeWire)
     - [wl-clipboard-persist](https://github.com/Linus789/wl-clip-persist) (Wayland clipboard utility)
+    - [wlogout](https://github.com/ArtsyMacaw/wlogout) (Logout/Power menu)
     - [wttrbar](https://github.com/bjesus/wttrbar) (Weather module for Waybar)
     - [yay](https://github.com/Jguer/yay) (AUR Helper to install packages from Arch User Repository)
-    - [zsh](https://github.com/zsh-users/zsh) (zShell)
     - [archpapers](https://github.com/connorslade/ArchPapers?tab=readme-ov-file) (Not a package, but these wallpapers were used, and I want to give credit)
 7. If something doesn't work: Try to fix it yourself 🫶

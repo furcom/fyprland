@@ -338,7 +338,7 @@
         "format-wifi": "{essid}",
         "format-ethernet": "{ipaddr}",
         "format-disconnected": "Disconnected",
-        "on-click": "kitty sh -c 'nmtui;'",
+        "on-click": "kitty sh -c 'nmtui-connect;'",
         "tooltip-format": "{ipaddr}",
         "tooltip-format-wifi": "󰛳 {essid}\n󰢽 {signalStrength}%\n󰩟 {ipaddr}",
         "tooltip-format-ethernet": " {ifname} - {ipaddr}",
@@ -394,9 +394,9 @@
         "tooltip": false,
         "restart-interval": 0,
         "exec": "~/.config/hypr/scripts/pipewire --icon",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/pipewire --notify",
+        "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+ && ~/.config/hypr/scripts/pipewire --notify",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%- && ~/.config/hypr/scripts/pipewire --notify",
         "smooth-scrolling-threshold": 1
     },
     "custom/pipewire#2": {
@@ -404,9 +404,9 @@
         "tooltip": false,
         "restart-interval": 0,
         "exec": "~/.config/hypr/scripts/pipewire --text",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle  && ~/.config/hypr/scripts/pipewire --notify",
+        "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+ && ~/.config/hypr/scripts/pipewire --notify",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%- && ~/.config/hypr/scripts/pipewire --notify",
         "smooth-scrolling-threshold": 1
     },
 
@@ -437,8 +437,8 @@
         "format-muted": "Muted",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/volume",
-        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -u normal ${volume}",
-        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && notify-send -u normal ${volume}",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/volume",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/volume",
         "scroll-step": "1"
     },
     
