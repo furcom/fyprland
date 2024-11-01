@@ -90,6 +90,13 @@ HYPR() {
     echo -e "\n${GREEN}Hyprland installed.${NC}"
 }
 
+##### GTK #####
+
+GTK() {
+    sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4
+    sudo cp -r ./files/icons/kora/* /usr/share/icons/
+    sudo cp -r ./files/icons/tela/* /usr/share/icons/
+}
 ##### waybar #####
 
 WAYBAR() {
@@ -200,6 +207,7 @@ KITTY
 HYPR
 WAYBAR
 WLOGOUT
+GTK
 
 # Recommended packages
 ROFI
