@@ -22,15 +22,13 @@
     transition-duration: 125ms;
 }
 
-tooltip {
-    background-color: @color2;
-    border-radius: 24px;
-    color: @background;
-}
+
+
 
 /* Bar */
 window#waybar {
     background: none;
+    color: @foreground;
 }
 window#waybar > box {
     background-color: @color2;
@@ -41,11 +39,68 @@ window#waybar > box {
     padding: 6px;
 }
 
+/* Make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+    background: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
 @keyframes blink {
     to {
         background-color: #ffffff;
         color: #000000;
     }
+}
+
+/* Tooltip & Menu */
+tooltip box{
+    background-color: @color2;
+    border-radius: 24px;
+    color: @background;
+    padding: 12px 16px;
+}
+tooltip label {
+    color: @foreground;
+}
+
+/* Tray */
+#tray {
+    background-color: @alpha15;
+    color: @foreground;
+    margin: 0 4px 0 0;
+    min-width: 40px;
+    padding: 0 12px;
+}
+
+#tray>.passive {
+    background-color: transparent;
+}
+
+#tray>.needs-attention {
+    background-color: #ff0000;
+}
+
+#tray menu {
+    background-color: @color2;
+    color: @foreground;
+    padding: 12px;
+}
+
+#tray menu menuitem {
+    background-color: @alpha15;
+    margin: 4px;
+    padding: 8px;
+}
+
+#tray:hover,
+#tray menu *:hover,
+#tray menu menuitem:hover {
+    background-color: @color3;
+    color: @foreground;
 }
 
 /*----------------*/
@@ -61,13 +116,13 @@ window#waybar > box {
 }
 
 #custom-logo {
-    background-color: @alpha25;
+    background-color: @alpha15;
     font-size: 24px;
     min-width: 40px;
 }
 
 #group-logo:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-logo:hover {
@@ -165,7 +220,7 @@ window#waybar > box {
 }
 
 #window {
-    background-color: transparent;
+    background-color: @alpha15;
     min-width: 40px;
     padding: 0 12px;
 }
@@ -184,13 +239,13 @@ window#waybar.empty #window {
 #custom-window-expand,
 #custom-window-fullscreen,
 #custom-window-float {
-    background-color: @alpha25;
+    background-color: @alpha15;
     margin: 0 0 0 4px;
     min-width: 40px;
 }
 
 #group-window:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-window-close:hover,
@@ -229,7 +284,7 @@ window#waybar.empty #window {
 #custom-prev-workspace,
 #custom-overview-workspaces,
 #custom-next-workspace {
-    background-color: @alpha25;
+    background-color: @alpha15;
     margin: 0 0 0 4px;
     min-width: 40px;
 }
@@ -241,7 +296,7 @@ window#waybar.empty #window {
 }
 
 #group-workspaces:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-prev-workspace:hover,
@@ -272,13 +327,13 @@ window#waybar.empty #window {
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
-    background-color: @alpha25;
+    background-color: @alpha15;
     margin: 0 4px 0 0;
     min-width: 40px;
 }
 
 #group-media:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-prev-song:hover,
@@ -288,21 +343,6 @@ window#waybar.empty #window {
     background-color: @color3;
 }
 
-/* Tray */
-#tray {
-    background-color: transparent;
-    margin: 0 4px 0 0;
-    min-width: 40px;
-}
-
-#tray menu {
-    background-color: @color3;
-    padding: 12px;
-}
-
-#tray:hover {
-    background-color: @color3;
-}
 
 /* Network */
 #group-network {
@@ -321,7 +361,7 @@ window#waybar.empty #window {
 }
 
 #group-network:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #network:hover {
@@ -345,7 +385,7 @@ window#waybar.empty #window {
 }
 
 #group-bluetooth:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #bluetooth:hover {
@@ -369,7 +409,7 @@ window#waybar.empty #window {
 }
 
 #group-input:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-pipewire:hover,
@@ -394,7 +434,7 @@ window#waybar.empty #window {
 }
 
 #group-output:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #wireplumber:hover {
@@ -418,7 +458,7 @@ window#waybar.empty #window {
 }
 
 #group-backlight:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #backlight:hover {
@@ -470,7 +510,7 @@ window#waybar.empty #window {
 }
 
 #group-battery:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #battery:hover,
@@ -488,7 +528,7 @@ window#waybar.empty #window {
 }
 
 #custom-powermenu {
-    background-color: @alpha25;
+    background-color: @alpha15;
     font-size: 22px;
     min-width: 40px;
 }
@@ -501,7 +541,7 @@ window#waybar.empty #window {
 }
 
 #group-powermenu:hover {
-    background-color: @alpha25;
+    background-color: @alpha15;
 }
 
 #custom-powermenu:hover,
