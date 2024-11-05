@@ -131,6 +131,7 @@
     },
     "hyprland/window": {
         "format": "{}",
+        "max-length": 49,
         "tooltip": true,
         "tooltip-format": "{title}",
         "rewrite": {
@@ -279,7 +280,8 @@
         "on-click": "playerctl play-pause",
         "on-click-right": "hyprctl dispatch focuswindow class:Spotify",
         "tooltip": true,
-        "tooltip-format": "Currently playing media"
+        "tooltip-format": "Currently playing media",
+        "max-length": 46
     },
     "custom/toggle-song": {
         "tooltip": true,
