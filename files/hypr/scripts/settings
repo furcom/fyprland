@@ -12,7 +12,7 @@
 # ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
 # ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
 
-source $HOME/.config/hypr/scripts/HYPR_VARS
+source $HOME/.config/hypr/scripts/FYPR_VARS
 
 MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 RofiMenuSettings="rofi -dmenu"

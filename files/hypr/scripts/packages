@@ -7,7 +7,7 @@
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝
 # script by furcom (https://github.com/furcom)
 
-source $HOME/.config/hypr/scripts/HYPR_VARS
+source $HOME/.config/hypr/scripts/FYPR_VARS
 
 format() {
     if [ "$1" -eq 0 ]; then
