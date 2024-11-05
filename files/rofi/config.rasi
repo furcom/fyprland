@@ -9,7 +9,7 @@
 @import "./colors.rasi"
 
 * {
-    font: "0xProto Nerd Font Mono 16";
+    font: "0xProto Nerd Font Mono 20";
     margin: 0;
     padding: 0;
 }

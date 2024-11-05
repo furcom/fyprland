@@ -17,6 +17,7 @@
 ################
 ## 2. EXPORTS ##
 ################
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export VISUAL=vim
 export EDITOR=vim
 export TERM=kitty
@@ -108,6 +109,7 @@ alias zz="vim $HOME/.zshrc"
 alias bb="vim $HOME/.bashrc"
 
 # SSH
+eval $(ssh-agent) >/dev/null
 alias keys="cd $HOME/.ssh"
 alias delkey="ssh-add -D"
 alias addkey="eval `ssh-agent` ; ssh-add $HOME/.ssh/id_ed25519"

@@ -52,9 +52,9 @@ check_updates() {
 
 clean_pkg_cache() {
     echo -e "\nWould you like to clean the pkg cache?"
-    read -p "Enter your choice? [y/n]: " answer
+    read -p "Enter your choice? [Y/n]: " answer
     case $answer in
-        [Yy] )
+        [Yy]|"" )
             if [ -z "$(ls /var/cache/pacman/pkg/ 2>/dev/null)" ]; then
                 echo "No cache to clear."
             else
@@ -74,9 +74,9 @@ clean_pkg_cache() {
 
 remove_unused_packages() {
     echo -e "\nWould you like to remove unused packages?"
-    read -p "Enter your choice? [y/n]: " answer
+    read -p "Enter your choice? [Y/n]: " answer
     case $answer in
-        [Yy] )
+        [Yy]|"" )
             unused_packages=$(pacman -Qtdq)
             if [ -z "$unused_packages" ]; then
                 echo "No unused packages to remove."
@@ -97,9 +97,9 @@ remove_unused_packages() {
 
 hypr_plugin_updates() {
     echo -e "\nWould you like to update the Hyprland plugins?"
-    read -p "Enter your choice? [y/n]: " answer
+    read -p "Enter your choice? [Y/n]: " answer
     case $answer in
-        [Yy] )
+        [Yy]|"" )
             hyprpm update
             ;;
         [Nn] )
@@ -115,9 +115,9 @@ hypr_plugin_updates() {
 
 pacman_updates() {
     echo -e "\nWould you like to update your Arch packages?"
-    read -p "Enter your choice? [y/n]: " answer
+    read -p "Enter your choice? [Y/n]: " answer
     case $answer in
-        [Yy] )
+        [Yy]|"")
             sudo pacman -Syu
 	    killall -SIGUSR2 waybar
             ;;
@@ -134,9 +134,9 @@ pacman_updates() {
 
 aur_updates() {
     echo -e "\nWould you like to update your AUR packages?"
-    read -p "Enter your choice? [y/n]: " answer
+    read -p "Enter your choice? [Y/n]: " answer
     case $answer in
-        [Yy] )
+        [Yy]|"" )
             $AUR_HELPER -Syu
 	    killall -SIGUSR2 waybar
             ;;
