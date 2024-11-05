@@ -87,3 +87,7 @@ sddm-2.new_engine = true
 wlogout.template = "wlogout"
 wlogout.target = '~/.config/wlogout/style.css'
 wlogout.new_engine = true
+
+oh-my-posh.template = "oh-my-posh"
+oh-my-posh.target = '~/.config/oh-my-posh/config.yaml'
+oh-my-posh.new_engine = true

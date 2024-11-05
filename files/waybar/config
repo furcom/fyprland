@@ -198,13 +198,13 @@
     },
     "hyprland/workspaces": {
         "tooltip": false,
-        "format": "{icon}",
+        "format": "{}",
         "on-click": "activate",
         "active-only": false,
         "tooltip": false,
         "hidden": false,
         "format-icons": {
-            "1": "",
+            /* "1": "",
             "2": "",
             "3": "",
             "4": "",
@@ -213,7 +213,7 @@
             "7": "",
             "8": "",
             "9": "",
-            "0": "",
+            "0": "", */
             "urgent": "",
             "active": "",
             "default": ""

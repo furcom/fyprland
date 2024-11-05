@@ -267,18 +267,24 @@ window#waybar.empty #window {
 #group-workspaces,
 #workspaces {
     background-color: transparent;
+    font-weight: bold;
 }
 
 #workspaces button.urgent {
-    color: #770000;
+    background-color: #770000;
     min-width: 40px;
 }
 
-#workspaces button.active,
 #workspaces button,
 #workspaces button.persistent {
+    background-color: @alpha15;
     margin: 0 4px 0 0;
     min-width: 40px;
+}
+
+#workspaces button.active {
+    background-color: @alpha30;
+    padding: 0 12px;
 }
 
 #custom-prev-workspace,
@@ -314,7 +320,7 @@ window#waybar.empty #window {
 
 /* Media */
 #group-media {
-    background-color: transparent;
+    background-color: @alpha15;
     margin: 0 4px 0 0;
 }
 
