@@ -12,7 +12,7 @@
 ## 1. SOURCES ##
 ################
 
-#source ~/.cache/wal/colors-tty.sh
+#source ~/.cache/wallust/sequences
 
 ################
 ## 2. EXPORTS ##
@@ -107,6 +107,7 @@ alias q="exit"
 # Configs
 alias zz="vim $HOME/.zshrc"
 alias bb="vim $HOME/.bashrc"
+alias nn="vim $HOME/.config/nvim/init.lua"
 
 # SSH
 eval $(ssh-agent) >/dev/null

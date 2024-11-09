@@ -15,15 +15,13 @@ source ./files/hypr/scripts/HYPR_VARS
 ##                                    ##
 ########################################
 
-##### YAY #####
-
+##### yay #####
 check_yay_health() {
     if ! yay -V &> /dev/null; then
         echo -e "\n${RED}yay is not functioning properly. Please fix the issue with yay before proceeding.${NC}"
         exit 1
     fi
 }
-
 YAY() {
     if ! pacman -Q yay &> /dev/null; then
         sudo pacman -S --needed --noconfirm git base-devel
@@ -36,15 +34,39 @@ YAY() {
     fi
 }
 
-##### kitty #####
+##### bluetooth #####
+BLUETOOTH() {
+    sudo pacman -S --needed --noconfirm bluez bluez-utils
+    yay -S --needed --noconfirm bluetui
+    systemctl enable bluetooth.service
+    systemctl start bluetooth.service
+}
 
-KITTY() {
-    sudo pacman -S --needed --noconfirm kitty
-    cp -rf ./files/kitty/ "$CFGDIR"
+##### cliphist #####
+CLIPHIST() {
+    sudo pacman -S --needed --noconfirm cliphist xdg-utils
+}
+
+##### fastfetch #####
+FASTFETCH() {
+    sudo pacman -S --needed --noconfirm fastfetch
+    cp -rf ./files/fastfetch/ "$CFGDIR"
+}
+
+##### fusuma #####
+add_user_to_group_if_needed() {
+    if ! groups "$USER" | grep &>/dev/null '\binput\b'; then
+        sudo gpasswd -a "$USER" input
+    fi
+}
+FUSUMA() {
+    sudo pacman -S --needed --noconfirm libinput ruby
+    yay -S --needed --noconfirm ruby-fusuma
+    cp -rf ./files/fusuma/ "$CFGDIR"
+    add_user_to_group_if_needed
 }
 
 ##### Hypr Ecosystem #####
-
 HYPR() {
     # Hyprland
     sudo pacman -S --needed --noconfirm hyprland
@@ -91,29 +113,36 @@ HYPR() {
 }
 
 ##### GTK #####
-
 GTK() {
     sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4
     sudo cp -r ./files/icons/kora/* /usr/share/icons/
     sudo cp -r ./files/icons/tela/* /usr/share/icons/
 }
-##### waybar #####
 
-WAYBAR() {
-    sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji python python-pyquery
-    yay -S --needed --noconfirm wttrbar
-    cp -rf ./files/waybar/ "$CFGDIR"
+##### kitty #####
+KITTY() {
+    sudo pacman -S --needed --noconfirm kitty
+    cp -rf ./files/kitty/ "$CFGDIR"
 }
 
-##### wlogout #####
+##### mako #####
+MAKO() {
+    sudo pacman -S --needed --noconfirm mako
+    cp -rf ./files/mako/ "$CFGDIR"
+}
 
-WLOGOUT() {
-    yay -S --needed --noconfirm wlogout
-    cp -rf ./files/wlogout/ "$CFGDIR"
+##### nvim / neovim #####
+NVIM() {
+    sudo pacman -S --needed --noconfirm neovim ripgrep npm
+    cp -rf ./files/nvim/ "$CFGDIR"
+}
+
+##### Pipewire / Wireplumber #####
+PIPEWIRE() {
+    sudo pacman -S --needed --noconfirm pipewire wireplumber
 }
 
 ##### rofi & rofimoji #####
-
 ROFI() {
     # Rofi
     sudo pacman -S --needed --noconfirm rofi-wayland
@@ -124,23 +153,7 @@ ROFI() {
     cp -rf ./files/rofimoji.rc "$CFGDIR"
 }
 
-##### fusuma #####
-
-add_user_to_group_if_needed() {
-    if ! groups "$USER" | grep &>/dev/null '\binput\b'; then
-        sudo gpasswd -a "$USER" input
-    fi
-}
-
-FUSUMA() {
-    sudo pacman -S --needed --noconfirm libinput ruby
-    yay -S --needed --noconfirm ruby-fusuma
-    cp -rf ./files/fusuma/ "$CFGDIR"
-    add_user_to_group_if_needed
-}
-
 ##### sddm #####
-
 SDDM() {
     sudo pacman -S --needed --noconfirm sddm
     sudo mkdir -p /etc/sddm.conf.d
@@ -150,8 +163,20 @@ SDDM() {
     sudo gpasswd -a "$USER" nopasswdlogin
 }
 
-##### zsh  & oh-my-posh #####
+##### waybar #####
+WAYBAR() {
+    sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji python python-pyquery
+    yay -S --needed --noconfirm wttrbar
+    cp -rf ./files/waybar/ "$CFGDIR"
+}
 
+##### wlogout #####
+WLOGOUT() {
+    yay -S --needed --noconfirm wlogout
+    cp -rf ./files/wlogout/ "$CFGDIR"
+}
+
+##### zsh  & oh-my-posh #####
 ZSH() {
     sudo pacman -S --needed --noconfirm zsh fzf zoxide
     cp -f ./files/.zshrc "$HOME"
@@ -160,66 +185,30 @@ ZSH() {
     sudo chsh -s /bin/zsh root
 }
 
-##### mako #####
+#####################
+#####################
+###               ###
+###  MAIN SCRIPT  ###
+###               ###
+#####################
+#####################
 
-MAKO() {
-    sudo pacman -S --needed --noconfirm mako
-    cp -rf ./files/mako/ "$CFGDIR"
-}
-
-##### fastfetch #####
-
-FASTFETCH() {
-    sudo pacman -S --needed --noconfirm fastfetch
-    cp -rf ./files/fastfetch/ "$CFGDIR"
-}
-
-##### WirePlumber #####
-
-PIPEWIRE() {
-    sudo pacman -S --needed --noconfirm pipewire wireplumber
-}
-
-##### Persistent clipboard #####
-
-CLIPHIST() {
-    sudo pacman -S --needed --noconfirm cliphist xdg-utils
-}
-
-##### bluetooth #####
-
-BLUETOOTH() {
-    sudo pacman -S --needed --noconfirm bluez bluez-utils
-    yay -S --needed --noconfirm bluetui
-    systemctl enable bluetooth.service
-    systemctl start bluetooth.service
-}
-
-###################
-##               ##
-##  MAIN SCRIPT  ##
-##               ##
-###################
-
-# Needed packages
 YAY
-KITTY
+
+BLUETOOTH
+CLIPHIST
+FASTFETCH
+FUSUMA
 HYPR
+GTK
+KITTY
+MAKO
+NVIM
+PIPEWIRE
+ROFI
+SDDM
 WAYBAR
 WLOGOUT
-GTK
-
-# Recommended packages
-ROFI
 ZSH
-CLIPHIST
-MAKO
-PIPEWIRE
-SDDM
-
-# Optional packages
-FASTFETCH
-BLUETOOTH
-FUSUMA
 
 exit
