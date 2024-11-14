@@ -64,15 +64,15 @@ configuration {
     }
 
     // Window switcher settings
-    window-command: "wmctrl -i -R {window}";
-    window-format: "{w} {t}";
-    window-match-fields: "title,class,role,name,desktop";
+    //window-command: "wmctrl -i -R {window}";
+    window-format: "{w} {c} {t}";
+    window-match-fields: "app-id";
     window-thumbnail: false;
 
     // Combi settings
-    combi-display-format: "{mode} {text}";
-    combi-hide-mode-prefix: false;
-    combi-modi: "window,run";
+    //combi-display-format: "{mode} {text}";
+    //combi-hide-mode-prefix: false;
+    //combi-modi: "window,run";
 
     // History and Sorting
     disable-history: false;
@@ -114,7 +114,7 @@ configuration {
 
 window {
     anchor: center;
-    background-color: @primary;
+    background-color: @background;
     border: none;
     border-radius: 32px;
     height: 50%;
@@ -154,7 +154,7 @@ listview {
 scrollbar {
     border: 0;
     border-radius: 24px;
-    handle-color: @hover;
+    handle-color: @primary;
     handle-width: 16px;
     padding: 0;
     width: 8px;
@@ -225,7 +225,7 @@ mode-switcher{
 }
 
 button {
-    background-color: @primary;
+    background-color: @hover;
     border: 0;
     border-color: transparent;
     border-radius: 24px;
@@ -234,11 +234,11 @@ button {
     padding: 8px;
     spacing: 0;
     text-color: @foreground;
-    width: 128px;
+    width: 192px;
 }
 
 button selected {
-    background-color: @hover;
+    background-color: @primary;
     text-color: @foreground;
 }
 
@@ -251,7 +251,7 @@ element {
 }
 
 element normal.normal {
-    background-color: @primary;
+    background-color: @background;
     text-color: @foreground;
 }
 
@@ -261,12 +261,12 @@ element normal.urgent {
 }
 
 element normal.active {
-    background-color: @hover;
+    background-color: @background;
     text-color:       @foreground;
 }
 
 element selected.normal {
-    background-color: @hover;
+    background-color: @primary;
     text-color:       @foreground;
 }
 
@@ -281,7 +281,7 @@ element selected.active {
 }
 
 element alternate.normal {
-    background-color: @primary;
+    background-color: @background;
     text-color:       @foreground;
 }
 
@@ -291,7 +291,7 @@ element alternate.urgent {
 }
 
 element alternate.active {
-    background-color: @hover;
+    background-color: @background;
     text-color:       @foreground;
 }
 

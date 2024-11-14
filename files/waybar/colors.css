@@ -10,7 +10,10 @@
 
 @define-color foreground #FEF0F9;
 @define-color background #131122;
-@define-color background_alpha50 rgba(19,17,34,0.50);
+@define-color background_light #2B2938;
+@define-color background_alt rgba(19,17,34,0.75);
+@define-color alpha5 rgba(254,240,249,0.05);
+@define-color alpha10 rgba(254,240,249,0.10);
 @define-color alpha15 rgba(254,240,249,0.15);
 @define-color alpha25 rgba(254,240,249,0.25);
 @define-color alpha30 rgba(254,240,249,0.30);

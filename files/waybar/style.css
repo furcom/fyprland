@@ -22,16 +22,13 @@
     transition-duration: 125ms;
 }
 
-
-
-
 /* Bar */
 window#waybar {
     background: none;
     color: @foreground;
 }
 window#waybar > box {
-    background-color: @color2;
+    background-color: @background;
     border-radius: 0;
     box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
@@ -58,9 +55,9 @@ window#waybar.hidden {
 
 /* Tooltip & Menu */
 tooltip box{
-    background-color: @color2;
+    background-color: @background;
     border-radius: 24px;
-    color: @background;
+    color: @background_light;
     padding: 12px 16px;
 }
 tooltip label {
@@ -69,7 +66,7 @@ tooltip label {
 
 /* Tray */
 #tray {
-    background-color: @alpha15;
+    background-color: @background_light;
     color: @foreground;
     margin: 0 4px 0 0;
     min-width: 40px;
@@ -91,7 +88,7 @@ tooltip label {
 }
 
 #tray menu menuitem {
-    background-color: @alpha15;
+    background-color: @background_light;
     margin: 4px;
     padding: 8px;
 }
@@ -99,7 +96,7 @@ tooltip label {
 #tray:hover,
 #tray menu *:hover,
 #tray menu menuitem:hover {
-    background-color: @color3;
+    background-color: @color2;
     color: @foreground;
 }
 
@@ -112,21 +109,21 @@ tooltip label {
 
 /* Logo */
 #group-logo {
-    background-color: transparent;
+    background-color: @background_light;
 }
 
 #custom-logo {
-    background-color: @alpha15;
+    background-color: transparent;
     font-size: 24px;
     min-width: 40px;
 }
 
 #group-logo:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-logo:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* CPU */
@@ -138,7 +135,7 @@ tooltip label {
 }
 
 #cpu:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Temperature */
@@ -154,7 +151,7 @@ tooltip label {
 }
 
 #temperature:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* RAM memory */
@@ -166,7 +163,7 @@ tooltip label {
 }
 
 #memory:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Disk */
@@ -178,7 +175,7 @@ tooltip label {
 }
 
 #disk:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Packages */
@@ -198,7 +195,7 @@ tooltip label {
 }
 
 #custom-weather:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Clock */
@@ -210,12 +207,12 @@ tooltip label {
 }
 
 #clock:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Window */
 #group-window {
-    background-color: @alpha15;
+    background-color: @background_light;
     margin: 0 4px 0 4px;
 }
 
@@ -239,13 +236,13 @@ window#waybar.empty #window {
 #custom-window-expand,
 #custom-window-fullscreen,
 #custom-window-float {
-    background-color: @alpha15;
+    background-color: transparent;
     margin: 0 0 0 4px;
     min-width: 40px;
 }
 
 #group-window:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-window-close:hover,
@@ -255,7 +252,7 @@ window#waybar.empty #window {
 #custom-window-fullscreen:hover,
 #custom-window-float:hover,
 #window:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /*------------------*/
@@ -266,7 +263,7 @@ window#waybar.empty #window {
 
 #group-workspaces,
 #workspaces {
-    background-color: transparent;
+    background-color: @background_light;
     font-weight: bold;
 }
 
@@ -277,20 +274,19 @@ window#waybar.empty #window {
 
 #workspaces button,
 #workspaces button.persistent {
-    background-color: @alpha15;
-    margin: 0 4px 0 0;
+    background-color: transparent;
     min-width: 40px;
 }
 
 #workspaces button.active {
-    background-color: @alpha30;
+    background-color: @color2;
     padding: 0 12px;
 }
 
 #custom-prev-workspace,
 #custom-overview-workspaces,
 #custom-next-workspace {
-    background-color: @alpha15;
+    background-color: transparent;
     margin: 0 0 0 4px;
     min-width: 40px;
 }
@@ -302,14 +298,14 @@ window#waybar.empty #window {
 }
 
 #group-workspaces:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-prev-workspace:hover,
 #custom-overview-workspaces:hover,
 #custom-next-workspace:hover,
 #workspaces button.persistent:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /*-----------------*/
@@ -320,7 +316,7 @@ window#waybar.empty #window {
 
 /* Media */
 #group-media {
-    background-color: @alpha15;
+    background-color: @background_light;
     margin: 0 4px 0 0;
 }
 
@@ -333,20 +329,20 @@ window#waybar.empty #window {
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
-    background-color: @alpha15;
+    background-color: @background_light;
     margin: 0 4px 0 0;
     min-width: 40px;
 }
 
 #group-media:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-prev-song:hover,
 #custom-toggle-song:hover,
 #custom-next-song:hover,
 #custom-media:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 
@@ -367,11 +363,11 @@ window#waybar.empty #window {
 }
 
 #group-network:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #network:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Bluetooth */
@@ -391,11 +387,11 @@ window#waybar.empty #window {
 }
 
 #group-bluetooth:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #bluetooth:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Input */
@@ -415,12 +411,12 @@ window#waybar.empty #window {
 }
 
 #group-input:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-pipewire:hover,
 #custom-pipewire2:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Output */
@@ -440,11 +436,11 @@ window#waybar.empty #window {
 }
 
 #group-output:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #wireplumber:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Backlight */
@@ -464,11 +460,11 @@ window#waybar.empty #window {
 }
 
 #group-backlight:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #backlight:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Battery */
@@ -493,13 +489,15 @@ window#waybar.empty #window {
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
+    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
 
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
-    color: @background;
+    color: @background_light;
+    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
@@ -511,12 +509,13 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
+    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
 
 #group-battery:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #battery:hover,
@@ -525,7 +524,7 @@ window#waybar.empty #window {
 #battery.warning:not(.charging):hover,
 #battery.critical:not(.charging):hover,
 #power-profiles-daemon:hover {
-    background-color: @color3;
+    background-color: @color2;
 }
 
 /* Powermenu */
@@ -534,7 +533,7 @@ window#waybar.empty #window {
 }
 
 #custom-powermenu {
-    background-color: @alpha15;
+    background-color: @background_light;
     font-size: 22px;
     min-width: 40px;
 }
@@ -547,10 +546,10 @@ window#waybar.empty #window {
 }
 
 #group-powermenu:hover {
-    background-color: @alpha15;
+    background-color: @background_light;
 }
 
 #custom-powermenu:hover,
 #custom-powermenu.2:hover {
-    background-color: @color3;
+    background-color: @color2;
 }

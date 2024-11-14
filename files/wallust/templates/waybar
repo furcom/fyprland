@@ -10,7 +10,10 @@
 
 @define-color foreground {{foreground}};
 @define-color background {{background}};
-@define-color background_alpha50 rgba({{background|rgb}},0.50);
+@define-color background_light {{background|lighten(0.10)}};
+@define-color background_alt rgba({{background|rgb}},0.75);
+@define-color alpha5 rgba({{foreground|rgb}},0.05);
+@define-color alpha10 rgba({{foreground|rgb}},0.10);
 @define-color alpha15 rgba({{foreground|rgb}},0.15);
 @define-color alpha25 rgba({{foreground|rgb}},0.25);
 @define-color alpha30 rgba({{foreground|rgb}},0.30);

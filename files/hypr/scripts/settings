@@ -102,7 +102,7 @@ hyprland_menu() {
             " Bindings") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/bindings.conf" ;;
             "󰇀 Cursor") $TERMINAL sh -c "$HyprScriptsDir/cursor" ;;
             " Plugins")
-              PLUGINS_OPTIONS="󱞲 Back\n󰈙 Config\n󰚰 Updates"
+              PLUGINS_OPTIONS="󰈙 Config\n󰚰 Updates\n󱞲 Back"
               PLUGINS_SUBCHOICE=$(echo -e "$PLUGINS_OPTIONS" | $RofiMenuSettings)
               case "$PLUGINS_SUBCHOICE" in
                 "󱞲 Back"|"")
