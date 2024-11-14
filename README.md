@@ -39,6 +39,7 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [fastfetch](https://github.com/fastfetch-cli/fastfetch) (Displays system information in the terminal)
     - [fusuma](https://github.com/iberianpig/fusuma) (Laptop touchpad gestures)
     - [hyprcursor](https://github.com/hyprwm/hyprcursor) (Hyprland cursor)
+    - [catppuccin-gtk-theme-mocha](https://github.com/catppuccin/gtk) (GTK theme)
     - [hypridle](https://github.com/hyprwm/hypridle) (Hyprland's idle daemon)
     - [hyprland](https://github.com/hyprwm/Hyprland) (Dynamic tiling Wayland compositor)
     - [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins) (Hyprland plugins: Hyprbar & Hyprexpo)

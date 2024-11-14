@@ -109,6 +109,7 @@ HYPR() {
 ##### GTK #####
 GTK() {
     sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4
+    yay -S --needed --noconfirm catppuccin-gtk-theme-mocha
     sudo cp -r ./files/icons/kora/* /usr/share/icons/
     sudo cp -r ./files/icons/tela/* /usr/share/icons/
 }

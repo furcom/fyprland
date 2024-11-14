@@ -18,7 +18,7 @@ MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 RofiMenuSettings="rofi -dmenu"
 
 main_menu() {
-  OPTIONS=" Hyprland\n󱘖 Connections\n󰏖 Packages\n Extras\n󰅙 Exit"
+  OPTIONS=" Hyprland\n󰸉 Wallpaper\n󰏖 Packages\n Extras\n󰅙 Exit"
   CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowMain)
 
   if [ -z "$CHOICE" ]; then
@@ -33,8 +33,8 @@ main_menu() {
     case "$CHOICE" in
       " Hyprland")
         hyprland_menu ;;
-      "󱘖 Connections")
-        connections_menu ;;
+      "󰸉 Wallpaper")
+        waypaper ;;
       " Extras")
         extras_menu ;;
       "󰏖 Packages")
@@ -68,7 +68,7 @@ extras_menu() {
 }
 
 hyprland_menu() {
-  HYPRLAND_OPTIONS="󰸉 Wallpaper\n󰈙 Config\n General\n Decorations\n󰤺 Animations\n Layouts\n Misc\n Rules\n󰍽 Input\n Bindings\n󰇀 Cursor\n Plugins\n󱞲 Back"
+  HYPRLAND_OPTIONS="󰈙 Config\n General\n Decorations\n󰤺 Animations\n Layouts\n Misc\n Rules\n󰍽 Input\n Bindings\n󰇀 Cursor\n Plugins\n󱞲 Back"
   HYPRLAND_SUBCHOICE=$(echo -e "$HYPRLAND_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowHypr)
 
   if [ -z "$HYPRLAND_SUBCHOICE" ]; then
@@ -79,7 +79,6 @@ hyprland_menu() {
         main_menu
       else
       case "$HYPRLAND_SUBCHOICE" in
-        "󰸉 Wallpaper") waypaper ;;
         "󰈙 Config") $TERMINAL sh -c "$EDITOR $HyprDir/hyprland.conf" ;;
         " General") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/general.conf" ;;
         " Decorations") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/decorations.conf" ;;
