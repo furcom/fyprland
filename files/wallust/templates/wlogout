@@ -21,7 +21,7 @@ button {
     border-radius: 256px;
     border-color: black;
         text-decoration-color: {{foreground}};
-    color: #FFFFFF;
+    color: {{foreground}};
         background-color: rgba({{background|rgb}}, 0.99);
         border-style: solid;
         border-width: 0px;
@@ -36,6 +36,7 @@ button {
 
 button:focus, button:active, button:hover {
         background-color: {{color2}};
+        color: {{foreground}};
         outline-style: none;
 }
 
