@@ -7,7 +7,7 @@
 # ╚═╝        ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
 # script by furcom (https://github.com/furcom)
 
-source ./files/hypr/scripts/HYPR_VARS
+source ./files/hypr/scripts/FYPR_VARS
 
 ########################################
 ##                                    ##
@@ -94,12 +94,6 @@ HYPR() {
 
     # Hyprpicker
     yay -S --needed --noconfirm hyprpicker
-
-    # Hypr Plugins
-    sudo pacman -S --needed --noconfirm cmake meson cpio
-    hyprpm add https://github.com/hyprwm/hyprland-plugins
-    hyprpm disable hyprbars
-    hyprpm enable hyprexpo
 
     # Hyprshot
     yay -S --needed --noconfirm hyprshot
