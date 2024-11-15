@@ -12,38 +12,61 @@
 # ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
 # ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
 
-source $HOME/.config/hypr/scripts/FYPR_VARS
+###################################################
+#################### Variables ####################
+###################################################
 
+# Monitor
 MONITOR=$(hyprctl monitors | grep Monitor | awk '{print $2}')
+
+# General
+CFGDIR="$HOME/.config"
+CacheDir="$HOME/.cache"
+EDITOR="vim"
+TERMINAL="kitty"
+
+# fusuma
+FusumaDir="$HOME/.config/fusuma"
+FusumaScriptsDir="$FusumaDir/scripts"
+
+# Hypr Ecosystem
+HyprDir="$HOME/.config/hypr"
+HyprScriptsDir="$HyprDir/scripts"
+HyprConfigsDir="$HyprDir/configs"
+HyprImagesDir="$HyprDir/images/"
+HyprWallpapersDir="$HyprImagesDir/wallpapers"
+
+# kitty
+KittyDir="$HOME/.config/kitty"
+KittyConfigsDir="$KittyDir/configs"
+
+# mako
+MakoDir="$HOME/.config/mako"
+
+# oh-my-posh
+OmpDir="$HOME/.config/oh-my-posh"
+
+# rofi
+RofiDir="$HOME/.config/rofi"
+RofiScriptsDir="$RofiDir/scripts"
+RofiMenu="rofi -dmenu -config $RofiDir/config.rasi"
 RofiMenuSettings="rofi -dmenu"
 
-main_menu() {
-  OPTIONS=" Hyprland\n󰸉 Wallpaper\n󰏖 Packages\n Extras\n󰅙 Exit"
-  CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowMain)
+# sddm
+SddmConfigDir="/etc/sddm.conf.d"
+SddmThemesDir="/usr/share/sddm/themes"
 
-  if [ -z "$CHOICE" ]; then
-    exit 0
-  fi
+# wallust
+WallustDir="$HOME/.config/wallust"
+WallustTemplatesDir="$WallustDir/templates"
 
-  if [ -z "$CHOICE" ]; then
-    main_menu
-  elif [ "$CHOICE" == "󰅙 Exit" ]; then
-    exit 0
-  else
-    case "$CHOICE" in
-      " Hyprland")
-        hyprland_menu ;;
-      "󰸉 Wallpaper")
-        waypaper ;;
-      " Extras")
-        extras_menu ;;
-      "󰏖 Packages")
-        packages_menu ;;
-      *)
-        echo "Invalid choice" ;;
-    esac
-  fi
-}
+# waybar
+WaybarDir="$HOME/.config/waybar"
+WaybarScriptsDir="$WaybarDir/scripts"
+
+###################################################
+#################### Functions ####################
+###################################################
 
 extras_menu() {
   EXTRAS_OPTIONS="󱂩 Waybar\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh\n Wallust\n GTK Theming\n󱞲 Back"
@@ -257,11 +280,37 @@ packages_menu() {
   fi
 }
 
-case "$1" in
-  --wifi)
-    SelectedRowConnection="2"
-    connections_menu
-  ;;
-esac
+
+main_menu() {
+  OPTIONS=" Hyprland\n󰸉 Wallpaper\n󰏖 Packages\n Extras\n󰅙 Exit"
+  CHOICE=$(echo -e "$OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowMain)
+
+  if [ -z "$CHOICE" ]; then
+    exit 0
+  fi
+
+  if [ -z "$CHOICE" ]; then
+    main_menu
+  elif [ "$CHOICE" == "󰅙 Exit" ]; then
+    exit 0
+  else
+    case "$CHOICE" in
+      " Hyprland")
+        hyprland_menu ;;
+      "󰸉 Wallpaper")
+        waypaper ;;
+      " Extras")
+        extras_menu ;;
+      "󰏖 Packages")
+        packages_menu ;;
+      *)
+        echo "Invalid choice" ;;
+    esac
+  fi
+}
+
+#####################################################
+#################### Main Script ####################
+#####################################################
 
 main_menu

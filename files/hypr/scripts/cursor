@@ -7,7 +7,10 @@
 #  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 # script by furcom (https://github.com/furcom)
 
-source $HOME/.config/hypr/scripts/FYPR_VARS
+CYAN='\e[36m'
+GREEN='\e[32m'
+NC='\033[0m'
+RED='\e[31m'
 
 # Set the directory where the cursors are located
 directory=$HOME/.icons

@@ -7,9 +7,7 @@
 # ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝
 # script by furcom (https://github.com/furcom)
 
-source $HOME/.config/hypr/scripts/FYPR_VARS
-
-config_file="$HyprConfigsDir/general.conf"
+config_file="$HOME/.config/hypr/configs/general.conf"
 
 if [[ -f "$config_file" ]]; then
     case "$1" in
