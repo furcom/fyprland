@@ -115,7 +115,7 @@ hyprland_menu() {
 			        "󰈙 Config") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/layouts.conf" ;;
 			        "󱞲 Back"|"")
                 SelectedRowMain="0"
-                SelectedRowHypr="5"
+                SelectedRowHypr="4"
 			          hyprland_menu ;;
 		        esac ;;
             " Misc") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/misc.conf" ;;
@@ -128,7 +128,7 @@ hyprland_menu() {
               PLUGINS_SUBCHOICE=$(echo -e "$PLUGINS_OPTIONS" | $RofiMenuSettings)
               case "$PLUGINS_SUBCHOICE" in
                 "󱞲 Back"|"")
-                  SelectedRowHypr="11"
+                  SelectedRowHypr="10"
                   hyprland_menu ;;
                 "󰈙 Config") $TERMINAL sh -c "$EDITOR $HyprConfigsDir/plugins.conf" ;;
                 "󰚰 Updates") $TERMINAL sh -c "$HyprScriptsDir/packages --hypr" ;;
