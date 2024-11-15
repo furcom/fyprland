@@ -289,7 +289,7 @@ window#waybar.empty #window {
 }
 
 #custom-prev-workspace,
-#custom-overview-workspaces,
+#custom-app-launcher,
 #custom-next-workspace {
     background-color: transparent;
     margin: 0 0 0 4px;
@@ -307,7 +307,7 @@ window#waybar.empty #window {
 }
 
 #custom-prev-workspace:hover,
-#custom-overview-workspaces:hover,
+#custom-app-launcher:hover,
 #custom-next-workspace:hover,
 #workspaces button.persistent:hover {
     background-color: @color2;

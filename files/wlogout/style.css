@@ -14,15 +14,15 @@
 }
 
 window {
-        background-color: rgba(23,23,23, 0.99);
+        background-color: rgba(28,29,31, 0.99);
 }
 
 button {
     border-radius: 256px;
     border-color: black;
-        text-decoration-color: #BCEBFB;
-    color: #BCEBFB;
-        background-color: rgba(23,23,23, 0.99);
+        text-decoration-color: #F7F3F6;
+    color: #F7F3F6;
+        background-color: rgba(28,29,31, 0.99);
         border-style: solid;
         border-width: 0px;
         background-repeat: no-repeat;
@@ -31,11 +31,12 @@ button {
     font-size: 32px;
     margin: 16px;
     min-height: 320px;
+    min-width: 320px;
 }
 
 button:focus, button:active, button:hover {
-        background-color: #332F80;
-        color: #BCEBFB;
+        background-color: #7F7085;
+        color: #F7F3F6;
         outline-style: none;
 }
 

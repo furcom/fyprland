@@ -48,7 +48,7 @@
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "on-click": "kitty sh -c htop",
+        "on-click": "kitty sh -c btop",
         "tooltip": true
     },
     "temperature": {
@@ -56,7 +56,7 @@
         "format": " {temperatureC}°C",            
         "format-critical": "",
         "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input",
-        "on-click": "kitty sh -c htop",
+        "on-click": "kitty sh -c btop",
         "tooltip": true
     },
     "memory": {
@@ -194,7 +194,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": true
         },
-        "modules": ["hyprland/workspaces","custom/prev-workspace","custom/overview-workspaces","custom/next-workspace"],
+        "modules": ["hyprland/workspaces","custom/prev-workspace","custom/app-launcher","custom/next-workspace"],
         "tooltip": true
     },
     "hyprland/workspaces": {
@@ -231,11 +231,11 @@
         "format": "󰜱",
         "on-click": "hyprctl dispatch workspace -1"
     },
-    "custom/overview-workspaces": {
+    "custom/app-launcher": {
         "tooltip": true,
-        "tooltip-format": "Workspaces overview (Press and hold)",
+        "tooltip-format": "App-Launcher",
         "format": "󱗼",
-        "on-click": "hyprctl dispatch hyprexpo:expo on"
+        "on-click": "rofi -show drun -modi drun,run"
     },
     "custom/next-workspace": {
         "tooltip": true,

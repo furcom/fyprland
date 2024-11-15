@@ -7,7 +7,7 @@
 # ╚═╝        ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
 # script by furcom (https://github.com/furcom)
 
-source ./files/hypr/scripts/FYPR_VARS
+CFGDIR="$HOME/.config"
 
 ########################################
 ##                                    ##
@@ -18,6 +18,8 @@ source ./files/hypr/scripts/FYPR_VARS
 ##### yay #####
 check_yay_health() {
     if ! yay -V &> /dev/null; then
+        NC='\033[0m'
+        RED='\e[31m'
         echo -e "\n${RED}yay is not functioning properly. Please fix the issue with yay before proceeding.${NC}"
         exit 1
     fi
@@ -34,36 +36,17 @@ YAY() {
     fi
 }
 
-##### bluetooth #####
-BLUETOOTH() {
-    sudo pacman -S --needed --noconfirm bluez bluez-utils
-    yay -S --needed --noconfirm bluetui
-    systemctl enable bluetooth.service
-    systemctl start bluetooth.service
-}
-
-##### cliphist #####
-CLIPHIST() {
-    sudo pacman -S --needed --noconfirm cliphist xdg-utils
-}
-
-##### fastfetch #####
-FASTFETCH() {
-    sudo pacman -S --needed --noconfirm fastfetch
-    cp -rf ./files/fastfetch/ "$CFGDIR"
-}
-
 ##### fusuma #####
-add_user_to_group_if_needed() {
-    if ! groups "$USER" | grep &>/dev/null '\binput\b'; then
-        sudo gpasswd -a "$USER" input
-    fi
-}
 FUSUMA() {
     sudo pacman -S --needed --noconfirm libinput ruby
     yay -S --needed --noconfirm ruby-fusuma
     cp -rf ./files/fusuma/ "$CFGDIR"
     add_user_to_group_if_needed
+
+    # Add user to input-group
+    if ! groups "$USER" | grep &>/dev/null '\binput\b'; then
+        sudo gpasswd -a "$USER" input
+    fi
 }
 
 ##### Hypr Ecosystem #####
@@ -84,11 +67,15 @@ HYPR() {
     cp -rf ./files/cursors/* "$HOME/.icons/"
     hyprctl setcursor Bibata-Modern-Ice 32
 
-    # Hyprpaper + Extras
+    # Hyprpaper
     sudo pacman -S --needed --noconfirm hyprpaper
-    yay -S --needed --noconfirm waypaper
+
+    # wallust
     yay -S --needed --noconfirm wallust
     cp -rf ./files/wallust/ "$CFGDIR"
+
+    # waypaper
+    yay -S --needed --noconfirm waypaper
     cp -rf ./files/waypaper/ "$CFGDIR"
     waypaper --backend hyprpaper --wallpaper $HyprWallpapersDir/Mountain.png
 
@@ -101,9 +88,6 @@ HYPR() {
 
     # Hypridle
     sudo pacman -S --needed --noconfirm hypridle
-
-    # END
-    echo -e "\n${GREEN}Hyprland installed.${NC}"
 }
 
 ##### GTK #####
@@ -112,12 +96,6 @@ GTK() {
     yay -S --needed --noconfirm catppuccin-gtk-theme-mocha
     sudo cp -r ./files/icons/kora/* /usr/share/icons/
     sudo cp -r ./files/icons/tela/* /usr/share/icons/
-}
-
-##### kitty #####
-KITTY() {
-    sudo pacman -S --needed --noconfirm kitty
-    cp -rf ./files/kitty/ "$CFGDIR"
 }
 
 ##### mako #####
@@ -132,11 +110,6 @@ NVIM() {
     cp -rf ./files/nvim/ "$CFGDIR"
 }
 
-##### Pipewire / Wireplumber #####
-PIPEWIRE() {
-    sudo pacman -S --needed --noconfirm pipewire wireplumber
-}
-
 ##### rofi & rofimoji #####
 ROFI() {
     # Rofi
@@ -148,36 +121,67 @@ ROFI() {
     cp -rf ./files/rofimoji.rc "$CFGDIR"
 }
 
-##### sddm #####
-SDDM() {
-    sudo pacman -S --needed --noconfirm sddm
-    sudo mkdir -p /etc/sddm.conf.d
-    sudo cp -rf ./files/sddm/* /etc/sddm.conf.d/
-    sudo sed -i '/^#%PAM/a auth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/sddm
-    sudo groupadd -r nopasswdlogin
-    sudo gpasswd -a "$USER" nopasswdlogin
-}
-
 ##### waybar #####
 WAYBAR() {
     sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji python python-pyquery
-    yay -S --needed --noconfirm wttrbar
+    yay -S --needed --noconfirm bluetui wttrbar
     cp -rf ./files/waybar/ "$CFGDIR"
 }
 
-##### wlogout #####
-WLOGOUT() {
+##### login / logout #####
+LOGINOUT() {
+    # SDDM
+    sudo pacman -S --needed --noconfirm qt6-svg qt6-declarative qt5-quickcontrols2 sddm
+    sudo mkdir -p /etc/sddm.conf.d
+    sudo cp -rf ./files/sddm/fyprland.conf /etc/sddm.conf.d/fyprland.conf
+    sudo cp -rf ./files/sddm/fyprland/ /usr/share/sddm/themes/
+    sudo sed -i '/^#%PAM/a auth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/sddm
+    sudo groupadd -r nopasswdlogin
+    sudo gpasswd -a "$USER" nopasswdlogin
+
+    # wlogout
     yay -S --needed --noconfirm wlogout
     cp -rf ./files/wlogout/ "$CFGDIR"
 }
 
-##### zsh  & oh-my-posh #####
-ZSH() {
-    sudo pacman -S --needed --noconfirm zsh fzf zoxide
-    cp -f ./files/.zshrc "$HOME"
-    cp -rf ./files/oh-my-posh/ "$CFGDIR"
+#### Needed packages #####
+NEEDED(){
+    # btop
+    sudo pacman -S --needed --neconfirm btop
+
+    # Cliphist
+    sudo pacman -S --needed --neconfirm cliphist xdg-utils
+
+    # Network
+    sudo pacman -S --needed --neconfirm networkmanager network-manager-applet
+
+    # Bluetooth
+    sudo pacman -S --needed --neconfirm bluez bluez-utils
+    sudo systemctl enable bluetooth.service
+    sudo systemctl start bluetooth.service
+
+    # Audio
+    sudo pacman -S --needed --neconfirm pipewire wireplumber
+}
+
+##### Terminal #####
+TERMINAL() {
+    # kitty
+    sudo pacman -S --needed --noconfirm kitty
+    cp -rf ./fiiles/kitty/ "$CFGDIR"
+
+    # fastfetch
+    sudo pacman -S --needed --noconfirm fastfetch
+    cp -rf ./files/fastfetch/ "$CFGDIR"
+
+    # zsh
+    sudo pacman -S --needed --noconfirm fzf zoxide zsh
+    cp -rf ./files/.zshrc "$HOME"
     sudo chsh -s /bin/zsh $USER
     sudo chsh -s /bin/zsh root
+
+    # oh-my-posh
+    cp -rf ./files/oh-my-posh/ "$CFGDIR"
 }
 
 #####################
@@ -189,21 +193,15 @@ ZSH() {
 #####################
 
 YAY
-
-BLUETOOTH
-CLIPHIST
-FASTFETCH
 FUSUMA
 HYPR
 GTK
-KITTY
+LOGINOUT
 MAKO
+NEEDED
 NVIM
-PIPEWIRE
 ROFI
 SDDM
+TERMINAL
 WAYBAR
-WLOGOUT
-ZSH
-
 exit
