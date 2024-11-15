@@ -485,7 +485,6 @@ window#waybar.empty #window {
 
 #power-profiles-daemon {
     background-color: transparent;
-    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
@@ -493,7 +492,6 @@ window#waybar.empty #window {
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
-    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
@@ -501,7 +499,6 @@ window#waybar.empty #window {
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background_light;
-    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
@@ -513,7 +510,6 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
-    margin: 0 4px 0 0;
     min-width: 40px;
     padding: 0 12px;
 }
