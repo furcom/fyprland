@@ -142,10 +142,10 @@ waybar_menu() {
   WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$WAYBAR_SUBCHOICE" ]; then
-    SelectedRowExtras="1"
+    SelectedRowExtras="0"
     extras_menu
   elif [ "$WAYBAR_SUBCHOICE" == "󱞲 Back" ]; then
-    SelectedRowExtras="1"
+    SelectedRowExtras="0"
     extras_menu
   else
     case "$WAYBAR_SUBCHOICE" in
@@ -161,10 +161,10 @@ wallust_menu() {
   WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$WALLUST_SUBCHOICE" ]; then
-    SelectedRowExtras="5"
+    SelectedRowExtras="4"
     extras_menu
   elif [ "$WALLUST_SUBCHOICE" == "󱞲 Back" ]; then
-    SelectedRowExtras="5"
+    SelectedRowExtras="4"
     extras_menu
   else
     case "$WALLUST_SUBCHOICE" in
@@ -186,10 +186,10 @@ kitty_menu() {
   KITTY_SUBCHOICE=$(echo -e "$KITTY_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$KITTY_SUBCHOICE" ]; then
-    SelectedRowExtras="2"
+    SelectedRowExtras="1"
     extras_menu
   elif [ "$KITTY_SUBCHOICE" == "󱞲 Back" ]; then
-    SelectedRowExtras="2"
+    SelectedRowExtras="1"
     extras_menu
   else
     case "$KITTY_SUBCHOICE" in
@@ -206,10 +206,10 @@ fusuma_menu() {
   FUSUMA_SUBCHOICE=$(echo -e "$FUSUMA_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$FUSUMA_SUBCHOICE" ]; then
-    SelectedRowExtras="3"
+    SelectedRowExtras="2"
     extras_menu
   elif [ "$FUSUMA_SUBCHOICE" == "󱞲 Back" ]; then
-    SelectedRowExtras="3"
+    SelectedRowExtras="2"
     extras_menu
   else
     case "$FUSUMA_SUBCHOICE" in
