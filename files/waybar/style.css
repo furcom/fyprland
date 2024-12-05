@@ -30,7 +30,7 @@ window#waybar {
 window#waybar > box {
     background-color: @color2;
     border-radius: 0;
-    box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.33);
+    box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.33);
     margin: 0 0 8px 0;
     min-height: 40px;
     padding: 6px;
@@ -104,13 +104,13 @@ tooltip label {
 
 /* Logo */
 #group-logo {
-    background-color: @color2_light;
+    background-color: transparent;
     padding: 4px;
 }
 
 #custom-logo {
-    background-color: transparent;
-    font-size: 24px;
+    background-color: @color2_light;
+    font-size: 26px;
     min-width: 32px;
 }
 
@@ -177,7 +177,7 @@ tooltip label {
 /* Packages */
 #custom-packages {
     background-color: #007700;
-    margin: 0 0 0 12px;
+    margin: 0 4px 0 12px;
     min-width: 32px;
     padding: 0 12px;
 }
@@ -263,7 +263,7 @@ window#waybar.empty #window {
     background-color: @color2_light;
     font-weight: bold;
     margin: 0 4px;
-    padding: 4px;
+    padding: 0 2px;
 }
 
 #workspaces {
@@ -280,18 +280,20 @@ window#waybar.empty #window {
 #workspaces button.persistent {
     background-color: transparent;
     min-width: 32px;
+    margin: 4px 2px;
 }
 
 #workspaces button.active {
     background-color: @color2;
     padding: 0 12px;
+    margin: 4px 2px;
 }
 
 #custom-prev-workspace,
 #custom-app-launcher,
 #custom-next-workspace {
     background-color: transparent;
-    margin: 0 0 0 4px;
+    margin: 4px 2px;
     min-width: 40px;
 }
 
@@ -330,6 +332,7 @@ window#waybar.empty #window {
     background-color: transparent;
     min-width: 320px;
     margin: 4px;
+    padding: 0 12px;
 }
 
 #custom-prev-song,
@@ -506,7 +509,7 @@ window#waybar.empty #window {
 
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
-    color: @color2_light;
+    color: @background;
     min-width: 32px;
     padding: 0 12px;
 }
