@@ -23,7 +23,7 @@
     
     "modules-left": [
         "group/group-logo",
-        "custom/packages",
+        "group/group-packages",
         "custom/weather",
         "clock",
         "group/group-window",
@@ -74,6 +74,15 @@
         "unit": "GB"
     },
 
+    "group/group-packages": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["custom/packages"],
+    },
     "custom/packages": {
         "format": "{}",
         "interval": 3600,
@@ -85,8 +94,8 @@
     },
     
     "clock": {
-        "format": "{:%H:%M - %d.%m.%Y}",
-        "format-alt": "{:%I:%M %p - %d.%m.%Y}",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M - %d.%m.%Y}",
         "actions":  {
            "on-click-right": "mode",
            "on-scroll-up": "tz_up",
@@ -126,7 +135,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": true
         },
-        "modules": ["hyprland/window","custom/window-close","custom/window-prev-workspace","custom/window-next-workspace","custom/window-expand","custom/window-fullscreen","custom/window-float"],
+        "modules": ["hyprland/window","custom/window-close","custom/window-prev-workspace","custom/window-next-workspace"],
         "tooltip": true
     },
     "hyprland/window": {
@@ -142,7 +151,7 @@
         "separate-outputs": true,
         "icon": true,
         "icon-size": 22,
-        "on-click": "hyprctl dispatch hyprexpo:expo on",
+        "on-click": "rofi -modes window -show window",
     },
     "custom/window-close": {
         "tooltip": true,
@@ -162,24 +171,6 @@
         "tooltip-format": "Move window to next workspace",
         "on-click": "hyprctl dispatch movetoworkspace +1"
     },
-    "custom/window-expand": {
-        "tooltip": true,
-        "format": "󰁌",
-        "tooltip-format": "Expand window",
-        "on-click": "hyprctl dispatch fullscreen 1"
-    },
-    "custom/window-fullscreen": {
-        "tooltip": true,
-        "format": "󰹑",
-        "tooltip-format": "Fullscreen window",
-        "on-click": "hyprctl dispatch fullscreen 0"
-    },
-    "custom/window-float": {
-        "tooltip": true,
-        "format": "",
-        "tooltip-format": "Float window",
-        "on-click": "hyprctl dispatch togglefloating"
-    },
 
     /*--- CENTER ----------------------------------------------------*/
     
@@ -194,7 +185,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": true
         },
-        "modules": ["hyprland/workspaces","custom/prev-workspace","custom/app-launcher","custom/next-workspace"],
+        "modules": ["hyprland/workspaces","custom/app-launcher"],
         "tooltip": true
     },
     "hyprland/workspaces": {
@@ -225,30 +216,18 @@
         "smooth-scrolling-threshold": 1,
         "persistent-workspaces": { "*": 3 }
     },
-    "custom/prev-workspace": {
-        "tooltip": true,
-        "tooltip-format": "Go to previous workspace",
-        "format": "󰜱",
-        "on-click": "hyprctl dispatch workspace -1"
-    },
     "custom/app-launcher": {
         "tooltip": true,
         "tooltip-format": "App-Launcher",
         "format": "󱗼",
         "on-click": "rofi -show drun -modi drun,run"
     },
-    "custom/next-workspace": {
-        "tooltip": true,
-        "tooltip-format": "Go to next workspace",
-        "format": "󰜴",
-        "on-click": "hyprctl dispatch workspace +1"
-    },
     
     /*--- RIGHT -----------------------------------------------------*/
     
     "modules-right": [
         "group/group-media",
-        "tray",
+        "group/group-tray",
         "group/group-network",
         "group/group-bluetooth",
         "group/group-input",
@@ -258,6 +237,16 @@
         "group/group-powermenu"
     ],
 
+    "group/group-tray": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": false
+        },
+        "modules": ["tray"],
+    },
+
     "group/group-media": {
         "orientation": "inherit",
         "drawer": {
@@ -265,8 +254,9 @@
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/media","custom/prev-song","custom/toggle-song","custom/next-song"],
+        "modules": ["custom/tray","custom/prev-song","custom/toggle-song","custom/next-song"],
     },
+
     "custom/media": {
         "format": "{icon} {0}",
         "return-type": "json",

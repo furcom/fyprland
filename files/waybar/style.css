@@ -13,13 +13,13 @@
     background: transparent;
     background-color: transparent;
     border: none;
-    border-radius: 24px;
+    border-radius: 32px;
     color: @foreground;
     font-family: "0xProto Nerd Font Mono";
     font-size: 16px;
     margin: 0;
     padding: 0;
-    transition-duration: 125ms;
+    transition-duration: 150ms;
 }
 
 /* Bar */
@@ -29,10 +29,9 @@ window#waybar {
 }
 window#waybar > box {
     background-color: @color2;
-    border-radius: 0;
-    box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.33);
-    margin: 0 0 8px 0;
-    min-height: 40px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.33);
+    margin: 16px 16px 6px 16px;
+    min-height: 32px;
     padding: 6px;
 }
 
@@ -60,11 +59,16 @@ tooltip label {
 }
 
 /* Tray */
+#group-tray {
+    background-color: transparent;
+    margin: 0 4px 0 0;
+    padding: 4px;
+}
+
 #tray {
     background-color: @color2_light;
     color: @foreground;
-    margin: 0 4px 0 0;
-    min-width: 40px;
+    min-width: 32px;
     padding: 0 12px;
 }
 
@@ -88,10 +92,14 @@ tooltip label {
     padding: 8px;
 }
 
-#tray:hover,
+#group-tray:hover {
+    background-color: @color2_light;
+    color: @foreground;
+}
+
 #tray menu *:hover,
 #tray menu menuitem:hover {
-    background-color: @alpha15;
+    background-color: @alpha25;
     color: @foreground;
 }
 
@@ -175,10 +183,20 @@ tooltip label {
 }
 
 /* Packages */
+#group-packages {
+    background-color: transparent;
+    margin: 0 0 0 4px;
+    padding: 4px;
+}
+
 #custom-packages {
     background-color: #007700;
-    margin: 0 4px 0 12px;
     min-width: 32px;
+    padding: 0 12px;
+}
+
+#group-packages:hover {
+    background-color: #007700;
     padding: 0 12px;
 }
 
@@ -208,13 +226,13 @@ tooltip label {
 
 /* Window */
 #group-window {
-    background-color: @color2_light;
+    background-color: transparent;
     margin: 0 0 0 4px;
     padding: 4px;
 }
 
 #window {
-    background-color: transparent;
+    background-color: @color2_light;
     min-width: 32px;
     padding: 0 12px;
 }
@@ -230,10 +248,7 @@ window#waybar.empty #window {
 
 #custom-window-close,
 #custom-window-prev-workspace,
-#custom-window-next-workspace,
-#custom-window-expand,
-#custom-window-fullscreen,
-#custom-window-float {
+#custom-window-next-workspace {
     background-color: transparent;
     margin: 0 0 0 4px;
     min-width: 32px;
@@ -246,9 +261,6 @@ window#waybar.empty #window {
 #custom-window-close:hover,
 #custom-window-prev-workspace:hover,
 #custom-window-next-workspace:hover,
-#custom-window-expand:hover,
-#custom-window-fullscreen:hover,
-#custom-window-float:hover,
 #window:hover {
     background-color: @color2;
 }
@@ -260,14 +272,14 @@ window#waybar.empty #window {
 }
 
 #group-workspaces {
-    background-color: @color2_light;
+    background-color: transparent;
     font-weight: bold;
     margin: 0 4px;
     padding: 0 2px;
 }
 
 #workspaces {
-    background-color: @color2_light;
+    background-color: transparent;
     font-weight: bold;
 }
 
@@ -284,17 +296,14 @@ window#waybar.empty #window {
 }
 
 #workspaces button.active {
-    background-color: @color2;
-    padding: 0 12px;
+    background-color: @color2_light;
     margin: 4px 2px;
 }
 
-#custom-prev-workspace,
-#custom-app-launcher,
-#custom-next-workspace {
+#custom-app-launcher {
     background-color: transparent;
     margin: 4px 2px;
-    min-width: 40px;
+    min-width: 32px;
 }
 
 #workspaces button:hover {
@@ -307,9 +316,8 @@ window#waybar.empty #window {
     background-color: @color2_light;
 }
 
-#custom-prev-workspace:hover,
 #custom-app-launcher:hover,
-#custom-next-workspace:hover,
+#workspaces button.active:hover,
 #workspaces button.persistent:hover {
     background-color: @color2;
 }
@@ -322,14 +330,13 @@ window#waybar.empty #window {
 
 /* Media */
 #group-media {
-    background-color: @color2_light;
+    background-color: transparent;
     margin: 0 4px 0 0;
-    padding: 0;
     min-width: 0;
 }
 
 #custom-media {
-    background-color: transparent;
+    background-color: @color2_light;
     min-width: 320px;
     margin: 4px;
     padding: 0 12px;
@@ -496,6 +503,7 @@ window#waybar.empty #window {
 
 #power-profiles-daemon {
     background-color: transparent;
+    margin: 0 4px 0 0;
     min-width: 32px;
     padding: 0 12px;
 }
