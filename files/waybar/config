@@ -25,7 +25,7 @@
         "group/group-logo",
         "group/group-packages",
         "custom/weather",
-        "clock",
+        "group/group-clock",
         "group/group-window",
     ],
     
@@ -93,9 +93,30 @@
         "tooltip-format": "󰮯  Pacman and 󰏖 AUR packages Updates"
     },
     
+    "group/group-clock": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["clock","clock#2"],
+    },
     "clock": {
         "format": "{:%H:%M}",
-        "format-alt": "{:%H:%M - %d.%m.%Y}",
+        "format-alt": "{:%I:%M %p}",
+        "actions":  {
+           "on-click-right": "mode",
+           "on-scroll-up": "tz_up",
+           "on-scroll-down": "tz_down",
+           "on-scroll-up": "shift_up",
+           "on-scroll-down": "shift_down"
+        },
+        "tooltip": false
+    },
+    "clock#2": {
+        "format": "{:%d.%m.%Y}",
+        "format-alt": "{:%d. %B %Y}",
         "actions":  {
            "on-click-right": "mode",
            "on-scroll-up": "tz_up",
@@ -104,7 +125,7 @@
            "on-scroll-down": "shift_down"
         },
         "calendar": {
-           "mode"          : "month",
+           "mode"          : "year",
            "mode-mon-col"  : 3,
            "weeks-pos"     : "right",
            "on-scroll"     : 1,

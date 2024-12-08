@@ -186,7 +186,6 @@ tooltip label {
 #group-packages {
     background-color: transparent;
     margin: 0 0 0 4px;
-    padding: 4px;
 }
 
 #custom-packages {
@@ -213,14 +212,25 @@ tooltip label {
 }
 
 /* Clock */
-#clock {
+#group-clock {
     background-color: transparent;
     margin: 0 0 0 4px;
+    padding: 4px;
+}
+#clock {
+    background-color: transparent;
     min-width: 32px;
     padding: 0 12px;
 }
+#clock.2 {
+    margin: 0 0 0 4px;
+}
 
 #clock:hover {
+    background-color: @color2;
+}
+
+#group-clock:hover {
     background-color: @color2_light;
 }
 
