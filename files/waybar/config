@@ -115,8 +115,8 @@
         "tooltip": false
     },
     "clock#2": {
-        "format": "{:%d.%m.%Y}",
-        "format-alt": "{:%d. %B %Y}",
+        "format": "{:%a, %d.%m.%Y}",
+        "format-alt": "{:%A, %d. %B %Y}",
         "actions":  {
            "on-click-right": "mode",
            "on-scroll-up": "tz_up",
