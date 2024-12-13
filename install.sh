@@ -147,21 +147,21 @@ LOGINOUT() {
 #### Needed packages #####
 NEEDED(){
     # btop
-    sudo pacman -S --needed --neconfirm btop
+    sudo pacman -S --needed --noconfirm btop
 
     # Cliphist
-    sudo pacman -S --needed --neconfirm cliphist xdg-utils
+    sudo pacman -S --needed --noconfirm cliphist xdg-utils
 
     # Network
-    sudo pacman -S --needed --neconfirm networkmanager network-manager-applet
+    sudo pacman -S --needed --noconfirm networkmanager network-manager-applet
 
     # Bluetooth
-    sudo pacman -S --needed --neconfirm bluez bluez-utils
+    sudo pacman -S --needed --noconfirm bluez bluez-utils
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
 
     # Audio
-    sudo pacman -S --needed --neconfirm pipewire wireplumber
+    sudo pacman -S --needed --noconfirm pipewire wireplumber
 }
 
 ##### Terminal #####
