@@ -22,7 +22,7 @@ icon() {
         elif (( $(echo "$volume_percent > 33" | bc -l) )); then
             echo ""  # Medium volume icon
         else
-            echo ""  # Low volume icon
+            echo ""  # Low volume icon
         fi
     fi
 }

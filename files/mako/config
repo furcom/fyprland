@@ -31,11 +31,11 @@ font= 0xProto Nerd Font 16
 
 # background color of notification( #RRGGBB | #RRGGBBAA )
 ### COLOR SET BY PYWAL !!!
-background-color=#2C2C2D
+background-color=#131122
 
 # Text color inside the notification( #RRGGBB | #RRGGBBAA )
 ### COLOR SET BY PYWAL !!!
-text-color=#F4F7F8
+text-color=#FEF0F9
 
 # Set width of notification popup.( value in px )
 width=500
@@ -56,7 +56,7 @@ border-size=4
 
 # color of border of each notification( #RRGGBB | #RRGGBBAA )
 ### COLOR SET BY PYWAL !!!
-border-color=#875160
+border-color=#5695C0
 
 # bordear radious of each notification(value in px )
 border-radius=24

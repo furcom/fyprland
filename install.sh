@@ -53,7 +53,7 @@ FUSUMA() {
 HYPR() {
     # Hyprland
     sudo pacman -S --needed --noconfirm hyprland
-    cp -rf ./files/hypr/* "$CFGDIR"
+    cp -rf ./files/hypr/ "$CFGDIR"
     
     #Hyprlock
     sudo pacman -S --needed --noconfirm hyprlock
@@ -77,7 +77,7 @@ HYPR() {
     # waypaper
     yay -S --needed --noconfirm waypaper
     cp -rf ./files/waypaper/ "$CFGDIR"
-    waypaper --backend hyprpaper --wallpaper $HyprWallpapersDir/Mountain.png
+    waypaper --backend hyprpaper --wallpaper $CFGDIR/hypr/images/wallpapers/Mountain.png
 
     # Hyprpicker
     yay -S --needed --noconfirm hyprpicker
@@ -123,9 +123,11 @@ ROFI() {
 
 ##### waybar #####
 WAYBAR() {
-    sudo pacman -S --needed --noconfirm waybar noto-fonts-emoji python python-pyquery
+    sudo pacman -S --needed --noconfirm bc brightnessctl noto-fonts-emoji power-profiles-daemon python python-pyquery waybar
     yay -S --needed --noconfirm bluetui wttrbar
     cp -rf ./files/waybar/ "$CFGDIR"
+    sudo systemctl start power-profiles-daemon
+    sudo systemctl enable power-profiles-daemon
 }
 
 ##### login / logout #####
@@ -138,6 +140,7 @@ LOGINOUT() {
     sudo sed -i '/^#%PAM/a auth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/sddm
     sudo groupadd -r nopasswdlogin
     sudo gpasswd -a "$USER" nopasswdlogin
+    sudo systemctl enable sddm
 
     # wlogout
     yay -S --needed --noconfirm wlogout
@@ -168,7 +171,7 @@ NEEDED(){
 TERMINAL() {
     # kitty
     sudo pacman -S --needed --noconfirm kitty
-    cp -rf ./fiiles/kitty/ "$CFGDIR"
+    cp -rf ./files/kitty/ "$CFGDIR"
 
     # fastfetch
     sudo pacman -S --needed --noconfirm fastfetch
