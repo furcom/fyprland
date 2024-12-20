@@ -284,7 +284,7 @@
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/tray","custom/prev-song","custom/toggle-song","custom/next-song"],
+        "modules": ["custom/media","custom/prev-song","custom/toggle-song","custom/next-song"],
     },
 
     "custom/media": {
@@ -297,10 +297,9 @@
              "*": "󰎆 "
         },
         "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}\", \"alt\": \"{{playerName}}\", \"class\": \"{{playerName}}\"}' -F",
-        "on-click": "playerctl play-pause",
+        "on-click": "hyprctl dispatch focuswindow class:Spotify",
         "on-click-right": "hyprctl dispatch focuswindow class:Spotify",
-        "tooltip": true,
-        "tooltip-format": "Currently playing media",
+        "tooltip": false,
         "max-length": 46
     },
     "custom/toggle-song": {

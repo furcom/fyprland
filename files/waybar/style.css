@@ -367,7 +367,7 @@ window#waybar.empty #window {
 
 #custom-media {
     background-color: @color0_light;
-    min-width: 320px;
+    min-width: 32px;
     margin: 3px;
     padding: 0 12px;
 }
