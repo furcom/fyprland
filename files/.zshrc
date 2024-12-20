@@ -99,7 +99,8 @@ alias vim="nvim"
 
 # Navigation
 alias ls="ls --color"
-alias d="ls -hals --group-directories-first"
+#alias d="ls -hals --group-directories-first"
+alias d="echo '' && eza --all --header --long --group --time=modified --group-directories-first --icons=always --time-style='+%Y-%m-%d %H:%M:%S'"
 alias \#="cd .. ; d"
 alias c="clear"
 alias q="exit"

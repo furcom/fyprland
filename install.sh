@@ -141,10 +141,6 @@ LOGINOUT() {
     sudo groupadd -r nopasswdlogin
     sudo gpasswd -a "$USER" nopasswdlogin
     sudo systemctl enable sddm
-
-    # wlogout
-    yay -S --needed --noconfirm wlogout
-    cp -rf ./files/wlogout/ "$CFGDIR"
 }
 
 #### Needed packages #####
@@ -152,8 +148,8 @@ NEEDED(){
     # btop
     sudo pacman -S --needed --noconfirm btop
 
-    # Cliphist
-    sudo pacman -S --needed --noconfirm cliphist xdg-utils
+    # Cliphist & wl-clip-persist
+    sudo pacman -S --needed --noconfirm cliphist wl-clip-persist xdg-utils
 
     # Network
     sudo pacman -S --needed --noconfirm networkmanager network-manager-applet

@@ -23,7 +23,7 @@
 @define-color alpha90 rgba({{foreground|rgb}},0.90);
 @define-color cursor {{cursor}};
 @define-color color0 {{color0}};
-@define-color color0_light {{color0|lighten(0.20)}};
+@define-color color0_light {{color0|lighten(0.15)}};
 @define-color color1 {{color1}};
 @define-color color1_light {{color1|lighten(0.20)}};
 @define-color color2 {{color2}};

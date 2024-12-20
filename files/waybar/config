@@ -24,7 +24,7 @@
     "modules-left": [
         "group/group-logo",
         "group/group-packages",
-        "custom/weather",
+        "group/group-weather",
         "group/group-clock",
         "group/group-window",
     ],
@@ -141,6 +141,15 @@
         "tooltip-format": "<tt><small>\n{calendar}\n</small></tt>"
     },
 
+    "group/group-weather": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["custom/weather"],
+    },
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,
@@ -562,16 +571,42 @@
             "children-class": "not-memory",
             "transition-left-to-right": false
         },
-        "modules": ["custom/powermenu","custom/powermenu#2"],
+        "modules": ["custom/powermenu-poweroff","custom/powermenu-reboot","custom/powermenu-suspend","custom/powermenu-hibernate","custom/powermenu-logout","custom/powermenu-lock"],
     },
-    "custom/powermenu": {
+    "custom/powermenu-poweroff": {
         "format": "⏻",
-        "on-click": "wlogout",
-        "tooltip": false
+        "on-click": "systemctl poweroff",
+        "tooltip": true,
+        "tooltip-format": "Poweroff"
     },
-    "custom/powermenu#2": {
-        "format": "Power Menu",
-        "on-click": "wlogout",
-        "tooltip": false
+    "custom/powermenu-reboot": {
+        "format": "",
+        "on-click": "systemctl reboot",
+        "tooltip": true,
+        "tooltip-format": "Reboot"
+    },
+    "custom/powermenu-suspend": {
+        "format": "󰤄",
+        "on-click": "systemctl suspend",
+        "tooltip": true,
+        "tooltip-format": "Suspend"
+    },
+    "custom/powermenu-hibernate": {
+        "format": "󱠩",
+        "on-click": "systemctl hibernate",
+        "tooltip": true,
+        "tooltip-format": "Hibernate"
+    },
+    "custom/powermenu-logout": {
+        "format": "󰍃",
+        "on-click": "hyprctl dispatch exit",
+        "tooltip": true,
+        "tooltip-format": "Logout"
+    },
+    "custom/powermenu-lock": {
+        "format": "",
+        "on-click": "hyprlock",
+        "tooltip": true,
+        "tooltip-format": "Lock"
     },
 }

@@ -1,10 +1,6 @@
-**Preview 1**  |  **Preview 2**  |  **Preview 3**
-:-: | :-: | :-:
-![Preview 1](https://github.com/furcom/fyprland/blob/main/preview_1.png?raw=true)  |  ![Preview 2](https://github.com/furcom/fyprland/blob/main/preview_2.png?raw=true)  |  ![Preview 3](https://github.com/furcom/fyprland/blob/main/preview_3.png?raw=true)
-**Preview 4**  |  **Preview 5**  |  **Preview 6**
-![Preview 4](https://github.com/furcom/fyprland/blob/main/preview_4.png?raw=true)  |  ![Preview 5](https://github.com/furcom/fyprland/blob/main/preview_5.png?raw=true)  |  ![Preview 6](https://github.com/furcom/fyprland/blob/main/preview_6.png?raw=true)
-**Preview 7**  |  **Preview 8**  |  **Preview 9**
-![Preview 7](https://github.com/furcom/fyprland/blob/main/preview_7.png?raw=true)  |  ![Preview 8](https://github.com/furcom/fyprland/blob/main/preview_8.png?raw=true)  |  ![Preview 8](https://github.com/furcom/fyprland/blob/main/preview_9.png?raw=true)
+**Preview 1**
+:-:
+![Preview](https://github.com/furcom/fyprland/blob/main/preview.png?raw=true)
 
 # fyprland
 This repository features a sleek, minimalistic Hyprland configuration with dynamic color schemes that adapt to your wallpaper. Enjoy a streamlined, personalized, and colorful desktop experience with ease!  
@@ -59,7 +55,6 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [waypaper](https://github.com/anufrievroman/waypaper) (GUI for changing wallpaper on different backends)
     - [wireplumber](https://github.com/PipeWire/wireplumber) (Session/policy manager for PipeWire)
     - [wl-clipboard-persist](https://github.com/Linus789/wl-clip-persist) (Wayland clipboard utility)
-    - [wlogout](https://github.com/ArtsyMacaw/wlogout) (Logout/Power menu)
     - [wttrbar](https://github.com/bjesus/wttrbar) (Weather module for Waybar)
     - [yay](https://github.com/Jguer/yay) (AUR Helper to install packages from Arch User Repository)
     - [archpapers](https://github.com/connorslade/ArchPapers?tab=readme-ov-file) (Not a package, but these wallpapers were used, and I want to give credit)
