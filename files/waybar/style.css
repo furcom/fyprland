@@ -19,7 +19,7 @@
     font-size: 16px;
     margin: 0;
     padding: 0;
-    transition-duration: 250ms;
+    transition-duration: 125ms;
 }
 
 /* Bar */
@@ -186,8 +186,9 @@ tooltip label {
 
 /* Packages */
 #group-packages {
-    background-color: @color0;
+    background-color: transparent;
     margin: 0 0 0 3px;
+    padding: 3px;
 }
 
 #custom-packages {
