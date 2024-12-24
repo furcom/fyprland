@@ -53,6 +53,7 @@ FUSUMA() {
 HYPR() {
     # Hyprland
     sudo pacman -S --needed --noconfirm hyprland
+    yay -S --needed --noconfirm hyprland-qtutils
     cp -rf ./files/hypr/ "$CFGDIR"
     
     #Hyprlock
