@@ -93,7 +93,7 @@ HYPR() {
 
 ##### GTK #####
 GTK() {
-    sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4 nemo
+    sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4
     yay -S --needed --noconfirm catppuccin-gtk-theme-mocha
     sudo cp -r ./files/icons/kora/* /usr/share/icons/
     sudo cp -r ./files/icons/tela/* /usr/share/icons/
@@ -162,6 +162,12 @@ NEEDED(){
 
     # Audio
     sudo pacman -S --needed --noconfirm pipewire wireplumber
+
+    # Nemo (File Browser)
+    sudo pacman -S --needed --noconfirm nemo
+
+    # wlogout
+    yay -S --needed --noconfirm wlogout
 }
 
 ##### Terminal #####
