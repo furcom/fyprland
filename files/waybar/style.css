@@ -124,11 +124,11 @@ tooltip label {
 }
 
 #group-logo:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #custom-logo:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* CPU */
@@ -139,7 +139,7 @@ tooltip label {
 }
 
 #cpu:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Temperature */
@@ -154,7 +154,7 @@ tooltip label {
 }
 
 #temperature:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* RAM memory */
@@ -165,7 +165,7 @@ tooltip label {
 }
 
 #memory:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Disk */
@@ -176,7 +176,7 @@ tooltip label {
 }
 
 #disk:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Packages */
@@ -230,15 +230,15 @@ tooltip label {
 }
 
 #clock:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 #clock.2:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 #group-clock:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 /* Window */
@@ -269,17 +269,17 @@ window#waybar.empty #window {
 }
 
 #group-window:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #window:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 #custom-window-close:hover,
 #custom-window-prev-workspace:hover,
 #custom-window-next-workspace:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /*------------------*/
@@ -324,13 +324,13 @@ window#waybar.empty #window {
 }
 
 #group-workspaces:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #custom-app-launcher:hover,
 #workspaces button.active:hover,
 #workspaces button.persistent:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /*-----------------*/
@@ -346,7 +346,7 @@ window#waybar.empty #window {
 }
 
 #custom-media {
-    background-color: @color2_light;
+    background-color: @color2;
     min-width: 24px;
     margin: 3px;
     padding: 0 12px;
@@ -360,14 +360,14 @@ window#waybar.empty #window {
 }
 
 #group-media:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #custom-prev-song:hover,
 #custom-toggle-song:hover,
 #custom-next-song:hover,
 #custom-media:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 
@@ -387,11 +387,11 @@ window#waybar.empty #window {
 }
 
 #group-network:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #network:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Bluetooth */
@@ -410,11 +410,11 @@ window#waybar.empty #window {
 }
 
 #group-bluetooth:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #bluetooth:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Input */
@@ -433,12 +433,12 @@ window#waybar.empty #window {
 }
 
 #group-input:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #custom-pipewire:hover,
 #custom-pipewire2:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Output */
@@ -457,11 +457,11 @@ window#waybar.empty #window {
 }
 
 #group-output:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #wireplumber:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Backlight */
@@ -480,11 +480,11 @@ window#waybar.empty #window {
 }
 
 #group-backlight:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #backlight:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
 
 /* Battery */
@@ -530,7 +530,7 @@ window#waybar.empty #window {
 }
 
 #group-battery:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #battery:hover,
@@ -539,7 +539,7 @@ window#waybar.empty #window {
 #battery.warning:not(.charging):hover,
 #battery.critical:not(.charging):hover,
 #power-profiles-daemon:hover {
-    background-color: @color2;
+    background-color: @color2_light;
     color: @foreground;
 }
 
@@ -564,7 +564,7 @@ window#waybar.empty #window {
 }
 
 #group-powermenu:hover {
-    background-color: @color2_light;
+    background-color: @color2;
 }
 
 #custom-powermenu-lock:hover,
@@ -573,5 +573,5 @@ window#waybar.empty #window {
 #custom-powermenu-hibernate:hover,
 #custom-powermenu-poweroff:hover,
 #custom-powermenu-reboot:hover {
-    background-color: @color2;
+    background-color: @color2_light;
 }
