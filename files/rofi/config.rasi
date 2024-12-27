@@ -115,7 +115,8 @@ configuration {
 window {
     anchor: center;
     background-color: @background;
-    border: none;
+    border: 4px;
+    border-color: @primary;
     border-radius: 32px;
     height: 50%;
     location: center;
@@ -225,7 +226,7 @@ mode-switcher{
 }
 
 button {
-    background-color: @hover;
+    background-color: @background-light;
     border: 0;
     border-color: transparent;
     border-radius: 24px;
@@ -233,7 +234,7 @@ button {
     margin: 0 8px 0 0;
     padding: 8px;
     spacing: 0;
-    text-color: @foreground;
+    text-color: @foreground-dark;
     width: 192px;
 }
 

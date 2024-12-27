@@ -16,10 +16,10 @@
     border-radius: 32px;
     color: @foreground;
     font-family: "0xProto Nerd Font Mono";
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     padding: 0;
-    transition-duration: 125ms;
+    transition-duration: 250ms;
 }
 
 /* Bar */
@@ -28,9 +28,9 @@ window#waybar {
     color: @foreground;
 }
 window#waybar > box {
-    background-color: @color0;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);
-    margin: 16px 16px 6px 16px;
+    background-color: @background;
+    /* box-shadow: 0 0 3px 0 rgba(0,0,0,0.33); */
+    margin: 16px 16px 0 16px;
     min-height: 32px;
     padding: 4px;
 }
@@ -49,7 +49,7 @@ window#waybar.hidden {
 
 /* Tooltip & Menu */
 tooltip box{
-    background-color: @color0;
+    background-color: @color2_light;
     border-radius: 23px;
     padding: 12px 16px;
 }
@@ -60,22 +60,23 @@ tooltip label {
 /* Tray */
 #group-tray {
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #tray {
-    background-color: @color0_light;
     color: @foreground;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
+#tray>.active,
 #tray>.passive {
     background-color: transparent;
 }
 
+#tray>.active:hover,
 #tray>.passive:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 #tray>.needs-attention {
@@ -83,19 +84,18 @@ tooltip label {
 }
 
 #tray menu {
-    background-color: @color0;
+    background-color: @background;
     color: @foreground;
     padding: 12px;
 }
 
 #tray menu menuitem {
-    background-color: @color0_light;
+    background-color: @color2_light;
     margin: 3px;
     padding: 8px;
 }
 
 #group-tray:hover {
-    background-color: @color0_light;
     color: @foreground;
 }
 
@@ -115,85 +115,79 @@ tooltip label {
 /* Logo */
 #group-logo {
     background-color: transparent;
-    padding: 3px;
+    padding: 4px;
 }
 
 #custom-logo {
     background-color: @color2;
-    font-size: 26px;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #group-logo:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #custom-logo:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* CPU */
 #cpu {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
     margin: 0 0 0 3px;
 }
 
 #cpu:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Temperature */
 #temperature {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #temperature.critical {
-    background-color: #FF0000;
+    background-color: #ff0000;
 }
 
 #temperature:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* RAM memory */
 #memory {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #memory:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Disk */
 #disk {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #disk:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Packages */
 #group-packages {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    padding: 3px;
+    padding: 4px;
 }
 
 #custom-packages {
     background-color: #007700;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
@@ -204,14 +198,12 @@ tooltip label {
 
 /* Weather */
 #group-weather {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    padding: 3px;
+    padding: 4px;
 }
 
 #custom-weather {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
@@ -220,55 +212,50 @@ tooltip label {
 }
 
 #custom-weather:hover {
-    background-color: @color0_light;
+    background-color: @color2;
 }
 
 /* Clock */
 #group-clock {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    padding: 3px;
+    padding: 4px;
 }
 #clock {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #clock.2 {
-    background-color: transparent;
     margin: 0 0 0 3px;
 }
 
 #clock:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 #clock.2:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 #group-clock:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 /* Window */
 #group-window {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    padding: 3px;
+    padding: 4px;
 }
 
 #window {
-    background-color: @color0_light;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 window#waybar.empty #group-window,
 window#waybar.empty #window {
-    background-color: @color0;
-    color: @color0;
+    background-color: transparent; /* Dont't remove or window background will be visible in Waybar when empty */
+    color: transparent;
     margin: 0;
     min-width: 0;
     padding: 0;
@@ -277,23 +264,22 @@ window#waybar.empty #window {
 #custom-window-close,
 #custom-window-prev-workspace,
 #custom-window-next-workspace {
-    background-color: transparent;
     margin: 0 0 0 3px;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #group-window:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #window:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 #custom-window-close:hover,
 #custom-window-prev-workspace:hover,
 #custom-window-next-workspace:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /*------------------*/
@@ -303,26 +289,21 @@ window#waybar.empty #window {
 }
 
 #group-workspaces {
-    background-color: transparent;
-    font-weight: bold;
     margin: 0 3px;
     padding: 0 2px;
 }
 
 #workspaces {
-    background-color: transparent;
-    font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: #770000;
-    min-width: 32px;
+    background-color: @color5;
+    min-width: 24px;
 }
 
 #workspaces button,
 #workspaces button.persistent {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
     margin: 3px 2px;
 }
 
@@ -332,9 +313,8 @@ window#waybar.empty #window {
 }
 
 #custom-app-launcher {
-    background-color: transparent;
     margin: 3px 2px;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #workspaces button:hover {
@@ -344,13 +324,13 @@ window#waybar.empty #window {
 }
 
 #group-workspaces:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #custom-app-launcher:hover,
 #workspaces button.active:hover,
 #workspaces button.persistent:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /*-----------------*/
@@ -361,14 +341,13 @@ window#waybar.empty #window {
 
 /* Media */
 #group-media {
-    background-color: transparent;
     margin: 0 3px 0 0;
     min-width: 0;
 }
 
 #custom-media {
-    background-color: @color0_light;
-    min-width: 32px;
+    background-color: @color2_light;
+    min-width: 24px;
     margin: 3px;
     padding: 0 12px;
 }
@@ -376,33 +355,30 @@ window#waybar.empty #window {
 #custom-prev-song,
 #custom-toggle-song,
 #custom-next-song {
-    background-color: transparent;
     margin: 3px;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #group-media:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #custom-prev-song:hover,
 #custom-toggle-song:hover,
 #custom-next-song:hover,
 #custom-media:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 
 /* Network */
 #group-network {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #network {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #network.2 {
@@ -411,23 +387,21 @@ window#waybar.empty #window {
 }
 
 #group-network:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #network:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Bluetooth */
 #group-bluetooth {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #bluetooth {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #bluetooth.2 {
@@ -436,23 +410,21 @@ window#waybar.empty #window {
 }
 
 #group-bluetooth:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #bluetooth:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Input */
 #group-input {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #custom-pipewire {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #custom-pipewire.2 {
@@ -461,24 +433,22 @@ window#waybar.empty #window {
 }
 
 #group-input:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #custom-pipewire:hover,
 #custom-pipewire2:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Output */
 #group-output {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #wireplumber {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #wireplumber.2 {
@@ -487,23 +457,21 @@ window#waybar.empty #window {
 }
 
 #group-output:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #wireplumber:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Backlight */
 #group-backlight {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #backlight {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #backlight.2 {
@@ -512,44 +480,41 @@ window#waybar.empty #window {
 }
 
 #group-backlight:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #backlight:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
 
 /* Battery */
 #group-battery {
-    background-color: @color0;
     margin: 0 3px 0 0;
-    padding: 3px;
+    padding: 4px;
 }
 
 #battery {
-    background-color: transparent;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #power-profiles-daemon {
-    background-color: transparent;
     margin: 0 3px 0 0;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #battery.charging,
 #battery.plugged {
     background-color: #007700;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
     color: @background;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
@@ -560,12 +525,12 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-timing-function: linear;
     background-color: #f53c3c;
-    min-width: 32px;
+    min-width: 24px;
     padding: 0 12px;
 }
 
 #group-battery:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #battery:hover,
@@ -574,20 +539,19 @@ window#waybar.empty #window {
 #battery.warning:not(.charging):hover,
 #battery.critical:not(.charging):hover,
 #power-profiles-daemon:hover {
-    background-color: @color0;
+    background-color: @color2;
     color: @foreground;
 }
 
 /* Powermenu */
 #group-powermenu {
-    background-color: @color0;
-    padding: 3px;
+    background-color: transparent;
+    padding: 4px;
 }
 
 #custom-powermenu-poweroff {
     background-color: @color2;
-    font-size: 22px;
-    min-width: 32px;
+    min-width: 24px;
 }
 
 #custom-powermenu-lock,
@@ -595,14 +559,12 @@ window#waybar.empty #window {
 #custom-powermenu-suspend,
 #custom-powermenu-hibernate,
 #custom-powermenu-reboot {
-    background-color: transparent;
-    font-size: 16px;
     margin: 0 3px 0 0;
     padding: 0 12px;
 }
 
 #group-powermenu:hover {
-    background-color: @color0_light;
+    background-color: @color2_light;
 }
 
 #custom-powermenu-lock:hover,
@@ -611,5 +573,5 @@ window#waybar.empty #window {
 #custom-powermenu-hibernate:hover,
 #custom-powermenu-poweroff:hover,
 #custom-powermenu-reboot:hover {
-    background-color: @color0;
+    background-color: @color2;
 }
