@@ -108,6 +108,7 @@ alias q="exit"
 # Configs
 alias zz="vim $HOME/.zshrc"
 alias bb="vim $HOME/.bashrc"
+alias kk="vim $HOME/.config/kitty/kitty.conf"
 alias nn="vim $HOME/.config/nvim/init.lua"
 
 # SSH

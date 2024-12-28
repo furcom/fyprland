@@ -168,6 +168,8 @@ NEEDED(){
 
     # wlogout
     yay -S --needed --noconfirm wlogout
+    cp -rf ./files/wlogout/wlogout "$CFGDIR"
+    cp -rf ./files/wlogout/layout /etc/wlogout/
 }
 
 ##### Terminal #####
