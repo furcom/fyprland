@@ -138,6 +138,7 @@ LOGINOUT() {
     sudo mkdir -p /etc/sddm.conf.d
     sudo cp -rf ./files/sddm/fyprland.conf /etc/sddm.conf.d/fyprland.conf
     sudo cp -rf ./files/sddm/fyprland/ /usr/share/sddm/themes/
+    sudo chmod -R $USER:$USER /usr/share/sddm/themes/fyprland
     sudo sed -i '/^#%PAM/a auth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/sddm
     sudo groupadd -r nopasswdlogin
     sudo gpasswd -a "$USER" nopasswdlogin
