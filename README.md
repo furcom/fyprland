@@ -42,7 +42,6 @@ git clone https://github.com/furcom/fyprland.git ~/fyprland && ~/fyprland/instal
     - [pipewire](https://github.com/PipeWire/pipewire) (Audio server)
     - [rofi](https://github.com/davatorium/rofi) (App launcher, dmenu replacement. Needed for all the menus)
     - [rofimoji](https://github.com/fdw/rofimoji) (Emoji picker based on rofi)
-    - [sddm](https://github.com/sddm/sddm) (Display manager; might be replaced in the future)
     - [wallust](https://codeberg.org/explosion-mental/wallust/) (Generates color palettes from images)
     - [waybar](https://github.com/Alexays/Waybar) (Wayland status bar)
     - [waypaper](https://github.com/anufrievroman/waypaper) (GUI for changing wallpaper on different backends)
