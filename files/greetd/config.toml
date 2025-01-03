@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "Hyprland"
+user = "furcom"
+
+[initial_session]
+command = "Hyprland"
+user = "furcom"

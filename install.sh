@@ -133,16 +133,15 @@ WAYBAR() {
 
 ##### login / logout #####
 LOGINOUT() {
-    # SDDM
-    sudo pacman -S --needed --noconfirm qt6-svg qt6-declarative qt5-quickcontrols2 sddm
-    sudo mkdir -p /etc/sddm.conf.d
-    sudo cp -rf ./files/sddm/fyprland.conf /etc/sddm.conf.d/fyprland.conf
-    sudo cp -rf ./files/sddm/fyprland/ /usr/share/sddm/themes/
-    sudo chmod -R $USER:$USER /usr/share/sddm/themes/fyprland
-    sudo sed -i '/^#%PAM/a auth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/sddm
-    sudo groupadd -r nopasswdlogin
-    sudo gpasswd -a "$USER" nopasswdlogin
-    sudo systemctl enable sddm
+    # greetd (with autologin)
+    sudo pacman -S --needed --noconfirm greetd
+    sudo cp -rf ./files/greetd/config.toml /etc/greetd/config.toml
+    sudo sed -i "s/furcom/$(whoami)/g" /etc/greetd/config.toml
+
+    # wlogout
+    yay -S --needed --noconfirm wlogout
+    cp -rf ./files/wlogout/wlogout "$CFGDIR"
+    cp -rf ./files/wlogout/layout /etc/wlogout/
 }
 
 #### Needed packages #####
@@ -167,10 +166,6 @@ NEEDED(){
     # Nemo (File Browser)
     sudo pacman -S --needed --noconfirm nemo
 
-    # wlogout
-    yay -S --needed --noconfirm wlogout
-    cp -rf ./files/wlogout/wlogout "$CFGDIR"
-    cp -rf ./files/wlogout/layout /etc/wlogout/
 }
 
 ##### Terminal #####
@@ -210,7 +205,6 @@ MAKO
 NEEDED
 NVIM
 ROFI
-SDDM
 TERMINAL
 WAYBAR
 exit

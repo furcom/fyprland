@@ -52,10 +52,6 @@ RofiScriptsDir="$RofiDir/scripts"
 RofiMenu="rofi -dmenu -config $RofiDir/config.rasi"
 RofiMenuSettings="rofi -dmenu"
 
-# sddm
-SddmConfigDir="/etc/sddm.conf.d"
-SddmThemesDir="/usr/share/sddm/themes"
-
 # wallust
 WallustDir="$HOME/.config/wallust"
 WallustTemplatesDir="$WallustDir/templates"
@@ -157,7 +153,7 @@ waybar_menu() {
 }
 
 wallust_menu() {
-  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n SDDM\n󰩈 Wlogout\n󱞲 Back"
+  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n󰩈 Wlogout\n󱞲 Back"
   WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$WALLUST_SUBCHOICE" ]; then
@@ -175,7 +171,6 @@ wallust_menu() {
       "󱂩 Waybar") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/waybar" ;;
       "󰮫 Rofi") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/rofi" ;;
       "󱥁 Mako") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/mako" ;;
-      " SDDM") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/sddm" ;;
       "󰩈 Wlogout") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/wlogout" ;;
     esac
   fi

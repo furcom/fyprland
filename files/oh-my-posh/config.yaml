@@ -20,7 +20,7 @@ blocks:
       - type: "path"
         style: "plain"
         background: "transparent"
-        foreground: "#F2FAE7"
+        foreground: "#BCEBFB"
         template: "{{ .Path }}"
         properties:
           style: "full"
@@ -39,7 +39,7 @@ blocks:
     segments:
       - type: "executiontime"
         style: "plain"
-        foreground: "#91A86D"
+        foreground: "#B24CB3"
         background: "transparent"
         template: "{{ .FormattedMs }}"
         properties:
@@ -52,20 +52,20 @@ blocks:
       - type: "text"
         style: "plain"
         foreground_templates:
-          - "{{if gt .Code 0}}#76D0EE{{end}}"
-          - "{{if eq .Code 0}}#91A86D{{end}}"
+          - "{{if gt .Code 0}}#5F7DB9{{end}}"
+          - "{{if eq .Code 0}}#B24CB3{{end}}"
         background: "transparent"
         template: "❯"
 
 transient_prompt:
   foreground_templates:
-    - "{{if gt .Code 0}}#76D0EE{{end}}"
-    - "{{if eq .Code 0}}#29907D{{end}}"
+    - "{{if gt .Code 0}}#5F7DB9{{end}}"
+    - "{{if eq .Code 0}}#332F80{{end}}"
   background: "transparent"
   template: "❯ "
 
 secondary_prompt:
-  foreground: "#91A86D"
+  foreground: "#B24CB3"
   background: "transparent"
   template: "❯❯ "
 
