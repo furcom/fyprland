@@ -18,28 +18,22 @@ format() {
 }
 
 check_updates() {
-    # Initialisiere Variablen
-    updates_arch=0
-    updates_aur=0
-
-    # Überprüfen auf Arch-Updates
-    if checkupdates_output=$(checkupdates 2>/dev/null); then
-        updates_arch=$(echo "$checkupdates_output" | grep -c '^[^[:space:]]')
+    if ! updates_arch="$(checkupdates | wc -l)"; then
+        updates_arch=0
     fi
 
-    # Überprüfen auf AUR-Updates
-    if aur_updates_output=$($AUR_HELPER -Qum 2>/dev/null); then
-        updates_aur=$(echo "$aur_updates_output" | grep -c '^[^[:space:]]')
+    if ! updates_aur="$($AUR_HELPER -Qum 2>/dev/null | wc -l)"; then
+        updates_aur=0
     fi
 
     output=""
 
-    # Nur Arch-Updates anzeigen, wenn verfügbar
+    # Only show Arch updates if there are any
     if [ "$updates_arch" -gt 0 ]; then
         output="󰮯 $(format $updates_arch)"
     fi
 
-    # Nur AUR-Updates anzeigen, wenn verfügbar
+    # Only show AUR updates if there are any
     if [ "$updates_aur" -gt 0 ]; then
         if [ -n "$output" ]; then
             output="$output  $(format $updates_aur)"
@@ -48,11 +42,11 @@ check_updates() {
         fi
     fi
 
-    # Ausgabe nur anzeigen, wenn es etwas zu zeigen gibt
+    # Print output only if there's something to show
     if [ -n "$output" ]; then
         echo "$output"
     else
-        echo ""
+        echo
     fi
 }
 

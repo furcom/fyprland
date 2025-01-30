@@ -14,15 +14,15 @@
 }
 
 window {
-    background-color: #0F0F0F;
+    background-color: #0D0B17;
 }
 
 button {
     border-radius: 256px;
     border-color: transparent;
-    text-decoration-color: #BCEBFB;
-    color: #BCEBFB;
-    background-color: rgba(23,23,23, 0.99);
+    text-decoration-color: #FEF0F9;
+    color: #FEF0F9;
+    background-color: rgba(19,17,34, 0.99);
     border-style: solid;
     border-width: 0px;
     background-repeat: no-repeat;
@@ -37,25 +37,25 @@ button {
 button:visited,
 button:link {
     background-color: transparent;
-    color: #BCEBFB;
+    color: #FEF0F9;
     outline-style: none;
 }
 
 button:focus {
-    background-color: #332F80;
-    color: #BCEBFB;
+    background-color: #5695C0;
+    color: #FEF0F9;
     outline-style: none;
 }
 
 button:active {
-    background-color: #332F80;
-    color: #BCEBFB;
+    background-color: #5695C0;
+    color: #FEF0F9;
     outline-style: none;
 }
 
 button:hover {
-    background-color: #3E3E3E;
-    color: #BCEBFB;
+    background-color: #272638;
+    color: #FEF0F9;
     outline-style: none;
 }
 

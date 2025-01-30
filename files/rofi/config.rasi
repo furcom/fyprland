@@ -9,7 +9,7 @@
 @import "./colors.rasi"
 
 * {
-    font: "0xProto Nerd Font Mono 20";
+    font: "0xProto Nerd Font Mono 18";
     margin: 0;
     padding: 0;
 }
@@ -91,7 +91,7 @@ configuration {
 
     // Misc setting
     click-to-exit: true;
-    font: "0xProto Nerd Font 16";
+    font: "0xProto Nerd Font 18";
     // ignored-prefixes: "";
     // pid: "/run/user/1000/rofi.pid";
     sort: false;
@@ -184,7 +184,7 @@ textbox-num-sep {
 
 inputbar {
     children: ["textbox-prompt-colon","entry","mode-switcher"];
-    margin: 0 0 8px 0;
+    margin: 0 0 32px 0;
     padding: 1px;
     spacing: 16px;
     text-color: @foreground;
@@ -198,26 +198,30 @@ case-indicator {
 entry {
     expand: true;
     cursor: text;
-    padding: 4px 0;
+    padding: 8px 8px;
     placeholder: " Search";
-    placeholder-color: @foreground;
+    placeholder-color: @primary;
     spacing: 0;
     text-color: @foreground;
+    vertical-align: center;
     width: 128px;
 }
 
 prompt {
-    padding: 4px 0;
+    padding: 8;
     spacing: 0;
-    text-color: @foreground;
+    text-color: @primary;
 }
 
 textbox-prompt-colon {
     expand: false;
-    margin: 0;
-    padding: 4px 0;
+    padding: 4px 14px;
     str: "󰍉";
-    text-color: inherit;
+    text-color: @background;
+    background-color: @primary;
+    border-radius: 32px;
+    font: "0xProto Nerd Font Mono 24";
+    vertical-align: center;
 }
 
 mode-switcher{
@@ -229,18 +233,18 @@ button {
     background-color: @background-light;
     border: 0;
     border-color: transparent;
-    border-radius: 24px;
+    border-radius: 32px;
     cursor: pointer;
     margin: 0 8px 0 0;
     padding: 8px;
     spacing: 0;
     text-color: @foreground-dark;
-    width: 192px;
+    width: 200px;
 }
 
 button selected {
     background-color: @primary;
-    text-color: @foreground;
+    text-color: @background;
 }
 
 element {
