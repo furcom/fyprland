@@ -164,7 +164,7 @@ NEEDED(){
     sudo pacman -S --needed --noconfirm pipewire wireplumber
 
     # Nemo (File Browser)
-    sudo pacman -S --needed --noconfirm nemo nemo-fileroller nemo-preview nemo-seahorse nemo-share nemo-terminal
+    sudo pacman -S --needed --noconfirm nemo nemo-fileroller nemo-preview nemo-seahorse nemo-share nemo-terminal android-file-transfer gvfs-mtp
     yay -S --needed --noconfirm nemo-compare
 
 }
