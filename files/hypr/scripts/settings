@@ -147,7 +147,7 @@ hyprpanel_menu() {
 }
 
 wallust_menu() {
-  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Hyprpanel\n󰮫 Rofi\n󰩈 Wlogout\n󱞲 Back"
+  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Hyprpanel\n󰮫 Rofi\n󱞲 Back"
   WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$WALLUST_SUBCHOICE" ]; then
@@ -164,7 +164,6 @@ wallust_menu() {
       "󰄛 Kitty") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/kitty" ;;
       "󱂩 Hyprpanel") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/hyprpanel" ;;
       "󰮫 Rofi") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/rofi" ;;
-      "󰩈 Wlogout") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/wlogout" ;;
     esac
   fi
 }

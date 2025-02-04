@@ -129,11 +129,6 @@ LOGINOUT() {
     sudo pacman -S --needed --noconfirm greetd
     sudo cp -rf ./files/greetd/config.toml /etc/greetd/config.toml
     sudo sed -i "s/furcom/$(whoami)/g" /etc/greetd/config.toml
-
-    # wlogout
-    yay -S --needed --noconfirm wlogout
-    cp -rf ./files/wlogout/wlogout "$CFGDIR"
-    cp -rf ./files/wlogout/layout /etc/wlogout/
 }
 
 #### Needed packages #####
