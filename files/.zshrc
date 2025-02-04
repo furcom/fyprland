@@ -106,6 +106,7 @@ alias c="clear"
 alias q="exit"
 
 # Configs
+alias aa="cd $HOME/.config/ags && d"
 alias zz="vim $HOME/.zshrc"
 alias bb="vim $HOME/.bashrc"
 alias kk="vim $HOME/.config/kitty/kitty.conf"

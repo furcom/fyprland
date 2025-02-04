@@ -40,9 +40,6 @@ HyprWallpapersDir="$HyprImagesDir/wallpapers"
 KittyDir="$HOME/.config/kitty"
 KittyConfigsDir="$KittyDir/configs"
 
-# mako
-MakoDir="$HOME/.config/mako"
-
 # oh-my-posh
 OmpDir="$HOME/.config/oh-my-posh"
 
@@ -56,16 +53,15 @@ RofiMenuSettings="rofi -dmenu"
 WallustDir="$HOME/.config/wallust"
 WallustTemplatesDir="$WallustDir/templates"
 
-# waybar
-WaybarDir="$HOME/.config/waybar"
-WaybarScriptsDir="$WaybarDir/scripts"
+# hyprpanel
+WaybarDir="$HOME/.config/hyprpanel"
 
 ###################################################
 #################### Functions ####################
 ###################################################
 
 extras_menu() {
-  EXTRAS_OPTIONS="󱂩 Waybar\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh\n Wallust\n GTK Theming\n󱞲 Back"
+  EXTRAS_OPTIONS="󱂩 Hyprpanel\n󰄛 Kitty\n󰵷 Fusuma\n Oh My Posh\n Wallust\n GTK Theming\n󱞲 Back"
   EXTRAS_SUBCHOICE=$(echo -e "$EXTRAS_OPTIONS" | $RofiMenuSettings -selected-row $SelectedRowExtras)
 
   if [ -z "$EXTRAS_SUBCHOICE" ]; then
@@ -76,7 +72,7 @@ extras_menu() {
     main_menu
   else
     case "$EXTRAS_SUBCHOICE" in
-      "󱂩 Waybar") waybar_menu ;;
+      "󱂩 Hyprpanel") hyprpanel_menu ;;
       "󰄛 Kitty") kitty_menu ;;
       "󰵷 Fusuma") fusuma_menu ;;
       " Oh My Posh") $TERMINAL sh -c "$EDITOR $OmpDir/config.yaml" ;;
@@ -133,27 +129,25 @@ hyprland_menu() {
   fi
 }
 
-waybar_menu() {
-  WAYBAR_OPTIONS="󰈙 Config\n Style\n󰑓 Restart\n󱞲 Back"
-  WAYBAR_SUBCHOICE=$(echo -e "$WAYBAR_OPTIONS" | $RofiMenuSettings)
+hyprpanel_menu() {
+  HYPRPANEL_OPTIONS="󰑓 Restart\n󱞲 Back"
+  HYPRPANEL_SUBCHOICE=$(echo -e "$HYPRPANEL_OPTIONS" | $RofiMenuSettings)
 
-  if [ -z "$WAYBAR_SUBCHOICE" ]; then
+  if [ -z "$HYPRPANEL_SUBCHOICE" ]; then
     SelectedRowExtras="0"
     extras_menu
-  elif [ "$WAYBAR_SUBCHOICE" == "󱞲 Back" ]; then
+  elif [ "$HYPRPANEL_SUBCHOICE" == "󱞲 Back" ]; then
     SelectedRowExtras="0"
     extras_menu
   else
-    case "$WAYBAR_SUBCHOICE" in
-      "󰈙 Config") $TERMINAL sh -c "$EDITOR $WaybarDir/config" ;;
-      " Style") $TERMINAL sh -c "$EDITOR $WaybarDir/style.css" ;;
-      "󰑓 Restart") killall waybar && waybar &!
+    case "$HYPRPANEL_SUBCHOICE" in
+      "󰑓 Restart") hyprpanel -q; hyprpanel
     esac
   fi
 }
 
 wallust_menu() {
-  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Waybar\n󰮫 Rofi\n󱥁 Mako\n󰩈 Wlogout\n󱞲 Back"
+  WALLUST_OPTIONS="󰈙 Config\n Hyprland\n Hyprlock\n󰄛 Kitty\n󱂩 Hyprpanel\n󰮫 Rofi\n󰩈 Wlogout\n󱞲 Back"
   WALLUST_SUBCHOICE=$(echo -e "$WALLUST_OPTIONS" | $RofiMenuSettings)
 
   if [ -z "$WALLUST_SUBCHOICE" ]; then
@@ -168,9 +162,8 @@ wallust_menu() {
       " Hyprland") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/hyprland" ;;
       " Hyprlock") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/hyprlock" ;;
       "󰄛 Kitty") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/kitty" ;;
-      "󱂩 Waybar") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/waybar" ;;
+      "󱂩 Hyprpanel") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/hyprpanel" ;;
       "󰮫 Rofi") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/rofi" ;;
-      "󱥁 Mako") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/mako" ;;
       "󰩈 Wlogout") $TERMINAL sh -c "$EDITOR $WallustTemplatesDir/wlogout" ;;
     esac
   fi

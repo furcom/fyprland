@@ -99,12 +99,6 @@ GTK() {
     sudo cp -r ./files/icons/tela/* /usr/share/icons/
 }
 
-##### mako #####
-MAKO() {
-    sudo pacman -S --needed --noconfirm mako
-    cp -rf ./files/mako/ "$CFGDIR"
-}
-
 ##### nvim / neovim #####
 NVIM() {
     sudo pacman -S --needed --noconfirm neovim ripgrep npm
@@ -122,13 +116,11 @@ ROFI() {
     cp -rf ./files/rofimoji.rc "$CFGDIR"
 }
 
-##### waybar #####
-WAYBAR() {
-    sudo pacman -S --needed --noconfirm bc brightnessctl noto-fonts-emoji power-profiles-daemon python python-pyquery waybar
-    yay -S --needed --noconfirm bluetui wttrbar
-    cp -rf ./files/waybar/ "$CFGDIR"
-    sudo systemctl start power-profiles-daemon
-    sudo systemctl enable power-profiles-daemon
+##### hyprpanel #####
+HYPRPANEL() {
+    sudo pacman -S --needed --noconfirm brightnessctl power-profiles-daemon
+    yay -S --needed --noconfirm bluetui ags-hyprpanel-git
+    cp -rf ./files/hyprpanel/ "$CFGDIR"
 }
 
 ##### login / logout #####
@@ -200,12 +192,11 @@ TERMINAL() {
 YAY
 FUSUMA
 HYPR
+HYPRPANEL
 GTK
 LOGINOUT
-MAKO
 NEEDED
 NVIM
 ROFI
 TERMINAL
-WAYBAR
 exit

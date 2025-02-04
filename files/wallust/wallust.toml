@@ -60,6 +60,10 @@ hyprlock.template = "hyprlock"
 hyprlock.target = '~/.config/hypr/hyprlock.conf'
 hyprlock.new_engine = true
 
+hyprpanel.template = "hyprpanel"
+hyprpanel.target = '~/.config/hyprpanel/config.json'
+hyprpanel.new_engine = true
+
 mako.template = "mako"
 mako.target = '~/.config/mako/config'
 mako.new_engine = true
