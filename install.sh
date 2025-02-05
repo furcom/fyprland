@@ -65,7 +65,7 @@ HYPR() {
     # Hyprcursor
     sudo pacman -S --needed --noconfirm hyprcursor
     mkdir -p $HOME/.icons/
-    cp -rf ./files/cursors/* "$HOME/.icons/"
+    cp -rf ./files/THEME/cursors/* "$HOME/.icons/"
     hyprctl setcursor Bibata-Modern-Ice 32
 
     # Hyprpaper
@@ -91,12 +91,12 @@ HYPR() {
     sudo pacman -S --needed --noconfirm hypridle
 }
 
-##### GTK #####
-GTK() {
+##### Theme: GTK, Icons, etc #####
+THEME() {
     sudo pacman -S --needed --noconfirm nwg-look gtk3 gtk4
-    yay -S --needed --noconfirm catppuccin-gtk-theme-mocha
-    sudo cp -r ./files/icons/kora/* /usr/share/icons/
-    sudo cp -r ./files/icons/tela/* /usr/share/icons/
+    sudo cp -r ./files/THEME/icons/kora/* /usr/share/icons/
+    sudo cp -r ./files/THEME/icons/tela/* /usr/share/icons/
+    sudo cp -r ./files/THEME/gtk/* /usr/share/themes/
 }
 
 ##### nvim / neovim #####
@@ -185,13 +185,13 @@ TERMINAL() {
 #####################
 
 YAY
-FUSUMA
+THEME
 HYPR
 HYPRPANEL
-GTK
 LOGINOUT
 NEEDED
 NVIM
 ROFI
 TERMINAL
+FUSUMA
 exit
