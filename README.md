@@ -1,6 +1,6 @@
 ![Preview](https://github.com/furcom/fyprland/blob/main/preview.png?raw=true)
 
-### ⚠️ I no longer maintain this repository as I've switched to NixOS. ➡️ [new .dotfiles](https://github.com/furcom/Hypnix) ⬅️ ⚠️
+### ⚠️ I no longer maintain this repository as I've switched to NixOS. [ [new .dotfiles](https://github.com/furcom/Hypnix) ] ⚠️
 ---
 ## 🛠️ Setup
 ### Clone the repository and install fyprland (Please read the information below before installing!)
